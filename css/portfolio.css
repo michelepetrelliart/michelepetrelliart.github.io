@@ -150,7 +150,7 @@ ul{margin: 0;padding:0;list-style-type:none}
 #menu{width:50%;background-color:white;border-radius:6px;text-align:left;border-bottom: solid 1px rgba(200,200,200,0.8)}
 
 /* link menu. Cambiando 80px posso scrivere voci più lunghe */
-  #menu li a{padding:5px 0px;max-width:150px;font:bold 14px &quot;Amatic SC&quot;, serif; font-weigth:900!important;transform: scaleX(1.4) translateX(10%);text-decoration:none;/*border-right:1px solid #ccc*/}
+  #menu li a{padding:8.5px 0px;max-width:150px;font:bold 14px &quot;Amatic SC&quot;, serif; font-weigth:900!important;transform: scaleX(1.4) translateX(10%);text-decoration:none;/*border-right:1px solid #ccc*/}
 /*#menu li a{display:block;padding:13px 0px;max-width:300px;color:#000;font:bold 14px Times, Times New Roman, Liberation serif, Julius Sans One; font-weigth:700;text-decoration:none;}*/
 
 /* link menu hover */
