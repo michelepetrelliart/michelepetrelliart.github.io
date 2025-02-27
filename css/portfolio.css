@@ -4017,8 +4017,8 @@ opacity:0;}
 @media screen and (max-width: 1258px){
     .undernav{display:none}
   .testohome{padding:0px 0px 0px}
-  .testohome {font-size:14px;line-height:20.5px}
-  .testohome h2{font-size:14px;line-height:20.5px}
+  .testohome {font-size:14px;}
+  .testohome h2{font-size:14px;}
  }   
   
 /*------CUSTOM SCROLLBAR----*/  
