@@ -2382,7 +2382,7 @@ h1.entry-title.post-title {border:unset;border-left:6px solid #000/*#dcdcdc*/;ma
   nav{background-color:#fff!important}
 div.logo {background-color:#fff!important;padding-bottom:10px}
 div.logo {margin-top:10px;margin-left:50px;text-align:left}
-.logo p{font-family: Cinzel, Oswald,serif!important; font-weight:800;font-size:1.2rem;color:#00;padding-top:20px;letter-spacing:-1px; padding-left:0px; padding-bottom:35px; text-align:left}  
+.logo p{font-family: Times, Times New Roman, Cinzel, Oswald,serif!important; font-weight:800;font-size:1.2rem;color:#00;padding-top:20px;letter-spacing:-1px; padding-left:0px; padding-bottom:35px; text-align:left}  
  @media screen and (max-width: 1257px){ .logo p{text-align:center}}
   
   body, h2, h5, div, .post-body h3, .showMenu, .post h1, .post-body h1, h4, h2, h3, #mygallery h3{color:#000!important}
