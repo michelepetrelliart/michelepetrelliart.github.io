@@ -4010,8 +4010,8 @@ opacity:0;}
  } 
 @media screen and (min-width: 1258px){
     /*.testohome{display:none}*/ 
-  .testohome{padding-left:300px;padding-top:20px;padding-right:30px;font-size:14px}
-  .testohome h2{font-size:14px;}
+  .testohome{padding-left:300px;padding-top:0px;padding-right:30px;font-size:14px}
+  .testohome h2{font-size:2px;}
   .undernav{padding:0px 20px 30px 0px}
  } 
 @media screen and (max-width: 1258px){
