@@ -1,4 +1,10 @@
 <style type='text/css'>
+      @media (max-width: 540px) and (hover: none) and (pointer: coarse) {
+    .home #content-wrapper {
+        position: relative;
+        top: -100px;
+    }
+}
 /* RESET CSS BASE - da mettere all'inizio del CSS esterno */
 
  
