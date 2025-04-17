@@ -675,7 +675,7 @@ color: #333;
 font-family:&#39;Open Sans&#39;, sans-serif;
 font-size: 14px;
 font-weight: normal;
-line-height: 21px;
+/*line-height: 21px;*/
 background: #ffffff;
 }
 /* ######## Wrapper Css ######################### */
