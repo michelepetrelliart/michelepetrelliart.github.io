@@ -1,14 +1,47 @@
 <style type='text/css'>
-html, body {
+/* RESET CSS BASE - da mettere all'inizio del CSS esterno */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
-  box-sizing: inherit;
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif; /* Puoi cambiarlo con il tuo font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/*fine reset*/
 .item #blog-pager{display:none}
 .static_page #blog-pager{display:block} 
 .index #blog-pager {display:block} 
