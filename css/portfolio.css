@@ -2369,7 +2369,7 @@ body {padding-top:0px}
 .insta-wrap, #jugas_footer, .insta-wrap ul li, .insta-wrap ul li a, #jugas_footer ul li a {background-color:#fff!important/*sabbia #c7c5bd burro #dcd9d1*/}
   ul.gallery-row li {background-color:#000}
   body, h2, h5, div, .post-body h3, .showMenu, .post h1, .post-body h1, h4, h2, h3, #mygallery h3{color:#000!important/*dcdcdc*/}
-body, .post-body {font-family: Times, Times New Roman, Liberation serif, Julius Sans One; font-size:14px;line-height:15.5px}
+body, .post-body {font-family: Times, Times New Roman, Liberation serif, Julius Sans One; font-size:14px;/*line-height:15.5px*/}
 .descript, .descript2{font-size:14px;font-weight:100!important;line-height:normal}
   
   nav {border-right: solid 0px #444!important;
