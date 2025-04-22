@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
         slides[slideIndex - 1].style.display = "block";
 
         // Cambia immagine ogni 4 secondi
-        setTimeout(showSlides, 4000); // Cambia immagine ogni 4 secondi
+        setTimeout(showSlides, 3000); // Cambia immagine ogni 3 secondi
     }
 
     // Avvia lo slideshow dopo la visualizzazione della prima immagine
