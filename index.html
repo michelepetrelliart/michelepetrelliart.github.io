@@ -202,7 +202,39 @@ h2 {
 <h2 style='margin-bottom:0px;padding-bottom:0px'>Sign in my News</h2>
     <span style='letter-spacing: 4px;font-size:11px;margin-top:0px;padding-top:0px'>New paintings and events</span><br/>
 <br/>
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWnm2EGQ3qKhuyT4pytZ5p6G2Hha1CTVmArmDoD1-77LJABQ/viewform?embedded=true" width="640" height="80" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<form id="newsletterForm">
+  <input type="email" name="email" placeholder="Inserisci la tua email" required>
+  <button type="submit">Iscriviti</button>
+  <div id="status" style="margin-top:10px;"></div>
+</form>
+
+<script>
+const form = document.getElementById('newsletterForm');
+const status = document.getElementById('status');
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxWdZhGIQlnkWENzjOEuyv4TbKESFr79eyYfCz4XYHlIMXGZiFKwi7ZxmtbayJJcpjX/exec';
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  fetch(WEB_APP_URL, {
+    method: 'POST',
+    body: new URLSearchParams(formData)
+  })
+  .then(res => res.text())
+  .then(text => {
+    if(text === "OK") {
+      status.innerText = "Grazie! Sei iscritto.";
+      form.reset();
+    } else {
+      status.innerText = "Email non valida.";
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    status.innerText = "Errore, riprova più tardi.";
+  });
+});
+</script>
         </center>
 </div>
 <script>
