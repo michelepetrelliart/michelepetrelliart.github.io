@@ -7,16 +7,26 @@ body {
 }
 
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* permette ai link di andare sotto quando non c'è spazio */
   padding: 20px;
   background: #fff;
   position: sticky;
   top: 0;
-  font-size: clamp(10px, 1vw, 24px);
+  font-size: clamp(14px, 2vw, 22px);
+  line-height: clamp(25px, 2.5vw, 50px); /* usa unità px */
 }
 
-nav a {
+nav .menu-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 20px); /* spazio tra i link */
+}
+
+nav .menu-links a {
   color: #000;
-  margin-right: 20px;
   text-decoration: none;
 }
 
@@ -25,13 +35,16 @@ nav .brand {
   font-weight: 600;
   letter-spacing: 0.05em;
 }
-
+nav .brand a{
+  color: #000;
+  text-decoration: none;
+}
 /* --- Griglia e items --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
-  padding: 50px;
+  gap: 10px;
+  padding: 10px;
 }
 
 .grid-item {
@@ -70,7 +83,7 @@ nav .brand {
   color: #000;
   text-align: center;
   margin-top: clamp(-18px, -1.2vw, -4px);
-  font-size: clamp(10px, 1vw, 18px);
+  font-size: clamp(14px, 1.8vw, 20px);
   word-break: break-word;
   width: 100%;
 }
@@ -90,17 +103,9 @@ img.single {
   overflow: auto;
   padding: 1.5vw;
   line-height: 1.4em;
-  font-size: clamp(10px, 1.4vw, 24px);
+  font-size: clamp(14px, 2vw, 22px);
 }
 
-.close {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  color: #000;
-  font-size: clamp(10px, 2.2vw, 40px);
-  text-decoration: none;
-}
 
 /* --- Pagine Stories --- */
 .story-page {
@@ -132,8 +137,26 @@ img.single {
   font-size: 1rem;
 }
 /* Media query per tablet e dispositivi più piccoli */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colonne invece di 4 */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+.grid-item {
+    display: none;
+}
+
+.grid-item.visible {
+    display: block;
+}
+
+#loadMore {
+    margin: 60px auto;
+    display: block;
+    background: none;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: clamp(14px, 1.8vw, 24px);
+}
+
