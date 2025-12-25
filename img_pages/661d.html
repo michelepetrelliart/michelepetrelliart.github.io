@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>661d</title>
+<link rel="stylesheet" href="../css/image_pages_style.css">
+</head>
+<body>
+<a href="#" class="close" onclick="
+    if (history.length > 1) history.back();
+    else window.location.href = '../all.html';
+    return false;
+">✕</a>
+
+<div class="single-image-page">
+    <div class="single-image-container">
+        <img src="../thumbs/All_works/Portraits/661d_wm.jpg" alt="661d">
+    </div>
+    <div class="single-image-title">661d</div>
+    
+    <div class="single-image-license">
+        This license does not allow you to modify or use these images for commercial purposes.
+        You are allowed to share them only by clearly crediting and tagging the author.
+    </div>
+</div>
+<script>
+(()=>{if(location.protocol==="file:"||/^(localhost|127\.0\.0\.1)$/.test(location.hostname))return;
+if(localStorage.getItem("cAcc"))return;
+let d=document.createElement("div");
+d.style="position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:10px 14px;font:14px/1.4 sans-serif;text-align:center;z-index:9999";
+d.innerHTML="Il sito utilizza cookie di terze parti per statistiche e sicurezza. <a href='/p/privacy-policy.html' style='color:#ff0'>Info</a> <button id='cOk' style='margin-left:10px'>OK</button>";
+document.body.appendChild(d);
+document.getElementById("cOk").onclick=()=>{localStorage.setItem("cAcc","1");d.remove()};
+})();
+</script>
+<script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+</script>
+<script type='text/javascript'>
+document.addEventListener("DOMContentLoaded",function(){const e=navigator.languages||[navigator.language||navigator.userLanguage],t=e.some(l=>l.startsWith("it")),n=new URLSearchParams(window.location.search).get("fromX");if(!t&&n==="1")localStorage.setItem("visitedFromX","1");const o=localStorage.getItem("visitedFromX"),i=document.querySelectorAll(".cont-t"),s=document.querySelectorAll(".cont-h"),r=document.querySelectorAll(".cont-it");if(t){r.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none");i.forEach(a=>a.style.display="none")}else{if(!o){s.forEach(a=>a.style.display="block");i.forEach(a=>a.style.display="none")}else{i.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none")}r.forEach(a=>a.style.display="none")}});</script>
+<script>
+//<![CDATA[
+document.addEventListener("DOMContentLoaded", function() {
+    const carousel42 = document.querySelector(".carosello42");
+    if (!carousel42) return;
+
+    const slides42 = carousel42.querySelectorAll(".slide42");
+    const dotsContainer42 = carousel42.querySelector(".navDots42");
+    const arrowLeft42 = carousel42.querySelector(".arrow42-left");
+    const arrowRight42 = carousel42.querySelector(".arrow42-right");
+    let current42 = 0;
+
+    if (slides42.length <= 1) {
+        if (arrowLeft42) arrowLeft42.style.display = "none";
+        if (arrowRight42) arrowRight42.style.display = "none";
+        if (dotsContainer42) dotsContainer42.style.display = "none";
+        return;
+    }
+
+    slides42.forEach((_, index) => {
+        if (!dotsContainer42) return;
+        const dot = document.createElement("div");
+        dot.classList.add("dot42");
+        if (index === 0) dot.classList.add("activeDot42");
+        dot.addEventListener("click", () => showSlide42(index));
+        dotsContainer42.appendChild(dot);
+    });
+
+    const dots42 = dotsContainer42 ? dotsContainer42.querySelectorAll(".dot42") : [];
+
+    if (arrowLeft42) arrowLeft42.addEventListener("click", () => showSlide42(current42 - 1));
+    if (arrowRight42) arrowRight42.addEventListener("click", () => showSlide42(current42 + 1));
+
+    function showSlide42(n) {
+        if (slides42.length === 0) return;
+
+        if (n < 0) n = slides42.length - 1;
+        if (n >= slides42.length) n = 0;
+
+        slides42[current42].classList.remove("attiva42");
+        if (dots42[current42]) dots42[current42].classList.remove("activeDot42");
+
+        slides42[n].classList.add("attiva42");
+        if (dots42[n]) dots42[n].classList.add("activeDot42");
+
+        current42 = n;
+    }
+
+    let timer42 = setInterval(() => showSlide42(current42 + 1), 8000);
+
+    carousel42.addEventListener("mouseenter", () => clearInterval(timer42));
+    carousel42.addEventListener("mouseleave", () => {
+        timer42 = setInterval(() => showSlide42(current42 + 1), 8000);
+    });
+});
+//]]>
+</script>
+</body>
+</html>
