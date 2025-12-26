@@ -36,7 +36,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: calc(100vh - 150px); /* lascia spazio per nav e padding */
+    max-height: calc(100dvh - 150px); /* lascia spazio per nav e padding */
     width: auto;
     /*max-width: auto;*/
     margin-top:calc(20px + clamp(14px, 1.5vw, 24px));
