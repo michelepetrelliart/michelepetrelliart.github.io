@@ -83,7 +83,7 @@ nav .brand a {
 .nav-level-2 {
   display: flex;                /* link in orizzontale */
   gap: 20px;                    /* spazio tra i link */
-  font-size: clamp(16px, 1.8vw, 23px);
+  font-size: clamp(16px, 1.8vw, 26px);
   justify-content: center;       /* centra i link nella riga */
   margin-bottom: 5px;           /* solo sulla prima riga per distanziare le due righe */
 }
@@ -123,7 +123,7 @@ body.all-page .nav-level-2 {
 
 #menu li {
   list-style: none;
-  font-size: clamp(12px, 1.8vw, 23px);
+  font-size: clamp(16px, 4vw, 30px);
   padding: 5px 0;
 }
 
@@ -225,7 +225,7 @@ img.single {
   position: fixed;
   top: 10px;
   right: 20px;
-  font-size: 2rem;
+  font-size: clamp(14px, 2vw, 22px);
   text-decoration: none;
 }
 
@@ -240,7 +240,7 @@ img.single {
   margin-top: 20px;
   width: 80%;
   max-width: 900px;
-  font-size: 1rem;
+  font-size: clamp(14px, 2vw, 22px);
 }
 /* Media query per tablet e dispositivi più piccoli */
 @media screen and (max-width: 768px) {
