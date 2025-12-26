@@ -8,14 +8,23 @@
 <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' media='all' rel='stylesheet' type='text/css'/>
 </head>
 <!-- Clicky Web Analytics (Anonimizzato, GDPR compliant) -->
-<script type="text/javascript">
-    // Configurazione anonima
-    var clicky_custom = {
-        track_ip: false,      // non traccia IP completi
-        disable_cookies: true // nessun cookie persistente
-    };
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      window.clicky = window.clicky || {};
+      window.clicky.anon = 1; // anonimizza l'IP e dati sensibili
+
+      var clickyScript = document.createElement("script");
+      clickyScript.src = "https://static.getclicky.com/js";
+      clickyScript.async = true;
+      clickyScript.setAttribute("data-id", "101498772");
+      document.body.appendChild(clickyScript);
+    }, 3000); // delay di 3 secondi per GDPR o performance
+  });
 </script>
-<script async data-id="101498772" src="//static.getclicky.com/js"></script>
+<noscript>
+  <p><img alt='Clicky' height='1' src='https://in.getclicky.com/101498772ns.gif' width='1'/></p>
+</noscript>
 <body>
  <!-- Slide show presentazione -->
         <style>
