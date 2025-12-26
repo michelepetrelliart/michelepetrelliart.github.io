@@ -36,7 +36,7 @@ body {
     align-items: center;
     justify-content: center;
     max-height: clamp(400px, 1500px, 900px);
-    max-height: calc(100vh - 150px);
+    /*max-height: calc(100vh - 150px);*/
     width: auto;
     max-width: auto;
     margin-top:calc(20px + clamp(14px, 1.5vw, 24px));
@@ -44,7 +44,7 @@ body {
 
 .single-image-container img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: calc(100vh - 150px);
     width: auto;
     object-fit: contain;
     display: block;
