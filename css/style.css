@@ -5,7 +5,10 @@ body {
   color: #000;
   font-family: sans-serif;
 }
-
+/* Colore link base e tutte le pseudo-classi */
+a, a:link, a:visited, a:hover, a:active {
+    color: #000 !important;
+}
 /* =================== Nav principale =================== */
 
 #gallery {
@@ -295,5 +298,4 @@ img.single {
         0% 0%      /* angolo sinistro in alto */
     );
 }
-
 
