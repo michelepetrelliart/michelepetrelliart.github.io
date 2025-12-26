@@ -28,7 +28,6 @@ body {
     max-height: 100%; /* occupa tutta la finestra */
     padding: 20px;
     box-sizing: border-box;
-   /* width: 100%;*/
 }
 
 .single-image-container {
@@ -36,11 +35,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: calc(100% - 150px); /* lascia spazio per nav e padding */
+    max-height: clamp(400px, 1500px, 900px);
+    max-height: calc(100vh - 150px);
     width: auto;
-    /*max-width: auto;*/
+    max-width: auto;
     margin-top:calc(20px + clamp(14px, 1.5vw, 24px));
-    /*overflow: hidden;*/
 }
 
 .single-image-container img {
@@ -50,8 +49,6 @@ body {
     object-fit: contain;
     display: block;
     margin: auto;
-    position: relative;
-    /*transform: translateY(-50%);*/
 }
 
 /* --- Titolo e testo --- */
