@@ -46,18 +46,19 @@
 </div>
 <!-- Clicky Web Analytics (Anonimizzato, GDPR compliant) -->
 <script>
+  //<![CDATA[
   document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
-      window.clicky = window.clicky || {};
-      window.clicky.anon = 1; // anonimizza l'IP e dati sensibili
-
       var clickyScript = document.createElement("script");
-      clickyScript.src = "https://static.getclicky.com/js";
-      clickyScript.async = true;
-      clickyScript.setAttribute("data-id", "101498772");
+      clickyScript.src = "https://static.getclicky.com/101498772.js";
       document.body.appendChild(clickyScript);
-    }, 3000); // delay di 3 secondi per GDPR o performance
+
+      // Anonimizzazione dell'IP
+      window.clicky = window.clicky || {};
+      window.clicky.anon = 1; // Attiviamo l'anonimizzazione dell'IP
+    }, 3000); // Attendere 3 secondi prima di caricare Clicky
   });
+//]]>
 </script>
 <noscript>
   <p><img alt='Clicky' height='1' src='https://in.getclicky.com/101498772ns.gif' width='1'/></p>
