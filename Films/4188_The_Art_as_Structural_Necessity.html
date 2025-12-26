@@ -27,6 +27,27 @@
 <noscript>
   <p><img alt='Clicky' height='1' src='https://in.getclicky.com/101498772ns.gif' width='1'/></p>
 </noscript>
+<!-- corregge altezza in Chrome -->
+<script>
+(function () {
+    function setRealVh() {
+        const vh = document.documentElement.clientHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Prima impostazione immediata
+    setRealVh();
+
+    // Dopo che Chrome ha finito di rompere
+    window.addEventListener('resize', setRealVh);
+    window.addEventListener('orientationchange', () => {
+        setTimeout(setRealVh, 300);
+    });
+
+    // Fallback per Chrome che aggiorna tardi
+    document.addEventListener('visibilitychange', setRealVh);
+})();
+</script>
 <!-- Sottolinea pagina attiva -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
