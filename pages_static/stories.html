@@ -87,32 +87,52 @@ document.addEventListener("DOMContentLoaded", () => {
 <div class="grid" id="gallery">
 
         <div class="grid-item">
-            <div class="img-container">
+            <div class="img-container cont-it">
                 <a href="https://drive.google.com/file/d/19L0YHnmwyfuZI8TYK_BGYlzcAfpLFP_d/view?usp=drive_link">
+                    <img src="../story_pages/Stories/The_Gift_of_the_Abyss.jpg" loading="lazy">
+                </a>
+            </div>
+            <div class="img-container cont-h">
+                <a href="https://www.patreon.com/posts/gift-of-abyss-135934452?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link">
                     <img src="../story_pages/Stories/The_Gift_of_the_Abyss.jpg" loading="lazy">
                 </a>
             </div>
             <div class="caption">The Gift of the Abyss</div>
         </div>
         <div class="grid-item">
-            <div class="img-container">
+            <div class="img-container cont-it">
                 <a href="https://drive.google.com/file/d/1xWxKbXYJshQcOvGjIF2Cu1K3E6PV5dMq/view?usp=drive_link">
+                    <img src="../story_pages/Stories/The_King_the_Dragon_and the_Angel.jpg" loading="lazy">
+                </a>
+            </div>
+            <div class="img-container cont-h">
+                <a href="https://www.patreon.com/posts/gift-of-abyss-135934452?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link">
                     <img src="../story_pages/Stories/The_King_the_Dragon_and the_Angel.jpg" loading="lazy">
                 </a>
             </div>
             <div class="caption">The King the Dragon and the Angel</div>
         </div>
         <div class="grid-item">
-            <div class="img-container">
+            <div class="img-container cont-it">
                 <a href="https://drive.google.com/file/d/1XAY__NEOdAdhEwZuDu2AgRFgYobOHWL3/view?usp=drive_link">
+                    <img src="../story_pages/Stories/At_the_Verge.jpg" loading="lazy">
+                </a>
+            </div>
+            <div class="img-container cont-h">
+                <a href="https://www.patreon.com/posts/at-verge-143258349?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link">
                     <img src="../story_pages/Stories/At_the_Verge.jpg" loading="lazy">
                 </a>
             </div>
             <div class="caption">At the Verge</div>
         </div>
         <div class="grid-item">
-            <div class="img-container">
+            <div class="img-container cont-it">
                 <a href="https://drive.google.com/file/d/1-b3VI2dC42mWn7PaT4zc_vf7sWVTEUAs/view?usp=drive_link">
+                    <img src="../story_pages/Stories/The_Presence_of_the_Father.jpg" loading="lazy">
+                </a>
+            </div>
+            <div class="img-container cont-h">
+                <a href="https://www.patreon.com/posts/presence-of-life-142739155?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link">
                     <img src="../story_pages/Stories/The_Presence_of_the_Father.jpg" loading="lazy">
                 </a>
             </div>
@@ -149,7 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
-
+<script type='text/javascript'>
+document.addEventListener("DOMContentLoaded",function(){const e=navigator.languages||[navigator.language||navigator.userLanguage],t=e.some(l=>l.startsWith("it")),n=new URLSearchParams(window.location.search).get("fromX");if(!t&&n==="1")localStorage.setItem("visitedFromX","1");const o=localStorage.getItem("visitedFromX"),i=document.querySelectorAll(".cont-t"),s=document.querySelectorAll(".cont-h"),r=document.querySelectorAll(".cont-it");if(t){r.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none");i.forEach(a=>a.style.display="none")}else{if(!o){s.forEach(a=>a.style.display="block");i.forEach(a=>a.style.display="none")}else{i.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none")}r.forEach(a=>a.style.display="none")}});</script>
 <style>
 .grid-item { display: none; flex-direction: column; align-items: center; }
 .grid-item.visible { display: flex; }
