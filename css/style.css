@@ -15,6 +15,11 @@ a, a:link, a:visited, a:hover, a:active {
   margin-top: calc(20px + clamp(70px, 50vw, 90px));
 }
 
+.grid {
+  max-width: 1200px; /* Evita che le immagini diventino giganti su FHD */
+  margin: 0 auto;
+}
+
 /* NAV PRINCIPALE */
 .nav-main2 a.active {
     text-decoration: underline;
@@ -242,12 +247,37 @@ img.single {
   max-width: 900px;
   font-size: clamp(14px, 2dvw, 22px);
 }
-/* Media query per tablet e dispositivi più piccoli */
+
+/* --- MONITOR GRANDI (QHD) --- */
+@media screen and (min-width: 1440px) {
+  .grid {
+    max-width: 1600px;
+    gap: 30px;
+  }
+}
+/* --- MONITOR GIGANTI (4K) --- */
+@media screen and (min-width: 2560px) {
+  .grid {
+    max-width: 2200px;
+  }
+}
+
+/* --- TABLET --- */
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 95%;
+    gap: 15px;
+  }
+}
+/* --- SMARTPHONE --- */
 @media screen and (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 }
+
 .grid-item {
     display: none;
 }
