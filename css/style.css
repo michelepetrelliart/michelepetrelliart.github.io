@@ -335,13 +335,13 @@ img.single {
 
   /* Rimpiccioliamo il nome dell'artista */
   nav .brand a {
-    font-size: 22px !important; /* Forza una dimensione fissa e contenuta */
+    font-size: 22px  /* Forza una dimensione fissa e contenuta */
   }
 
   /* Rimpiccioliamo le voci di menu (All, Curated, Figure...) */
   .nav-level-1,
   .nav-level-2 {
-    font-size: 18px !important; /* Font piccolo ma leggibile con mouse */
+    font-size: 18px; /* Font piccolo ma leggibile con mouse */
     gap: 15px; /* Stringiamo lo spazio tra le scritte */
     margin-bottom: 5px; /* Eliminiamo lo spazio residuo tra le righe */
   }
@@ -350,16 +350,25 @@ img.single {
     padding-top:5px;
   }
   .nav-main2 {
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 
   /* Facciamo salire la galleria dato che il menu ora è molto sottile */
   #gallery {
-    margin-top: 90px !important; /* Valore fisso per desktop per evitare sorprese */
+    margin-top: 90pxt; /* Valore fisso per desktop per evitare sorprese */
   }
   .grid {max-width:1200px}
   .load-more-btn {
     margin: 0px auto;
   }
+}
+
+@media screen and (min-width: 1921px)  {
+#gallery {
+    margin-top: 160px;
+ }
+ .nav-main2 {
+  padding: 40px 20px;
+}
 }
