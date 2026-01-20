@@ -248,35 +248,6 @@ img.single {
   font-size: clamp(14px, 2dvw, 22px);
 }
 
-/* --- MONITOR GRANDI (QHD) --- */
-@media screen and (min-width: 1440px) {
-  .grid {
-    max-width: 1600px;
-    gap: 30px;
-  }
-}
-/* --- MONITOR GIGANTI (4K) --- */
-@media screen and (min-width: 2560px) {
-  .grid {
-    max-width: 2200px;
-  }
-}
-
-/* --- TABLET --- */
-@media screen and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 95%;
-    gap: 15px;
-  }
-}
-/* --- SMARTPHONE --- */
-@media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-}
 
 .grid-item {
     display: none;
@@ -327,4 +298,68 @@ img.single {
         100% 0%,   /* top right */
         0% 0%      /* top left */
     );
+}
+
+/* --- MONITOR GRANDI (QHD) --- */
+@media screen and (min-width: 1440px) {
+  .grid {
+    max-width: 1600px;
+    gap: 30px;
+  }
+}
+/* --- MONITOR GIGANTI (4K) --- */
+@media screen and (min-width: 2560px) {
+  .grid {
+    max-width: 2200px;
+  }
+}
+
+/* --- TABLET --- */
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 95%;
+    gap: 15px;
+  }
+}
+/* --- SMARTPHONE --- */
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+/* --- OTTIMIZZAZIONE SOLO PER SCHERMI GRANDI (Desktop/FHD) --- */
+@media screen and (min-width: 1025px) and (max-width: 1920px) {
+
+  /* Rimpiccioliamo il nome dell'artista */
+  nav .brand a {
+    font-size: 22px !important; /* Forza una dimensione fissa e contenuta */
+  }
+
+  /* Rimpiccioliamo le voci di menu (All, Curated, Figure...) */
+  .nav-level-1,
+  .nav-level-2 {
+    font-size: 18px !important; /* Font piccolo ma leggibile con mouse */
+    gap: 15px; /* Stringiamo lo spazio tra le scritte */
+    margin-bottom: 5px; /* Eliminiamo lo spazio residuo tra le righe */
+  }
+  .caption {
+    font-size:14px;
+    padding-top:5px;
+  }
+  .nav-main2 {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+
+  /* Facciamo salire la galleria dato che il menu ora è molto sottile */
+  #gallery {
+    margin-top: 90px !important; /* Valore fisso per desktop per evitare sorprese */
+  }
+  .grid {max-width:1200px}
+  .load-more-btn {
+    margin: 0px auto;
+  }
 }
