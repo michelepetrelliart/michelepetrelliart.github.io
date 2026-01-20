@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </form>
 <br/><br/></center><a href="privacy.html">Privacy</a></center>
 <script>
-/* 1. LOGICA LINGUA E VISIBILITÀ (Eseguita subito per evitare flash di contenuti errati) */
+/* 1. LANGUAGE */
 (function() {
     const lang = navigator.languages || [navigator.language || navigator.userLanguage];
     const isIt = lang.some(l => l.startsWith("it"));
@@ -289,12 +289,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const tE = document.querySelectorAll(".cont-t");
 
     if (isIt) {
-        // UTENTE ITALIANO: vede solo .cont-it
         itE.forEach(e => e.style.display = "block");
         hE.forEach(e => e.style.display = "none");
         tE.forEach(e => e.style.display = "none");
     } else {
-        // UTENTE ESTERO
         if (!vX) {
             // Primo accesso o non da X: vede .cont-h
             hE.forEach(e => e.style.display = "block");
@@ -320,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* 2. INTERAZIONI E CAROSELLO (Al caricamento DOM) */
 document.addEventListener("DOMContentLoaded", function() {
 
-    // BLOCCO TASTO DESTRO MOUSE
+    // MOUSE
     document.addEventListener('contextmenu', e => e.preventDefault());
 
     // LOGICA ENTER LINK
