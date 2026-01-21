@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4208 No Guardian - Michele Petrelli</title>
+    <style>
+/* --- RESET E BASE (MOBILE & TABLET VERTICALE) --- */
+body {
+    margin: 0;
+    background: #fff;
+    color: #000;
+    font-family: sans-serif;
+    padding: 0;
+}
+
+/* Layout fino a 1519px: Immagine sopra, Testo sotto */
+.single-image-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100dvh;
+    padding: 80px 0px 40px 0px;
+}
+
+.single-image-container {
+    width: 100%;
+    max-height: 77dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.single-image-container img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Elementi di testo su Mobile/Tablet */
+.single-image-title {
+    width: 90%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: clamp(20px, 5dvw, 28px);
+    font-weight: 600;
+}
+
+.single-image-text {
+    width: 90%;
+    max-width: 700px;
+    margin-bottom: 30px;
+    line-height: 1.6em;
+    font-size: clamp(16px, 4dvw, 20px);
+    text-align: left;
+}
+
+.single-image-license {
+    width: 90%;
+    max-width: 700px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 20px;
+    color: #888;
+}
+
+/* --- DESKTOP E 4K (ORIZZONTALE - Solo sopra 1520px) --- */
+@media screen and (min-width: 1520px) {
+    .single-image-page {
+        display: grid;
+        /* Colonna sinistra (immagine) flessibile, destra (testo) fissa */
+        grid-template-columns: 1fr 480px;
+        grid-template-rows: min-content min-content min-content;
+        align-content: center;
+        gap: 0 100px;
+
+        /* Rimozione margini bianchi laterali */
+        width:100%;
+        max-width: 2000px;
+        margin:0 auto;
+        padding: 0; /* Padding solo a destra per il testo */
+
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .single-image-container {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        width: 100%;
+        height: 90dvh;
+        display: flex;
+        justify-content: flex-start; /* Attacca l'immagine a sinistra */
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .single-image-container img {
+        max-height: 90dvh; /* Aumentata per sfruttare il monitor */
+        max-width: 100%;
+    }
+
+    .single-image-title {
+        grid-column: 2;
+        grid-row: 1;
+        width: 90%; /* Reset del 90% mobile */
+        text-align: left;
+        margin-bottom: 15px;
+        font-size: clamp(20px, 2dvw, 30px);
+        align-self: end;
+    }
+
+    .single-image-text {
+        grid-column: 2;
+        grid-row: 2;
+        width: 90%; /* Reset del 90% mobile */
+        margin: 0;
+        max-height: 60dvh;
+        max-width: 480px;
+        overflow-y: auto;
+        font-size: clamp(15px, 1.1dvw, 21px);
+        padding-right: 20px;
+        scrollbar-width: thin;
+    }
+
+    .single-image-license {
+        grid-column: 2;
+        grid-row: 3;
+        width: 90%; /* Reset del 90% mobile */
+        margin-top: 30px;
+        padding-top: 15px;
+        max-width: 480px;
+        align-self: start;
+    }
+}
+
+/* --- TASTO CLOSE --- */
+.close {
+    position: fixed;
+    right: 25px;
+    top: 25px;
+    font-size: 30px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+    </style>
+    </head>
+<body>
+
+    <a href="#" class="close">&times;</a>
+
+    <div class="single-image-page">
+        <div class="single-image-container">
+            <img src="../thumbs/All_works/Figures/4208_No_Guardian_wm.webp" alt="No Guardian">
+        </div>
+
+        <div class="single-image-title">4208 No Guardian</div>
+
+        <div class="single-image-text">
+            The title "No Guardian" upends the reassuring narrative of the human-animal bond. In this scenario, a dog of such proportions should embody protection or loyalty, but under this cold, artificial light, the concept of "guarding" vanishes.<br/><br/>
+            There is no protection because there is nothing to protect. The man, deprived of his gaze by the small black glasses, is not a master issuing orders. He is a biological configuration occupying space. The dog, with spots that seem like extensions of the shadows, does not keep watch; it simply is.<br/><br/>
+            The absence of a guardian suggests that no external danger exists because there is no separate "internal" self. In line with your RNDD, the black room is the void of the Field where forms appear without moral reason. The dark glasses declare the futility of observation: there is no "I" that looks and no "world" being looked at. There is only the event.<br/><br/>
+            Man and dog are nailed to a physical necessity that precedes any feeling. The title declares a radical solitude: there is no one to rely on because no separate entity capable of control or care exists. The animal's presence is a statue of flesh sharing the same indifference of the darkness with the man. It is the naked, implacable evidence of what occurs when every illusion of protection is removed.
+        </div>
+
+        <div class="single-image-license">
+            This license does not allow you to modify or use these images for commercial purposes.
+            You are allowed to share them only by clearly crediting and tagging the author.
+        </div>
+    </div>
+
+</body>
+</html>
