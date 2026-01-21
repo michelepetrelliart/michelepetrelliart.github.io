@@ -13,15 +13,18 @@
 <meta property="og:site_name" content="Michele Petrelli">
 <link rel="stylesheet" href="../css/style.css">
 <style>
+  #ambient-slideshow {
+        display: none;
+    }
 /* Layout per schermi grandi (Desktop) */
 @media (min-width: 1200px) {
     #ambient-slideshow {
         display: block !important;
         position: fixed;
-        top: 0;
+        top: 130px;
         right: 0;
         width: 40%;
-        height: 100vh;
+        height: 100dvh;
         z-index: -1;
     }
 
@@ -37,13 +40,13 @@
         column-count: 2;
         column-gap: 1.5cm;
         text-align: justify;
-        margin-bottom: 12rem;
+        margin-bottom: 6rem;
     }
 
     /* I titoli restano sempre a colonna intera per "spezzare" il ritmo */
     h2, h3 {
         column-span: all;
-        margin-top: 2rem;
+        margin-top: 0rem;
         /*border-bottom: 1px solid #eee;*/
         padding-bottom: 0.5rem;
     }
@@ -52,6 +55,9 @@
 @media (min-width: 2500px) {
 body {
         font-size:24px;
+    }
+    .multi-col {
+        margin-bottom: 12rem;
     }
 }
 
@@ -142,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
 <div id="ambient-slideshow"></div>
-<div class="drnd-content" style="margin-top:6cm;">
+<div class="drnd-content" style="margin-top:4cm;">
 <div class="multi-col">
 <!--div style="max-width:21.001cm; margin-top:6cm; margin-bottom:2cm; margin-left:1cm; margin-right:1cm;"-->
 <h2 class="paragraph-Heading_20_2"><a id="a__Radical_Non-Dual_Determinism__DRND_"><span/></a>Radical Non-Dual Determinism (DRND)</h2>
