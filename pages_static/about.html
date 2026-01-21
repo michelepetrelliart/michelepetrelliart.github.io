@@ -13,7 +13,78 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Michele Petrelli">
 <link rel="stylesheet" href="../css/style.css">
+<style>
+  #ambient-slideshow {
+        display: none;
+    }
+/* Layout per schermi grandi (Desktop) */
+@media (min-width: 1200px) {
+    #ambient-slideshow {
+        display: block !important;
+        position: fixed;
+        top: 130px;
+        right: 0;
+        width: 40%;
+        height: 100dvh;
+        z-index: -1;
+    }
 
+    /* Contenitore principale che tiene il testo lontano dall'immagine */
+     .drnd-content {
+        margin-left: 1cm !important;
+        margin-right: calc(45% + 1.5cm) !important; /* 1.5cm di distacco netto */
+        max-width: none !important;
+        margin-top:5cm!important;
+    }
+
+    /* Classe per i paragrafi a due colonne */
+    .multi-col {
+        column-count: 2;
+        column-gap: 1.5cm;
+        text-align: justify;
+        margin-bottom: 6rem;
+    }
+
+    /* I titoli restano sempre a colonna intera per "spezzare" il ritmo */
+    h2, h3 {
+        column-span: all;
+        margin-top: 0rem;
+        /*border-bottom: 1px solid #eee;*/
+        padding-bottom: 0.5rem;
+    }
+   #hide_br {
+   display: none;
+   }
+   #hide_br2 {
+   display: block!important;
+   }
+}
+@media (min-width: 2500px) {
+body {
+        font-size:24px;
+    }
+    .multi-col {
+        margin-bottom: 12rem;
+    }
+   #hide_br2 {
+   display: block!important;
+   }
+}
+
+/* Ritorno alla colonna singola per Tablet e Smartphone */
+@media (max-width: 1199px) {
+    .multi-col {
+        column-count: 1 !important;
+    }
+    .drnd-content {
+        margin: 1cm!important;
+        width: auto !important;
+    }
+#hide_br, #hide_br2 {
+   display: block!important;
+   }
+}
+</style>
 </head>
 
 <body dir="ltr" style="margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; ">
@@ -89,8 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </nav>
 
-<div style="max-width:21.001cm; margin-top:6cm; margin-bottom:2cm; margin-left:1cm; margin-right:1cm;">
-<img alt="" border="0" data-original-height="898" data-original-width="898" style="aspect-ratio: 1 / 1;max-width: 50%!important;width:auto;margin-right:15px;margin-bottom:10px;float:left;" src="about_Michele_Petrelli.jpg" alt="about_Michele_Petrelli"/>
+<div id="ambient-slideshow"></div>
+<span id="hide_br2" style="display:none"><br/></span>
+<span id="hide_br"><br/><br/>
+<br/></span>
+
+<div class="drnd-content" style="margin-top:0cm">
+<div class="multi-col">
+<img alt="" border="0" data-original-height="898" data-original-width="898" style="aspect-ratio: 1 / 1;max-width: 40%!important;width:auto;margin-right:15px;margin-bottom:10px;float:left;" src="about_Michele_Petrelli.jpg" alt="about_Michele_Petrelli"/>
 With more than two decades of artistic exploration, Michele Petrelli masterfully combines in his works vibrant elements of nature and humanity with the fascination of darker themes. Preferring to depict the enigmatic shadows of life, Michele's artistic journey has evolved significantly, embracing different representational techniques.<!--
 The subjects of his latest paintings are mysterious and disturbing characters, transfigurations of ordinary people, lovers, gods or monsters hovering in the void, at other times sinking into nocturnal abysses. Endless perspectives of mighty architecture or extremely fragile structures that can be moved by a gust of wind form the backdrop for an intense dreamlike pattern. Sometimes the subjects appear pure and free, other times ugly and gloomy. The dynamism of the poses highlights this unstoppable succession of changing states. --><br/>
   His artistic style is deeply evocative and immersive, characterized by a sense of unease and emotional intensity. The figures he portrays seem suspended between dream and nightmare, between the world of the living and a deeper, psychological dimension. His subjects often have lost or intense gazes, as if they are aware of a truth that the viewer can only intuit.<br/>
@@ -100,12 +177,14 @@ There is a constant search for humanity in a state of extreme vulnerability, wit
 
 
 
+
 <br/><br/>
 
   <i>When I was younger, after a carefree childhood and adolescence, I arrived without realizing it, on the threshold of an abyss. I felt that I could never go back but that the only way was through it. In doing so, however, I lacked the courage to keep my eyes open. Defeated then, I tried to turn back with a great dread inside me that I was running out of time. This terror became so great that I could no longer sleep and it amplified all my sensations. Everything brought me suffering. The beautiful things I saw and heard made me think of all that I had lost. While the bad ones described exactly where I ended up. I was trapped as some kind of ghost still wrapped in bone and flesh. Over the years, this fear of mine has grown weaker and weaker. However, the dark times still come back from time to time bringing me back to that otherworldly dimension. When they arrive, I can only wait for them to dissolve.</i><br /><br />
 
 In recent years, I have formulated Radical Non-Dual Determinism (RNDD),
 an inquiry into the illusion of the separate self. <br /><br />
+</div>
 
 <!--h1 style="text-align: left;">
 <b>Michele Petrelli</b> contemporary italian artist,</h1>
@@ -134,6 +213,7 @@ In the "Shadowy" collection the subjects hover in the void, at other times they 
 
 
      <h3>Displayed</h3>
+<div class="multi-col">
   <div><b>We're Your Huckleberry ~ Act I</b>, 23-25 May 2024<br />
 Physical - Ghent, Belgium ARTCRUSH Project</div>
   ⚜<br />
@@ -186,10 +266,74 @@ Physical - Acaya Castle - Lecce</div>
  ⚜<br />
   <div><b>BrainProject.eu - Attraction</b>, November 2007<br />
 Physical - Finalist of the international contest&nbsp; - Trieste</div>
-
-  <br/><br/><br/>
+</div>
 
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.innerWidth < 1200) return;
+
+    const container = document.getElementById("ambient-slideshow");
+    if (!container) return;
+
+    const images = [
+        "../thumbs/All_works/Figures/4188_The_Gravity_of_Need_wm.webp",
+        "../thumbs/All_works/Figures/4149_wm.webp",
+        "../thumbs/All_works/Figures/4145_Memories_of_Shared_Time_wm.webp",
+        "../thumbs/All_works/Figures/4134_The_Three_Who_Were_Ordered_to_Save_the_Worrld_wm.webp",
+        "../thumbs/All_works/Figures/4126_Fate_of_the_Devourers_wm.webp",
+        "../thumbs/All_works/Figures/4113_The_Incomplete_Circle_and_the_Fissure_wm.webp",
+        "../thumbs/All_works/Figures/4110_Keepers_of_the_Abyss_wm.webp",
+        "../thumbs/All_works/Figures/4070_The_Eternal_Tribute_wm.webp",
+        "../thumbs/All_works/Figures/4066-The_Middle_Line_wm.webp",
+        "../thumbs/All_works/Figures/4052_Clining_to_Stay_Whole_wm.webp",
+        "../thumbs/All_works/Figures/1437_wm.webp",
+        "../thumbs/All_works/Figures/740_wm.webp"
+    ];
+
+    let currentIndex = 0;
+
+    function nextImage() {
+        if (images.length === 0) return;
+
+        const imgPath = images[currentIndex];
+        const newImg = new Image();
+        newImg.src = imgPath;
+
+        newImg.onload = function() {
+            newImg.style.opacity = 0;
+            // Assicuriamo le proporzioni via JS per sicurezza
+            newImg.style.width = "100%";
+            newImg.style.height = "100%";
+            newImg.style.objectFit = "cover";
+
+            container.appendChild(newImg);
+
+            setTimeout(() => {
+                newImg.style.opacity = 0.45; // Opacità come richiesta
+            }, 100);
+
+            if (container.children.length > 1) {
+                const oldImg = container.children[0];
+                oldImg.style.opacity = 0;
+                setTimeout(() => {
+                    if (oldImg.parentNode === container) container.removeChild(oldImg);
+                }, 2000);
+            }
+
+            currentIndex = (currentIndex + 1) % images.length;
+        };
+
+        newImg.onerror = function() {
+            currentIndex = (currentIndex + 1) % images.length;
+            nextImage();
+        };
+    }
+
+    nextImage();
+    setInterval(nextImage, 12000);
+});
+</script>
 </body>
 </div>
 </html>
