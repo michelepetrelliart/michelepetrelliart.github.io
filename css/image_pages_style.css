@@ -18,21 +18,24 @@ body {
 }
 
 .single-image-container {
-    width: 100%;
-    max-height: 77dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
+    width:  calc(100dvw - 1px)!important;
+    height: calc(100dvh - 1px)!important;
+    max-width: clamp(400px, 50%, 1600px)!important;
+    max-height: clamp(400px, 50%, 1600px)!important;
 }
 
-.single-image-container img {
+.single-image-container img,
+.single-image-container video {
     display: block;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    max-height: 1600px!important;
+  max-width: 1600px!important;
+    width:  calc(100dvw - 1px)!important;
+    height: calc(100dvh - 1px)!important;
+  object-fit: contain;
 }
 
 /* Elementi di testo su Mobile/Tablet */
