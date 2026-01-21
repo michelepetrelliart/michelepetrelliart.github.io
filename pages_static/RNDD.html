@@ -17,6 +17,7 @@
         display: none;
     }
 /* Layout per schermi grandi (Desktop) */
+
 @media (min-width: 1200px) {
     #ambient-slideshow {
         display: block !important;
@@ -33,7 +34,7 @@
         margin-left: 1cm !important;
         margin-right: calc(45% + 1.5cm) !important; /* 1.5cm di distacco netto */
         max-width: none !important;
-        margin-top:5cm!important;
+        margin-top:3.5cm;
     }
 
     /* Classe per i paragrafi a due colonne */
@@ -51,11 +52,17 @@
         /*border-bottom: 1px solid #eee;*/
         padding-bottom: 0.5rem;
     }
-   #hide_br {
-   display: none;
+
+}
+@media (min-width: 1500px) {
+
+   .drnd-content{
+   margin-top:3.5cm;
    }
-   #hide_br2 {
-   display: block!important;
+}
+@media (min-width: 1919px) {
+   .drnd-content{
+   margin-top:5.5cm;
    }
 }
 @media (min-width: 2500px) {
@@ -65,9 +72,6 @@ body {
     .multi-col {
         margin-bottom: 12rem;
     }
-   #hide_br2 {
-   display: block!important;
-   }
 }
 
 /* Ritorno alla colonna singola per Tablet e Smartphone */
@@ -76,7 +80,8 @@ body {
         column-count: 1 !important;
     }
     .drnd-content {
-        margin: 1cm!important;
+        margin:1cm!important;
+        padding-top: 3.5cm;
         width: auto !important;
     }
 #hide_br, #hide_br2 {
@@ -160,11 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
 <div id="ambient-slideshow"></div>
-<span id="hide_br2" style="display:none"><br/></span>
-<span id="hide_br"><br/><br/>
-<br/></span>
 
-<div class="drnd-content" style="margin-top:0cm">
+<div class="drnd-content">
 <div class="multi-col">
 <!--div style="max-width:21.001cm; margin-top:6cm; margin-bottom:2cm; margin-left:1cm; margin-right:1cm;"-->
 <h2 class="paragraph-Heading_20_2"><a id="a__Radical_Non-Dual_Determinism__DRND_"><span/></a>Radical Non-Dual Determinism (DRND)</h2>

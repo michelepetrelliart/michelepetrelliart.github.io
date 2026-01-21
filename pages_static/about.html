@@ -19,6 +19,7 @@
         display: none;
     }
 /* Layout per schermi grandi (Desktop) */
+
 @media (min-width: 1200px) {
     #ambient-slideshow {
         display: block !important;
@@ -35,7 +36,7 @@
         margin-left: 1cm !important;
         margin-right: calc(45% + 1.5cm) !important; /* 1.5cm di distacco netto */
         max-width: none !important;
-        margin-top:5cm!important;
+        margin-top:3.5cm;
     }
 
     /* Classe per i paragrafi a due colonne */
@@ -53,11 +54,17 @@
         /*border-bottom: 1px solid #eee;*/
         padding-bottom: 0.5rem;
     }
-   #hide_br {
-   display: none;
+
+}
+@media (min-width: 1500px) {
+
+   .drnd-content{
+   margin-top:3.5cm;
    }
-   #hide_br2 {
-   display: block!important;
+}
+@media (min-width: 1919px) {
+   .drnd-content{
+   margin-top:5.5cm;
    }
 }
 @media (min-width: 2500px) {
@@ -67,9 +74,6 @@ body {
     .multi-col {
         margin-bottom: 12rem;
     }
-   #hide_br2 {
-   display: block!important;
-   }
 }
 
 /* Ritorno alla colonna singola per Tablet e Smartphone */
@@ -78,7 +82,8 @@ body {
         column-count: 1 !important;
     }
     .drnd-content {
-        margin: 1cm!important;
+        margin:1cm!important;
+        padding-top: 3.5cm;
         width: auto !important;
     }
 #hide_br, #hide_br2 {
@@ -162,11 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
 <div id="ambient-slideshow"></div>
-<span id="hide_br2" style="display:none"><br/></span>
-<span id="hide_br"><br/><br/>
-<br/></span>
 
-<div class="drnd-content" style="margin-top:0cm">
+<div class="drnd-content">
 <div class="multi-col">
 <img alt="" border="0" data-original-height="898" data-original-width="898" style="aspect-ratio: 1 / 1;max-width: 40%!important;width:auto;margin-right:15px;margin-bottom:10px;float:left;" src="about_Michele_Petrelli.jpg" alt="about_Michele_Petrelli"/>
 With more than two decades of artistic exploration, Michele Petrelli masterfully combines in his works vibrant elements of nature and humanity with the fascination of darker themes. Preferring to depict the enigmatic shadows of life, Michele's artistic journey has evolved significantly, embracing different representational techniques.<!--
