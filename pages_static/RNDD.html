@@ -51,7 +51,12 @@
         /*border-bottom: 1px solid #eee;*/
         padding-bottom: 0.5rem;
     }
-
+   #hide_br {
+   display: none;
+   }
+   #hide_br2 {
+   display: block!important;
+   }
 }
 @media (min-width: 2500px) {
 body {
@@ -60,6 +65,9 @@ body {
     .multi-col {
         margin-bottom: 12rem;
     }
+   #hide_br2 {
+   display: block!important;
+   }
 }
 
 /* Ritorno alla colonna singola per Tablet e Smartphone */
@@ -71,7 +79,9 @@ body {
         margin: 1cm!important;
         width: auto !important;
     }
-
+#hide_br, #hide_br2 {
+   display: block!important;
+   }
 }
 </style>
 </head>
@@ -150,9 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
 <div id="ambient-slideshow"></div>
-<br/>
-<br/>
-<br/>
+<span id="hide_br2" style="display:none"><br/></span>
+<span id="hide_br"><br/><br/>
+<br/></span>
 
 <div class="drnd-content" style="margin-top:0cm">
 <div class="multi-col">
