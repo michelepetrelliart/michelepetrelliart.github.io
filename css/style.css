@@ -162,7 +162,7 @@ body.all-page .nav-level-2 {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding-bottom:0
+  padding-bottom:0;
 }
 
 .img-container {
@@ -304,7 +304,7 @@ img.single {
 @media screen and (min-width: 1440px) {
   .grid {
     max-width: 1600px;
-    gap: 30px;
+    gap: 15px;
   }
 }
 /* --- MONITOR GIGANTI (4K) --- */
@@ -342,7 +342,7 @@ img.single {
   .nav-level-1,
   .nav-level-2 {
     font-size: 18px; /* Font piccolo ma leggibile con mouse */
-    gap: 15px; /* Stringiamo lo spazio tra le scritte */
+    gap: 20px; /* Stringiamo lo spazio tra le scritte */
     margin-bottom: 5px; /* Eliminiamo lo spazio residuo tra le righe */
   }
   .caption {
@@ -358,7 +358,7 @@ img.single {
   #gallery {
     margin-top: 90pxt; /* Valore fisso per desktop per evitare sorprese */
   }
-  .grid {max-width:1200px}
+  .grid {max-width:940px}
   .load-more-btn {
     margin: 0px auto;
   }
