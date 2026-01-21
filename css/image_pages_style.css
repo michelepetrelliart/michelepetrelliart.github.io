@@ -18,24 +18,19 @@ body {
 }
 
 .single-image-container {
+    max-height: 85dvh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px;
-    width:  calc(100dvw - 1px)!important;
-    height: calc(100dvh - 1px)!important;
-    max-width: clamp(400px, 50%, 1600px)!important;
-    max-height: clamp(400px, 50%, 1600px)!important;
 }
 
-.single-image-container img,
-.single-image-container video {
+.single-image-container img {
     display: block;
-    max-height: 1600px!important;
-  max-width: 1600px!important;
-    width:  calc(100dvw - 1px)!important;
-    height: calc(100dvh - 1px)!important;
-  object-fit: contain;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* Elementi di testo su Mobile/Tablet */
@@ -45,7 +40,8 @@ body {
     margin-right: auto; /* Centra il blocco */
     text-align: center;
     margin-bottom: 20px;
-    font-size: clamp(20px, 5dvw, 28px);
+    margin-top: 40px;
+    font-size: 26px;
     font-weight: 600;
 }
 
@@ -56,7 +52,7 @@ body {
     margin-right: auto; /* Centra il blocco */
     margin-bottom: 30px;
     line-height: 1.2em;
-    font-size: 20px;
+    font-size: 16px;
 
     /* GIUSTIFICAZIONE INTELLIGENTE */
     text-align: justify;
@@ -69,7 +65,7 @@ body {
     margin: 20px auto 40px auto; /* Centra anche la licenza */
     padding-top: 20px;
     border-top: 1px solid #eee;
-    font-size: 20px; /* Ridotta un po' per estetica */
+    font-size: 16px; /* Ridotta un po' per estetica */
     color: #888;
     line-height: 1.2em;
     text-align: justify;
@@ -81,15 +77,15 @@ body {
     .single-image-page {
         display: grid;
         /* Colonna sinistra (immagine) flessibile, destra (testo) fissa */
-        grid-template-columns: 1fr 480px;
+        grid-template-columns: minmax(0, 1fr) 480px;
       /*  grid-template-rows: min-content min-content min-content;*/
         align-items: center;
         align-content: center;
         gap: 0 100px;
 
         /* Rimozione margini bianchi laterali */
-        width:100%;
-        max-width: 2000px;
+
+        max-width: 70dvw;
         margin:0 auto;
         padding: 0; /* Padding solo a destra per il testo */
 
@@ -108,6 +104,7 @@ body {
     .single-image-container img {
         max-height: 90dvh; /* Aumentata per sfruttare il monitor */
         max-width: 100%;
+        object-fit: contain;
     }
 
     .single-image-title {
@@ -116,7 +113,7 @@ body {
         width: 90%; /* Reset del 90% mobile */
         text-align: left;
         margin-bottom: 10px;
-        font-size: clamp(20px, 2dvw, 30px);
+        font-size: 26px;
         align-self: end;
     }
 
@@ -127,10 +124,10 @@ body {
         margin: 0;
         margin-top: 0;
         margin-bottom: 0;
+        max-width: 400px;
         max-height: 60dvh;
-        max-width: 480px;
         overflow-y: auto;
-        font-size: clamp(15px, 1.1dvw, 21px);
+        font-size: 16px;
         padding-right: 20px;
         scrollbar-width: thin;
     }
@@ -141,15 +138,17 @@ body {
         width: 90%; /* Reset del 90% mobile */
         margin-top: 0px;
         padding-top: 15px;
-        max-width: 480px;
+        font-size: 16px;
+        max-width: 400px;
         /*align-self: start;*/
     }
     .info-column {
         grid-column: 2;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: center; /* TIENE UNITI I TESTI AL CENTRO */
         text-align: left;
+        width: 480px;
     }
 
     .single-image-title { margin-bottom: 15px; }
