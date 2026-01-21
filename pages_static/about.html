@@ -270,6 +270,11 @@ Physical - Finalist of the international contest&nbsp; - Trieste</div>
 
 </div>
 <script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     if (window.innerWidth < 1200) return;
 
@@ -293,7 +298,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let currentIndex = 0;
 
-    function nextImage() {
+    function showNextImage() {
         if (images.length === 0) return;
 
         const imgPath = images[currentIndex];
@@ -301,24 +306,36 @@ document.addEventListener("DOMContentLoaded", function() {
         newImg.src = imgPath;
 
         newImg.onload = function() {
+            // Impostazioni iniziali della nuova immagine
             newImg.style.opacity = 0;
-            // Assicuriamo le proporzioni via JS per sicurezza
+            newImg.style.position = "absolute";
+            newImg.style.top = "0";
+            newImg.style.left = "0";
             newImg.style.width = "100%";
             newImg.style.height = "100%";
             newImg.style.objectFit = "cover";
+            // Transizione fluida e molto lenta
+            newImg.style.transition = "opacity 4000ms ease-in-out";
 
             container.appendChild(newImg);
 
+            // Avvia il Fade-In
             setTimeout(() => {
-                newImg.style.opacity = 0.45; // Opacità come richiesta
+                newImg.style.opacity = 0.55;
             }, 100);
 
+            // Gestione del Fade-Out della vecchia immagine
             if (container.children.length > 1) {
                 const oldImg = container.children[0];
+                oldImg.style.transition = "opacity 4000ms ease-in-out";
                 oldImg.style.opacity = 0;
+
+                // Rimuove l'elemento dal DOM solo a transizione finita
                 setTimeout(() => {
-                    if (oldImg.parentNode === container) container.removeChild(oldImg);
-                }, 2000);
+                    if (oldImg.parentNode === container) {
+                        container.removeChild(oldImg);
+                    }
+                }, 4100);
             }
 
             currentIndex = (currentIndex + 1) % images.length;
@@ -326,12 +343,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         newImg.onerror = function() {
             currentIndex = (currentIndex + 1) % images.length;
-            nextImage();
+            showNextImage();
         };
     }
 
-    nextImage();
-    setInterval(nextImage, 12000);
+    showNextImage();
+    setInterval(showNextImage, 12000);
 });
 </script>
 </body>
