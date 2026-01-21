@@ -1,206 +1,125 @@
-/* --- RESET E BASE (MOBILE & TABLET VERTICALE) --- */
+/* --- Generale body e close --- */
 body {
     margin: 0;
     background: #fff;
     color: #000;
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0;
 }
 
-/* Layout fino a 1519px: Immagine sopra, Testo sotto */
+.close {
+  position:fixed;
+  right:0px;
+  top:0px;
+  font-size: 32px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 1);
+  color: #000;
+  cursor:pointer;
+  text-decoration: none;
+  border: 1px solid #000000;
+}
+
+@media screen and (min-width: 1921px) {
+.close {font-size: clamp(50px, 2dvh, 70px); width:clamp(50px, 2dvh, 70px)!important;height:clamp(50px, 2dvh, 70px)!important }
+}
+
+/* --- Contenitore immagine singola --- */
 .single-image-page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* centra verticalmente tutto il contenuto */
     box-sizing: border-box;
     min-height: 100dvh;
-    padding: 80px 0px 40px 0px;
 }
 
 .single-image-container {
-    max-height: 85dvh;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100dvw;
+    height: 80dvh;
+    max-width: 1500px;
+    max-height: 1500px;
+    margin-bottom: 20px;
 }
 
-.single-image-container img {
+.single-image-container img,
+.single-image-container video {
     display: block;
-    width: auto;
+    max-width: 1500px;
+    max-height: 1500px;
+    width: 100%;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
     object-fit: contain;
 }
 
-/* Elementi di testo su Mobile/Tablet */
+@media screen and (max-width: 1500px), screen and (max-height: 1500px) {
+    .single-image-container {
+        width: 100%;
+        height: 80vh;
+        max-width: 100%;
+        max-height: 80vh;
+    }
+    .single-image-container img,
+    .single-image-container video {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+/* --- Titolo e testo --- */
 .single-image-title {
-    width: 90%;
-    margin-left: auto;  /* Centra il blocco */
-    margin-right: auto; /* Centra il blocco */
+    margin-top: 20px;
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 40px;
-    font-size: 26px;
+    font-size: clamp(18px, 2.8dvw, 28px);
     font-weight: 600;
+    word-break: break-word;
 }
 
 .single-image-text {
-    width: 90%;
+    margin: 15px;
+    max-width: 70dvw;
+    text-align: left;
     max-width: 700px;
-    margin-left: auto;  /* Centra il blocco */
-    margin-right: auto; /* Centra il blocco */
-    margin-bottom: 30px;
-    line-height: 1.2em;
-    font-size: 16px;
-
-    /* GIUSTIFICAZIONE INTELLIGENTE */
-    text-align: justify;
-    hyphens: auto;      /* Spezza le parole lunghe per evitare buchi bianchi */
+    line-height: 1.4em;
+    font-size: clamp(14px, 2dvw, 22px);
 }
 
+/* --- Testo aggiuntivo / overflow --- */
+.text {
+    max-width: 25vw;
+    min-width: 20vw;
+    overflow: auto;
+    padding: 1.5vw;
+    line-height: 1.4em;
+    font-size: clamp(10px, 1.4dvw, 24px);
+}
 .single-image-license {
-    width: 90%;
-    max-width: 700px;
-    margin: 20px auto 40px auto; /* Centra anche la licenza */
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    font-size: 16px; /* Ridotta un po' per estetica */
-    color: #888;
-    line-height: 1.2em;
-    text-align: justify;
-    hyphens: auto;
+  margin: 15px;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
+
+  font-size: clamp(14px, 2dvw, 22px);
+  line-height: 1.5;
+  color: #777;
+  text-align: left;
+  max-width: 700px;
 }
-
-
-@media screen and (min-width: 1520px) {
-    .single-image-page {
-        display: grid;
-        /* Colonna sinistra (immagine) flessibile, destra (testo) fissa */
-        grid-template-columns: minmax(0, 1fr) 480px;
-      /*  grid-template-rows: min-content min-content min-content;*/
-        align-items: center;
-        gap: 0 100px;
-
-        /* Rimozione margini bianchi laterali */
-
-        max-width: 70dvw;
-        margin:0 auto;
-        padding: 0; /* Padding solo a destra per il testo */
-
-        min-height: 100dvh;
-        height: auto;
-        overflow: hidden;
-    }
-
-    .single-image-container {
-        grid-column: 1;
-        height: 90dvh;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .single-image-container img {
-        max-height: 90dvh; /* Aumentata per sfruttare il monitor */
-        max-width: 100%;
-        object-fit: contain;
-    }
-
-    .single-image-title {
-        grid-column: 2;
-        grid-row: 1;
-        width: 90%; /* Reset del 90% mobile */
-        text-align: left;
-        margin-bottom: 10px;
-        font-size: 26px;
-        align-self: end;
-    }
-
-    .single-image-text {
-        grid-column: 2;
-        grid-row: 2;
-        width: 90%; /* Reset del 90% mobile */
-        margin: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-        max-width: 400px;
-        max-height: 60dvh;
-        overflow-y: auto;
-        font-size: 16px;
-        padding-right: 20px;
-        scrollbar-width: thin;
-    }
-
-    .single-image-license {
-        grid-column: 2;
-        grid-row: 3;
-        width: 90%; /* Reset del 90% mobile */
-        margin-top: 0px;
-        padding-top: 15px;
-        font-size: 16px;
-        max-width: 410px;
-        /*align-self: start;*/
-    }
-    .info-column {
-        grid-column: 2;
-        display: flex;
-        flex-direction: column;
-        justify-content: center; /* TIENE UNITI I TESTI AL CENTRO */
-        text-align: left;
-        width: 480px;
-    }
-
-    .single-image-title { margin-bottom: 15px; }
-    .single-image-text { margin-bottom: 25px; max-height: 55dvh; overflow-y: auto; }
-    .single-image-license { margin-top: 0; }
-    .single-image-text,
-    .single-image-license {
-        grid-column: 2;
-        width: 480px;      /* Stessa larghezza fissa per entrambi */
-        margin-left: 0;    /* Allineati perfettamente a sinistra nella colonna */
-        margin-right: 0;
-        text-align: justify;
-    }
-
-}
-@media screen and (min-width: 1922px) {
-    .single-image-page {
-        max-width: 50dvw;
-    }
-    .single-image-title { font-size: 32px; }
-    .single-image-text { font-size: 20px; }
-    .single-image-license{ font-size: 20px; }
-    /*.single-image-container {
-        width: calc(100dvw - 1px);
-        height: calc(100dvh - 1px);
-        max-height: 1500px;
-        max-width: 1500px;
-    }
-
-    .single-image-container img {
-        width: calc(100dvw - 1px);
-        height: calc(100dvh - 1px);
-        max-height: 1500px;
-        max-width: 1500px;
-        object-fit: contain;
-    }*/
-}
-/* --- TASTO CLOSE --- */
-.close {
-    position: fixed;
-    right: 15px;
-    top: 15px;
-    font-size: 40px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    background: #fff;
-    color: #000;
-    border: 1px solid #000;
-    text-decoration: none;
-    font-weight: bold;
+.single-image-container video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
