@@ -358,10 +358,16 @@ img.single {
   #gallery {
     margin-top: 90pxt; /* Valore fisso per desktop per evitare sorprese */
   }
-  .grid {max-width:940px}
+  .grid {max-width:960px}
   .load-more-btn {
     margin: 0px auto;
+    padding: 5px;
+    gap:6px;
   }
+  .btn-text {
+    font-size: 14px;
+    letter-spacing: 1.2px;
+}
 }
 
 @media screen and (min-width: 1921px)  {
