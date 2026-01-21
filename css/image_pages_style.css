@@ -72,7 +72,7 @@ body {
     hyphens: auto;
 }
 
-/* --- DESKTOP E 4K (ORIZZONTALE - Solo sopra 1520px) --- */
+
 @media screen and (min-width: 1520px) {
     .single-image-page {
         display: grid;
@@ -164,7 +164,14 @@ body {
     }
 
 }
-
+@media screen and (min-width: 1919px) {
+    .single-image-page {
+        max-width: 50dvw;
+    }
+    .single-image-title { font-size: 32px; }
+    .single-image-text { font-size: 20px; }
+    .single-image-license{ font-size: 20px; }
+}
 /* --- TASTO CLOSE --- */
 .close {
     position: fixed;
