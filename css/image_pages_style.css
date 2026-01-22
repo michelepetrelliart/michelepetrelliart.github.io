@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body, html {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Rende il font più nitido su Chrome/Safari */
+    -moz-osx-font-smoothing: grayscale; /* Rende il font più nitido su Firefox */
+}
+h1, h2, h3, .single-image-title {
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-weight: 600; /* Lo rende grassetto come l'Helvetica Bold */
+    letter-spacing: -0.02em; /* L'Inter sta meglio con le lettere un po' vicine, come l'Helvetica */
+}
+
+
 *, *:before, *:after {
     box-sizing: border-box;
 }
