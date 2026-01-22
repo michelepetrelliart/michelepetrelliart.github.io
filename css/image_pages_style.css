@@ -1,182 +1,262 @@
-/* --- DESKTOP (Sopra 1520px) --- */
 *, *:before, *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- MOBILE (Sotto 1280px) --- */
 @media screen and (max-width: 1279px) {
     .single-image-page {
-        display: block;
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        padding: 20px;
+        min-height: 100dvh;
+        background-color: #fff;
+    }
+
+    /* CONTENITORE IMMAGINE MOBILE */
+    .single-image-container {
+        width: 100%;
+        background: #000; /* Sfondo nero per l'immagine a tutto schermo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; /* Impedisce al testo di schiacciare l'immagine */
+    }
+
+    .single-image-container img,
+    .single-image-container video {
+        /* Larghezza piena per "mordere" i bordi del telefono */
+        width: 100%;
+        height: auto;
+
+        /* BLOCCA L'IMMAGINE: non deve mai superare l'altezza dello schermo */
+        /* lasciando un 25% di spazio per far capire che sotto c'è del testo */
+        max-height: 75dvh;
+        max-width: 100%; /* Mai fuori dai bordi laterali */
+
+        object-fit: contain;
+        display: block;
+    }
+
+    /* COLONNA TESTO MOBILE */
+    .info-column {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 30px 20px 60px 20px; /* Margini interni: sopra, lati, sotto */
         box-sizing: border-box;
     }
-    .single-image-container {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .single-image-container img {
-        max-width: 100%;
-        max-height: 65dvh; /* Lascia spazio per vedere l'inizio del testo */
-        height: auto;
-    }
-    .info-column {
-        width: 100% !important;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-    .single-image-title { font-size: 28px; text-align: center; padding-bottom:20px}
-    .single-image-text { font-size: 17px; text-align: justify; }
-}
 
-@media screen and (min-width: 1280px)  {
-    body {
-        margin:0;
-        padding:0;
+    .single-image-title {
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-align: left; /* Allineamento pulito col testo */
+        color: #000;
     }
+
+    .single-image-text {
+        font-size: 17px;
+        line-height: 1.6;
+        text-align: justify;
+        text-justify: inter-character;
+        hyphens: auto;
+        color: #333;
+    }
+
+    /* Distanziamento per l'eventuale licenza o info extra */
+    .single-image-license {
+        margin-top: 25px;
+        font-size: 14px;
+        color: #666;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+    }
+}
+/* --- DESKTOP UNIVERSALE (Sopra 1280px) --- */
+/* --- DESKTOP (Sopra 1280px) --- */
+@media screen and (min-width: 1280px) {
     .single-image-page {
-        display: table;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; /* Centra il blocco unito nel monitor */
         width: 100dvw;
         height: 100dvh;
-        table-layout: fixed;
-        border-collapse: collapse;
+        max-width: 100%; /* Non un pixel di più della finestra */
+        max-height: 100%;
         background: #fff;
-        margin: 0;
+        padding: 20px;
+        /* Riduciamo il gap: se il testo è distante, il colpevole è questo o il flex-grow */
+        gap: 40px;
+        overflow: hidden;
+        padding: 20px;
+        gap: 40px;
+        box-sizing: border-box;
     }
 
     .single-image-container {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: right;     /* L'immagine "bacia" il centro */
-        padding-right: 50px;   /* Gap centrale */
-        width: 55%;            /* PIÙ SPAZIO ALL'IMMAGINE */
+        /* IMPORTANTE: flex: 0 0 auto dice al contenitore di essere
+           largo esattamente quanto l'immagine, non un pixel di più */
+        flex: 0 1 auto;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .single-image-container img, .single-image-container video {
-        width: 90dvmin;
-        height: 90dvmin;
-        object-fit: contain;
-        object-position: center center;
-        max-width: 95%;
-        max-height: 95vh;
-
-        display: inline-block;
+    .single-image-container img,
+    .single-image-container video {
+        width: min(90dvmin, 1800px);
+        height: min(90dvmin, 1800px);
         max-width: 100%;
-            /* LIMITI UNIVERSALI IN PIXEL */
-        max-width: 1800px;
-        max-height: 1800px;
+        max-height: 90dvh;
+        object-fit: contain;
     }
 
     .info-column {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: left;      /* Il testo parte vicino all'immagine */
-        padding-left: 10px;    /* Ridotto per non allontanarlo dal centro 10px*/
-        width: 29%;  /*35%*/
-    }
-
-    /* Blocchiamo il contenuto del testo */
-    .info-column > div,
-    .single-image-title,
-    .single-image-text,
-    .single-image-license {
-        width: 90%;
-        max-width: 300px;
-        margin-left: 0;
-        margin-right: auto;
-        hyphens: auto;
-    }
-
-    .single-image-title { font-size: 25px; margin-bottom: 20px; }
-    .single-image-text {
-        font-size: 16px;
-        max-height: 52dvh;
-        overflow-y: auto;
-        margin-bottom: 25px;
-        padding-right: 15px;
-    }
-    .single-image-license {
-        font-size: 15px;
+        /* Larghezza fissa del testo per non farlo ballare */
+        flex: 0 0 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        min-width: 250px;
     }
 }
 
+/* --- SPECIFICO 4K (Sopra 1921px) --- */
 @media screen and (min-width: 1921px) {
     .single-image-page {
-        display: table;
-        width: 100vw;
-        height: 100vh;
-        table-layout: fixed;
-    }
-    .single-image-container {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: right;
-        width: 80%; /* Riequilibriamo al centro */
-        padding-right: 50px;
+        gap: 60px; /* Un po' più di respiro ma senza esagerare */
     }
     .info-column {
-        display: table-cell;
-        vertical-align: middle;
-        width: 40%;
-        padding-left: 0;
+        flex: 0 0 450px; /* Leggermente più largo per il 4K */
     }
-    .info-column > div {
-        width: 400px; /* Testo largo per schermi grandi */
+}
+
+    .single-image-title { font-size: 26px; margin-bottom: 15px; text-align: center; }
+    .single-image-text { font-size: 17px; text-align: justify; hyphens: auto; }
+}
+
+/* --- DESKTOP UNIVERSALE (Sopra 1280px) --- */
+@media screen and (min-width: 1280px) {
+    .single-image-page {
+        display: flex;
+        flex-direction: row;
+        align-items: center;  /* Centratura verticale */
+        justify-content: center; /* Centratura orizzontale del gruppo */
+        width: 100dvw;
+        height: 100dvh;
+        background: #fff;
+        overflow: hidden;
+        padding: 20px;
+        gap: 40px;
     }
-     .info-column > div,
-    .single-image-title,
-    .single-image-text,
-    .single-image-license {
-        max-width: 400px;
-        text-align: justify;
-        text-align-last: left;
-        text-justify: inter-character;
-        word-break: break-word;
-        letter-spacing: -0.2px;
-        hyphens: auto;
+
+    /* CONTENITORE IMMAGINE */
+    .single-image-container {
+        flex: 1 1 auto; /* Si adatta ma dà priorità al contenuto */
+        display: flex;
+        justify-content: flex-end; /* Incolla l'immagine verso il centro */
+        /*max-width: 65%;*/
+        min-width: 0;
+        justify-content: center;
     }
-    .single-image-title { font-size: 30px; }
+
+    .single-image-container img,
+    .single-image-container video {
+        /* Il quadrato dinamico */
+        width: 90dvmin;
+        height: 90dvmin;
+
+        /* Limiti assoluti */
+        max-width: 1800px;
+        max-height: 1800px;
+
+        /* Sicurezza per schermi piccoli */
+        max-height: 92dvh;
+
+        object-fit: contain;
+        object-position: center;
+    }
+
+    /* COLONNA TESTO */
+    .info-column {
+        flex: 0 0 400px; /* Larghezza fissa: non si stringe, non si allarga */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 250px;
+    }
+
+    .single-image-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
     .single-image-text {
-        font-size: 20px;
-        max-height: 52dvh;
+        font-size: 16px;
+        max-height: 50dvh;
         overflow-y: auto;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
+        text-align: justify;
+        text-justify: inter-character;
+        hyphens: auto;
         padding-right: 15px;
     }
-    .single-image-license {
-        font-size: 18px;
+
+    .single-image-license { font-size: 14px; color: #666; }
+}
+
+/* --- OTTIMIZZAZIONE 4K (Sopra 1921px) --- */
+@media screen and (min-width: 1921px) {
+    .single-image-page {
+        gap: 100px; /* Più respiro sui monitor giganti */
     }
+
+    .info-column {
+        flex: 0 0 480px; /* Testo più largo per leggibilità 4K */
+    }
+
+    .single-image-title { font-size: 32px; }
+    .single-image-text { font-size: 19px; }
 }
 
- /* Applica questo a tutte le tue media query desktop */
-
-.single-image-container video {
-    width: 85dvmin;
-    height: 85dvmin;
-    object-fit: contain;
-    /* CAMBIO CRITICO: l'immagine sta al centro del suo spazio */
-    object-position: center center;
-    max-width: 95%;
-    max-height: 95vh;
-    display: inline-block;
-    background: #000;
+    .single-image-container video {
+background:#000;
+    }
+    .single-image-license,
+    .single-image-text {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    text-justify: inter-word;
+    text-align-last: left;
+    /*line-height: 1.6; */
 }
-
+/* TASTO CHIUDI */
 .close {
-  position:fixed;
-  right:15px;
-  top:15px;
-  font-size: 45px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  z-index: 2000;
-  background: rgba(255, 255, 255, 1);
-  color: #000;
-  cursor:pointer;
-  text-decoration: none;
-  border: 1px solid #000000;
-  box-sizing: border-box;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    text-decoration: none;
+    color: #000;
+    z-index: 9999;
 }
