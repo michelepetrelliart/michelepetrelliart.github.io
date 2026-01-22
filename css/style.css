@@ -330,9 +330,43 @@ img.single {
   }
 }
 
-/* --- OTTIMIZZAZIONE SOLO PER SCHERMI GRANDI (Desktop/FHD) --- */
-@media screen and (min-width: 1025px) and (max-width: 1920px) {
+/* --- OTTIMIZZAZIONE SOLO PER SCHERMI GRANDI (Desktop/FHD) ---*/
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    nav .brand a {
+    font-size: 18px
+  }
 
+  .nav-level-1,
+  .nav-level-2 {
+    font-size: 16px;
+    gap: 10px;
+    margin-bottom: 3px;
+  }
+  .caption {
+    font-size:12px;
+    padding-top:3px;
+  }
+  .nav-main2 {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+
+  #gallery {
+    margin-top: 80px;
+  }
+  .grid {max-width:830px}
+  .load-more-btn {
+    margin: 0px auto;
+    padding: 5px;
+    gap:6px;
+  }
+  .btn-text {
+    font-size: 13px;
+    letter-spacing: 1.2px;
+}
+}
+@media screen and (min-width: 1281px) and (max-width: 1920px) {
   /* Rimpiccioliamo il nome dell'artista */
   nav .brand a {
     font-size: 22px  /* Forza una dimensione fissa e contenuta */
@@ -356,9 +390,9 @@ img.single {
 
   /* Facciamo salire la galleria dato che il menu ora è molto sottile */
   #gallery {
-    margin-top: 90pxt; /* Valore fisso per desktop per evitare sorprese */
+    margin-top: 90px; /* Valore fisso per desktop per evitare sorprese */
   }
-  .grid {max-width:960px}
+  .grid {max-width:1180px}
   .load-more-btn {
     margin: 0px auto;
     padding: 5px;

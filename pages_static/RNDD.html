@@ -17,6 +17,21 @@
         display: none;
     }
 /* Layout per schermi grandi (Desktop) */
+    .multi-col {
+            text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    text-justify: inter-word;
+    text-align-last: left;
+    }
+    h2, h3 {
+    text-align: left;
+    text-align-last: left;
+    text-justify: none;
+    hyphens: none;
+    word-break: normal;
+    }
 
 @media (min-width: 1200px) {
     #ambient-slideshow {
@@ -41,7 +56,6 @@
     .multi-col {
         column-count: 2;
         column-gap: 1.5cm;
-        text-align: justify;
         margin-bottom: 6rem;
     }
 
@@ -80,7 +94,7 @@ body {
         column-count: 1 !important;
     }
     .drnd-content {
-        margin:1cm!important;
+        margin:30px!important;
         padding-top: 3.5cm;
         width: auto !important;
     }

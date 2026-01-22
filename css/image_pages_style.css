@@ -43,6 +43,14 @@ background:#000;
     z-index: 9999;
 }
 
+    h2, h3 {
+    text-align: left;
+    text-align-last: left;
+    text-justify: none;
+    hyphens: none;
+    word-break: normal;
+    }
+
 /* --- MOBILE (Sotto 1280px) --- */
 @media screen and (max-width: 1279px) {
     .single-image-page {
@@ -83,7 +91,7 @@ background:#000;
         width: 100%;
         max-width: 550px;
         margin: 0 auto;
-        padding: 30px 20px 60px 20px; /* Margini interni: sopra, lati, sotto */
+        padding: 30px 30px 60px 30px; /* Margini interni: sopra, lati, sotto */
         box-sizing: border-box;
     }
 
@@ -98,7 +106,7 @@ background:#000;
 
     .single-image-text {
         font-size: 17px;
-        line-height: 1.6;
+      /*  line-height: 1.6;*/
         text-align: justify;
         text-justify: inter-character;
         hyphens: auto;
