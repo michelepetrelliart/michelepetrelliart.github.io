@@ -1,22 +1,162 @@
-/* --- Generale body e close --- */
-body {
-    margin: 0;
-    background: #fff;
-    color: #000;
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+/* --- DESKTOP (Sopra 1520px) --- */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+@media screen and (max-width: 1279px) {
+    .single-image-page {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .single-image-container {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .single-image-container img {
+        max-width: 100%;
+        max-height: 65dvh; /* Lascia spazio per vedere l'inizio del testo */
+        height: auto;
+    }
+    .info-column {
+        width: 100% !important;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .single-image-title { font-size: 28px; text-align: center; }
+    .single-image-text { font-size: 17px; text-align: justify; }
+}
+
+@media screen and (min-width: 1280px) {
+    body {
+        margin:0;
+        padding:0;
+    }
+    .single-image-page {
+        display: table;
+        width: 100dvw;
+        height: 100dvh;
+        table-layout: fixed;
+        border-collapse: collapse;
+        background: #fff;
+        margin: 0;
+    }
+
+    .single-image-container {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;     /* L'immagine "bacia" il centro */
+        padding-right: 50px;   /* Gap centrale */
+        width: 55%;            /* PIÙ SPAZIO ALL'IMMAGINE */
+    }
+
+    .single-image-container img, .single-image-container video {
+        width: 92vmin;
+        height: 92vmin;
+        object-fit: contain;
+        object-position: right center;
+        max-width: 95%;
+        max-height: 95vh;
+
+        display: inline-block;
+        max-width: 100%;
+    }
+
+    .info-column {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;      /* Il testo parte vicino all'immagine */
+        padding-left: 10px;    /* Ridotto per non allontanarlo dal centro 10px*/
+        width: 28%;  /*35%*/
+    }
+
+    /* Blocchiamo il contenuto del testo */
+    .info-column > div,
+    .single-image-title,
+    .single-image-text,
+    .single-image-license {
+        width: 90%;
+        max-width: 300px;
+        margin-left: 0;
+        margin-right: auto;
+        hyphens: auto;
+    }
+
+    .single-image-title { font-size: 25px; margin-bottom: 20px; }
+    .single-image-text {
+        font-size: 16px;
+        max-height: 52dvh;
+        overflow-y: auto;
+        margin-bottom: 25px;
+        padding-right: 15px;
+    }
+    .single-image-license {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .single-image-page {
+        display: table;
+        width: 100vw;
+        height: 100vh;
+        table-layout: fixed;
+    }
+    .single-image-container {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
+        width: 75%; /* Riequilibriamo al centro */
+        padding-right: 60px;
+    }
+    .info-column {
+        display: table-cell;
+        vertical-align: middle;
+        width: 35%;
+        padding-left: 40px;
+    }
+    .info-column > div {
+        width: 400px; /* Testo largo per schermi grandi */
+    }
+}
+    .single-image-title,
+    .single-image-text,
+    .single-image-license {
+        text-align: justify;
+        text-align-last: left;
+        text-justify: inter-character;
+        word-break: break-word;
+        letter-spacing: -0.2px;
+        hyphens: auto;
+    }
+ /* Applica questo a tutte le tue media query desktop */
+
+.single-image-container video {
+    width: 92vmin;
+    height: 92vmin;
+
+    /* Impedisce ai video verticali di toccare i bordi fisici del monitor */
+    max-height: 90vh;
+    max-width: 100%;
+
+    /* IL SEGRETO: Mantiene le proporzioni (verticali o orizzontali) */
+    object-fit: contain;
+
+    /* Incolla il video al "centro" dell'asse col testo */
+    object-position: right center;
+
+    display: inline-block;
+    background: #000;
 }
 
 .close {
   position:fixed;
-  right:0px;
-  top:0px;
-  font-size: 32px;
-  width: 35px;
-  height: 35px;
+  right:15px;
+  top:15px;
+  font-size: 45px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,99 +167,5 @@ body {
   cursor:pointer;
   text-decoration: none;
   border: 1px solid #000000;
-}
-
-@media screen and (min-width: 1921px) {
-.close {font-size: clamp(50px, 2dvh, 70px); width:clamp(50px, 2dvh, 70px)!important;height:clamp(50px, 2dvh, 70px)!important }
-}
-
-/* --- Contenitore immagine singola --- */
-.single-image-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* centra verticalmente tutto il contenuto */
-    box-sizing: border-box;
-    min-height: 100dvh;
-}
-
-.single-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100dvw;
-    height: 80dvh;
-    max-width: 1500px;
-    max-height: 1500px;
-    margin-bottom: 20px;
-}
-
-.single-image-container img,
-.single-image-container video {
-    display: block;
-    max-width: 1500px;
-    max-height: 1500px;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-@media screen and (max-width: 1500px), screen and (max-height: 1500px) {
-    .single-image-container {
-        width: 100%;
-        height: 80vh;
-        max-width: 100%;
-        max-height: 80vh;
-    }
-    .single-image-container img,
-    .single-image-container video {
-        width: auto;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-    }
-}
-
-/* --- Titolo e testo --- */
-.single-image-title {
-    margin-top: 20px;
-    text-align: center;
-    font-size: clamp(18px, 2.8dvw, 28px);
-    font-weight: 600;
-    word-break: break-word;
-}
-
-.single-image-text {
-    margin: 15px;
-    max-width: 70dvw;
-    text-align: left;
-    max-width: 700px;
-    line-height: 1.4em;
-    font-size: clamp(14px, 2dvw, 22px);
-}
-
-/* --- Testo aggiuntivo / overflow --- */
-.text {
-    max-width: 25vw;
-    min-width: 20vw;
-    overflow: auto;
-    padding: 1.5vw;
-    line-height: 1.4em;
-    font-size: clamp(10px, 1.4dvw, 24px);
-}
-.single-image-license {
-  margin: 15px;
-  padding-top: 16px;
-  border-top: 1px solid #ddd;
-
-  font-size: clamp(14px, 2dvw, 22px);
-  line-height: 1.5;
-  color: #777;
-  text-align: left;
-  max-width: 700px;
-}
-.single-image-container video {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  box-sizing: border-box;
 }
