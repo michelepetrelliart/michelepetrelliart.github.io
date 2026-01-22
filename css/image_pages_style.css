@@ -61,6 +61,9 @@
 
         display: inline-block;
         max-width: 100%;
+            /* LIMITI UNIVERSALI IN PIXEL */
+        max-width: 1800px;
+        max-height: 1800px;
     }
 
     .info-column {
@@ -108,7 +111,7 @@
         vertical-align: middle;
         text-align: right;
         width: 80%; /* Riequilibriamo al centro */
-        padding-right: 20px;
+        padding-right: 50px;
     }
     .info-column {
         display: table-cell;
