@@ -46,7 +46,7 @@ body, html {
     /* COLONNA TESTO MOBILE */
     .info-column {
         width: 100%;
-        max-width: 650px;
+        max-width: 550px;
         margin: 0 auto;
         padding: 30px 20px 60px 20px; /* Margini interni: sopra, lati, sotto */
         box-sizing: border-box;
@@ -242,6 +242,11 @@ background:#000;
     text-justify: inter-word;
     text-align-last: left;
     /*line-height: 1.6; */
+}
+.single-image-license {
+    font-size: 16px;
+    color: #666;
+    padding-top: 15px;
 }
 /* TASTO CHIUDI */
 .close {
