@@ -24,11 +24,11 @@
         max-width: 600px;
         margin: 0 auto;
     }
-    .single-image-title { font-size: 28px; text-align: center; }
+    .single-image-title { font-size: 28px; text-align: center; padding-bottom:20px}
     .single-image-text { font-size: 17px; text-align: justify; }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1280px)  {
     body {
         margin:0;
         padding:0;
@@ -52,8 +52,8 @@
     }
 
     .single-image-container img, .single-image-container video {
-        width: 92vmin;
-        height: 92vmin;
+        width: 95dvmin;
+        height: 95dvmin;
         object-fit: contain;
         object-position: right center;
         max-width: 95%;
@@ -92,11 +92,11 @@
         padding-right: 15px;
     }
     .single-image-license {
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1921px) {
     .single-image-page {
         display: table;
         width: 100vw;
@@ -113,16 +113,17 @@
     .info-column {
         display: table-cell;
         vertical-align: middle;
-        width: 35%;
+        width: 40%;
         padding-left: 40px;
     }
     .info-column > div {
         width: 400px; /* Testo largo per schermi grandi */
     }
-}
+     .info-column > div,
     .single-image-title,
     .single-image-text,
     .single-image-license {
+        max-width: 400px;
         text-align: justify;
         text-align-last: left;
         text-justify: inter-character;
@@ -130,6 +131,19 @@
         letter-spacing: -0.2px;
         hyphens: auto;
     }
+    .single-image-title { font-size: 30px; }
+    .single-image-text {
+        font-size: 20px;
+        max-height: 52dvh;
+        overflow-y: auto;
+        margin-bottom: 25px;
+        padding-right: 15px;
+    }
+    .single-image-license {
+        font-size: 18px;
+    }
+}
+
  /* Applica questo a tutte le tue media query desktop */
 
 .single-image-container video {
