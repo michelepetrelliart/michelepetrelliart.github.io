@@ -52,10 +52,10 @@
     }
 
     .single-image-container img, .single-image-container video {
-        width: 95dvmin;
-        height: 95dvmin;
+        width: 90dvmin;
+        height: 90dvmin;
         object-fit: contain;
-        object-position: right center;
+        object-position: center center;
         max-width: 95%;
         max-height: 95vh;
 
@@ -68,7 +68,7 @@
         vertical-align: middle;
         text-align: left;      /* Il testo parte vicino all'immagine */
         padding-left: 10px;    /* Ridotto per non allontanarlo dal centro 10px*/
-        width: 28%;  /*35%*/
+        width: 29%;  /*35%*/
     }
 
     /* Blocchiamo il contenuto del testo */
@@ -107,14 +107,14 @@
         display: table-cell;
         vertical-align: middle;
         text-align: right;
-        width: 75%; /* Riequilibriamo al centro */
-        padding-right: 60px;
+        width: 80%; /* Riequilibriamo al centro */
+        padding-right: 20px;
     }
     .info-column {
         display: table-cell;
         vertical-align: middle;
         width: 40%;
-        padding-left: 40px;
+        padding-left: 0;
     }
     .info-column > div {
         width: 400px; /* Testo largo per schermi grandi */
@@ -147,19 +147,13 @@
  /* Applica questo a tutte le tue media query desktop */
 
 .single-image-container video {
-    width: 92vmin;
-    height: 92vmin;
-
-    /* Impedisce ai video verticali di toccare i bordi fisici del monitor */
-    max-height: 90vh;
-    max-width: 100%;
-
-    /* IL SEGRETO: Mantiene le proporzioni (verticali o orizzontali) */
+    width: 85dvmin;
+    height: 85dvmin;
     object-fit: contain;
-
-    /* Incolla il video al "centro" dell'asse col testo */
-    object-position: right center;
-
+    /* CAMBIO CRITICO: l'immagine sta al centro del suo spazio */
+    object-position: center center;
+    max-width: 95%;
+    max-height: 95vh;
     display: inline-block;
     background: #000;
 }
