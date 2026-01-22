@@ -330,11 +330,12 @@ img.single {
   }
 }
 
-/* --- OTTIMIZZAZIONE SOLO PER SCHERMI GRANDI (Desktop/FHD) ---*/
+/* --- OTTIMIZZAZIONE SOLO PER SCHERMI GRANDI (Desktop/FHD) --- */
 @media screen and (min-width: 1025px) and (max-width: 1280px) {
     nav .brand a {
-    font-size: 18px
+    font-size: 18px  /* Forza una dimensione fissa e contenuta */
   }
+
 
   .nav-level-1,
   .nav-level-2 {
@@ -392,7 +393,7 @@ img.single {
   #gallery {
     margin-top: 90px; /* Valore fisso per desktop per evitare sorprese */
   }
-  .grid {max-width:1180px}
+  .grid {max-width:960px}
   .load-more-btn {
     margin: 0px auto;
     padding: 5px;
@@ -411,4 +412,7 @@ img.single {
  .nav-main2 {
   padding: 40px 20px;
 }
+}
+.load-more-btn {
+     padding-bottom:50px;
 }
