@@ -118,6 +118,7 @@ background:#000;
         color: #000;
     }
 
+
     .single-image-text {
         font-size: 17px;
       /*  line-height: 1.6;*/
@@ -193,6 +194,10 @@ background:#000;
         justify-content: center;
         text-align: left;
         min-width: 250px;
+    }
+    .single-image-text {
+        max-height: 50dvh;
+        overflow-y: auto;
     }
 }
 
