@@ -185,5 +185,16 @@ document.body.appendChild(d);
 document.getElementById("cOk").onclick=()=>{localStorage.setItem("cAcc","1");d.remove()};
 })();
 </script>
+<script>
+// Disabilita il menu contestuale (tasto destro)
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Disabilita il drag and drop
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+});
+</script>
 </body>
 </html>
