@@ -17,6 +17,26 @@
 <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' media='all' rel='stylesheet' type='text/css'/>
 
 <style>
+
+/* Regola per il telefono: sotto i 768px incolonna tutto */
+    @media (max-width: 768px) {
+        .container-newsletter {
+            flex-direction: column !important;
+            gap: 40px !important;
+        }
+        .col-attention {
+            flex: 1 1 auto !important;
+            text-align: left !important; /* Centriamo anche il testo sul telefono */
+            padding: 10px !important;
+        }
+        .col-form {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid #eee; /* Riga di separazione opzionale per il mobile */
+            padding-top: 40px;
+        }
+    }
+
         .dsocial {display:flex;position:fixed;flex-wrap: nowrap;margin:unset; padding:5px;background:tranparent;
   z-index:9;right:15px;top:20px;height: 50px}
 .dsocial img {max-height:38px; width:100%; height:auto;object-fit: cover; filter: none;}
@@ -290,9 +310,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <div class="cont-h">
-    <div style="display: flex; justify-content: center; align-items: center; max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif; gap: 60px;">
+    <div class="container-newsletter" style="display: flex; justify-content: center; align-items: center; max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif; gap: 60px;">
 
-        <div style="flex: 0 1 400px; text-align: left;">
+        <div class="col-attention" style="flex: 0 1 400px; text-align: left;">
             <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 14px; margin-bottom: 10px; color: #000; font-weight: bold;">Attention</h3>
             <p style="font-size: 12px; line-height: 1.6; color: #333; margin: 0;">
                 Is the research falling into a Google "black hole"?<br><br>
@@ -301,13 +321,13 @@ document.addEventListener("DOMContentLoaded", function () {
             </p>
         </div>
 
-        <div style="flex: 0 1 auto; text-align: center; border-left: 1px solid #eee; padding-left: 60px;">
+        <div class="col-form" style="flex: 0 1 auto; text-align: center; border-left: 1px solid #eee; padding-left: 60px;">
             <h2 style='margin-bottom:0px; padding-bottom:0px; font-weight: normal; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;'>Sign in my News</h2>
             <span style='letter-spacing: 4px; font-size: 11px; display: block; margin-bottom: 20px;'>New paintings and events</span>
 
             <form id="newsletterForm" style="display: inline-block;">
                 <input type="email" name="email" placeholder="Enter your email" required style="padding: 10px; border: 1px solid #ccc; width: 220px; font-size: 12px; outline: none;">
-                <button type="submit" style="padding: 10px 20px; background: #fff; border: 1px solid #000; cursor: pointer; font-size: 12px; text-transform: uppercase; margin-left: -5px;">Subscribe</button>
+                <button type="submit" style="padding: 10px 20px; background: #fff; border: 1px solid #000; cursor: pointer; font-size: 12px; text-transform: uppercase;">Subscribe</button>
                 <div id="status" style="margin-top:10px; font-size: 12px;"></div>
             </form>
 
@@ -321,6 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div style="text-align: center; margin-top: 25px; font-family: 'Inter', sans-serif;">
         <a href="pages_static/privacy.html" style="font-size: 11px; color: #000; text-decoration: underline; text-transform: uppercase; letter-spacing: 1px;">Privacy</a>
     </div>
+</div>
 </div>
 <script>
 /* 1. LANGUAGE */
