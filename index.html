@@ -288,21 +288,40 @@ document.addEventListener("DOMContentLoaded", function () {
 <center><a href='https://superrare.com/thelastwheel'><u>SuperRare</u></a> | <a class='pgform2' href='https://www.inprnt.com/gallery/michelepetrelli/' target='_blank'><u>Art prints</u></a><!-- | <a href='https://patreon.com/michelepetrelliart' target='_blank'><u>Patreon</u></a-->
   </span>
 
-<br/><br/>
 
-<h2 style='margin-bottom:0px;padding-bottom:0px'>Sign in my News</h2>
-    <span style='letter-spacing: 4px;font-size:11px;margin-top:0px;padding-top:0px'>New paintings and events</span><br/>
-<br/>
-<form id="newsletterForm">
-  <input type="email" name="email" placeholder="Inserisci la tua email" required>
-  <button type="submit">Iscriviti</button>
-  <div id="status" style="margin-top:10px;"></div>
-</form>
-<p style="font-family: 'Inter', sans-serif; font-size: 11px; color: #666; margin-top: 12px; line-height: 1.4;">
-    Contents distributed via <strong>Substack</strong>. <br>
-    You can unsubscribe at any time.
-</p>
-<br/><br/></center><center><a href="pages_static/privacy.html">Privacy</a></center>
+<div class="cont-h">
+    <div style="display: flex; justify-content: center; align-items: center; max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif; gap: 60px;">
+
+        <div style="flex: 0 1 400px; text-align: left;">
+            <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 14px; margin-bottom: 10px; color: #000; font-weight: bold;">Attention</h3>
+            <p style="font-size: 12px; line-height: 1.6; color: #333; margin: 0;">
+                Is the research falling into a Google "black hole"?<br><br>
+                Due to new filters, research emails (Arbor / R.N.D.D.) often end up in the <strong>Promotions</strong> or <strong>Spam</strong> folders.<br><br>
+                If you are not receiving updates, please drag my email to your <strong>Primary</strong> inbox and add the address to your contacts.
+            </p>
+        </div>
+
+        <div style="flex: 0 1 auto; text-align: center; border-left: 1px solid #eee; padding-left: 60px;">
+            <h2 style='margin-bottom:0px; padding-bottom:0px; font-weight: normal; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;'>Sign in my News</h2>
+            <span style='letter-spacing: 4px; font-size: 11px; display: block; margin-bottom: 20px;'>New paintings and events</span>
+
+            <form id="newsletterForm" style="display: inline-block;">
+                <input type="email" name="email" placeholder="Enter your email" required style="padding: 10px; border: 1px solid #ccc; width: 220px; font-size: 12px; outline: none;">
+                <button type="submit" style="padding: 10px 20px; background: #fff; border: 1px solid #000; cursor: pointer; font-size: 12px; text-transform: uppercase; margin-left: -5px;">Subscribe</button>
+                <div id="status" style="margin-top:10px; font-size: 12px;"></div>
+            </form>
+
+            <p style="font-size: 11px; color: #666; margin-top: 15px; line-height: 1.4;">
+                Contents distributed via <strong>Substack</strong>. <br>
+                You can unsubscribe at any time.
+            </p>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 25px; font-family: 'Inter', sans-serif;">
+        <a href="pages_static/privacy.html" style="font-size: 11px; color: #000; text-decoration: underline; text-transform: uppercase; letter-spacing: 1px;">Privacy</a>
+    </div>
+</div>
 <script>
 /* 1. LANGUAGE */
 (function() {
