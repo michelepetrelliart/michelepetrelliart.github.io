@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body, html {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Rende il font più nitido su Chrome/Safari */
+    -moz-osx-font-smoothing: grayscale; /* Rende il font più nitido su Firefox */
+}
+h1, h2, h3, .single-image-title {
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-weight: 600; /* Lo rende grassetto come l'Helvetica Bold */
+    letter-spacing: -0.02em; /* L'Inter sta meglio con le lettere un po' vicine, come l'Helvetica */
+}
+
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.single-image-container video {
+background:#000;
+    }
+    .single-image-license,
+    .single-image-text {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    text-justify: inter-word;
+    text-align-last: left;
+    /*line-height: 1.6; */
+}
+.single-image-license {
+    font-size: 16px;
+    color: #666;
+    padding-top: 15px;
+}
+/* TASTO CHIUDI */
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 45px;
+    background: #fff;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    z-index: 9999;
+}
+
+    h2, h3 {
+    text-align: left;
+    text-align-last: left;
+    text-justify: none;
+    hyphens: none;
+    word-break: normal;
+    }
+
+/* --- MOBILE (Sotto 1280px) --- */
+@media screen and (max-width: 1279px) {
+    .single-image-page {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100dvh;
+        background-color: #fff;
+    }
+
+    /* CONTENITORE IMMAGINE MOBILE */
+    .single-image-container {
+        width: 100%;
+        background: #000; /* Sfondo nero per l'immagine a tutto schermo */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; /* Impedisce al testo di schiacciare l'immagine */
+    }
+
+    .single-image-container img,
+    .single-image-container video {
+        /* Larghezza piena per "mordere" i bordi del telefono */
+        width: 100%;
+        height: auto;
+
+        /* BLOCCA L'IMMAGINE: non deve mai superare l'altezza dello schermo */
+        /* lasciando un 25% di spazio per far capire che sotto c'è del testo */
+        max-height: 75dvh;
+        max-width: 100%; /* Mai fuori dai bordi laterali */
+
+        object-fit: contain;
+        display: block;
+    }
+
+    /* COLONNA TESTO MOBILE */
+    .info-column {
+        width: 100%;
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 30px 30px 60px 30px; /* Margini interni: sopra, lati, sotto */
+        box-sizing: border-box;
+    }
+
+    .single-image-title {
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-align: left; /* Allineamento pulito col testo */
+        color: #000;
+    }
+
+
+    .single-image-text {
+        font-size: 17px;
+      /*  line-height: 1.6;*/
+        text-align: justify;
+        text-justify: inter-character;
+        hyphens: auto;
+        color: #333;
+    }
+
+    /* Distanziamento per l'eventuale licenza o info extra */
+    .single-image-license {
+        margin-top: 25px;
+        font-size: 14px;
+        color: #666;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+    }
+    .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+    }
+}
+/* --- DESKTOP UNIVERSALE (Sopra 1280px) --- */
+/* --- DESKTOP (Sopra 1280px) --- */
+@media screen and (min-width: 1280px) {
+    .single-image-page {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center; /* Centra il blocco unito nel monitor */
+        width: 100dvw;
+        height: 100dvh;
+        max-width: 100%; /* Non un pixel di più della finestra */
+        max-height: 100%;
+        background: #fff;
+        padding: 20px;
+        /* Riduciamo il gap: se il testo è distante, il colpevole è questo o il flex-grow */
+        gap: 40px;
+        overflow: hidden;
+        padding: 20px;
+        gap: 40px;
+        box-sizing: border-box;
+    }
+
+    .single-image-container {
+        /* IMPORTANTE: flex: 0 0 auto dice al contenitore di essere
+           largo esattamente quanto l'immagine, non un pixel di più */
+        flex: 0 1 auto;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .single-image-container img,
+    .single-image-container video {
+        width: min(90dvmin, 1800px);
+        height: min(90dvmin, 1800px);
+        max-width: 100%;
+        max-height: 90dvh;
+        object-fit: contain;
+    }
+
+    .info-column {
+        /* Larghezza fissa del testo per non farlo ballare */
+        flex: 0 0 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        min-width: 250px;
+    }
+    .single-image-text {
+        max-height: 50dvh;
+        overflow-y: auto;
+    }
+}
+
+/* --- SPECIFICO 4K (Sopra 1921px) --- */
+@media screen and (min-width: 1921px) {
+    .single-image-page {
+        gap: 60px; /* Un po' più di respiro ma senza esagerare */
+    }
+    .info-column {
+        flex: 0 0 450px; /* Leggermente più largo per il 4K */
+    }
+}
+
+    .single-image-title { font-size: 26px; margin-bottom: 15px; text-align: center; }
+    .single-image-text { font-size: 17px; text-align: justify; hyphens: auto; }
+}
+
+/* --- DESKTOP UNIVERSALE (Sopra 1280px) --- */
+@media screen and (min-width: 1280px) {
+    .single-image-page {
+        display: flex;
+        flex-direction: row;
+        align-items: center;  /* Centratura verticale */
+        justify-content: center; /* Centratura orizzontale del gruppo */
+        width: 100dvw;
+        height: 100dvh;
+        background: #fff;
+        overflow: hidden;
+        padding: 20px;
+        gap: 40px;
+    }
+
+    /* CONTENITORE IMMAGINE */
+    .single-image-container {
+        flex: 1 1 auto; /* Si adatta ma dà priorità al contenuto */
+        display: flex;
+        justify-content: flex-end; /* Incolla l'immagine verso il centro */
+        /*max-width: 65%;*/
+        min-width: 0;
+        justify-content: center;
+    }
+
+    .single-image-container img,
+    .single-image-container video {
+        /* Il quadrato dinamico */
+        width: 90dvmin;
+        height: 90dvmin;
+
+        /* Limiti assoluti */
+        max-width: 1800px;
+        max-height: 1800px;
+
+        /* Sicurezza per schermi piccoli */
+        max-height: 92dvh;
+
+        object-fit: contain;
+        object-position: center;
+    }
+
+    /* COLONNA TESTO */
+    .info-column {
+        flex: 0 0 400px; /* Larghezza fissa: non si stringe, non si allarga */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 250px;
+    }
+
+    .single-image-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .single-image-text {
+        font-size: 16px;
+        max-height: 50dvh;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        text-align: justify;
+        text-justify: inter-character;
+        hyphens: auto;
+        padding-right: 15px;
+    }
+
+    .single-image-license { font-size: 14px; color: #666; }
+}
+
+/* --- OTTIMIZZAZIONE 4K (Sopra 1921px) --- */
+@media screen and (min-width: 1921px) {
+    .single-image-page {
+        gap: 100px; /* Più respiro sui monitor giganti */
+    }
+
+    .info-column {
+        flex: 0 0 480px; /* Testo più largo per leggibilità 4K */
+    }
+
+    .single-image-title { font-size: 32px; }
+    .single-image-text { font-size: 19px; }
+}
+
