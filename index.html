@@ -340,29 +340,34 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <script>
 /* 1. LANGUAGE */
-(function() {
+document.addEventListener("DOMContentLoaded", function() {
+
+    /* 1. LANGUAGE & TIMEZONE */
     const lang = navigator.languages || [navigator.language || navigator.userLanguage];
-    const isIt = lang.some(l => l.startsWith("it"));
+    const isItLang = lang.some(l => l.startsWith("it"));
+    const isRomeTZ = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
+
+    // Il filtro combinato: vero se lingua IT O fuso Roma
+    const isLocal = isItLang || isRomeTZ;
+
     const fromX = new URLSearchParams(window.location.search).get("fromX") === "1";
 
-    if (!isIt && fromX) localStorage.setItem("visitedFromX", "1");
+    if (!isLocal && fromX) localStorage.setItem("visitedFromX", "1");
     const vX = localStorage.getItem("visitedFromX");
 
     const itE = document.querySelectorAll(".cont-it");
     const hE = document.querySelectorAll(".cont-h");
     const tE = document.querySelectorAll(".cont-t");
 
-    if (isIt) {
+    if (isLocal) {
         itE.forEach(e => e.style.display = "block");
         hE.forEach(e => e.style.display = "none");
         tE.forEach(e => e.style.display = "none");
     } else {
         if (!vX) {
-            // Primo accesso o non da X: vede .cont-h
             hE.forEach(e => e.style.display = "block");
             tE.forEach(e => e.style.display = "none");
         } else {
-            // Già visitato da X: vede .cont-t
             tE.forEach(e => e.style.display = "block");
             hE.forEach(e => e.style.display = "none");
         }
