@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <title>...</title>
-    <style>body { background: #000; margin: 0; }</style>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>...</title>
+<style>body { background: #000; margin: 0; }</style>
 
-    <meta http-equiv="refresh" content="2; url=https://michelepetrelliart.github.io">
+<meta http-equiv="refresh" content="2; url=https://michelepetrelliart.github.io">
 
-    <script>
-        (async function() {
-            const links = {
-                'patreon': "https://www.patreon.com/c/michelepetrelliart",
-                'substack': "https://recordsnode.substack.com"
-            };
-            const githubHome = "https://michelepetrelliart.github.io";
+<script>
+(function() {
+    const links = {
+        'patreon': "https://www.patreon.com/c/michelepetrelliart",
+        'substack': "https://recordsnode.substack.com"
+    };
+    const githubHome = "https://michelepetrelliart.github.io";
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const destinationKey = urlParams.get('to');
+    const urlParams = new URLSearchParams(window.location.search);
+    const destinationKey = urlParams.get('to');
 
-            // Se il link è monco, via subito alla Home
-            if (!destinationKey || !links[destinationKey]) {
-                window.location.replace(githubHome);
-                return;
-            }
+    // Se manca il parametro o è errato, rimanda alla Home
+    if (!destinationKey || !links[destinationKey]) {
+        window.location.replace(githubHome);
+        return;
+    }
 
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
+    // Controllo lingue del browser
+    const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
+    const isItalian = userLangs.some(lang => lang.toLowerCase().startsWith('it'));
 
-                // Se italiano, Home. Altrimenti, destinazione.
-                if (data.country_code === 'IT') {
-                    window.location.replace(githubHome);
-                } else {
-                    window.location.replace(links[destinationKey]);
-                }
-            } catch (e) {
-                // Se l'API di geolocalizzazione è bloccata ma JS è attivo,
-                // mandiamoli comunque alla destinazione (presumiamo straniero con adblock)
-                window.location.replace(links[destinationKey]);
-            }
-        })();
-    </script>
+    if (isItalian) {
+        // Utente italiano: espulso alla Home
+        window.location.replace(githubHome);
+    } else {
+        // Utente straniero: procede alla destinazione
+        window.location.replace(links[destinationKey]);
+    }
+})();
+</script>
 </head>
 <body></body>
 </html>
