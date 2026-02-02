@@ -19,21 +19,23 @@
     const urlParams = new URLSearchParams(window.location.search);
     const destinationKey = urlParams.get('to');
 
-    // Se manca il parametro o è errato, rimanda alla Home
     if (!destinationKey || !links[destinationKey]) {
         window.location.replace(githubHome);
         return;
     }
 
-    // Controllo lingue del browser
+    // 1. Controllo Lingue
     const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
-    const isItalian = userLangs.some(lang => lang.toLowerCase().startsWith('it'));
+    const hasItalian = userLangs.some(lang => lang.toLowerCase().startsWith('it'));
 
-    if (isItalian) {
-        // Utente italiano: espulso alla Home
+    // 2. Controllo Fuso Orario (Italia è Europe/Rome)
+    const isItalyTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
+
+    // Se ha la lingua italiana O il fuso orario di Roma, è un utente locale
+    if (hasItalian || isItalyTimezone) {
         window.location.replace(githubHome);
     } else {
-        // Utente straniero: procede alla destinazione
+        // Solo se non ha né lingua né fuso orario italiano procede
         window.location.replace(links[destinationKey]);
     }
 })();
