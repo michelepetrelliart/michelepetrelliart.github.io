@@ -19,8 +19,24 @@
     const urlParams = new URLSearchParams(window.location.search);
     const destinationKey = urlParams.get('to');
 
+    // Funzione per gestire il redirect con tracciamento
+    function secureRedirect(url, type) {
+        if (window.clicky) {
+            // Logga l'evento su Clicky: 'In' per stranieri, 'Out' per italiani/rimbalzi
+            clicky.log(window.location.href, "RD: " + type, "click");
+
+            // Aspettiamo un battito di ciglia (100ms) per l'invio del dato
+            setTimeout(function() {
+                window.location.replace(url);
+            }, 100);
+        } else {
+            // Se Clicky è bloccato o non caricato, via subito
+            window.location.replace(url);
+        }
+    }
+
     if (!destinationKey || !links[destinationKey]) {
-        window.location.replace(githubHome);
+        secureRedirect(githubHome, "INVALID_KEY");
         return;
     }
 
@@ -28,15 +44,15 @@
     const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
     const hasItalian = userLangs.some(lang => lang.toLowerCase().startsWith('it'));
 
-    // 2. Controllo Fuso Orario (Italia è Europe/Rome)
+    // 2. Controllo Fuso Orario
     const isItalyTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-    // Se ha la lingua italiana O il fuso orario di Roma, è un utente locale
     if (hasItalian || isItalyTimezone) {
-        window.location.replace(githubHome);
+        // Italiano beccato: lo mandiamo al catalogo statico
+        secureRedirect(githubHome, "LOCAL_BOUNCE");
     } else {
-        // Solo se non ha né lingua né fuso orario italiano procede
-        window.location.replace(links[destinationKey]);
+        // Straniero pulito: va alla destinazione scelta
+        secureRedirect(links[destinationKey], "INT_ACCESS_" + destinationKey.toUpperCase());
     }
 })();
 </script>
