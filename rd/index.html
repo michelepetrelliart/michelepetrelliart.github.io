@@ -23,24 +23,29 @@
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
     let target = githubHome;
-    let label = "RD: LOCAL_BOUNCE";
+    let label = "RD_" + (to ? to.toUpperCase() : "HOME");
 
     if (to && links[to] && !isItalian) {
         target = links[to];
-        label = "RD: INT_ACCESS_" + to.toUpperCase();
+        label = "RD_INT_" + to.toUpperCase();
+    } else if (isItalian) {
+        label = "RD_ITALY_BOUNCE";
     }
 
-    // Funzione di test con ritardo "eterno"
     function finalTest() {
-        if (window.clicky) {
+        // Metodo Beacon: invia il dato in modo asincrono e "leggero"
+        if (navigator.sendBeacon) {
+            const beaconUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
+                              encodeURIComponent(window.location.href) + "&title=" + encodeURIComponent(label);
+            navigator.sendBeacon(beaconUrl);
+        } else if (window.clicky) {
             clicky.log(window.location.href, label, "click");
-            console.log("Log inviato: " + label);
         }
 
-        // 3 secondi di attesa
+        // 800ms: abbastanza veloce da non infastidire, abbastanza lungo per il beacon
         setTimeout(function() {
             window.location.replace(target);
-        }, 3000);
+        }, 800);
     }
 
     window.onload = finalTest;
@@ -48,6 +53,6 @@
 </script>
 </head>
 <body>
-    <div style="color: #333; font-family: sans-serif; font-size: 12px;">Redirecting...</div>
+    <div style="color: #222; font-family: sans-serif; font-size: 11px;">Redirecting...</div>
 </body>
 </html>
