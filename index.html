@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class='arrow42-right'>&#8250;</div>
 </div>
 
-<div class='navDots42'/>
+<div class='navDots42'></div>
 </div>
 
 <span class='cont-h'>
@@ -339,19 +339,15 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 </div>
 <script>
-/* 1. LANGUAGE */
 document.addEventListener("DOMContentLoaded", function() {
 
-    /* 1. LANGUAGE & TIMEZONE */
+    /* 1. LINGUA E FILTRI CONTENUTO */
     const lang = navigator.languages || [navigator.language || navigator.userLanguage];
     const isItLang = lang.some(l => l.startsWith("it"));
     const isRomeTZ = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
-
-    // Il filtro combinato: vero se lingua IT O fuso Roma
     const isLocal = isItLang || isRomeTZ;
 
     const fromX = new URLSearchParams(window.location.search).get("fromX") === "1";
-
     if (!isLocal && fromX) localStorage.setItem("visitedFromX", "1");
     const vX = localStorage.getItem("visitedFromX");
 
@@ -374,39 +370,36 @@ document.addEventListener("DOMContentLoaded", function() {
         itE.forEach(e => e.style.display = "none");
     }
 
-    // Cookie banner (solo se non locale e non accettato)
+    /* 2. COOKIE BANNER */
     if(location.hostname !== "localhost" && !localStorage.getItem("cAcc")) {
         let d = document.createElement("div");
         d.style = "position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:10px 14px;font:14px/1.4 sans-serif;text-align:center;z-index:9999";
         d.innerHTML = "The site uses third-party cookies. <a href='pages_static/privacy.html' style='color:#fff !important; text-decoration:underline;'>Info</a> <button id='cOk' style='margin-left:10px'>OK</button>";
         document.body.appendChild(d);
-        document.getElementById("cOk").onclick = () => { localStorage.setItem("cAcc", "1"); d.remove(); };
+        const btnOk = document.getElementById("cOk");
+        if(btnOk) {
+            btnOk.onclick = () => { localStorage.setItem("cAcc", "1"); d.remove(); };
+        }
     }
-})();
 
-/* 2. INTERAZIONI E CAROSELLO (Al caricamento DOM) */
-document.addEventListener("DOMContentLoaded", function() {
-
-    // MOUSE
+    /* 3. INTERAZIONI (MOUSE E LINK) */
     document.addEventListener('contextmenu', e => e.preventDefault());
 
-    // LOGICA ENTER LINK
     const enterL = document.getElementById("enterLink");
     if (enterL) {
-        const hasV = localStorage.getItem("visited");
         enterL.addEventListener("click", e => {
-            if (!hasV) {
+            if (!localStorage.getItem("visited")) {
                 e.preventDefault();
                 localStorage.setItem("visited", "true");
-                window.location.href = "pages_static/all.html"; // curated.html se vogliamo indirizzarli su questa pagina invece che all.html
+                window.location.href = "pages_static/all.html";
             }
         });
     }
 
-    // NEWSLETTER
+    /* 4. NEWSLETTER */
     const form = document.getElementById('newsletterForm');
     const status = document.getElementById('status');
-    if (form) {
+    if (form && status) {
         form.addEventListener('submit', e => {
             e.preventDefault();
             status.innerText = "Invio...";
@@ -422,37 +415,50 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // CAROSELLO 42
+    /* 5. CAROSELLO 42 */
     const car = document.querySelector(".carosello42");
     if (car) {
-        const slides = car.querySelectorAll(".slide42"), dotsC = car.querySelector(".navDots42");
-        const aL = car.querySelector(".arrow42-left"), aR = car.querySelector(".arrow42-right");
+        const slides = car.querySelectorAll(".slide42");
+        const dotsC = car.querySelector(".navDots42");
+        const aL = car.querySelector(".arrow42-left");
+        const aR = car.querySelector(".arrow42-right");
         let cur = 0;
 
-        if (slides.length > 1) {
-            slides.forEach((_, i) => {
-                const d = document.createElement("div");
-                d.className = "dot42" + (i === 0 ? " activeDot42" : "");
-                d.onclick = () => showS(i);
-                if(dotsC) dotsC.appendChild(d);
+        if (slides.length > 0) {
+            // Forza la prima slide visibile
+            slides.forEach((s, i) => {
+                s.classList.toggle("attiva42", i === 0);
             });
 
-            const showS = (n) => {
-                const dots = car.querySelectorAll(".dot42");
-                if (n < 0) n = slides.length - 1; if (n >= slides.length) n = 0;
-                slides[cur].classList.remove("attiva42");
-                if(dots[cur]) dots[cur].classList.remove("activeDot42");
-                slides[n].classList.add("attiva42");
-                if(dots[n]) dots[n].classList.add("activeDot42");
-                cur = n;
-            };
+            if (slides.length > 1) {
+                if (dotsC) {
+                    dotsC.innerHTML = ""; // Pulisce duplicati
+                    slides.forEach((_, i) => {
+                        const d = document.createElement("div");
+                        d.className = "dot42" + (i === 0 ? " activeDot42" : "");
+                        d.onclick = () => showS(i);
+                        dotsC.appendChild(d);
+                    });
+                }
 
-            if(aL) aL.onclick = () => showS(cur - 1);
-            if(aR) aR.onclick = () => showS(cur + 1);
+                function showS(n) {
+                    const dots = car.querySelectorAll(".dot42");
+                    if (n < 0) n = slides.length - 1;
+                    if (n >= slides.length) n = 0;
+                    slides[cur].classList.remove("attiva42");
+                    if(dots[cur]) dots[cur].classList.remove("activeDot42");
+                    slides[n].classList.add("attiva42");
+                    if(dots[n]) dots[n].classList.add("activeDot42");
+                    cur = n;
+                }
 
-            let timer = setInterval(() => showS(cur + 1), 8000);
-            car.onmouseenter = () => clearInterval(timer);
-            car.onmouseleave = () => timer = setInterval(() => showS(cur + 1), 8000);
+                if(aL) aL.onclick = () => showS(cur - 1);
+                if(aR) aR.onclick = () => showS(cur + 1);
+
+                let timer = setInterval(() => showS(cur + 1), 8000);
+                car.onmouseenter = () => clearInterval(timer);
+                car.onmouseleave = () => timer = setInterval(() => showS(cur + 1), 8000);
+            }
         }
     }
 });
