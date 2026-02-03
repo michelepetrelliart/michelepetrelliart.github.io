@@ -376,10 +376,7 @@ document.addEventListener("DOMContentLoaded", function() {
         d.style = "position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:10px 14px;font:14px/1.4 sans-serif;text-align:center;z-index:9999";
         d.innerHTML = "The site uses third-party cookies. <a href='pages_static/privacy.html' style='color:#fff !important; text-decoration:underline;'>Info</a> <button id='cOk' style='margin-left:10px'>OK</button>";
         document.body.appendChild(d);
-        const btnOk = document.getElementById("cOk");
-        if(btnOk) {
-            btnOk.onclick = () => { localStorage.setItem("cAcc", "1"); d.remove(); };
-        }
+        document.getElementById("cOk").onclick = () => { localStorage.setItem("cAcc", "1"); d.remove(); };
     }
 
     /* 3. INTERAZIONI (MOUSE E LINK) */
