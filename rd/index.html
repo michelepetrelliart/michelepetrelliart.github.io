@@ -6,56 +6,55 @@
 <title>...</title>
 <style>body { background: #000; margin: 0; }</style>
 
-<meta http-equiv="refresh" content="2; url=https://michelepetrelliart.github.io/pages_static/all.html">
-
 <script>
+// 1. CARICAMENTO IMMEDIATO CLICKY
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(101499862);
+(function() {
+    var s = document.createElement('script');
+    s.type = 'text/javascript'; s.async = true;
+    s.src = '//static.getclicky.com/js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+})();
+
+// 2. LOGICA DI REDIRECT
 (function() {
     const links = {
         'patreon': "https://www.patreon.com/c/michelepetrelliart",
         'substack': "https://recordsnode.substack.com"
     };
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
-
     const urlParams = new URLSearchParams(window.location.search);
     const destinationKey = urlParams.get('to');
 
-    // Funzione per gestire il redirect con tracciamento
-    function secureRedirect(url, type) {
-        if (window.clicky) {
-            // Logga l'evento su Clicky: 'In' per stranieri, 'Out' per italiani/rimbalzi
-            clicky.log(window.location.href, "RD: " + type, "click");
+    function executeRedirect() {
+        const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
+        const isItalian = userLangs.some(l => l.toLowerCase().startsWith('it')) ||
+                          Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-            // Aspettiamo un battito di ciglia (100ms) per l'invio del dato
-            setTimeout(function() {
-                window.location.replace(url);
-            }, 100);
+        let targetUrl = githubHome;
+        let logType = "LOCAL_BOUNCE";
+
+        if (destinationKey && links[destinationKey] && !isItalian) {
+            targetUrl = links[destinationKey];
+            logType = "INT_ACCESS_" + destinationKey.toUpperCase();
+        }
+
+        // TRACCIAMENTO ATTIVO
+        if (window.clicky) {
+            clicky.log(window.location.href, logType, "click");
+            // Aspettiamo 500ms per dare tempo a Clicky di inviare il pacchetto dati
+            setTimeout(() => { window.location.replace(targetUrl); }, 500);
         } else {
-            // Se Clicky è bloccato o non caricato, via subito
-            window.location.replace(url);
+            // Se Clicky è bloccato da AdBlock, reindirizziamo comunque dopo un breve attesa
+            setTimeout(() => { window.location.replace(targetUrl); }, 800);
         }
     }
 
-    if (!destinationKey || !links[destinationKey]) {
-        secureRedirect(githubHome, "INVALID_KEY");
-        return;
-    }
-
-    // 1. Controllo Lingue
-    const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
-    const hasItalian = userLangs.some(lang => lang.toLowerCase().startsWith('it'));
-
-    // 2. Controllo Fuso Orario
-    const isItalyTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
-
-    if (hasItalian || isItalyTimezone) {
-        // Italiano beccato: lo mandiamo al catalogo statico
-        secureRedirect(githubHome, "LOCAL_BOUNCE");
-    } else {
-        // Straniero pulito: va alla destinazione scelta
-        secureRedirect(links[destinationKey], "INT_ACCESS_" + destinationKey.toUpperCase());
-    }
+    // Avviamo la logica dopo un minimo ritardo per far caricare Clicky
+    window.onload = executeRedirect;
 })();
-</script>  
+</script>
 </head>
-<body><!--  --></body>
+<body></body>
 </html>
