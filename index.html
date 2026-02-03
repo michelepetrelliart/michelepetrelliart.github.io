@@ -187,24 +187,6 @@ h2 {
 }
 </style>
 </head>
-<!-- Clicky Web Analytics (Anonimizzato, GDPR compliant) -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
-        var clickyScript = document.createElement("script");
-        clickyScript.src = "https://static.getclicky.com/101499862.js";
-        document.body.appendChild(clickyScript);
-
-        // Anonimizzazione dell'IP
-        window.clicky = window.clicky || {};
-        window.clicky.anon = 1; // anonimizza IP
-    }, 2000); // attende 2 secondi prima di caricare Clicky
-});
-</script>
-<noscript>
-    <p><img alt="Clicky" height="1" width="1" src="https://in.getclicky.com/101499862ns.gif"/></p>
-</noscript>
-
 <body>
  <!-- Slide show presentazione -->
 
@@ -339,38 +321,21 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 </div>
 <script>
+/* MOTORE UNIFICATO: LINGUA, COOKIE, CAROSELLO E CLICKY */
 document.addEventListener("DOMContentLoaded", function() {
 
-    /* 1. LINGUA E FILTRI CONTENUTO */
+    // 1. LOGICA LINGUA E FILTRI (Cont-it, Cont-h, Cont-t)
     const lang = navigator.languages || [navigator.language || navigator.userLanguage];
-    const isItLang = lang.some(l => l.startsWith("it"));
-    const isRomeTZ = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
-    const isLocal = isItLang || isRomeTZ;
-
+    const isLocal = lang.some(l => l.startsWith("it")) || (Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome');
     const fromX = new URLSearchParams(window.location.search).get("fromX") === "1";
     if (!isLocal && fromX) localStorage.setItem("visitedFromX", "1");
     const vX = localStorage.getItem("visitedFromX");
 
-    const itE = document.querySelectorAll(".cont-it");
-    const hE = document.querySelectorAll(".cont-h");
-    const tE = document.querySelectorAll(".cont-t");
+    document.querySelectorAll(".cont-it").forEach(e => e.style.display = isLocal ? "block" : "none");
+    document.querySelectorAll(".cont-h").forEach(e => e.style.display = (!isLocal && !vX) ? "block" : "none");
+    document.querySelectorAll(".cont-t").forEach(e => e.style.display = (!isLocal && vX) ? "block" : "none");
 
-    if (isLocal) {
-        itE.forEach(e => e.style.display = "block");
-        hE.forEach(e => e.style.display = "none");
-        tE.forEach(e => e.style.display = "none");
-    } else {
-        if (!vX) {
-            hE.forEach(e => e.style.display = "block");
-            tE.forEach(e => e.style.display = "none");
-        } else {
-            tE.forEach(e => e.style.display = "block");
-            hE.forEach(e => e.style.display = "none");
-        }
-        itE.forEach(e => e.style.display = "none");
-    }
-
-    /* 2. COOKIE BANNER */
+    // 2. COOKIE BANNER
     if(location.hostname !== "localhost" && !localStorage.getItem("cAcc")) {
         let d = document.createElement("div");
         d.style = "position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:10px 14px;font:14px/1.4 sans-serif;text-align:center;z-index:9999";
@@ -379,9 +344,17 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("cOk").onclick = () => { localStorage.setItem("cAcc", "1"); d.remove(); };
     }
 
-    /* 3. INTERAZIONI (MOUSE E LINK) */
-    document.addEventListener('contextmenu', e => e.preventDefault());
+    // 3. CLICKY (Integrato e Anonimizzato)
+    window.clicky_site_ids = window.clicky_site_ids || [];
+    window.clicky_site_ids.push(101499862);
+    window.clicky = { anon: 1 };
+    const cS = document.createElement("script");
+    cS.async = true;
+    cS.src = "https://static.getclicky.com/js";
+    document.body.appendChild(cS);
 
+    // 4. INTERAZIONI (Mouse e Redirect)
+    document.addEventListener('contextmenu', e => e.preventDefault());
     const enterL = document.getElementById("enterLink");
     if (enterL) {
         enterL.addEventListener("click", e => {
@@ -393,69 +366,36 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    /* 4. NEWSLETTER */
-    const form = document.getElementById('newsletterForm');
-    const status = document.getElementById('status');
-    if (form && status) {
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            status.innerText = "Invio...";
-            fetch('https://script.google.com/macros/s/AKfycbxWdZhGIQlnkWENzjOEuyv4TbKESFr79eyYfCz4XYHlIMXGZiFKwi7ZxmtbayJJcpjX/exec', {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(form))
-            })
-            .then(r => r.text()).then(t => {
-                if(t === "OK") { status.innerText = "Grazie! Sei iscritto."; form.reset(); }
-                else { status.innerText = "Email non valida."; }
-            })
-            .catch(() => { status.innerText = "Errore, riprova."; });
-        });
-    }
-
-    /* 5. CAROSELLO 42 */
+    // 5. CAROSELLO 42
     const car = document.querySelector(".carosello42");
     if (car) {
-        const slides = car.querySelectorAll(".slide42");
-        const dotsC = car.querySelector(".navDots42");
-        const aL = car.querySelector(".arrow42-left");
-        const aR = car.querySelector(".arrow42-right");
+        const slides = car.querySelectorAll(".slide42"), dotsC = car.querySelector(".navDots42");
         let cur = 0;
-
-        if (slides.length > 0) {
-            // Forza la prima slide visibile
-            slides.forEach((s, i) => {
-                s.classList.toggle("attiva42", i === 0);
-            });
-
-            if (slides.length > 1) {
-                if (dotsC) {
-                    dotsC.innerHTML = ""; // Pulisce duplicati
-                    slides.forEach((_, i) => {
-                        const d = document.createElement("div");
-                        d.className = "dot42" + (i === 0 ? " activeDot42" : "");
-                        d.onclick = () => showS(i);
-                        dotsC.appendChild(d);
-                    });
-                }
-
-                function showS(n) {
-                    const dots = car.querySelectorAll(".dot42");
-                    if (n < 0) n = slides.length - 1;
-                    if (n >= slides.length) n = 0;
-                    slides[cur].classList.remove("attiva42");
-                    if(dots[cur]) dots[cur].classList.remove("activeDot42");
-                    slides[n].classList.add("attiva42");
-                    if(dots[n]) dots[n].classList.add("activeDot42");
-                    cur = n;
-                }
-
-                if(aL) aL.onclick = () => showS(cur - 1);
-                if(aR) aR.onclick = () => showS(cur + 1);
-
-                let timer = setInterval(() => showS(cur + 1), 8000);
-                car.onmouseenter = () => clearInterval(timer);
-                car.onmouseleave = () => timer = setInterval(() => showS(cur + 1), 8000);
+        if (slides.length > 1) {
+            if(dotsC) {
+                dotsC.innerHTML = "";
+                slides.forEach((_, i) => {
+                    const d = document.createElement("div");
+                    d.className = "dot42" + (i === 0 ? " activeDot42" : "");
+                    d.onclick = () => showS(i);
+                    dotsC.appendChild(d);
+                });
             }
+            const showS = (n) => {
+                const dots = car.querySelectorAll(".dot42");
+                if (n < 0) n = slides.length - 1; if (n >= slides.length) n = 0;
+                slides[cur].classList.remove("attiva42");
+                if(dots[cur]) dots[cur].classList.remove("activeDot42");
+                slides[n].classList.add("attiva42");
+                if(dots[n]) dots[n].classList.add("activeDot42");
+                cur = n;
+            };
+            let timer = setInterval(() => showS(cur + 1), 8000);
+            car.onmouseenter = () => clearInterval(timer);
+            car.onmouseleave = () => timer = setInterval(() => showS(cur + 1), 8000);
+            const aL = car.querySelector(".arrow42-left"), aR = car.querySelector(".arrow42-right");
+            if(aL) aL.onclick = () => showS(cur - 1);
+            if(aR) aR.onclick = () => showS(cur + 1);
         }
     }
 });
