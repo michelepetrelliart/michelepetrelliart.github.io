@@ -6,54 +6,50 @@
 <title>...</title>
 <style>body { background: #000; margin: 0; }</style>
 
+<script src="//static.getclicky.com/js"></script>
 <script>
-// 1. CARICAMENTO IMMEDIATO CLICKY
-var clicky_site_ids = clicky_site_ids || [];
-clicky_site_ids.push(101499862);
-(function() {
-    var s = document.createElement('script');
-    s.type = 'text/javascript'; s.async = true;
-    s.src = '//static.getclicky.com/js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
-})();
+    var clicky_site_ids = clicky_site_ids || [];
+    clicky_site_ids.push(101499862);
 
-// 2. LOGICA DI REDIRECT
-(function() {
-    const links = {
-        'patreon': "https://www.patreon.com/c/michelepetrelliart",
-        'substack': "https://recordsnode.substack.com"
-    };
-    const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
-    const urlParams = new URLSearchParams(window.location.search);
-    const destinationKey = urlParams.get('to');
+    (function() {
+        // LINK COMPLETI (Verificali un'ultima volta)
+        const links = {
+            'patreon': "https://www.patreon.com/c/michelepetrelliart",
+            'substack': "https://recordsnode.substack.com"
+        };
+        const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
 
-    function executeRedirect() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const destinationKey = urlParams.get('to');
+
+        // LOGICA DI RICONOSCIMENTO (Italiano vs Straniero)
         const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
         const isItalian = userLangs.some(l => l.toLowerCase().startsWith('it')) ||
                           Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-        let targetUrl = githubHome;
-        let logType = "LOCAL_BOUNCE";
+        let target = githubHome;
+        let label = "RD: LOCAL_BOUNCE";
 
+        // Se lo straniero ha chiesto una destinazione valida
         if (destinationKey && links[destinationKey] && !isItalian) {
-            targetUrl = links[destinationKey];
-            logType = "INT_ACCESS_" + destinationKey.toUpperCase();
+            target = links[destinationKey];
+            label = "RD: INT_ACCESS_" + destinationKey.toUpperCase();
         }
 
-        // TRACCIAMENTO ATTIVO
+        // ESECUZIONE
         if (window.clicky) {
-            clicky.log(window.location.href, logType, "click");
-            // Aspettiamo 500ms per dare tempo a Clicky di inviare il pacchetto dati
-            setTimeout(() => { window.location.replace(targetUrl); }, 500);
-        } else {
-            // Se Clicky è bloccato da AdBlock, reindirizziamo comunque dopo un breve attesa
-            setTimeout(() => { window.location.replace(targetUrl); }, 800);
-        }
-    }
+            // Segnaliamo a Clicky dove stiamo mandando l'utente
+            clicky.log(window.location.href, label, "click");
 
-    // Avviamo la logica dopo un minimo ritardo per far caricare Clicky
-    window.onload = executeRedirect;
-})();
+            // 400ms: lo sfarfallamento è minimo, ma il dato ha il tempo di partire
+            setTimeout(function() {
+                window.location.replace(target);
+            }, 400);
+        } else {
+            // Se Clicky è bloccato (es. da un firewall), via subito senza attendere
+            window.location.replace(target);
+        }
+    })();
 </script>
 </head>
 <body></body>
