@@ -6,50 +6,28 @@
 <title>...</title>
 <style>body { background: #000; margin: 0; }</style>
 
-<script src="//static.getclicky.com/js"></script>
+<script async src="//static.getclicky.com/101499862.js"></script>
+
 <script>
-    var clicky_site_ids = clicky_site_ids || [];
-    clicky_site_ids.push(101499862);
+(function() {
+    const links = {
+        'patreon': "https://www.patreon.com/c/michelepetrelliart",
+        'substack': "https://recordsnode.substack.com"
+    };
+    const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
+    const urlParams = new URLSearchParams(window.location.search);
+    const to = urlParams.get('to');
 
-    (function() {
-        // LINK COMPLETI (Verificali un'ultima volta)
-        const links = {
-            'patreon': "https://www.patreon.com/c/michelepetrelliart",
-            'substack': "https://recordsnode.substack.com"
-        };
-        const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
+    const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
+                      Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const destinationKey = urlParams.get('to');
-
-        // LOGICA DI RICONOSCIMENTO (Italiano vs Straniero)
-        const userLangs = navigator.languages || [navigator.language || navigator.userLanguage];
-        const isItalian = userLangs.some(l => l.toLowerCase().startsWith('it')) ||
-                          Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
-
-        let target = githubHome;
-        let label = "RD: LOCAL_BOUNCE";
-
-        // Se lo straniero ha chiesto una destinazione valida
-        if (destinationKey && links[destinationKey] && !isItalian) {
-            target = links[destinationKey];
-            label = "RD: INT_ACCESS_" + destinationKey.toUpperCase();
-        }
-
-        // ESECUZIONE
-        if (window.clicky) {
-            // Segnaliamo a Clicky dove stiamo mandando l'utente
-            clicky.log(window.location.href, label, "click");
-
-            // 400ms: lo sfarfallamento è minimo, ma il dato ha il tempo di partire
-            setTimeout(function() {
-                window.location.replace(target);
-            }, 400);
-        } else {
-            // Se Clicky è bloccato (es. da un firewall), via subito senza attendere
-            window.location.replace(target);
-        }
-    })();
+    // Redirect immediato: nessuna attesa per i log
+    if (to && links[to] && !isItalian) {
+        window.location.replace(links[to]);
+    } else {
+        window.location.replace(githubHome);
+    }
+})();
 </script>
 </head>
 <body></body>
