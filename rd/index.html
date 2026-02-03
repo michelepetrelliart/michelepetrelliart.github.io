@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <title>...</title>
-<style>body { background: #000; margin: 0; }</style>
+<style>body { background: #000; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }</style>
 
-<script async src="//static.getclicky.com/101499862.js"></script>
+<script src="//static.getclicky.com/js"></script>
+<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101499862);</script>
 
 <script>
 (function() {
@@ -21,14 +22,32 @@
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-    // Redirect immediato: nessuna attesa per i log
+    let target = githubHome;
+    let label = "RD: LOCAL_BOUNCE";
+
     if (to && links[to] && !isItalian) {
-        window.location.replace(links[to]);
-    } else {
-        window.location.replace(githubHome);
+        target = links[to];
+        label = "RD: INT_ACCESS_" + to.toUpperCase();
     }
+
+    // Funzione di test con ritardo "eterno"
+    function finalTest() {
+        if (window.clicky) {
+            clicky.log(window.location.href, label, "click");
+            console.log("Log inviato: " + label);
+        }
+
+        // 2 secondi di attesa
+        setTimeout(function() {
+            window.location.replace(target);
+        }, 2000);
+    }
+
+    window.onload = finalTest;
 })();
 </script>
 </head>
-<body></body>
+<body>
+    <div style="color: #333; font-family: sans-serif; font-size: 12px;">Redirecting...</div>
+</body>
 </html>
