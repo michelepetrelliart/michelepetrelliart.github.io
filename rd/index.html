@@ -18,6 +18,7 @@
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
     const urlParams = new URLSearchParams(window.location.search);
     const to = urlParams.get('to');
+    const ref = urlParams.get('ref'); // Recupera il referrer (es. instagram, salsiccia, bio)
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
@@ -25,15 +26,21 @@
     let target = githubHome;
     let label = "RD_" + (to ? to.toUpperCase() : "HOME");
 
+    // Costruzione della label con referrer, se presente
+    if (ref) {
+        label += "_" + ref.toUpperCase();
+    }
+
     if (to && links[to] && !isItalian) {
         target = links[to];
         label = "RD_INT_" + to.toUpperCase();
+        if (ref) { label += "_" + ref.toUpperCase(); }
     } else if (isItalian) {
         label = "RD_ITALY_BOUNCE";
+        if (ref) { label += "_" + ref.toUpperCase(); }
     }
 
     function finalTest() {
-        // Metodo Beacon: invia il dato in modo asincrono e "leggero"
         if (navigator.sendBeacon) {
             const beaconUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
                               encodeURIComponent(window.location.href) + "&title=" + encodeURIComponent(label);
@@ -42,7 +49,6 @@
             clicky.log(window.location.href, label, "click");
         }
 
-        // 800ms: abbastanza veloce da non infastidire, abbastanza lungo per il beacon
         setTimeout(function() {
             window.location.replace(target);
         }, 400);
