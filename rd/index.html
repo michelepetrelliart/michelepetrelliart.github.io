@@ -11,33 +11,25 @@
 
 <script>
 (function() {
-    const links = {
-        'patreon': "https://www.patreon.com/c/michelepetrelliart",
-        'substack': "https://recordsnode.substack.com"
-    };
+    // Destinazione primaria impostata su Patreon
+    const patreonLink = "https://www.patreon.com/c/michelepetrelliart";
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
+
     const urlParams = new URLSearchParams(window.location.search);
-    const to = urlParams.get('to');
-    const ref = urlParams.get('ref'); // Recupera il referrer (es. instagram, salsiccia, bio)
+    const ref = urlParams.get('ref');
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-    let target = githubHome;
-    let label = "RD_" + (to ? to.toUpperCase() : "HOME");
+    // Logica di default: se è italiano va a githubHome, altrimenti a Patreon
+    let target = isItalian ? githubHome : patreonLink;
 
-    // Costruzione della label con referrer, se presente
+    // Costruzione Label
+    let label = isItalian ? "RD_ITALY_BOUNCE" : "RD_INT_PATREON";
+
+    // Se è presente un referrer (es. rd/?ref=instabio), lo aggiunge alla label
     if (ref) {
         label += "_" + ref.toUpperCase();
-    }
-
-    if (to && links[to] && !isItalian) {
-        target = links[to];
-        label = "RD_INT_" + to.toUpperCase();
-        if (ref) { label += "_" + ref.toUpperCase(); }
-    } else if (isItalian) {
-        label = "RD_ITALY_BOUNCE";
-        if (ref) { label += "_" + ref.toUpperCase(); }
     }
 
     function finalTest() {
