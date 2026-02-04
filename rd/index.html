@@ -11,25 +11,36 @@
 
 <script>
 (function() {
-    // Destinazione primaria impostata su Patreon
-    const patreonLink = "https://www.patreon.com/c/michelepetrelliart";
+    const links = {
+        'patreon': "https://www.patreon.com/c/michelepetrelliart",
+        'substack': "https://recordsnode.substack.com"
+    };
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
 
     const urlParams = new URLSearchParams(window.location.search);
+
+    // Se 'to' è vuoto, forziamo 'patreon' come destinazione di default
+    let to = urlParams.get('to') || 'patreon';
     const ref = urlParams.get('ref');
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-    // Logica di default: se è italiano va a githubHome, altrimenti a Patreon
-    let target = isItalian ? githubHome : patreonLink;
+    let target = githubHome;
+    let label = "RD_" + to.toUpperCase();
 
-    // Costruzione Label
-    let label = isItalian ? "RD_ITALY_BOUNCE" : "RD_INT_PATREON";
-
-    // Se è presente un referrer (es. rd/?ref=instabio), lo aggiunge alla label
+    // Costruzione della label come piace a Clicky
     if (ref) {
         label += "_" + ref.toUpperCase();
+    }
+
+    if (links[to] && !isItalian) {
+        target = links[to];
+        label = "RD_INT_" + to.toUpperCase();
+        if (ref) { label += "_" + ref.toUpperCase(); }
+    } else if (isItalian) {
+        label = "RD_ITALY_BOUNCE";
+        if (ref) { label += "_" + ref.toUpperCase(); }
     }
 
     function finalTest() {
