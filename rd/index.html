@@ -16,16 +16,18 @@
         'substack': "https://recordsnode.substack.com"
     };
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
-    const urlParams = new URLSearchParams(window.location.search);
 
+    // 1. LEGGE I PARAMETRI DALL'URL
+    const urlParams = new URLSearchParams(window.location.search);
     const toParam = urlParams.get('to');
-    const ref = urlParams.get('ref');
+    const refParam = urlParams.get('ref'); // Prende xbio, instabio, ecc.
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
     let target, label;
 
+    // 2. LOGICA DI DESTINAZIONE E ETICHETTA BASE
     if (isItalian) {
         target = githubHome;
         label = "RD_ITALY_BOUNCE";
@@ -35,8 +37,10 @@
         label = "RD_INT_" + destination.toUpperCase();
     }
 
-    if (ref) {
-        label += "_" + ref.toUpperCase();
+    // 3. AGGIUNTA DINAMICA DEL REFERRER (Il punto cruciale)
+    // Se refParam esiste, lo aggiunge alla label. Altrimenti non aggiunge nulla.
+    if (refParam) {
+        label += "_" + refParam.toUpperCase();
     }
 
     function finalTest() {
@@ -50,7 +54,7 @@
 
         setTimeout(function() {
             window.location.replace(target);
-        }, 400);
+        }, 500); // Mezzo secondo per essere sicuri che Clicky riceva il segnale
     }
 
     window.onload = finalTest;
