@@ -20,7 +20,7 @@
     // 1. LEGGE I PARAMETRI DALL'URL
     const urlParams = new URLSearchParams(window.location.search);
     const toParam = urlParams.get('to');
-    const refParam = urlParams.get('ref'); // Prende xbio, instabio, ecc.
+    const refParam = urlParams.get('ref');
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
@@ -37,24 +37,32 @@
         label = "RD_INT_" + destination.toUpperCase();
     }
 
-    // 3. AGGIUNTA DINAMICA DEL REFERRER (Il punto cruciale)
-    // Se refParam esiste, lo aggiunge alla label. Altrimenti non aggiunge nulla.
+    // 3. AGGIUNTA DINAMICA ALLA LABEL
     if (refParam) {
         label += "_" + refParam.toUpperCase();
     }
 
     function finalTest() {
+        const currentUrl = window.location.href;
+
+        // Creiamo un finto referrer basato sul parametro ref per popolare il campo a destra
+        // Se ref=xbio, Clicky vedrà provenienza da xbio.com
+        const fakeReferrer = refParam ? "https://" + refParam.toLowerCase() + ".com" : document.referrer;
+
         if (navigator.sendBeacon) {
+            // Aggiungiamo il parametro &ref= alla chiamata beacon
             const beaconUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
-                              encodeURIComponent(window.location.href) + "&title=" + encodeURIComponent(label);
+                              encodeURIComponent(currentUrl) +
+                              "&title=" + encodeURIComponent(label) +
+                              "&ref=" + encodeURIComponent(fakeReferrer);
             navigator.sendBeacon(beaconUrl);
         } else if (window.clicky) {
-            clicky.log(window.location.href, label, "click");
+            clicky.log(currentUrl, label, "click");
         }
 
         setTimeout(function() {
             window.location.replace(target);
-        }, 500); // Mezzo secondo per essere sicuri che Clicky riceva il segnale
+        }, 500);
     }
 
     window.onload = finalTest;
@@ -62,6 +70,5 @@
 </script>
 </head>
 <body>
-    <div style="color: #222; font-family: sans-serif; font-size: 11px;">Redirecting...</div>
 </body>
 </html>
