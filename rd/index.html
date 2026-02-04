@@ -16,31 +16,27 @@
         'substack': "https://recordsnode.substack.com"
     };
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
-
     const urlParams = new URLSearchParams(window.location.search);
 
-    // Se 'to' è vuoto, forziamo 'patreon' come destinazione di default
-    let to = urlParams.get('to') || 'patreon';
+    const toParam = urlParams.get('to');
     const ref = urlParams.get('ref');
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
                       Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-    let target = githubHome;
-    let label = "RD_" + to.toUpperCase();
+    let target, label;
 
-    // Costruzione della label come piace a Clicky
-    if (ref) {
-        label += "_" + ref.toUpperCase();
+    if (isItalian) {
+        target = githubHome;
+        label = "RD_ITALY_BOUNCE";
+    } else {
+        const destination = toParam || 'patreon';
+        target = links[destination] || githubHome;
+        label = "RD_INT_" + destination.toUpperCase();
     }
 
-    if (links[to] && !isItalian) {
-        target = links[to];
-        label = "RD_INT_" + to.toUpperCase();
-        if (ref) { label += "_" + ref.toUpperCase(); }
-    } else if (isItalian) {
-        label = "RD_ITALY_BOUNCE";
-        if (ref) { label += "_" + ref.toUpperCase(); }
+    if (ref) {
+        label += "_" + ref.toUpperCase();
     }
 
     function finalTest() {
