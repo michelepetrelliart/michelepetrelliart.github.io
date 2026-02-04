@@ -52,9 +52,9 @@
         if (navigator.sendBeacon) {
             // Aggiungiamo il parametro &ref= alla chiamata beacon
             const beaconUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
-                              encodeURIComponent(currentUrl) +
-                              "&title=" + encodeURIComponent(label) +
-                              "&ref=" + encodeURIComponent(fakeReferrer);
+                  encodeURIComponent("/rd/?to=patreon&ref=" + refParam) +
+                  "&title=" + encodeURIComponent(label) +
+                  "&ref=" + encodeURIComponent("https://" + refParam + ".com");
             navigator.sendBeacon(beaconUrl);
         } else if (window.clicky) {
             clicky.log(currentUrl, label, "click");
