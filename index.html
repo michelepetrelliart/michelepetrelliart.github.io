@@ -48,12 +48,17 @@
         }
     }
 
-        .dsocial {display:flex;position:absolute;flex-wrap: nowrap;margin:unset; padding:5px;background:tranparent;
-  z-index:9;right:15px;top:20px;height: 50px}
+        .dsocial {display:flex;/
+        justify-content: center;
+        align-items: center;
+        /*position:absolute;*/flex-wrap: nowrap;margin:unset;
+        width: fit-content;
+        padding:5px;background:tranparent;
+  z-index:9;/*right:15px;top:20px;*/height: 50px}
 .dsocial img {max-height:38px; width:100%; height:auto;object-fit: cover; filter: none;}
   .dsocial &gt; div {display:flex;padding-left:10px }
 
-  .dbar1 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;/*margin-top:40px; margin-left:20px;position:fixed;top:40px;right:20px;*/font-weight:1000; width:122px;text-align:center;text-decoration:none;
+  .dbar1 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;/*margin-top:40px; margin-left:20px;position:fixed;top:40px;right:20px;*/font-weight:1000; width:122px;text-align:center;text-decoration:none;margin-bottom:40px;
 
   /* Padding: 12px sopra/sotto, 60px destra/sinistra */
   padding: 12px 60px;
@@ -76,10 +81,8 @@
 
   /* Media Query per Desktop (min-width: 1024px) */
 @media screen and (min-width: 1024px) {
- .dsocial  {
- position:fixed;}
  .dbar1 {
-margin-top:40px; margin-left:20px;position:fixed;top:40px;right:20px; padding: 10px;
+margin-left:20px;position:fixed;top:20px;right:20px; padding: 10px;
   }
 
   /* Nascondiamo il tasto centrale basso solo se vogliamo
@@ -235,30 +238,7 @@ h2 {
 
 
 
- <span class='cont-h'>
-  <div class='dsocial'>
 
-     <a href='https://twitter.com/michelepetrelli?utm_source=TWITTER&amp;utm_medium=LINKTREE' target='_blank'>
-    <div class='dsocial2' style='margin-left:15px'>
-        <img alt='' border='0' src='social/twitter-black.jpg' width='40'/>
-   </div>
-</a>
-
-     <a href='https://www.instagram.com/michelepetrelliart/?utm_source=INSTAGRAM&amp;utm_medium=MENU' target='_blank'>
-    <div class='dsocial2' style='margin-left:15px'>
-      <img alt='' border='0' src='social/instagram2.jpg' width='40'/>
-      </div>
-  </a>
-
-
-       <a href='https://t.me/+9oQdG4j5ujc5Yjhk/?utm_source=TELEGRAM&amp;utm_medium=MENU' target='_blank'>
-      <div class='dsocial2' style='margin-left:15px'>
-<img alt='' border='0' src='social/telelgram.jpeg' width='40'/>
-         </div>
- </a>
-
-  </div>
- </span>
 
 
 <!--a href="pages_static/all.html" id="enterLink" aria-label="Enter the site">
@@ -333,7 +313,6 @@ h2 {
 <center><a href="pages_static/all.html" id="enterLink" aria-label="Enter the site">
     <span class='dbar1'>Enter Archive</span>
 </a></center>
-<br/><br/>
 
 <center><!--a class='pgform2' href='https://www.patreon.com/michelepetrelliart?ref=hometpatreonlinkof3' target='_blank'><u>Patreon</u></a> | --><a class='pgform2' href='https://superrare.com/thelastwheel' target='_blank'><u>Superrare</u></a> | <a class='pgform2' href='https://www.inprnt.com/gallery/michelepetrelli/' target='_blank'><u>Prints</u></a>
 </div>
@@ -370,6 +349,30 @@ h2 {
     <div style="text-align: center; margin-top: 25px; padding-bottom:40px;font-family: 'Inter', sans-serif;">
         <a href="pages_static/privacy.html" style="font-size: 11px; color: #000; text-decoration: underline; text-transform: uppercase; letter-spacing: 1px;">Privacy</a>
     </div>
+     <span class='cont-h'>
+ <center><div class='dsocial'>
+
+     <a href='https://twitter.com/michelepetrelli?utm_source=TWITTER&amp;utm_medium=LINKTREE' target='_blank'>
+    <div class='dsocial2' style='margin-left:15px'>
+        <img alt='' border='0' src='social/twitter-black.jpg' width='40'/>
+   </div>
+</a>
+
+     <a href='https://www.instagram.com/michelepetrelliart/?utm_source=INSTAGRAM&amp;utm_medium=MENU' target='_blank'>
+    <div class='dsocial2' style='margin-left:15px'>
+      <img alt='' border='0' src='social/instagram2.jpg' width='40'/>
+      </div>
+  </a>
+
+
+       <a href='https://t.me/+9oQdG4j5ujc5Yjhk/?utm_source=TELEGRAM&amp;utm_medium=MENU' target='_blank'>
+      <div class='dsocial2' style='margin-left:15px'>
+<img alt='' border='0' src='social/telelgram.jpeg' width='40'/>
+         </div>
+ </a>
+
+  </div></center>
+ </span>
 <script>
 /* MOTORE UNIFICATO: LINGUA, COOKIE, CAROSELLO E CLICKY */
 document.addEventListener("DOMContentLoaded", function() {
