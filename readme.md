@@ -8,7 +8,7 @@ This repository is optimized for **web streaming** via GitHub Pages. If you atte
 
 For a better experience, a **pre-configured offline edition** is available. This version is optimized for local browsing, includes higher stability, and is specifically packaged for personal archives:
 
-👉 **Get the Offline Catalog here: [https://archive.org/details/historical-archive-michele-petrelli-art-2026-01-january]**
+👉 **Get the Offline Catalog here: [https://archive.org/details/historical-archive-michele-petrelli-art-2026-02-february]**
 
 ---
 
