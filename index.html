@@ -48,18 +48,43 @@
         }
     }
 
-        .dsocial {display:flex;position:fixed;flex-wrap: nowrap;margin:unset; padding:5px;background:tranparent;
+        .dsocial {display:flex;position:absolute;flex-wrap: nowrap;margin:unset; padding:5px;background:tranparent;
   z-index:9;right:15px;top:20px;height: 50px}
 .dsocial img {max-height:38px; width:100%; height:auto;object-fit: cover; filter: none;}
   .dsocial &gt; div {display:flex;padding-left:10px }
 
-  .dbar1 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;margin-top:40px;margin-left:20px;position:fixed;top:40px;right:20px;font-weight:1000; width:122px;text-align:center;}
+  .dbar1 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;/*margin-top:40px; margin-left:20px;position:fixed;top:40px;right:20px;*/font-weight:1000; width:122px;text-align:center;text-decoration:none;
+
+  /* Padding: 12px sopra/sotto, 60px destra/sinistra */
+  padding: 12px 60px;
+
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 4px; /* Aumentato lo spazio tra lettere per leggibilità */
+
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.4s ease;
+
+  }
   .dbar2 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;margin-top:40px;margin-left:20px;position:fixed;top:85px;right:20px;font-weight:1000; width:142px;text-align:center;}
   .dbar3 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;margin-top:40px;margin-left:20px;position:fixed;top:130px;right:20px;font-weight:1000; width:142px;text-align:center;}
   .dbar4 {font-family: &#39;Julius Sans One&#39;,Times, Times New Roman, Liberation serif;font-size:16px;padding:10px;z-index:9;background:#000;color:#fff;margin-top:40px;margin-left:20px;position:fixed;bottom:25px;right:20px;font-weight:1000; width:142px;text-align:center;}
   .dbar1:hover,.dbar2:hover,.dbar3:hover{filter:invert(100)}
   .dbar1 a{color:#fff; text-decoration: none;}
 
+  /* Media Query per Desktop (min-width: 1024px) */
+@media screen and (min-width: 1024px) {
+ .dsocial  {
+ position:fixed;}
+ .dbar1 {
+margin-top:40px; margin-left:20px;position:fixed;top:40px;right:20px; padding: 10px;
+  }
+
+  /* Nascondiamo il tasto centrale basso solo se vogliamo
+     pulizia assoluta su desktop, o lasciamoli entrambi. */
+}
 
  .carosello42 {
     position: relative;
@@ -72,7 +97,14 @@
 
 @media screen and (max-width: 600px) {
     .carosello42 {
-        margin-top: 150px;
+        margin-top: 100px;/*120*/
+        transform: none;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1023px){
+    .carosello42 {
+        margin-top: 120px;
         transform: none;
     }
 }
@@ -229,9 +261,9 @@ h2 {
  </span>
 
 
-<a href="pages_static/all.html" id="enterLink" aria-label="Enter the site">
+<!--a href="pages_static/all.html" id="enterLink" aria-label="Enter the site">
     <span class='dbar1'>Enter</span>
-</a>
+</a-->
 
 
 
@@ -298,7 +330,10 @@ h2 {
     Visual archive: Paintings, videos and investigative texts. No entertainment.<!-- No tutorials.a href="https://www.patreon.com/michelepetrelliart/membership?ref=JOIN_US" target='_blank'>[ACCESS]</a-->
 </p>
 <br/><br/>
-
+<center><a href="pages_static/all.html" id="enterLink" aria-label="Enter the site">
+    <span class='dbar1'>Enter Archive</span>
+</a></center>
+<br/><br/>
 
 <center><!--a class='pgform2' href='https://www.patreon.com/michelepetrelliart?ref=hometpatreonlinkof3' target='_blank'><u>Patreon</u></a> | --><a class='pgform2' href='https://superrare.com/thelastwheel' target='_blank'><u>Superrare</u></a> | <a class='pgform2' href='https://www.inprnt.com/gallery/michelepetrelli/' target='_blank'><u>Prints</u></a>
 </div>
