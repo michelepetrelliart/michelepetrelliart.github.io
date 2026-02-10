@@ -141,14 +141,6 @@ Effort is not the beginning of liberation, but the confirmation of imprisonment.
         </div>
         <div class="grid-item">
             <div class="img-container">
-                <a href="../img_pages/4207_The_Illusion_of_Choice.html">
-                    <img src="../thumbs/All_works/Figures/4207_The_Illusion_of_Choice_wm.webp" loading="lazy" alt="A man casts dice into the darkness, as if the outcome were his to determine. Beside him, another gazes elsewhere—toward a dimension the gambler cannot">
-                </a>
-            </div>
-            <div class="caption">4207 The Illusion of Choice</div>
-        </div>
-        <div class="grid-item">
-            <div class="img-container">
                 <a href="../img_pages/4206_No_Shipwreck.html">
                     <img src="../thumbs/All_works/Figures/4206_No_Shipwreck_wm.webp" loading="lazy" alt="I endure the chaos. I don’t control it, I reveal it. This disorder, this suffering, this shipwreck are made of the same substance I am made of.">
                 </a>
@@ -3088,7 +3080,6 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = start; i < end; i++) {
             if (items[i]) {
                 items[i].style.display = "flex";
-                // Piccolo delay per l'effetto fade-in
                 setTimeout(() => items[i].classList.add("visible"), 10 * (i - start));
             }
         }
@@ -3098,30 +3089,14 @@ document.addEventListener("DOMContentLoaded", () => {
             button.style.display = "none";
         }
     }
-
-    // Inizializzazione prime 12
     showNext();
-
     button.addEventListener("click", showNext);
 });
 </script>
 
 <style>
-.grid-item {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-}
-.grid-item.visible {
-    opacity: 1;
-}
-</style>
-
-<style>
-.grid-item { display: none; flex-direction: column; align-items: center; }
-.grid-item.visible { display: flex; }
+.grid-item { display: none; flex-direction: column; align-items: center; opacity: 0; transition: opacity 0.6s ease; }
+.grid-item.visible { opacity: 1; display: flex; }
 </style>
 
 <script>
