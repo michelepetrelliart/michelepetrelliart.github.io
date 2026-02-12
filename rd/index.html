@@ -7,7 +7,7 @@
 <style>body { background: #000; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }</style>
 
 <noscript>
-    <meta http-equiv="refresh" content="2;url=https://michelepetrelliart.github.io/pages_static/all.html">
+    <meta http-equiv="refresh" content="0;url=https://michelepetrelliart.github.io/pages_static/all.html">
 </noscript>
 
 <script src="//static.getclicky.com/js"></script>
@@ -22,9 +22,9 @@
     };
     const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
 
-    // 1. LEGGE I PARAMETRI DALL'URL
     const urlParams = new URLSearchParams(window.location.search);
-    const toParam = urlParams.get('to');
+    let toParam = urlParams.get('to');
+    if (toParam) toParam = toParam.toLowerCase();
     const refParam = urlParams.get('ref');
 
     const isItalian = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
@@ -32,42 +32,44 @@
 
     let target, label;
 
-    // 2. LOGICA DI DESTINAZIONE E ETICHETTA BASE
-    if (isItalian) {
+    // Se esiste un parametro "to" valido, lo usiamo a prescindere dalla lingua
+    if (toParam && links[toParam]) {
+        target = links[toParam];
+        label = "RD_INT_" + toParam.toUpperCase();
+    } else if (isItalian) {
         target = githubHome;
         label = "RD_ITALY_BOUNCE";
     } else {
-        const destination = toParam || 'patreon';
-        target = links[destination] || githubHome;
-        label = "RD_INT_" + destination.toUpperCase();
+        target = links['patreon'];
+        label = "RD_INT_PATREON";
     }
 
-    // 3. AGGIUNTA DINAMICA ALLA LABEL
     if (refParam) {
         label += "_" + refParam.toUpperCase();
     }
 
     function finalTest() {
         const currentUrl = window.location.href;
-
-        // Creiamo un finto referrer basato sul parametro ref per popolare il campo a destra
-        // Se ref=xbio, Clicky vedrà provenienza da xbio.com
         const fakeReferrer = refParam ? "https://" + refParam.toLowerCase() + ".com" : document.referrer;
 
-        if (navigator.sendBeacon) {
-            // Aggiungiamo il parametro &ref= alla chiamata beacon
-            const beaconUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
-                              encodeURIComponent(currentUrl) +
-                              "&title=" + encodeURIComponent(label) +
-                              "&ref=" + encodeURIComponent(fakeReferrer);
-            navigator.sendBeacon(beaconUrl);
-        } else if (window.clicky) {
-            clicky.log(currentUrl, label, "click");
+        try {
+            if (navigator.sendBeacon) {
+                const beaconUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
+                                  encodeURIComponent(currentUrl) +
+                                  "&title=" + encodeURIComponent(label) +
+                                  "&ref=" + encodeURIComponent(fakeReferrer);
+                navigator.sendBeacon(beaconUrl);
+            } else if (window.clicky) {
+                clicky.log(currentUrl, label, "click");
+            }
+        } catch (e) {
+            console.log("Analytics error, proceeding anyway...");
         }
 
+        // Redirect forzato
         setTimeout(function() {
             window.location.replace(target);
-        }, 500);
+        }, 300);
     }
 
     window.onload = finalTest;
