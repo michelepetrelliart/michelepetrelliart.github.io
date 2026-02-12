@@ -1,65 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
-<title>...</title>
-<style>body { background: #000; margin: 0; }</style>
-<noscript><meta http-equiv="refresh" content="0;url=https://michelepetrelliart.github.io/pages_static/all.html"></noscript>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <script>
+        (function() {
+            var links = {
+                'patreon': "https://www.patreon.com/c/michelepetrelliart",
+                'substack': "https://recordsnode.substack.com",
+                'inprnt': "https://www.inprnt.com/gallery/michelepetrelli/"
+            };
+            var githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
+
+            var params = new URLSearchParams(window.location.search);
+            var to = params.get('to');
+            if (to) to = to.toLowerCase();
+
+            var isIT = (navigator.languages || [navigator.language]).some(function(l) {
+                return l.toLowerCase().startsWith('it');
+            }) || Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome'
+               || Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Paris';
+
+            // DECISIONE DI DESTINAZIONE
+            var target = githubHome;
+            if (to && links[to]) {
+                target = links[to];
+            } else if (!isIT) {
+                target = links['patreon'];
+            }
+
+            // REDIRECT IMMEDIATO - Non aspetta nulla
+            window.location.replace(target);
+        })();
+    </script>
 </head>
-<body style="background: #000;">
-
-<script>
-(function() {
-    // 1. Configurazione destinazioni
-    const links = {
-        'patreon': "https://www.patreon.com/c/michelepetrelliart",
-        'substack': "https://recordsnode.substack.com",
-        'inprnt': "https://www.inprnt.com/gallery/michelepetrelli/"
-    };
-    const githubHome = "https://michelepetrelliart.github.io/pages_static/all.html";
-
-    // 2. Analisi parametri URL
-    const params = new URLSearchParams(window.location.search);
-    let to = params.get('to');
-    if (to) to = to.toLowerCase();
-    const ref = params.get('ref');
-
-    // 3. Rilevamento Lingua/Fuso (Incluso Parigi)
-    const isIT = (navigator.languages || [navigator.language]).some(l => l.toLowerCase().startsWith('it')) ||
-                 ["Europe/Rome", "Europe/Paris"].includes(Intl.DateTimeFormat().resolvedOptions().timeZone);
-
-    // 4. Selezione Target e Label per Clicky
-    let target = githubHome;
-    let label = "RD_UNKNOWN";
-
-    if (to && links[to]) {
-        target = links[to];
-        label = "RD_INT_" + to.toUpperCase();
-    } else if (isIT) {
-        target = githubHome;
-        label = "RD_ITALY_BOUNCE";
-    } else {
-        target = links['patreon'];
-        label = "RD_INT_PATREON";
-    }
-
-    if (ref) label += "_" + ref.toUpperCase();
-
-    // 5. Invio dati a Clicky (Beacon) prima del redirect
-    if (navigator.sendBeacon) {
-        const fakeRef = ref ? "https://" + ref.toLowerCase() + ".com" : document.referrer;
-        const bUrl = "https://in.getclicky.com/in.php?site_id=101499862&type=pageview&href=" +
-                     encodeURIComponent(window.location.href) + "&title=" + encodeURIComponent(label) +
-                     "&ref=" + encodeURIComponent(fakeRef);
-        navigator.sendBeacon(bUrl);
-    }
-
-    // 6. Esecuzione Redirect
-    window.location.replace(target);
-})();
-</script>
-
-<script async src="//static.getclicky.com/js"></script>
-</body>
+<body style="background:#000;"></body>
 </html>
