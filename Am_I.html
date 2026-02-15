@@ -1,43 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/x-icon" href="../favicon.ico">
-<meta charset="utf-8">
-<!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
-<title>Michele Petrelli | Stories Visual Narratives</title>
-<meta name="description" content="Visual stories and narrative projects by contemporary artist Michele Petrelli.">
-<meta name="robots" content="index,follow">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Michele Petrelli">
-<link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michele Petrelli | Stories Visual Narratives</title>
+    <meta name="description" content="Visual stories and narrative projects by contemporary artist Michele Petrelli.">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Michele Petrelli">
+    <!--link rel="stylesheet" href="../css/style.css"-->
+    <style>
+        /* Base: Mobile (riempie lo schermo) */
+        pre.ascii-art {
+            background-color: #fff;
+            color: #000;
+            line-height: 1.0;
+            display: block; /* Permette di occupare la larghezza */
+            padding: 10px;
+            margin: 0 auto;
+            border: 1px solid #eee;
+            font-weight: bold;
+            font-family: monospace;
+            /* Forza il testo a non andare a capo per non rompere il disegno */
+            white-space: pre;
+            overflow-x: hidden;
+            /* Unità dinamica: la larghezza del font dipende dallo schermo */
+            font-size: 1.18vw;
+        }
+
+        /* Schermi Desktop (Full HD) */
+        @media (min-width: 1200px) {
+            pre.ascii-art {
+                font-size: 0.85vw; /* Leggermente più grande e definito */
+                max-width: 90%;
+            }
+        }
+
+        /* Schermi 4K */
+        @media (min-width: 2500px) {
+            pre.ascii-art {
+                font-size: 0.9vw;
+                max-width: 80%;
+            }
+        }
+
+        /* Stile Link */
+       .home-link {
+    font-family: 'Courier New', Courier, monospace; /* Una sola volta */
+    font-size: 24px;
+    color: #000;
+    text-decoration: none;
+    font-weight: normal;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #000;
+    display: inline-block;
+    margin-top: 20px;
+}
+        .home-link:hover {
+        background-color: #000;
+        color: #fff;
+    }
+    </style>
 </head>
 <body>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
         var clickyScript = document.createElement("script");
         clickyScript.src = "https://static.getclicky.com/101499862.js";
         document.body.appendChild(clickyScript);
-
-        // Anonimizzazione dell'IP
         window.clicky = window.clicky || {};
-        window.clicky.anon = 1; // anonimizza IP
-    }, 2000); // attende 2 secondi prima di caricare Clicky
+        window.clicky.anon = 1;
+    }, 2000);
 });
 </script>
-<noscript>
-    <p><img alt="Clicky" height="1" width="1" src="https://in.getclicky.com/101499862ns.gif"/></p>
-</noscript>
+
 <div align="center">
-<pre style="background-color: #fff; color: #000; line-height: 1.0; display: inline-block; padding: 20px; border: 1px solid #eee; font-size: 10px; font-weight: bold;">
+<pre class="ascii-art">
 @@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%##%%%######%#####%%%%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%#########%%%%%%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@%%%%%%     %%%#    ##    %%%%%%   %%%%%    %@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@%%%%%%     %%%%     %    %%%%%%   %%%   %   %@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@%%%%%%      %%%          %%%%%%   %%%   %   .@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@%%%%%%:  %   %%%          %%%%%%   %%%%@%%    @@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@%%%%%%%   %   %%%          %%%%%%   %%%       %@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@%%%%%%@       %%%        * %%%%%%   %%%   %@%@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@%%%%%%%   %   %%%          %%%%%%   %%%%%   %@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@%%%%%%@       %%%          %%%%%%   %%%%@%@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@%%%%%%%   %    %%   %  %   %%%%%%   %%@   @@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@%%%%%%%@%@@%%%%@%%@@%%@%%@%%%%@%@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@%%%%@%%%%@%%@@@@%%%%%%%%%%%@%%@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -92,20 +142,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <br>
 
-<a href="https://michelepetrelliart.github.io/" style="font-size: 24px; font-family: monospace; color: #000; text-decoration: none; font-weight: bold; background-color: #fff; padding: 15px; border: 2px solid #000; display: inline-block;">
-Go to: my Home
+<!--a href="https://michelepetrelliart.github.io/" class="home-link">
+EXIT_TO_ROOT
+</a-->
+<div class="cont-h">
+<a href="https://michelepetrelliart.github.io/" class="home-link">
+EXIT_TO_RECORDS_NODE
 </a>
 </div>
-<script>
-// Disabilita il menu contestuale (tasto destro)
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
+</div>
 
-// Disabilita il drag and drop
-document.addEventListener('dragstart', function(e) {
-    e.preventDefault();
-});
+<script>
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('dragstart', function(e) { e.preventDefault(); });
 </script>
+<script type='text/javascript'>
+document.addEventListener("DOMContentLoaded",function(){const e=navigator.languages||[navigator.language||navigator.userLanguage],t=e.some(l=>l.startsWith("it")),z=Intl.DateTimeFormat().resolvedOptions().timeZone==="Europe/Rome",n=new URLSearchParams(window.location.search).get("fromX");if(!(t||z)&&n==="1")localStorage.setItem("visitedFromX","1");const o=localStorage.getItem("visitedFromX"),i=document.querySelectorAll(".cont-t"),s=document.querySelectorAll(".cont-h"),r=document.querySelectorAll(".cont-it");if(t||z){r.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none");i.forEach(a=>a.style.display="none")}else{if(!o){s.forEach(a=>a.style.display="block");i.forEach(a=>a.style.display="none")}else{i.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none")}r.forEach(a=>a.style.display="none")}});</script>
 </body>
 </html>
