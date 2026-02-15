@@ -10,59 +10,58 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Michele Petrelli">
     <!--link rel="stylesheet" href="../css/style.css"-->
-    <style>
-        /* Base: Mobile (riempie lo schermo) */
-        pre.ascii-art {
-            background-color: #fff;
-            color: #000;
-            line-height: 1.0;
-            display: block; /* Permette di occupare la larghezza */
-            padding: 10px;
-            margin: 0 auto;
-            border: 1px solid #eee;
-            font-weight: bold;
-            font-family: monospace;
-            /* Forza il testo a non andare a capo per non rompere il disegno */
-            white-space: pre;
-            overflow-x: hidden;
-            /* Unità dinamica: la larghezza del font dipende dallo schermo */
-            font-size: 1.18vw;
-        }
-
-        /* Schermi Desktop (Full HD) */
-        @media (min-width: 1200px) {
-            pre.ascii-art {
-                font-size: 0.85vw; /* Leggermente più grande e definito */
-                max-width: 90%;
-            }
-        }
-
-        /* Schermi 4K */
-        @media (min-width: 2500px) {
-            pre.ascii-art {
-                font-size: 0.9vw;
-                max-width: 80%;
-            }
-        }
-
-        /* Stile Link */
-       .home-link {
-    font-family: 'Courier New', Courier, monospace; /* Una sola volta */
-    font-size: 24px;
-    color: #000;
-    text-decoration: none;
-    font-weight: normal;
-    background-color: #fff;
-    padding: 15px;
-    border: 1px solid #000;
-    display: inline-block;
-    margin-top: 20px;
-}
-        .home-link:hover {
-        background-color: #000;
-        color: #fff;
+<style>
+    /* Base: Mobile */
+    pre.ascii-art {
+        background-color: #fff;
+        color: #000;
+        line-height: 1.0;
+        display: block;
+        padding: 10px;
+        margin: 0 auto;
+        font-weight: bold;
+        font-family: monospace;
+        white-space: pre;
+        overflow-x: hidden;
+        font-size: 1.18vw;
     }
-    </style>
+
+    /* Schermi Desktop */
+    @media (min-width: 1200px) {
+        pre.ascii-art {
+            font-size: 0.85vw;
+            max-width: 90%;
+        }
+    }
+
+    /* Layout Testo RNDD a tre colonne */
+ .cont-h {
+            width: 100%;
+            text-align: center; /* Centra orizzontalmente tutto ciò che è all'interno */
+            margin-top: 30px;
+        }
+
+        .text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            color: #000;
+            text-align: left; /* Il testo dentro le colonne resta a sinistra */
+            display: inline-block; /* Fondamentale: il blocco si stringe attorno alle colonne */
+            column-count: 3;
+            column-gap: 40px; /* Spazio tra le colonne */
+            line-height: 1.6;
+            text-transform: uppercase;
+            max-width: 90%; /* Impedisce che il testo tocchi i bordi dello schermo */
+        }
+
+        /* Responsive per mobile: se lo schermo è piccolo, le colonne diventano una sola */
+        @media (max-width: 600px) {
+            .text {
+                column-count: 1;
+                text-align: center;
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -139,17 +138,29 @@ document.addEventListener("DOMContentLoaded", function () {
 @@@@@@@@@@@@@#@@%%@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@%%@@@@@@@@@
 @@@@@@@@@@@@@@@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@
 </pre>
-
-<br>
+</div>
 
 <!--a href="https://michelepetrelliart.github.io/" class="home-link">
 EXIT_TO_ROOT
 </a-->
 <div class="cont-h">
-<a href="https://michelepetrelliart.github.io/" class="home-link">
-EXIT_TO_RECORDS_NODE
-</a>
-</div>
+    <div class="text">
+        [RNDD_PROTOCOL_ACTIVE]<br/>
+        [MATRIX_FEED_ESTABLISHED]<br/>
+        [ANNULMENT_IN_PROGRESS_]<br/>
+        NODE_4196::NULL_STATE<br/>
+        SIGNAL_ORIGIN: ZEISS_OPTICS<br/>
+        HEX_ALLOC: 0x00FF12<br/>
+        DE_SYNC_COMPLETE: 100%<br/>
+        MATRIX_LOCK::STABLE<br/>
+        OVERWRITE_SEQ: ACTIVE<br/>
+        HARDWARE_VALIDATION_IN_PROG<br/>
+        NON_DUAL_DETERMINISM_CORE<br/>
+        B_LEVEL_CALIBRATION: CRITICAL<br/>
+        REWRITING_PROT_0.1<br/>
+        SYS_LOG_ENTRY: 2026.02<br/>
+        VOID_RECORDS_SETTING...
+    </div>
 </div>
 
 <script>
