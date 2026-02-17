@@ -23,6 +23,78 @@
     </style>
 </head>
 <body>
+<nav>
+ <div class="nav-main">
+  <div class="brand"><a href="/">Michele Petrelli</a></div>
+    <!-- menu verticale hamburger -->
+  <!-- checkbox per menu mobile -->
+  <label class='showMenu' for='showMenu'>&#9776;</label>
+  </div>
+  <input id='showMenu' role='button' type='checkbox'>
+  <ul id='menu'>
+    <li><a href="/">home</a></li>
+    <li><a href="studies.html">studies</a></li>
+    <span class='cont-h'><li><a href="https://superrare.com/thelastwheel" target="blank">superrare</a></li></span>
+    <span class='cont-h'><li><a href="https://recordsnode.substack.com?ref=nav2" target="blank">records-node</a></li></span>
+    <!--span class='cont-h'><li><a href="linktree.html">linktree</a></li></span-->
+    <span class='cont-h'><li><a href="https://www.inprnt.com/gallery/michelepetrelli/" target="blank">art prints</a></li></span>
+    <li><a href="privacy.html">privacy</a></li>
+  </ul>
+<div class="nav-main2">
+  <!-- riga 1 -->
+  <div class="nav-level-1">
+    <a href="all.html" class="all-link">all</a>
+    <a href="curated.html">curated</a>
+    <a href="contacts.html">contacts</a>
+    <a href="about.html">about</a>
+  </div>
+
+  <!-- riga 2 -->
+  <div class="nav-level-2">
+    <a href="figures.html">figures</a>
+    <a href="portraits.html">portraits</a>
+    <a href="pro_archive.html" class="cont-h">[PRO-Archive]</a>
+    <a href="RNDD.html">R.N.D.D.</a>
+    <a href="films.html">films</a>
+  </div>
+</div>
+<!-- Clicky Web Analytics (Anonimizzato, GDPR compliant) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var clickyScript = document.createElement("script");
+        clickyScript.src = "https://static.getclicky.com/101499862.js";
+        document.body.appendChild(clickyScript);
+
+        // Anonimizzazione dell'IP
+        window.clicky = window.clicky || {};
+        window.clicky.anon = 1; // anonimizza IP
+    }, 2000); // attende 2 secondi prima di caricare Clicky
+});
+</script>
+<noscript>
+    <p><img alt="Clicky" height="1" width="1" src="https://in.getclicky.com/101499862ns.gif"/></p>
+</noscript>
+<!-- Sottolinea pagina attiva -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Prendi il nome del file corrente
+    const path = window.location.pathname;
+    const fileName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
+
+    // Seleziona tutti i link dentro .nav-main2
+    const links = document.querySelectorAll(".nav-main2 a");
+
+    links.forEach(link => {
+        // Confronta href con file corrente (solo nome del file)
+        const href = link.getAttribute("href").toLowerCase();
+        if (href === fileName) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+</nav>
     <script>
         // Redirect via JavaScript come backup
         window.location.href = "pro_archive.html";
