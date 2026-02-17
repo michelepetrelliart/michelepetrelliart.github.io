@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+(function() {
+    const isItalian = navigator.language.startsWith('it');
+    const isRomeTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
+    if (isItalian || isRomeTimezone) {
+        window.location.replace("../index.html");
+    }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>PRO-ARCHIVE | Michele Petrelli</title>
@@ -467,15 +476,15 @@ document.addEventListener("DOMContentLoaded", () => {
 .img-container { position: relative; width: 100%; }
 .reserved-badge {
     position: absolute;
-    top: 120px;
-    right: 40px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    top: 40px;
+    left: 20px;
+    background: #fff;
+    color: #000;
     padding: 4px 8px;
     font-size: 12px;
+    font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border: 1px solid rgba(255,255,255,0.2);
     z-index: 5;
     pointer-events: none;
 }
