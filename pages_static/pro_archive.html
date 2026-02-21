@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<style>
+#ambient-slideshow {
+    margin-top: 150px;
+    width: 100dvw;
+    aspect-ratio: 16 / 4;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+</style>
 <script>
 (function() {
     const isItalian = navigator.language.startsWith('it');
@@ -90,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </nav>
 
 
-<div class="members-gate" style="margin-top:150px; padding:20px;">
+<div id="ambient-slideshow"></div>
+<div class="members-gate" style="margin-top:0px; padding:20px;">
     <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px;">
         <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS_PROTOCOL: RESTRICTED ]</p>
 
@@ -517,6 +528,71 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 </style>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.innerWidth < 1200) return;
+
+    const container = document.getElementById("ambient-slideshow");
+    if (!container) return;
+
+    const images = [
+        "../assets/cover/4196.webp",
+        "../assets/cover/4210.webp",
+        "../assets/cover/4201.webp",
+        "../assets/cover/4213.webp",
+        "../assets/cover/4214.webp"
+    ];
+
+    let currentIndex = 0;
+
+    function showNextImage() {
+        if (images.length === 0) return;
+        const imgPath = images[currentIndex];
+        const newImg = new Image();
+        newImg.src = imgPath;
+
+        newImg.onload = function() {
+            newImg.style.position = "absolute";
+            newImg.style.top = "0";
+            newImg.style.left = "0";
+            newImg.style.width = "100%";
+            newImg.style.height = "100%";
+            newImg.style.objectFit = "cover";
+            newImg.style.transition = "opacity 4000ms ease-in-out";
+
+            // LOGICA FOTOGRAMMA INIZIALE
+            if (container.children.length === 0) {
+                // La primissima immagine parte già visibile (niente fade iniziale)
+                newImg.style.opacity = 1;
+                container.appendChild(newImg);
+            } else {
+                // Le immagini successive partono invisibili per fare il fade
+                newImg.style.opacity = 0;
+                container.appendChild(newImg);
+
+                // Innesca il fade-in della nuova e il fade-out della vecchia
+                setTimeout(() => {
+                    newImg.style.opacity = 1;
+                }, 50);
+
+                const oldImg = container.children[0];
+                oldImg.style.opacity = 0;
+
+                setTimeout(() => {
+                    if (oldImg.parentNode === container) {
+                        container.removeChild(oldImg);
+                    }
+                }, 4100);
+            }
+
+            currentIndex = (currentIndex + 1) % images.length;
+        };
+    }
+
+    showNextImage();
+    setInterval(showNextImage, 8000);
+});
+</script>
 <script>
 function setupGrid(gridId, btnId, step) {
     const items = Array.from(document.querySelectorAll(`#${gridId} .grid-item`));
