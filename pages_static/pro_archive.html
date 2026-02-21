@@ -4,21 +4,76 @@
 <meta charset="utf-8">
 <style>
 #ambient-slideshow {
-    margin-top: 150px;
+    margin-top: 100px;
     width: 100dvw;
     aspect-ratio: 16 / 4;
     position: relative;
     overflow: hidden;
     background: #fff;
 }
+
+/* FEATURED SECTION */
+.featured-container {
+    max-width: 1400px;
+    margin: 40px auto 60px auto;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+.featured-video-wrapper {
+    flex: 1.8;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+.featured-video-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.featured-info {
+    flex: 1;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+.featured-caption {
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.free-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 5;
+}
+.play-overlay-feature {
+    position: absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+    border-left: 25px solid rgba(255,255,255,0.8); border-top: 15px solid transparent; border-bottom: 15px solid transparent;
+}
+
+@media (max-width: 900px) {
+    .featured-container { flex-direction: column; gap: 20px; }
+    .featured-info { text-align: center; }
+}
 </style>
 <script>
 (function() {
     const isItalian = navigator.language.startsWith('it');
     const isRomeTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
-    if (isItalian || isRomeTimezone) {
-        window.location.replace("all.html");
-    }
+    if (isItalian || isRomeTimezone) { window.location.replace("all.html"); }
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,12 +156,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <div id="ambient-slideshow"></div>
+
 <div class="members-gate" style="margin-top:0px; padding:20px;">
-    <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px;">
+
+    
+        <div class="featured-container">
+            <div class="featured-video-wrapper">
+                <a href="https://drive.google.com/file/d/1YJMKlGlQVIY9D5gEhMqUJtopML7qVvfd/view?usp=drive_link" target="_blank">
+                    <img src="../assets/pro_thumbs/demo.webp" alt="Free demo">
+                    <div class="free-badge">FREE PREVIEW</div>
+                    <div class="play-overlay-feature"></div>
+                </a>
+            </div>
+            <div class="featured-info">
+                <div class="featured-caption"><strong>FEATURED PROCESS:</strong><br>Free demo</div>
+                <p>Full process. Public documentation.</p>
+                <p style="font-size:11px; color:#999; margin-top:10px;">[ STATUS: UNRESTRICTED ]</p>
+            </div>
+        </div>
+        
+
+    <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px; border-top:1px solid #eee;">
         <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS RESTRICTED ]</p>
 
         <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items: stretch;">
-
             <div style="width:320px; border:1px solid #000; padding:25px; display:flex; flex-direction:column; justify-content:space-between;">
                 <div style="text-align:left; margin-bottom:20px;">
                     <strong style="letter-spacing:2px; font-size:18px; text-transform:uppercase;">OBSERVERS</strong>
@@ -140,13 +213,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button type="submit" style="background:#000; color:#fff; padding:15px; border:1px solid #000; cursor:pointer; font-size:18px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; transition:0.3s;">JOIN FOUNDER ($30)</button>
                 </form>
             </div>
-
         </div>
         <p style="font-size:11px; color:#999; margin-top:30px; letter-spacing:1px;">Manual activation via Google Drive within 24 hours.</p>
     </div>
 
     <section class="members-section" style="margin-bottom:80px;">
-        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #000; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
         <div class="grid" id="video-grid">
         <div class="grid-item">
             <div class="img-container">
@@ -432,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <section class="members-section" style="margin-bottom:80px;">
-        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #000; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">ILLUSTRATED_STORIES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">ILLUSTRATED_STORIES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
         <div class="grid" id="stories-grid">
         <div class="grid-item">
             <div class="img-container">
@@ -474,7 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <section class="members-section">
-        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #000; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">TECHNICAL_DOCUMENTS <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">TECHNICAL_DOCUMENTS <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
         <div class="grid" id="doc-grid">
         <div class="grid-item">
             <div class="img-container">
@@ -502,6 +574,8 @@ document.addEventListener("DOMContentLoaded", () => {
 .grid-item { display: none; flex-direction: column; align-items: center; opacity: 0; transition: opacity 0.6s ease; }
 .grid-item.visible { opacity: 1; display: flex; }
 .img-container { position: relative; width: 100%; }
+
+/* POSIZIONE BADGE RIPRISTINATA 120/40 */
 .reserved-badge {
     position: absolute;
     top: 120px;
@@ -517,88 +591,48 @@ document.addEventListener("DOMContentLoaded", () => {
     pointer-events: none;
 }
 .play-overlay { position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); border-left: 15px solid rgba(255,255,255,0.7); border-top: 10px solid transparent; border-bottom: 10px solid transparent; pointer-events:none; }
-.paywall-spartan button:hover { background: #fff !important; color: #000 !important; }
-.caption {
-    padding: 30px 0;
-    text-align: left;
-    width: 100%;
-    line-height: 1.4;
-    color: #333;
-    text-align:center;
-}
+.caption { padding: 30px 0; width: 100%; line-height: 1.4; color: #333; text-align:center; }
 </style>
 
 <script>
+/* LOGICA SLIDESHOW */
 document.addEventListener("DOMContentLoaded", function() {
     if (window.innerWidth < 1200) return;
-
     const container = document.getElementById("ambient-slideshow");
     if (!container) return;
-
-    const images = [
-        "../assets/cover/4196.webp",
-        "../assets/cover/4210.webp",
-        "../assets/cover/4201.webp",
-        "../assets/cover/4213.webp",
-        "../assets/cover/4214.webp"
-    ];
-
+    const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
     let currentIndex = 0;
-
     function showNextImage() {
         if (images.length === 0) return;
         const imgPath = images[currentIndex];
         const newImg = new Image();
         newImg.src = imgPath;
-
         newImg.onload = function() {
             newImg.style.position = "absolute";
-            newImg.style.top = "0";
-            newImg.style.left = "0";
-            newImg.style.width = "100%";
-            newImg.style.height = "100%";
+            newImg.style.top = "0"; newImg.style.left = "0";
+            newImg.style.width = "100%"; newImg.style.height = "100%";
             newImg.style.objectFit = "cover";
             newImg.style.transition = "opacity 4000ms ease-in-out";
-
-            // LOGICA FOTOGRAMMA INIZIALE
             if (container.children.length === 0) {
-                // La primissima immagine parte già visibile (niente fade iniziale)
-                newImg.style.opacity = 1;
-                container.appendChild(newImg);
+                newImg.style.opacity = 1; container.appendChild(newImg);
             } else {
-                // Le immagini successive partono invisibili per fare il fade
-                newImg.style.opacity = 0;
-                container.appendChild(newImg);
-
-                // Innesca il fade-in della nuova e il fade-out della vecchia
-                setTimeout(() => {
-                    newImg.style.opacity = 1;
-                }, 50);
-
+                newImg.style.opacity = 0; container.appendChild(newImg);
+                setTimeout(() => { newImg.style.opacity = 1; }, 50);
                 const oldImg = container.children[0];
                 oldImg.style.opacity = 0;
-
-                setTimeout(() => {
-                    if (oldImg.parentNode === container) {
-                        container.removeChild(oldImg);
-                    }
-                }, 4100);
+                setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
             }
-
             currentIndex = (currentIndex + 1) % images.length;
         };
     }
-
-    showNextImage();
-    setInterval(showNextImage, 8000);
+    showNextImage(); setInterval(showNextImage, 8000);
 });
-</script>
-<script>
+
+/* LOGICA GRIGLIE */
 function setupGrid(gridId, btnId, step) {
     const items = Array.from(document.querySelectorAll(`#${gridId} .grid-item`));
     const button = document.getElementById(btnId);
     let visibleCount = 0;
-
     function showNext() {
         const start = visibleCount;
         const end = visibleCount + step;
@@ -614,7 +648,6 @@ function setupGrid(gridId, btnId, step) {
     if (items.length > 0) { showNext(); button.addEventListener("click", showNext); }
     else { button.style.display = "none"; }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
     setupGrid("video-grid", "loadMoreVideo", 8);
     setupGrid("stories-grid", "loadMoreStories", 4);
