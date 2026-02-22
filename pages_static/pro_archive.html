@@ -3,61 +3,17 @@
 <head>
 <meta charset="utf-8">
 <style>
-#ambient-slideshow {
-    margin-top: 100px;
-    width: 100dvw;
-    aspect-ratio: 16 / 4;
-    position: relative;
-    overflow: hidden;
-    background: #fff;
-}
+#ambient-slideshow { margin-top: 100px; width: 100dvw; aspect-ratio: 16 / 4; position: relative; overflow: hidden; background: #fff; }
 
-/* FEATURED SECTION */
-.featured-container {
-    max-width: 1400px;
-    margin: 40px auto 60px auto;
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    padding: 0 20px;
-}
-.featured-video-wrapper {
-    flex: 1.8;
-    position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: #000;
-}
-.featured-info {
-    flex: 1;
-    text-align: left;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #333;
-}
-.featured-caption {
-    font-size: 18px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-.free-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #fff;
-    color: #000;
-    padding: 5px 10px;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    z-index: 5;
-}
+.featured-container { max-width: 1400px; margin: 40px auto 60px auto; display: flex; gap: 40px; align-items: flex-start; padding: 0 20px; }
+.featured-video-wrapper { flex: 1.8; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.featured-info { flex: 1; text-align: left; font-size: 15px; line-height: 1.5; color: #333; }
+.featured-caption { font-size: 18px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+.free-badge { position: absolute; top: 20px; left: 20px; background: #fff; color: #000; padding: 5px 10px; font-size: 11px; font-weight: bold; letter-spacing: 1px; z-index: 5; }
 
 @media (max-width: 900px) {
     .featured-container { flex-direction: column; gap: 20px; }
     .featured-info { text-align: left; }
-    .featured-info div { margin-left: auto; margin-right: auto; }
 }
 </style>
 <script>
@@ -161,18 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="featured-info">
                 <div class="featured-caption" style="margin-bottom:10px;"><strong>PREVIEW:</strong> Free demo</div>
-                <p style="font-size:13px; color:#666; margin-bottom:30px;">Public documentation. Full process.</p>
-
-                <div style="border-top: 1px solid #eee; padding-top: 20px;">
-                    <p style="font-size:11px; letter-spacing:2px; font-weight:bold; margin-bottom:15px; color:#000;">ARCHIVE_ADMISSION_STATS:</p>
-                    <div style="font-family:monospace; font-size:11px; color:#666; border-left:2px solid #000; padding-left:12px; line-height:1.8; text-transform:uppercase; letter-spacing:1px;">
-                        STATUS: <span style="color:#00ff00;">ACTIVE</span><br>
-                        AVAILABILITY: 12 SEATS REMAINING<br>
-                        SPECIAL: 1 FOUNDER TIER REMAINING<br>
-                        LAST_SYNC: 2026-02-22 12:30 UTC<br>
-                        <span style="font-size:9px; color:#999;">[CAPACITY LIMITED BY SERVER LOAD]</span>
-                    </div>
-                </div>
+                <p style="font-size:13px; color:#666; margin-bottom:10px;">Public documentation. Full process.</p>
+                <p style="font-size:11px; color:#999; letter-spacing:1px; text-transform:uppercase;">[ Access Restricted Area Below ]</p>
             </div>
         </div>
         
@@ -181,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS RESTRICTED ]</p>
 
         <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items: stretch;">
+
             <div style="width:320px; border:1px solid #000; padding:25px; display:flex; flex-direction:column; justify-content:space-between;">
                 <div style="text-align:left; margin-bottom:20px;">
                     <strong style="letter-spacing:2px; font-size:18px; text-transform:uppercase;">OBSERVERS</strong>
@@ -190,6 +137,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         Content updated monthly.
                     </p>
                 </div>
+
+                <div style="background:#f9f9f9; padding:15px; margin-bottom:20px; text-align:left; border-left:3px solid #000;">
+                    <div style="font-family:monospace; font-size:11px; color:#666; text-transform:uppercase; letter-spacing:1px; line-height:1.4;">
+                        STATUS: <span style="color:#00aa00; font-weight:bold;">ACTIVE</span><br>
+                        CAPACITY: <span style="color:#cc0000; font-weight:bold;">12 SEATS LEFT</span><br>
+                        SYNC_REF: 2026-02-22 12:30
+                    </div>
+                </div>
+
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:flex; flex-direction:column; gap:10px;">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="TST4SB4GHKVNJ">
@@ -207,6 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         via private communication.
                     </p>
                 </div>
+
+                <div style="background:#f9f9f9; padding:15px; margin-bottom:20px; text-align:left; border-left:3px solid #cc0000;">
+                    <div style="font-family:monospace; font-size:11px; color:#666; text-transform:uppercase; letter-spacing:1px; line-height:1.4;">
+                        STATUS: <span style="color:#00aa00; font-weight:bold;">ACTIVE</span><br>
+                        CAPACITY: <span style="color:#cc0000; font-weight:bold;">ONLY 1 SEAT LEFT</span><br>
+                        SYNC_REF: 2026-02-22 12:30
+                    </div>
+                </div>
+
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:flex; flex-direction:column; gap:10px;">
                     <input type="hidden" name="cmd" value="_s-xclick">
                     <input type="hidden" name="hosted_button_id" value="ZQ6RNXSF4NRZQ">
@@ -575,27 +540,12 @@ document.addEventListener("DOMContentLoaded", () => {
 .grid-item { display: none; flex-direction: column; align-items: center; opacity: 0; transition: opacity 0.6s ease; }
 .grid-item.visible { opacity: 1; display: flex; }
 .img-container { position: relative; width: 100%; }
-
-.reserved-badge {
-    position: absolute;
-    top: 120px;
-    right: 40px;
-    background: #000;
-    color: #fff;
-    padding: 4px 8px;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    z-index: 5;
-    pointer-events: none;
-}
+.reserved-badge { position: absolute; top: 120px; right: 40px; background: #000; color: #fff; padding: 4px 8px; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; z-index: 5; pointer-events: none; }
 .play-overlay { position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); border-left: 15px solid rgba(255,255,255,0.7); border-top: 10px solid transparent; border-bottom: 10px solid transparent; pointer-events:none; }
 .caption { padding: 30px 0; width: 100%; line-height: 1.4; color: #333; text-align:center; }
 </style>
 
 <script>
-/* FORZA MODALITÀ MOBILE SOLO SE C'È DISCREPANZA HARDWARE */
 document.addEventListener("DOMContentLoaded", function() {
     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const isDesktopUA = !navigator.userAgent.includes('Mobile');
@@ -603,47 +553,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (isTouchDevice && isDesktopUA && isSmallScreen) {
         const overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:999999; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:sans-serif;';
-        overlay.innerHTML = '<div style="max-width:300px;">' +
-            '<p style="font-weight:bold; letter-spacing:1px; color:#000;">BROWSER CONFIGURATION ERROR</p>' +
-            '<p style="font-size:13px; color:#666; margin:20px 0;">You are viewing the desktop version on a mobile device. This prevents Google Drive videos from loading correctly.</p>' +
-            '<p style="font-size:12px; border:1px solid #000; padding:10px; background:#f9f9f9;">Please DISABLE <strong>"Desktop Site"</strong> in your browser settings to access the archive.</p>' +
-            '<button onclick="location.reload()" style="margin-top:20px; background:#000; color:#fff; border:none; padding:10px 20px; cursor:pointer; font-size:12px; letter-spacing:1px;">RETRY</button>' +
-            '</div>';
+        overlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:999999; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;';
+        overlay.innerHTML = '<div style="max-width:300px;"><p style="font-weight:bold;">BROWSER CONFIGURATION ERROR</p><button onclick="location.reload()">RETRY</button></div>';
         document.body.appendChild(overlay);
-        if (typeof clicky !== 'undefined') { clicky.log('#mobile-mode-error', 'Desktop Mode Block', 'click'); }
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    var video = document.getElementById('featured_demo');
-    if (video) {
-        video.onplay = function() {
-            if (typeof clicky !== 'undefined') { clicky.log('#video-play', 'Featured Demo Started', 'click'); }
-        };
     }
 
-    // LOGICA SLIDESHOW
     const container = document.getElementById("ambient-slideshow");
     if (container) {
         const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
         let currentIndex = 0;
         function showNextImage() {
-            if (images.length === 0) return;
             const imgPath = images[currentIndex];
             const newImg = new Image();
             newImg.src = imgPath;
             newImg.onload = function() {
                 newImg.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 4000ms ease-in-out; opacity:0;";
-                if (container.children.length === 0) {
-                    newImg.style.opacity = 1; container.appendChild(newImg);
-                } else {
-                    container.appendChild(newImg);
-                    setTimeout(() => { newImg.style.opacity = 1; }, 50);
-                    const oldImg = container.children[0];
-                    oldImg.style.opacity = 0;
-                    setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
-                }
+                if (container.children.length === 0) { newImg.style.opacity = 1; container.appendChild(newImg); }
+                else { container.appendChild(newImg); setTimeout(() => { newImg.style.opacity = 1; }, 50); const oldImg = container.children[0]; oldImg.style.opacity = 0; setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100); }
                 currentIndex = (currentIndex + 1) % images.length;
             };
         }
@@ -657,21 +583,14 @@ function setupGrid(gridId, btnId, step) {
     if (!button) return;
     let visibleCount = 0;
     function showNext() {
-        const start = visibleCount;
-        const end = visibleCount + step;
-        for (let i = start; i < end; i++) {
-            if (items[i]) {
-                items[i].style.display = "flex";
-                setTimeout(() => items[i].classList.add("visible"), 10 * (i - start));
-            }
+        for (let i = visibleCount; i < visibleCount + step; i++) {
+            if (items[i]) { items[i].style.display = "flex"; setTimeout(() => items[i].classList.add("visible"), 10); }
         }
         visibleCount += step;
         if (visibleCount >= items.length) button.style.display = "none";
     }
     if (items.length > 0) { showNext(); button.addEventListener("click", showNext); }
-    else { button.style.display = "none"; }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
     setupGrid("video-grid", "loadMoreVideo", 8);
     setupGrid("stories-grid", "loadMoreStories", 4);
