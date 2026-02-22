@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         <div class="featured-container">
             <div class="featured-video-wrapper">
-                <video controls playsinline poster="../assets/pro_thumbs/demo.webp" style="width:100%; height:100%; object-fit:cover; display:block;">
+                <video id="featured_demo" controls playsinline poster="../assets/pro_thumbs/demo.webp" style="width:100%; height:100%; object-fit:cover; display:block;">
                     <source src="../assets/videos/featured_process.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -584,6 +584,18 @@ document.addEventListener("DOMContentLoaded", () => {
 </style>
 
 <script>
+// --- TRACCIAMENTO CLICKY PER VIDEO FEATURED ---
+    document.addEventListener("DOMContentLoaded", function() {
+        var video = document.getElementById('featured_demo');
+        if (video) {
+            video.onplay = function() {
+                if (typeof clicky !== 'undefined') {
+                    clicky.log('#video-play', 'Featured Demo Started', 'click');
+                }
+            };
+        }
+    });
+
 /* LOGICA SLIDESHOW */
 document.addEventListener("DOMContentLoaded", function() {
     if (window.innerWidth < 1200) return;
