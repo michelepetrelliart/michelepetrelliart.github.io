@@ -584,87 +584,76 @@ document.addEventListener("DOMContentLoaded", () => {
 </style>
 
 <script>
-/* FORZA MODALITÀ MOBILE SOLO SE C'È DISCREPANZA HARDWARE */
 document.addEventListener("DOMContentLoaded", function() {
+    // 1. RILEVAMENTO DISCREPANZA MOBILE/DESKTOP
     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const isDesktopUA = !navigator.userAgent.includes('Mobile');
     const isSmallScreen = window.innerWidth <= 1024;
 
-    // Scatta solo se è un dispositivo touch con schermo piccolo che finge di essere Desktop
     if (isTouchDevice && isDesktopUA && isSmallScreen) {
         const overlay = document.createElement('div');
         overlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:999999; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:sans-serif;';
-        overlay.innerHTML = `
-            <div style="max-width:300px;">
-                <p style="font-weight:bold; letter-spacing:1px; color:#000;">BROWSER CONFIGURATION ERROR</p>
-                <p style="font-size:13px; color:#666; margin:20px 0;">
-                    You are viewing the desktop version on a mobile device.
-                    This prevents Google Drive videos from loading correctly.
-                </p>
-                <p style="font-size:12px; border:1px solid #000; padding:10px; background:#f9f9f9;">
-                    Please DISABLE <strong>"Desktop Site"</strong> in your browser settings to access the archive.
-                </p>
-                <button onclick="location.reload()" style="margin-top:20px; background:#000; color:#fff; border:none; padding:10px 20px; cursor:pointer; font-size:12px; letter-spacing:1px;">RETRY</button>
-            </div>
-        `;
+        overlay.innerHTML = '<div style="max-width:300px;">' +
+            '<p style="font-weight:bold; letter-spacing:1px; color:#000;">BROWSER CONFIGURATION ERROR</p>' +
+            '<p style="font-size:13px; color:#666; margin:20px 0;">You are viewing the desktop version on a mobile device. This prevents Google Drive videos from loading correctly.</p>' +
+            '<p style="font-size:12px; border:1px solid #000; padding:10px; background:#f9f9f9;">Please DISABLE <strong>"Desktop Site"</strong> in your browser settings to access the archive.</p>' +
+            '<button onclick="location.reload()" style="margin-top:20px; background:#000; color:#fff; border:none; padding:10px 20px; cursor:pointer; font-size:12px; letter-spacing:1px;">RETRY</button>' +
+            '</div>';
         document.body.appendChild(overlay);
-
-        // Tracciamento dell'errore su Clicky
-        if (typeof clicky !== 'undefined') {
-            clicky.log('#mobile-mode-error', 'Desktop Mode Block', 'click');
-        }
+        if (typeof clicky !== 'undefined') { clicky.log('#mobile-mode-error', 'Desktop Mode Block', 'click'); }
+        return; // Blocca il resto se c'è l'errore
     }
-});
-// --- TRACCIAMENTO CLICKY PER VIDEO FEATURED ---
-    document.addEventListener("DOMContentLoaded", function() {
-        var video = document.getElementById('featured_demo');
-        if (video) {
-            video.onplay = function() {
-                if (typeof clicky !== 'undefined') {
-                    clicky.log('#video-play', 'Featured Demo Started', 'click');
-                }
-            };
-        }
-    });
 
-/* LOGICA SLIDESHOW */
-document.addEventListener("DOMContentLoaded", function() {
-    if (window.innerWidth < 1200) return;
-    const container = document.getElementById("ambient-slideshow");
-    if (!container) return;
-    const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
-    let currentIndex = 0;
-    function showNextImage() {
-        if (images.length === 0) return;
-        const imgPath = images[currentIndex];
-        const newImg = new Image();
-        newImg.src = imgPath;
-        newImg.onload = function() {
-            newImg.style.position = "absolute";
-            newImg.style.top = "0"; newImg.style.left = "0";
-            newImg.style.width = "100%"; newImg.style.height = "100%";
-            newImg.style.objectFit = "cover";
-            newImg.style.transition = "opacity 4000ms ease-in-out";
-            if (container.children.length === 0) {
-                newImg.style.opacity = 1; container.appendChild(newImg);
-            } else {
-                newImg.style.opacity = 0; container.appendChild(newImg);
-                setTimeout(() => { newImg.style.opacity = 1; }, 50);
-                const oldImg = container.children[0];
-                oldImg.style.opacity = 0;
-                setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
-            }
-            currentIndex = (currentIndex + 1) % images.length;
+    // 2. TRACCIAMENTO CLICKY VIDEO
+    var video = document.getElementById('featured_demo');
+    if (video) {
+        video.onplay = function() {
+            if (typeof clicky !== 'undefined') { clicky.log('#video-play', 'Featured Demo Started', 'click'); }
         };
     }
-    showNextImage(); setInterval(showNextImage, 8000);
+
+    // 3. LOGICA SLIDESHOW (SOLO DESKTOP)
+    if (window.innerWidth >= 1200) {
+        const container = document.getElementById("ambient-slideshow");
+        if (container) {
+            const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
+            let currentIndex = 0;
+            function showNextImage() {
+                if (images.length === 0) return;
+                const imgPath = images[currentIndex];
+                const newImg = new Image();
+                newImg.src = imgPath;
+                newImg.onload = function() {
+                    newImg.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 4000ms ease-in-out; opacity:0;";
+                    container.appendChild(newImg);
+                    setTimeout(() => { newImg.style.opacity = 1; }, 50);
+                    if (container.children.length > 1) {
+                        const oldImg = container.children[0];
+                        oldImg.style.opacity = 0;
+                        setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
+                    }
+                    currentIndex = (currentIndex + 1) % images.length;
+                };
+            }
+            showNextImage(); setInterval(showNextImage, 8000);
+        }
+    }
+
+    // 4. INIZIALIZZAZIONE GRIGLIE
+    setupGrid("video-grid", "loadMoreVideo", 8);
+    setupGrid("stories-grid", "loadMoreStories", 4);
+    setupGrid("doc-grid", "loadMoreDocs", 8);
 });
 
-/* LOGICA GRIGLIE */
+// La funzione setupGrid deve stare FUORI dal DOMContentLoaded per essere accessibile
 function setupGrid(gridId, btnId, step) {
-    const items = Array.from(document.querySelectorAll(`#${gridId} .grid-item`));
+    const grid = document.getElementById(gridId);
     const button = document.getElementById(btnId);
+    if (!grid || !button) return;
+
+    const items = Array.from(grid.querySelectorAll('.grid-item'));
     let visibleCount = 0;
+
     function showNext() {
         const start = visibleCount;
         const end = visibleCount + step;
@@ -677,14 +666,10 @@ function setupGrid(gridId, btnId, step) {
         visibleCount += step;
         if (visibleCount >= items.length) button.style.display = "none";
     }
+
     if (items.length > 0) { showNext(); button.addEventListener("click", showNext); }
     else { button.style.display = "none"; }
 }
-document.addEventListener("DOMContentLoaded", () => {
-    setupGrid("video-grid", "loadMoreVideo", 8);
-    setupGrid("stories-grid", "loadMoreStories", 4);
-    setupGrid("doc-grid", "loadMoreDocs", 8);
-});
 </script>
 </body>
 </html>
