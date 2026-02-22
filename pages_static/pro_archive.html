@@ -627,38 +627,40 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-/* LOGICA SLIDESHOW */
-document.addEventListener("DOMContentLoaded", function() {
-    if (window.innerWidth < 1200) return;
+// 3. LOGICA SLIDESHOW (RIPRISTINATA LOGICA ORIGINALE)
     const container = document.getElementById("ambient-slideshow");
-    if (!container) return;
-    const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
-    let currentIndex = 0;
-    function showNextImage() {
-        if (images.length === 0) return;
-        const imgPath = images[currentIndex];
-        const newImg = new Image();
-        newImg.src = imgPath;
-        newImg.onload = function() {
-            newImg.style.position = "absolute";
-            newImg.style.top = "0"; newImg.style.left = "0";
-            newImg.style.width = "100%"; newImg.style.height = "100%";
-            newImg.style.objectFit = "cover";
-            newImg.style.transition = "opacity 4000ms ease-in-out";
-            if (container.children.length === 0) {
-                newImg.style.opacity = 1; container.appendChild(newImg);
-            } else {
-                newImg.style.opacity = 0; container.appendChild(newImg);
-                setTimeout(() => { newImg.style.opacity = 1; }, 50);
-                const oldImg = container.children[0];
-                oldImg.style.opacity = 0;
-                setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
-            }
-            currentIndex = (currentIndex + 1) % images.length;
-        };
+    if (container) {
+        const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
+        let currentIndex = 0;
+        function showNextImage() {
+            if (images.length === 0) return;
+            const imgPath = images[currentIndex];
+            const newImg = new Image();
+            newImg.src = imgPath;
+            newImg.onload = function() {
+                newImg.style.position = "absolute";
+                newImg.style.top = "0"; newImg.style.left = "0";
+                newImg.style.width = "100%"; newImg.style.height = "100%";
+                newImg.style.objectFit = "cover";
+                newImg.style.transition = "opacity 4000ms ease-in-out";
+
+                if (container.children.length === 0) {
+                    newImg.style.opacity = 1;
+                    container.appendChild(newImg);
+                } else {
+                    newImg.style.opacity = 0;
+                    container.appendChild(newImg);
+                    setTimeout(() => { newImg.style.opacity = 1; }, 50);
+                    const oldImg = container.children[0];
+                    oldImg.style.opacity = 0;
+                    setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
+                }
+                currentIndex = (currentIndex + 1) % images.length;
+            };
+        }
+        showNextImage();
+        setInterval(showNextImage, 8000);
     }
-    showNextImage(); setInterval(showNextImage, 8000);
-});
 
 /* LOGICA GRIGLIE */
 function setupGrid(gridId, btnId, step) {
