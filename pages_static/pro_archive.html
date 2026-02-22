@@ -26,13 +26,7 @@
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: #f9f9f9;
-}
-.featured-video-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    background: #000;
 }
 .featured-info {
     flex: 1;
@@ -58,10 +52,6 @@
     font-weight: bold;
     letter-spacing: 1px;
     z-index: 5;
-}
-.play-overlay-feature {
-    position: absolute; top:50%; left:50%; transform:translate(-50%, -50%);
-    border-left: 25px solid rgba(255,255,255,0.8); border-top: 15px solid transparent; border-bottom: 15px solid transparent;
 }
 
 @media (max-width: 900px) {
@@ -162,11 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
         <div class="featured-container">
             <div class="featured-video-wrapper">
-                <a href="https://drive.google.com/file/d/1YJMKlGlQVIY9D5gEhMqUJtopML7qVvfd/view?usp=drive_link" target="_blank">
-                    <img src="../assets/pro_thumbs/demo.webp" alt="Free demo">
-                    <div class="free-badge">FREE</div>
-                    <div class="play-overlay-feature"></div>
-                </a>
+                <video controls playsinline poster="../assets/pro_thumbs/demo.webp" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <source src="../assets/videos/featured_process.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="free-badge">FREE</div>
             </div>
             <div class="featured-info">
                 <div class="featured-caption"><strong>FEATURED PROCESS:</strong><br>Free demo</div>
@@ -218,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <section class="members-section" style="margin-bottom:80px;">
-        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES_DESKTOP_ONLY<span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
         <div class="grid" id="video-grid">
         <div class="grid-item">
             <div class="img-container">
@@ -575,7 +565,6 @@ document.addEventListener("DOMContentLoaded", () => {
 .grid-item.visible { opacity: 1; display: flex; }
 .img-container { position: relative; width: 100%; }
 
-/* POSIZIONE BADGE RIPRISTINATA 120/40 */
 .reserved-badge {
     position: absolute;
     top: 120px;
