@@ -558,6 +558,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.appendChild(overlay);
     }
 
+    // --- TRACCIAMENTO VIDEO FEATURE ---
     const demoVideo = document.getElementById("featured_demo");
     if (demoVideo) {
         demoVideo.addEventListener("play", function() {
@@ -578,28 +579,40 @@ document.addEventListener("DOMContentLoaded", function() {
             newImg.onload = function() {
                 newImg.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 4000ms ease-in-out; opacity:0;";
                 if (container.children.length === 0) { newImg.style.opacity = 1; container.appendChild(newImg); }
-                else { container.appendChild(newImg); setTimeout(() => { newImg.style.opacity = 1; }, 50); const oldImg = container.children[0]; oldImg.style.opacity = 0; setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100); }
+                else {
+                    container.appendChild(newImg);
+                    setTimeout(() => { newImg.style.opacity = 1; }, 50);
+                    const oldImg = container.children[0];
+                    oldImg.style.opacity = 0;
+                    setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
+                }
                 currentIndex = (currentIndex + 1) % images.length;
             };
         }
-        showNextImage(); setInterval(showNextImage, 8000);
+        showNextImage();
+        setInterval(showNextImage, 8000);
     }
 });
 
 function setupGrid(gridId, btnId, step) {
+    // NOTA: Qui raddoppiamo le graffe del selettore CSS per Python
     const items = Array.from(document.querySelectorAll(`#${gridId} .grid-item`));
     const button = document.getElementById(btnId);
     if (!button) return;
     let visibleCount = 0;
     function showNext() {
         for (let i = visibleCount; i < visibleCount + step; i++) {
-            if (items[i]) { items[i].style.display = "flex"; setTimeout(() => items[i].classList.add("visible"), 10); }
+            if (items[i]) {
+                items[i].style.display = "flex";
+                setTimeout(() => items[i].classList.add("visible"), 10);
+            }
         }
         visibleCount += step;
         if (visibleCount >= items.length) button.style.display = "none";
     }
     if (items.length > 0) { showNext(); button.addEventListener("click", showNext); }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     setupGrid("video-grid", "loadMoreVideo", 8);
     setupGrid("stories-grid", "loadMoreStories", 4);
