@@ -558,20 +558,12 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.appendChild(overlay);
     }
 
-    # --- LOGICA DI TRACKING PER IL VIDEO ---
     const demoVideo = document.getElementById("featured_demo");
     if (demoVideo) {
         demoVideo.addEventListener("play", function() {
-            let attempts = 0;
-            const trackInterval = setInterval(function() {
-                attempts++;
-                if (typeof clicky !== 'undefined') {
-                    clicky.log('#featured-video-play', 'Featured Video Playback', 'video');
-                    clearInterval(trackInterval);
-                } else if (attempts > 10) {
-                    clearInterval(trackInterval);
-                }
-            }, 500);
+            if (typeof clicky !== 'undefined') {
+                clicky.log('#featured-video-play', 'Featured Video Playback', 'video');
+            }
         }, { once: true });
     }
 
