@@ -558,6 +558,15 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.appendChild(overlay);
     }
 
+    const demoVideo = document.getElementById("featured_demo");
+    if (demoVideo) {
+        demoVideo.addEventListener("play", function() {
+            if (typeof clicky !== 'undefined') {
+                clicky.log('#featured-video-play', 'Featured Video Playback', 'video');
+            }
+        }, { once: true });
+    }
+
     const container = document.getElementById("ambient-slideshow");
     if (container) {
         const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
