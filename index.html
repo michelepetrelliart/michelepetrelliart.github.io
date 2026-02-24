@@ -226,6 +226,41 @@ margin-left:20px;position:fixed;top:20px;right:20px; padding: 15px 30px;margin-b
 h2 {
     font-family: 'Julius Sans One',Times, Times New Roman, serif;
 }
+
+/* Stile Logo Sharp "Incastonato" */
+.sharp-testing-overlay {
+    position: absolute;
+    top: 8px;            /* Più vicino al bordo superiore */
+    left: 10px;          /* Più vicino al bordo sinistro */
+    z-index: 25;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.sharp-testing-overlay img {
+    width: 80px;         /* Ridotto drasticamente */
+    filter: invert(1);
+    margin-bottom: 0.4px;
+}
+
+.sharp-testing-box {
+    font-family: monospace;
+    font-size: 10px;      /* Carattere piccolissimo e tecnico */
+    color: #fff;
+    letter-spacing: 0.5px;
+    background: #000;
+    padding: 2px 6px;    /* Padding ridotto per non farlo sembrare un mattone */
+    white-space: nowrap;
+    border: 1px solid #222; /* Bordo quasi invisibile */
+}
+
+.sharp-testing-box b {
+    font-weight: 900;
+}
+
 </style>
 </head>
 <body>
@@ -247,7 +282,12 @@ h2 {
     MICHELE PETRELLI
 </div>
     <div class='slideBox42'>
-
+<div class="sharp-testing-overlay">
+    <img src="social/sharp-logo.png" alt="Sharp">
+    <div class="sharp-testing-box">
+        <b>SHARP DEVICES EUROPE</b><br/>[ STATUS: IN TESTING ]
+    </div>
+</div>
  <div class='slide42 attiva42'>
         <img class='img42'
              src='slide-show/4210_Biological_Projectile_home.webp'
