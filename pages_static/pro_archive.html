@@ -5,39 +5,104 @@
 <script>
 (function() {
     const url = window.location.href;
-    const isNewLogin = url.indexOf('access=') !== -1;
-    const isAlreadyMember = localStorage.getItem('pro_archive_access') === 'true';
+    const isAccessLink = url.indexOf('access=') !== -1;
 
-    // 1. GESTIONE NUOVO ACCESSO
-    if (isNewLogin) {
-        localStorage.setItem('pro_archive_access', 'true');
-
-        alert("ACCESS AUTHORIZED.\n\nWe are currently verifying your payment. Manual activation for the Master Google Drive Archive will be processed within 24 hours, pending confirmation of the transaction.");
-
+    // Funzione per pulire l'URL
+    function cleanTheURL() {
         setTimeout(() => {
             const cleanURL = window.location.origin + window.location.pathname;
             window.history.replaceState({}, document.title, cleanURL);
         }, 1000);
     }
 
-    // 2. LOGICA "MEMBER ONLY" (Nasconde tutto il blocco paywall)
-    if (isNewLogin || isAlreadyMember) {
+    // --- 1. INTERRUTTORE SEGRETO (Priorità Assoluta) ---
+    let clickCount = 0;
+    document.addEventListener("click", function(e) {
+        if (e.target.id === 'ambient-slideshow' || e.target.closest('#ambient-slideshow')) {
+            clickCount++;
+            if (clickCount === 10) {
+                const currentStatus = localStorage.getItem('pro_archive_access') === 'true';
+                if (currentStatus) {
+                    localStorage.removeItem('pro_archive_access');
+                    localStorage.removeItem('member_alert_done');
+                    alert("DEBUG: Public Mode Activated");
+                } else {
+                    localStorage.setItem('pro_archive_access', 'true');
+                    localStorage.setItem('member_alert_done', 'true');
+                    alert("DEBUG: Member Mode Activated");
+                }
+                location.reload();
+            }
+            setTimeout(() => { clickCount = 0; }, 5000);
+        }
+    });
+
+    // --- 2. GESTIONE ACCESSO DA LINK ---
+    if (isAccessLink) {
+        localStorage.setItem('pro_archive_access', 'true');
+        // Se arrivano dal link, puliamo l'URL
+        cleanTheURL();
+    }
+
+    // --- 3. LOGICA VISIVA ---
+    const isMember = localStorage.getItem('pro_archive_access') === 'true';
+    if (isMember) {
+        // Iniezione CSS
         const sheet = document.createElement('style');
         sheet.innerHTML = `
             .reserved-badge, .play-overlay { display: none !important; }
             .paywall-spartan { display: none !important; }
             .grid-item img { opacity: 1 !important; filter: none !important; }
+
+            #access-modal {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(255,255,255,0.98); z-index: 2147483647;
+                display: flex; align-items: center; justify-content: center;
+                font-family: sans-serif; padding: 20px;
+            }
+            .modal-content {
+                max-width: 500px; background: #fff; padding: 40px;
+                border: 3px solid #000; position: relative; text-align: center;
+            }
+            .modal-close {
+                position: absolute; top: 10px; right: 15px;
+                font-size: 30px; cursor: pointer; font-weight: bold;
+            }
+            .verification-box {
+                margin-top: 20px; padding: 15px; border: 1px solid #ddd;
+                background: #f4f4f4; text-align: left; font-size: 14px;
+            }
         `;
         document.head.appendChild(sheet);
+
+        // Visualizzazione Modale (solo se non ancora mostrato)
+        if (isAccessLink && localStorage.getItem('member_alert_done') !== 'true') {
+            window.addEventListener('DOMContentLoaded', () => {
+                const modal = document.createElement('div');
+                modal.id = 'access-modal';
+                modal.innerHTML = '<div class="modal-content">' +
+                    '<div class="modal-close" onclick="document.getElementById(\'access-modal\').remove()">×</div>' +
+                    '<h2>ACCESS AUTHORIZED</h2>' +
+                    '<p>Your browser is now authorized. All restrictions removed.</p>' +
+                    '<div class="verification-box">' +
+                    '<strong>PLEASE NOTE:</strong><br>' +
+                    'Payment verification is in progress. Manual activation for the Master Google Drive Archive will be processed within 24 hours.' +
+                    '<br><br><strong>IMPORTANT:</strong> If you clear your browser data or change device, always use the <u>original access link</u> received from PayPal to restore your status.' +
+                    '</div>' +
+                    '<p class="backup-note">Keep that link safe in your email.</p>' +
+                    '</div>';
+                document.body.appendChild(modal);
+                localStorage.setItem('member_alert_done', 'true');
+            });
+        }
     }
 
-    // 3. LOGICA CLICK (Evidenzia solo il wrapper dei prezzi)
-    document.addEventListener("DOMContentLoaded", function() {
-        if (!isNewLogin && !isAlreadyMember) {
+    // --- 4. LOGICA CLICK NON-MEMBRI ---
+    if (!isMember) {
+        document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll('.grid-item a').forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    // Puntiamo al wrapper specifico dei tier, non a tutto il paywall
                     const target = document.getElementById('pricing-wrapper');
                     if (target) {
                         target.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -46,8 +111,8 @@
                     }
                 });
             });
-        }
-    });
+        });
+    }
 })();
 </script>
 <style>
