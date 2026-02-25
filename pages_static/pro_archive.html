@@ -2,6 +2,54 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+(function() {
+    const url = window.location.href;
+    const isNewLogin = url.indexOf('access=') !== -1;
+    const isAlreadyMember = localStorage.getItem('pro_archive_access') === 'true';
+
+    // 1. SE È UN NUOVO ACCESSO (Link speciale cliccato)
+    if (isNewLogin) {
+        localStorage.setItem('pro_archive_access', 'true');
+
+        // Questo alert appare SOLO questa volta
+        alert("BROWSER AUTHORIZED.\n\nAccess is now active. If you clear your cache or change device, use your member-link again to restore access.");
+
+        // Pulizia URL per tornare alla normalità
+        setTimeout(() => {
+            const cleanURL = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanURL);
+        }, 1000);
+    }
+
+    // 2. LOGICA VISIVA (Per tutti i membri, vecchi e nuovi)
+    if (isNewLogin || isAlreadyMember) {
+        const sheet = document.createElement('style');
+        sheet.innerHTML = `
+            .reserved-badge, .play-overlay, .free-badge { display: none !important; }
+            .grid-item img { opacity: 1 !important; filter: none !important; }
+        `;
+        document.head.appendChild(sheet);
+    }
+
+    // 3. LOGICA CLICK (Solo per i non-membri)
+    document.addEventListener("DOMContentLoaded", function() {
+        if (!isNewLogin && !isAlreadyMember) {
+            document.querySelectorAll('.grid-item a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const wrapper = document.getElementById('pricing-wrapper');
+                    if (wrapper) {
+                        wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        wrapper.style.outline = "6px solid #000";
+                        setTimeout(() => { wrapper.style.outline = "transparent"; }, 2000);
+                    }
+                });
+            });
+        }
+    });
+})();
+</script>
 <style>
 #ambient-slideshow { margin-top: 100px; width: 100dvw; aspect-ratio: 16 / 4; position: relative; overflow: hidden; background: #fff; }
 
@@ -126,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px; border-top:1px solid #eee;">
     <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS RESTRICTED ]</p>
 
-    <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items: stretch;">
+    <div id="pricing-wrapper" style="display:inline-flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items: stretch; padding:10px; transition: outline 0.3s ease;">
 
         <div style="width:320px; border:1px solid #000; padding:25px; display:flex; flex-direction:column; justify-content:space-between;">
             <div style="text-align:left; margin-bottom:20px;">
@@ -272,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </section>
 
     <section class="members-section" style="margin-bottom:80px;">
-        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES<span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES<span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ RAW PROCESS DOCUMENTATION — NO ENTERTAINMENT ]</span></h2>
         <div class="grid" id="video-grid">
         <div class="grid-item">
             <div class="img-container">
@@ -565,7 +613,8 @@ document.addEventListener("DOMContentLoaded", () => {
 .img-container { position: relative; width: 100%; }
 .reserved-badge { position: absolute; top: 120px; right: 40px; background: #000; color: #fff; padding: 4px 8px; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; z-index: 5; pointer-events: none; }
 .play-overlay { position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); border-left: 15px solid rgba(255,255,255,0.7); border-top: 10px solid transparent; border-bottom: 10px solid transparent; pointer-events:none; }
-.caption { padding: 30px 0; width: 100%; line-height: 1.4; color: #333; text-align:center; }
+.caption { padding: 30px 0; width: 100%; line-height: 1.4; color: #333; text-align:center; } body.is-member .reserved-badge,
+body.is-member .play-overlay { display: none !important; visibility: hidden !important; opacity: 0 !important;}
 </style>
 
 <script>
