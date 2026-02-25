@@ -711,6 +711,20 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 
+    // --- NUOVO TRACCIAMENTO CLICK SULLE GRIGLIE (PAYWALL) ---
+    document.addEventListener("click", function(e) {
+        const link = e.target.closest('.grid-item a');
+        if (link && localStorage.getItem('pro_archive_access') !== 'true') {
+            const img = link.querySelector('img');
+            // Prende l'alt dell'immagine o il nome del file se l'alt è vuoto
+            const contentName = img ? (img.alt || img.src.split('/').pop()) : "Unknown Item";
+
+            if (typeof clicky !== 'undefined') {
+                clicky.log('#paywall-click-' + contentName, 'Interesse: ' + contentName, 'click');
+            }
+        }
+    });
+
     const container = document.getElementById("ambient-slideshow");
     if (container) {
         const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
