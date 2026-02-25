@@ -8,41 +8,51 @@
     const isNewLogin = url.indexOf('access=') !== -1;
     const isAlreadyMember = localStorage.getItem('pro_archive_access') === 'true';
 
-    // 1. SE È UN NUOVO ACCESSO (Link speciale cliccato)
+    // 1. GESTIONE NUOVO ACCESSO (L'alert con la nota sulle 24 ore)
     if (isNewLogin) {
         localStorage.setItem('pro_archive_access', 'true');
 
-        // Questo alert appare SOLO questa volta
-        alert("BROWSER AUTHORIZED.\n\nAccess is now active. If you clear your cache or change device, use your member-link again to restore access.");
+        // Messaggio ben evidente con l'istruzione manuale
+        alert("ACCESS GRANTED.\n\nYour browser is now authorized. All 'Reserved' badges are removed.\n\nIMPORTANT: Manual activation for the Master Google Drive Archive will be processed within 24 hours.");
 
-        // Pulizia URL per tornare alla normalità
         setTimeout(() => {
             const cleanURL = window.location.origin + window.location.pathname;
             window.history.replaceState({}, document.title, cleanURL);
         }, 1000);
     }
 
-    // 2. LOGICA VISIVA (Per tutti i membri, vecchi e nuovi)
+    // 2. LOGICA "MEMBER ONLY" (Elimina tutto il superfluo)
     if (isNewLogin || isAlreadyMember) {
         const sheet = document.createElement('style');
         sheet.innerHTML = `
-            .reserved-badge, .play-overlay, .free-badge { display: none !important; }
-            .grid-item img { opacity: 1 !important; filter: none !important; }
+            /* Nascondi i badge sui contenuti */
+            .reserved-badge, .play-overlay {
+                display: none !important;
+            }
+            /* Nascondi l'intera sezione paywall */
+            .paywall-spartan {
+                display: none !important;
+            }
+            /* Ripristina immagini */
+            .grid-item img {
+                opacity: 1 !important;
+                filter: none !important;
+            }
         `;
         document.head.appendChild(sheet);
     }
 
-    // 3. LOGICA CLICK (Solo per i non-membri)
+    // 3. LOGICA CLICK (Solo per chi non ha ancora accesso)
     document.addEventListener("DOMContentLoaded", function() {
         if (!isNewLogin && !isAlreadyMember) {
             document.querySelectorAll('.grid-item a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const wrapper = document.getElementById('pricing-wrapper');
-                    if (wrapper) {
-                        wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        wrapper.style.outline = "6px solid #000";
-                        setTimeout(() => { wrapper.style.outline = "transparent"; }, 2000);
+                    const target = document.querySelector('.paywall-spartan');
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        target.style.outline = "6px solid #000";
+                        setTimeout(() => { target.style.outline = "transparent"; }, 2000);
                     }
                 });
             });
