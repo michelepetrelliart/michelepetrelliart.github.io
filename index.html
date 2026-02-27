@@ -273,7 +273,7 @@ h2 {
 .infra-box {
     font-family: monospace;
     font-size: 8px;
-    line-height: 1.0; /* Ridotto al minimo per compattare le righe */
+    line-height: 0.8; /* Ridotto al minimo per compattare le righe */
     color: #fff;
     background: #000;
     padding: 3px 6px; /* Padding ridotto per un look più asciutto */
@@ -303,6 +303,35 @@ h2 {
     .icon-infra { height: 12px; }
     .infra-box b { font-size: 8.5px; }
     .infra-box { font-size: 7px; padding: 2px 4px; }
+}
+
+/* Ottimizzazione per Schermi 4K / UltraWide */
+@media (min-width: 1921px) {
+    .system-infra-overlay-left, .system-infra-overlay-right {
+        top: 20px;
+        left: 20px;
+        gap: 12px;
+    }
+
+    .system-infra-overlay-right {
+        right: 20px;
+    }
+
+    .icon-infra {
+        height: 25px; /* Raddoppiata */
+        margin-bottom: 5px;
+    }
+
+    .infra-box {
+        font-size: 15px; /* Note tecniche più leggibili */
+        padding: 6px 6px;
+        border-width: 2px;
+    }
+
+    .infra-box b {
+        font-size: 18px; /* Titoli dominanti */
+        letter-spacing: 1px;
+    }
 }
 
 </style>
