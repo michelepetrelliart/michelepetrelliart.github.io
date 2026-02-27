@@ -231,27 +231,34 @@ h2 {
 /* Container Sinistra */
 .system-infra-overlay-left {
     position: absolute;
-    top: 10px;
-    left: 12px;
+    top: 8px;
+    left: 10px;
     z-index: 25;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
     pointer-events: none;
 }
 
 /* Container Destra */
 .system-infra-overlay-right {
     position: absolute;
-    top: 10px;
-    right: 12px;
+    top: 8px;
+    right: 10px;
     z-index: 25;
     pointer-events: none;
 }
 
-/* Gestione Opacità richiesta */
-.opacity-high { opacity: 0.6; } /* Krita e Archive ben presenti */
-.opacity-mid { opacity: 0.4; }  /* Hardware Status più sfumato */
+.opacity-high { opacity: 0.75; }
+.opacity-mid { opacity: 0.4; }
+
+.icon-infra {
+    height: 16px;
+    width: auto;
+    fill: #fff;
+    margin-bottom: 2px;
+    display: block;
+}
 
 .infra-module {
     display: flex;
@@ -263,35 +270,39 @@ h2 {
     align-items: flex-end;
 }
 
-.infra-module img, .infra-module svg {
-    width: 22px; /* Leggermente più grandi per bilanciare l'opacità */
-    filter: invert(1);
-    margin-bottom: 2px;
-}
-
-.infra-module svg { fill: #fff; }
-
 .infra-box {
     font-family: monospace;
     font-size: 8px;
+    line-height: 1.0; /* Ridotto al minimo per compattare le righe */
     color: #fff;
-    letter-spacing: 0.5px;
     background: #000;
-    padding: 2px 6px;
+    padding: 3px 6px; /* Padding ridotto per un look più asciutto */
+    border: 1px solid #222;
     white-space: nowrap;
-    border: 1px solid #333;
 }
 
-/* Lo status hardware: tratteggiato e più sottile */
+/* Ingrandimento titoli senza spazi extra */
+.infra-box b {
+    font-size: 10px;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 0; /* Tolto tutto il padding/margin sotto il titolo */
+    letter-spacing: 0.5px;
+}
+
 .hardware-status {
     border: 1px dashed #444;
-    text-align: right;
-    color: #aaa;
+    color: #999;
 }
 
+/* Ottimizzazione Mobile */
 @media (max-width: 768px) {
-    .opacity-high, .opacity-mid { opacity: 0.5; } /* Uniformi su mobile */
-    .infra-box { font-size: 7px; }
+    .system-infra-overlay-left, .system-infra-overlay-right {
+        top: 5px;
+    }
+    .icon-infra { height: 12px; }
+    .infra-box b { font-size: 8.5px; }
+    .infra-box { font-size: 7px; padding: 2px 4px; }
 }
 
 </style>
@@ -315,26 +326,31 @@ h2 {
     MICHELE PETRELLI
 </div>
     <div class='slideBox42'>
-        <div class="system-infra-overlay-left">
-            <div class="infra-module">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Krita-logo.svg" alt="Krita">
-                <div class="infra-box">[ OFFICIAL WORKFLOW ]</div>
-            </div>
+        <div class="system-infra-overlay-left opacity-high">
+    <div class="infra-module">
+        <svg viewBox="0 0 44 44" class="icon-infra">
+            <path d="M21.2 1.4c-6 1.1-11.4 4.5-15.2 9.6-3.8 5-5.5 11.2-4.9 17.4.7 6.2 3.6 12 8.3 16.1 4.6 4.1 10.7 6.2 16.9 5.8 6.2-.4 12-3.1 16.2-7.6 4.3-4.4 6.6-10.4 6.5-16.6-.1-6.2-2.7-12.1-7.2-16.4C37.3 5.3 31.5 2.4 25.3 1.5c-1.4-.2-2.7-.2-4.1-.1zm.8 3.6c4.9.4 9.5 2.7 12.8 6.3 3.3 3.6 5 8.3 4.7 13.1-.3 4.8-2.3 9.3-5.7 12.6-3.4 3.3-7.9 5.1-12.8 4.9-4.9-.2-9.5-2.2-12.8-5.6-3.3-3.4-5.2-8-5.2-12.9.1-4.9 2.1-9.5 5.7-12.8 3.5-3.4 8.2-5.4 13.3-5.6z"/>
+            <path d="M22.5 11.5c-1.2 0-2.3.5-3.1 1.4-.8.9-1.2 2.1-1.1 3.3.1 1.2.7 2.3 1.6 3.1s2.1 1.2 3.3 1.1c1.2-.1 2.3-.7 3.1-1.6.8-.9 1.2-2.1 1.1-3.3-.1-1.2-.7-2.3-1.6-3.1s-2.1-1.2-3.3-1.1c0 .2 0 .2 0 .2z"/>
+        </svg>
+        <div class="infra-box"><b>KRITA</b><br/>[ OFFICIAL WORKFLOW ]</div>
+    </div>
 
-            <div class="infra-module">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/></svg>
-                <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
-            </div>
-        </div>
+    <div class="infra-module">
+        <svg viewBox="0 0 24 24" class="icon-infra">
+            <path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/>
+        </svg>
+        <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
+    </div>
+</div>
 
-        <div class="system-infra-overlay-right">
-            <div class="infra-module alignment-right">
-                <div class="infra-box hardware-status">
-                    <b>HARDWARE CALIBRATION</b><br/>
-                    [ STATUS: EVALUATION UNDERWAY ]
-                </div>
-            </div>
+<div class="system-infra-overlay-right opacity-mid">
+    <div class="infra-module alignment-right">
+        <div class="infra-box hardware-status">
+            <b>HARDWARE EVALUATION</b><br/>
+            [ STATUS: UNDERWAY ]
         </div>
+    </div>
+</div>
  <div class='slide42 attiva42'>
         <img class='img42'
              src='slide-show/4210_Biological_Projectile_home.webp'
