@@ -227,49 +227,72 @@ h2 {
     font-family: 'Julius Sans One',Times, Times New Roman, serif;
 }
 
-/* Stile Logo Sharp "Incastonato" */
-.sharp-testing-overlay {
+
+/* Container Sinistra */
+.system-infra-overlay-left {
     position: absolute;
-    top: 8px;            /* Più vicino al bordo superiore */
-    left: 10px;          /* Più vicino al bordo sinistro */
+    top: 10px;
+    left: 12px;
     z-index: 25;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 12px;
     pointer-events: none;
-    opacity: 0.3;
 }
 
-.sharp-testing-overlay img {
-    width: 70px;         /* Ridotto drasticamente */
+/* Container Destra */
+.system-infra-overlay-right {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 25;
+    pointer-events: none;
+}
+
+/* Gestione Opacità richiesta */
+.opacity-high { opacity: 0.6; } /* Krita e Archive ben presenti */
+.opacity-mid { opacity: 0.4; }  /* Hardware Status più sfumato */
+
+.infra-module {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.alignment-right {
+    align-items: flex-end;
+}
+
+.infra-module img, .infra-module svg {
+    width: 22px; /* Leggermente più grandi per bilanciare l'opacità */
     filter: invert(1);
-    margin-bottom: 0.4px;
+    margin-bottom: 2px;
 }
 
-.sharp-testing-box {
+.infra-module svg { fill: #fff; }
+
+.infra-box {
     font-family: monospace;
-    font-size: 9px;      /* Carattere piccolissimo e tecnico */
+    font-size: 8px;
     color: #fff;
     letter-spacing: 0.5px;
     background: #000;
-    padding: 2px 6px;    /* Padding ridotto per non farlo sembrare un mattone */
+    padding: 2px 6px;
     white-space: nowrap;
-    border: 1px solid #222; /* Bordo quasi invisibile */
+    border: 1px solid #333;
 }
 
-.sharp-testing-box b {
-    font-weight: 900;
+/* Lo status hardware: tratteggiato e più sottile */
+.hardware-status {
+    border: 1px dashed #444;
+    text-align: right;
+    color: #aaa;
 }
 
 @media (max-width: 768px) {
-    .sharp-testing-overlay img {
-        width: 50px; /* Ancora più piccolo sul telefono */
-    }
-    .sharp-testing-box {
-        font-size: 8px;
-    }
+    .opacity-high, .opacity-mid { opacity: 0.5; } /* Uniformi su mobile */
+    .infra-box { font-size: 7px; }
 }
-
 
 </style>
 </head>
@@ -292,12 +315,26 @@ h2 {
     MICHELE PETRELLI
 </div>
     <div class='slideBox42'>
-<!--div class="sharp-testing-overlay">
-    <img src="social/sharp-logo.png" alt="Sharp">
-    <div class="sharp-testing-box">
-        <b>SHARP DEVICES EUROPE</b><br/>[ STATUS: IN TESTING ]
-    </div>
-</div-->
+        <div class="system-infra-overlay-left">
+            <div class="infra-module">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Krita-logo.svg" alt="Krita">
+                <div class="infra-box">[ OFFICIAL WORKFLOW ]</div>
+            </div>
+
+            <div class="infra-module">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/></svg>
+                <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
+            </div>
+        </div>
+
+        <div class="system-infra-overlay-right">
+            <div class="infra-module alignment-right">
+                <div class="infra-box hardware-status">
+                    <b>HARDWARE CALIBRATION</b><br/>
+                    [ STATUS: EVALUATION UNDERWAY ]
+                </div>
+            </div>
+        </div>
  <div class='slide42 attiva42'>
         <img class='img42'
              src='slide-show/4210_Biological_Projectile_home.webp'
