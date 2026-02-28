@@ -7,7 +7,6 @@
     const url = window.location.href;
     const isAccessLink = url.indexOf('access=') !== -1;
 
-    // Funzione per pulire l'URL
     function cleanTheURL() {
         setTimeout(() => {
             const cleanURL = window.location.origin + window.location.pathname;
@@ -15,7 +14,6 @@
         }, 1000);
     }
 
-    // --- 1. INTERRUTTORE SEGRETO (Priorità Assoluta) ---
     let clickCount = 0;
     document.addEventListener("click", function(e) {
         if (e.target.id === 'ambient-slideshow' || e.target.closest('#ambient-slideshow')) {
@@ -37,17 +35,13 @@
         }
     });
 
-    // --- 2. GESTIONE ACCESSO DA LINK ---
     if (isAccessLink) {
         localStorage.setItem('pro_archive_access', 'true');
-        // Se arrivano dal link, puliamo l'URL
         cleanTheURL();
     }
 
-    // --- 3. LOGICA VISIVA ---
     const isMember = localStorage.getItem('pro_archive_access') === 'true';
     if (isMember) {
-        // Iniezione CSS
         const sheet = document.createElement('style');
         sheet.innerHTML = `
             .reserved-badge, .play-overlay { display: none !important; }
@@ -75,7 +69,6 @@
         `;
         document.head.appendChild(sheet);
 
-        // Visualizzazione Modale (solo se non ancora mostrato)
         if (isAccessLink && localStorage.getItem('member_alert_done') !== 'true') {
             window.addEventListener('DOMContentLoaded', () => {
                 const modal = document.createElement('div');
@@ -97,7 +90,6 @@
         }
     }
 
-    // --- 4. LOGICA CLICK NON-MEMBRI ---
     if (!isMember) {
         document.addEventListener("DOMContentLoaded", () => {
             document.querySelectorAll('.grid-item a').forEach(link => {
@@ -254,23 +246,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <div style="background:#f9f9f9; padding:15px; margin-bottom:20px; text-align:left; border-left:3px solid #000;">
                 <div style="font-family:monospace; font-size:13px; color:#666; text-transform:uppercase; letter-spacing:1px; line-height:1.4;">
-                    STATUS: <span style="color:#00aa00; font-weight:bold;">ACTIVE</span><br>
-                    CURRENT LIMIT: <span style="color:#cc0000; font-weight:bold;">19 SEATS LEFT</span><br>
-                    SYNC_REF: 2026-02-27 10:08
+                    STATUS: <span style="color:#cc0000; font-weight:bold;">LOCKED</span><br>
+                    CURRENT LIMIT: <span style="color:#cc0000; font-weight:bold;">0 SEATS LEFT</span><br>
+                    SYNC_REF: 2026-02-28 08:45
                 </div>
             </div>
 
             
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:flex; flex-direction:column; gap:10px;">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="TST4SB4GHKVNJ">
-                <input type="email" name="os0" required placeholder="GMAIL FOR ACCESS" style="padding:12px; border:1px solid #000; font-size:14px; outline:none;">
-                <button type="submit" style="background:#000; color:#fff; padding:15px; border:1px solid #000; cursor:pointer; font-size:18px; font-weight:bold; letter-spacing:1px; text-transform:uppercase;">JOIN SUPPORTER ($10)</button>
-            </form>
+            <div style="display:flex; flex-direction:column; gap:10px; opacity:0.5;">
+                <div style="padding:12px; border:1px solid #ccc; font-size:11px; background:#f9f9f9; color:#999; text-align:center; font-family:monospace; text-transform:uppercase;">REGISTRATIONS_CLOSED</div>
+                <button disabled style="background:#ccc; color:#888; padding:15px; border:1px solid #ccc; cursor:not-allowed; font-size:18px; font-weight:bold; letter-spacing:1px; text-transform:uppercase;">SUPPORTER SOLD OUT ($10)</button>
+            </div>
 
             <div style="margin-top:15px; padding:10px; border:1px solid #8e734b; background:rgba(142, 115, 75, 0.05); text-align:center;">
                 <span style="font-family:monospace; font-size:15px; color:#8e734b; letter-spacing:1px; text-transform:uppercase; font-weight:bold;">
-                    [ ALL REGISTRATIONS CLOSING IN 1 DAY ]
+                    REGISTRATIONS_LOCKED / NO_SLOTS_AVAILABLE<br/>
+                    RE-OPENING: NOT_SET. <br/>MONITOR THIS_PAGE.
                 </span>
             </div>
         </div>
@@ -290,14 +281,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="font-family:monospace; font-size:13px; color:#666; text-transform:uppercase; letter-spacing:1px; line-height:1.4;">
                     STATUS: <span style="color:#00aa00; font-weight:bold;">ACTIVE</span><br>
                     CURRENT LIMIT: <span style="color:#cc0000; font-weight:bold;">0 SEAT LEFT</span><br>
-                    SYNC_REF: 2026-02-27 10:08
+                    SYNC_REF: 2026-02-28 08:45
                 </div>
             </div>
 
             
             <div style="display:flex; flex-direction:column; gap:10px; opacity:0.5;">
-                <div style="padding:12px; border:1px solid #ccc; font-size:14px; background:#f9f9f9; color:#999; text-align:center; font-family:monospace;">REGISTRATIONS_CLOSED</div>
-                <button disabled style="background:#ccc; color:#888; padding:15px; border:1px solid #ccc; cursor:not-allowed; font-size:18px; font-weight:bold; letter-spacing:1px; text-transform:uppercase;">FOUNDER SOLD OUT</button>
+                <div style="padding:12px; border:1px solid #ccc; font-size:11px; background:#f9f9f9; color:#999; text-align:center; font-family:monospace; text-transform:uppercase;">DM ON IG TO APPLY</div>
+                <button disabled style="background:#ccc; color:#888; padding:15px; border:1px solid #ccc; cursor:not-allowed; font-size:18px; font-weight:bold; letter-spacing:1px; text-transform:uppercase;">FOUNDER SOLD OUT ($100)</button>
             </div>
 
             <div style="margin-top:15px; padding:10px; border:1px solid #8e734b; background:rgba(142, 115, 75, 0.05); text-align:center;">
@@ -684,16 +675,13 @@ Inquiries via Instagram DM or <a href="../pages_static/contacts.html">[Contact P
 .caption { padding: 30px 0; width: 100%; line-height: 1.4; color: #333; text-align:center; } body.is-member .reserved-badge,
 body.is-member .play-overlay { display: none !important; visibility: hidden !important; opacity: 0 !important;}
 .tier-header-img {
-    width: calc(100% + 50px) !important; /* Compensa il padding del box (15px + 15px) */
-    margin-left: -25px !important;      /* Elimina il margine bianco a sinistra */
-    margin-top: -25px !important;       /* Elimina il margine bianco in alto */
+    width: calc(100% + 50px) !important;
+    margin-left: -25px !important;
+    margin-top: -25px !important;
     margin-bottom: 10px !important;
-    height: 120px !important;           /* Altezza fissa (regolabile) */
+    height: 120px !important;
     object-fit: cover;
     display: block;
-
-    /* LA SFUMATURA: */
-    /* Rende l'immagine opaca in alto e trasparente in basso */
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
@@ -722,7 +710,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.appendChild(overlay);
     }
 
-    // --- TRACCIAMENTO VIDEO FEATURE (VERSIONE AGGIORNATA) ---
     const demoVideo = document.getElementById("featured_demo");
     if (demoVideo) {
         demoVideo.onplay = function() {
@@ -730,7 +717,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (typeof clicky !== 'undefined') {
                     clicky.log('featured-video-play', 'Featured Video Playback', 'click');
                 } else {
-                    // Se non lo trova, aspetta un secondo e riprova
                     setTimeout(tryLog, 1000);
                 }
             }
@@ -738,14 +724,11 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 
-    // --- NUOVO TRACCIAMENTO CLICK SULLE GRIGLIE (PAYWALL) ---
     document.addEventListener("click", function(e) {
         const link = e.target.closest('.grid-item a');
         if (link && localStorage.getItem('pro_archive_access') !== 'true') {
             const img = link.querySelector('img');
-            // Prende l'alt dell'immagine o il nome del file se l'alt è vuoto
             const contentName = img ? (img.alt || img.src.split('/').pop()) : "Unknown Item";
-
             if (typeof clicky !== 'undefined') {
                 clicky.log('#paywall-click-' + contentName, 'Interesse: ' + contentName, 'click');
             }
@@ -779,7 +762,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function setupGrid(gridId, btnId, step) {
-    // NOTA: Qui raddoppiamo le graffe del selettore CSS per Python
     const items = Array.from(document.querySelectorAll(`#${gridId} .grid-item`));
     const button = document.getElementById(btnId);
     if (!button) return;
