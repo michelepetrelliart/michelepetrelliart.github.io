@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <script>
 (function() {
-    // 1. PULIZIA URL (Rimuove il parametro access se presente)
+    // 1. PULIZIA URL
     if (window.location.href.indexOf('access=') !== -1) {
         setTimeout(() => {
             const cleanURL = window.location.origin + window.location.pathname;
@@ -12,36 +12,36 @@
         }, 1000);
     }
 
-    // 2. REDIRECT COLLEZIONI PATREON
-    document.addEventListener("DOMContentLoaded", () => {
+    // 2. LOGICA REDIRECT (DELEGAZIONE EVENTI)
+    document.addEventListener("click", (e) => {
+        // Cerchiamo se il click è avvenuto su un link dentro una grid-item
+        const link = e.target.closest('.grid-item a');
+        if (!link) return;
+
+        // Troviamo la griglia di appartenenza
+        const parentGrid = link.closest('.grid');
+        if (!parentGrid) return;
+
         const collections = {
             'video-grid': 'https://www.patreon.com/collection/1367691',
             'stories-grid': 'https://www.patreon.com/collection/1818530',
             'doc-grid': 'https://www.patreon.com/collection/2033078'
         };
 
-        // Intercettiamo i click su tutti i link dentro le griglie riservate
-        document.querySelectorAll('.grid-item a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
+        if (collections[parentGrid.id]) {
+            e.preventDefault(); // Blocca il link a Drive
 
-                // Troviamo a quale griglia appartiene il link cliccato
-                const parentGrid = link.closest('.grid');
-                if (parentGrid && collections[parentGrid.id]) {
+            // Tracciamento Clicky
+            if (typeof clicky !== 'undefined') {
+                const img = link.querySelector('img');
+                const name = img ? (img.alt || "item") : "item";
+                clicky.log('#paywall-' + parentGrid.id, 'Patreon Redirect: ' + name, 'click');
+            }
 
-                    // Tracciamento Clicky (opzionale)
-                    if (typeof clicky !== 'undefined') {
-                        const img = link.querySelector('img');
-                        const name = img ? (img.alt || "item") : "item";
-                        clicky.log('#paywall-' + parentGrid.id, 'Patreon Redirect: ' + name, 'click');
-                    }
-
-                    // Redirect alla collezione specifica
-                    window.open(collections[parentGrid.id], '_blank');
-                }
-            });
-        });
-    });
+            // Redirect immediato sulla stessa scheda (o window.open per nuova scheda)
+            window.location.href = collections[parentGrid.id];
+        }
+    }, true); // Usiamo 'true' (capture) per essere sicuri di intercettare prima di altri script
 })();
 </script>
 <style>
