@@ -14,11 +14,9 @@
 
     // 2. LOGICA REDIRECT (DELEGAZIONE EVENTI)
     document.addEventListener("click", (e) => {
-        // Cerchiamo se il click è avvenuto su un link dentro una grid-item
         const link = e.target.closest('.grid-item a');
         if (!link) return;
 
-        // Troviamo la griglia di appartenenza
         const parentGrid = link.closest('.grid');
         if (!parentGrid) return;
 
@@ -29,7 +27,8 @@
         };
 
         if (collections[parentGrid.id]) {
-            e.preventDefault(); // Blocca il link a Drive
+            e.preventDefault();
+            e.stopPropagation(); // Evita che altri script catturino il click
 
             // Tracciamento Clicky
             if (typeof clicky !== 'undefined') {
@@ -38,10 +37,10 @@
                 clicky.log('#paywall-' + parentGrid.id, 'Patreon Redirect: ' + name, 'click');
             }
 
-            // Redirect immediato sulla stessa scheda (o window.open per nuova scheda)
-            window.location.href = collections[parentGrid.id];
+            // APRE IN UNA NUOVA SCHEDA
+            window.open(collections[parentGrid.id], '_blank');
         }
-    }, true); // Usiamo 'true' (capture) per essere sicuri di intercettare prima di altri script
+    }, true);
 })();
 </script>
 <style>
