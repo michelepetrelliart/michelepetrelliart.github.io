@@ -15,17 +15,12 @@
 </script>
 <style>
 #ambient-slideshow { margin-top: 100px; width: 100dvw; aspect-ratio: 16 / 4; position: relative; overflow: hidden; background: #fff; }
-
-.featured-container { max-width: 1400px; margin: 40px auto 60px auto; display: flex; gap: 40px; align-items: flex-start; padding: 0 20px; }
+.featured-container { max-width: 1400px; margin: 40px auto 60px auto; display: flex; gap: 40px; align-items: center; padding: 0 20px; }
 .featured-video-wrapper { flex: 1.8; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
 .featured-info { flex: 1; text-align: left; font-size: 15px; line-height: 1.5; color: #333; }
 .featured-caption { font-size: 18px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
 .free-badge { position: absolute; top: 20px; left: 20px; background: #fff; color: #000; padding: 5px 10px; font-size: 11px; font-weight: bold; letter-spacing: 1px; z-index: 5; }
-
-@media (max-width: 900px) {
-    .featured-container { flex-direction: column; gap: 20px; }
-    .featured-info { text-align: left; }
-}
+@media (max-width: 900px) { .featured-container { flex-direction: column; gap: 30px; text-align: center; } .featured-info { text-align: center; margin: 0 auto; max-width: 500px; } .featured-info div { border-left: none !important; border-top: 1px solid #eee; padding: 15px 0 0 0 !important; } .featured-info ul { display: inline-block; text-align: left; margin: 0 auto; } }
 </style>
 <script>
 (function() {
@@ -124,18 +119,45 @@ document.addEventListener("DOMContentLoaded", () => {
                     <source src="../assets/videos/featured_process.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div class="free-badge">FREE</div>
+                <div class="free-badge">PREVIEW</div>
             </div>
-            <div class="featured-info">
-                <div class="featured-caption" style="margin-bottom:10px;"><strong>PREVIEW:</strong> Free demo</div>
-                <p style="font-size:13px; color:#666; margin-bottom:10px;">Public documentation. Full process.</p>
-                <p style="font-size:11px; color:#999; letter-spacing:1px; text-transform:uppercase;">[ Access Restricted Area Below ]</p>
-            </div>
+
+            
+<div class="featured-info">
+    <div style="font-family:monospace; font-size:12px; color:#666; margin-bottom:15px; letter-spacing:1px;">
+        [ TERMINAL_ACCESS: AUTHORIZED MEMBERS ONLY ]
+    </div>
+    <p style="font-size:15px; margin-bottom:20px; line-height:1.6;">
+        <strong>Patreon</strong> is the secure gateway to the <strong>Master Archive</strong> hosted on Google Drive.
+    </p>
+
+    <div style="font-size:13px; border-left: 2px solid #000; padding-left:15px; margin-bottom:20px;">
+        <strong style="text-transform:uppercase; font-size:11px; letter-spacing:1px;">Access Protocol:</strong><br>
+        A valid Gmail address is required. Manual activation within hours of registration.
+    </div>
+
+    <div style="margin-bottom:25px;">
+        <p style="font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Inside the Corpus:</p>
+        <ul style="list-style:none; padding:0; font-size:13px; color:#444; line-height:1.8;">
+            <li>• <strong>VIDEO_PROCESSES:</strong> Raw, unedited painting documentation.</li>
+            <li>• <strong>ILLUSTRATED_STORIES:</strong> Complete narrative corpus.</li>
+            <li>• <strong>TECHNICAL_DOCUMENTS:</strong> Logs, notes, and HQ textures.</li>
+        </ul>
+    </div>
+
+    <a href="https://www.patreon.com/michelepetrelliart" target="_blank" style="text-decoration:none;">
+        <button style="width:100%; background:#000; color:#fff; padding:20px; border:none; cursor:pointer; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+            ENTER THE ARCHIVE VIA PATREON
+        </button>
+    </a>
+    <p style="font-size:10px; color:#999; margin-top:10px; text-align:center;">[ Time is the only relevant parameter ]</p>
+</div>
+
         </div>
         
 
-    <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px; border-top:1px solid #eee;">
-    <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS RESTRICTED ]</p>
+   <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px; border-top:1px solid #eee; display: none !important;">
+    <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS TIERS ]</p>
 
     <div id="pricing-wrapper" style="display:inline-flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items: stretch; padding:10px; transition: outline 0.3s ease;">
 
@@ -210,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <p style="font-size:11px; color:#999; margin-top:30px; letter-spacing:1px;">Manual activation via Google Drive within 24 hours.</p>
 </div>
 
-    <section class="members-section" style="margin-bottom:80px;">
+    <section class="members-section" style="margin-bottom:80px; display: none !important;">
         <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES<span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ RAW PROCESS DOCUMENTATION — NO ENTERTAINMENT ]</span></h2>
         <div class="grid" id="video-grid">
         <div class="grid-item">
@@ -506,7 +528,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button id="loadMoreVideo" class="load-more-btn"><span class="btn-text">SHOW MORE VIDEOS</span><div class="arrow-icon"></div></button>
     </section>
 
-    <section class="members-section" style="margin-bottom:80px;">
+    <section class="members-section" style="margin-bottom:80px; display: none !important;">
         <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">ILLUSTRATED_STORIES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
         <div class="grid" id="stories-grid">
         <div class="grid-item">
@@ -548,7 +570,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button id="loadMoreStories" class="load-more-btn"><span class="btn-text">SHOW MORE STORIES</span><div class="arrow-icon"></div></button>
     </section>
 
-    <section class="members-section" style="margin-bottom:80px;">
+    <section class="members-section" style="margin-bottom:80px; display: none !important;">
         <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">TECHNICAL_DOCUMENTS <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
         <div class="grid" id="doc-grid">
         <div class="grid-item">
