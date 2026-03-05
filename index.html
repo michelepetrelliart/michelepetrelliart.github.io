@@ -594,15 +594,17 @@ document.addEventListener("DOMContentLoaded", function() {
     cS.src = "https://static.getclicky.com/js";
     document.body.appendChild(cS);
 
-    // 4. INTERAZIONI (Semplificato: Nessun reindirizzamento automatico)
+    // 4. INTERAZIONI (Mouse e Redirect)
     document.addEventListener('contextmenu', e => e.preventDefault());
-
     const enterL = document.getElementById("enterLink");
     if (enterL) {
-        enterL.onclick = function(e) {
-            // Nessun controllo, solo l'azione di entrata
-            window.location.href = "pages_static/all.html";
-        };
+        enterL.addEventListener("click", e => {
+            if (!localStorage.getItem("visited")) {
+                e.preventDefault();
+                localStorage.setItem("visited", "true");
+                window.location.href = "pages_static/all.html";
+            }
+        });
     }
 
     // 5. CAROSELLO 42
