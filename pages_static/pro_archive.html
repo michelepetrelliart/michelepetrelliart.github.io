@@ -20,7 +20,7 @@
 .featured-info { flex: 1; text-align: left; font-size: 15px; line-height: 1.5; color: #333; }
 .featured-caption { font-size: 18px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
 .free-badge { position: absolute; top: 20px; left: 20px; background: #fff; color: #000; padding: 5px 10px; font-size: 11px; font-weight: bold; letter-spacing: 1px; z-index: 5; }
-@media (max-width: 900px) { .featured-container { flex-direction: column; gap: 30px; text-align: center; } .featured-info { text-align: center; margin: 0 auto; max-width: 500px; } .featured-info div { border-left: none !important; border-top: 1px solid #eee; padding: 15px 0 0 0 !important; } .featured-info ul { display: inline-block; text-align: left; margin: 0 auto; } }
+@media (max-width: 1200px) { .featured-container { flex-direction: column; gap: 30px; text-align: center; } .featured-info { text-align: center; margin: 0 auto; max-width: 500px; } .featured-info div { border-left: none !important; border-top: 1px solid #eee; padding: 15px 0 0 0 !important; } .featured-info ul { display: inline-block; text-align: left; margin: 0 auto; } }
 </style>
 <script>
 (function() {
@@ -123,34 +123,41 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
             
-<div class="featured-info">
-    <div style="font-family:monospace; font-size:12px; color:#666; margin-bottom:15px; letter-spacing:1px;">
-        [ TERMINAL_ACCESS: AUTHORIZED MEMBERS ONLY ]
+<div class="featured-info" style="max-width: 500px; margin: 0 auto; border: 1px solid #ddd; padding: 40px; background: #fff;">
+    <div style="font-family:monospace; font-size:14px; color:#000; margin-bottom:25px; letter-spacing:2px; font-weight:bold; text-align:center;">
+        TERMINAL_ACCESS:<br/>AUTHORIZED MEMBERS ONLY
     </div>
-    <p style="font-size:15px; margin-bottom:20px; line-height:1.6;">
-        <strong>Patreon</strong> is the secure gateway to the <strong>Master Archive</strong> hosted on Google Drive.
+
+    <p style="font-size:16px; margin-bottom:20px; line-height:1.6; color:#000;">
+        <strong>Patreon</strong> serves as the secure gateway to the <strong>Master Archive</strong>. Access is strictly limited to ensure efficient manual management and protocol integrity.
     </p>
 
-    <div style="font-size:13px; border-left: 2px solid #000; padding-left:15px; margin-bottom:20px;">
-        <strong style="text-transform:uppercase; font-size:11px; letter-spacing:1px;">Access Protocol:</strong><br>
-        A valid Gmail address is required. Manual activation within few hours of registration.
+    <div style="font-size:14px; border-left: 3px solid #000; padding-left:15px; margin-bottom:25px; line-height:1.6; color:#000;">
+        <strong style="text-transform:uppercase; font-size:12px; letter-spacing:1px;">Access Protocol:</strong><br>
+        A valid <strong>Gmail</strong> address is mandatory for system integration. Manual activation is processed within hours of registration.
     </div>
 
-    <div style="margin-bottom:25px;">
-        <p style="font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Inside the Corpus:</p>
-        <ul style="list-style:none; padding:0; font-size:13px; color:#444; line-height:1.8;">
-            <li>• <strong>VIDEO_PROCESSES:</strong> Raw, unedited painting documentation.</li>
-            <li>• <strong>ILLUSTRATED_STORIES:</strong> Complete narrative corpus.</li>
-            <li>• <strong>TECHNICAL_DOCUMENTS:</strong> Logs, notes, and HQ textures.</li>
+    <div style="margin-bottom:30px; color:#000;">
+        <p style="font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Data Distribution:</p>
+        <p style="font-size:14px; margin-bottom:15px; line-height:1.5;">
+            Prioritizing <strong>Digital Painting</strong> and <strong>Technical Documents</strong> (RNDD notes, workflow), while maintaining the presence of <strong>Traditional Media</strong> within the corpus. This is not a content factory; quality over volume.
+        </p>
+        <ul style="list-style:none; padding:0; font-size:13px; line-height:1.8; font-family:monospace;">
+            <li><strong style="font-size:14px;">> VIDEO_PROCESSES:</strong> Raw documentation.</li>
+            <li><strong style="font-size:14px;">> ILLUSTRATED_STORIES:</strong> Narrative corpus.</li>
+            <li><strong style="font-size:14px;">> TECHNICAL_DOCUMENTS:</strong> Logs and HQ textures.</li>
         </ul>
     </div>
 
     <a href="https://www.patreon.com/michelepetrelliart" target="_blank" style="text-decoration:none;">
-        <button style="width:100%; background:#000; color:#fff; padding:20px; border:none; cursor:pointer; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
-            ENTER THE ARCHIVE VIA PATREON
+        <button style="width:100%; background:#000; color:#fff; padding:22px; border:none; cursor:pointer; font-weight:bold; letter-spacing:2px; text-transform:uppercase; font-family:monospace; font-size:13px;">
+            REQUEST ACCESS VIA PATREON
         </button>
     </a>
-    <p style="font-size:10px; color:#999; margin-top:10px; text-align:center;">[ Time is the only relevant parameter ]</p>
+
+    <p style="font-size:12px; color:#000; margin-top:20px; text-align:center; font-family:monospace; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">
+        [ Status: Active | Limited Seats ]
+    </p>
 </div>
 
         </div>
