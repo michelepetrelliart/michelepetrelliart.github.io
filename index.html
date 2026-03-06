@@ -295,6 +295,14 @@ h2 {
     color: #999;
 }
 
+/* Nasconde gli overlay quando il carosello ha la classe 'prima-slide' */
+.carosello42.prima-slide .system-infra-overlay-left,
+.carosello42.prima-slide .system-infra-overlay-right {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease; /* Transizione morbida */
+}
+
 /* Ottimizzazione Mobile */
 @media (max-width: 768px) {
     .system-infra-overlay-left, .system-infra-overlay-right {
@@ -348,108 +356,86 @@ h2 {
 
 
  <div class='carosello42' style="aspect-ratio: 16 / 9;">
-     <div style="text-align: center; font-family: Times, serif">
-    MICHELE PETRELLI
-</div>
+
+    <div style="text-align: center; font-family: Times, serif; padding: 10px 0;">
+        MICHELE PETRELLI
+    </div>
+
     <div class='slideBox42'>
         <div class="system-infra-overlay-left opacity-high">
-    <div class="infra-module">
-        <svg viewBox="0 0 44 44" class="icon-infra">
-            <path d="M21.2 1.4c-6 1.1-11.4 4.5-15.2 9.6-3.8 5-5.5 11.2-4.9 17.4.7 6.2 3.6 12 8.3 16.1 4.6 4.1 10.7 6.2 16.9 5.8 6.2-.4 12-3.1 16.2-7.6 4.3-4.4 6.6-10.4 6.5-16.6-.1-6.2-2.7-12.1-7.2-16.4C37.3 5.3 31.5 2.4 25.3 1.5c-1.4-.2-2.7-.2-4.1-.1zm.8 3.6c4.9.4 9.5 2.7 12.8 6.3 3.3 3.6 5 8.3 4.7 13.1-.3 4.8-2.3 9.3-5.7 12.6-3.4 3.3-7.9 5.1-12.8 4.9-4.9-.2-9.5-2.2-12.8-5.6-3.3-3.4-5.2-8-5.2-12.9.1-4.9 2.1-9.5 5.7-12.8 3.5-3.4 8.2-5.4 13.3-5.6z"/>
-            <path d="M22.5 11.5c-1.2 0-2.3.5-3.1 1.4-.8.9-1.2 2.1-1.1 3.3.1 1.2.7 2.3 1.6 3.1s2.1 1.2 3.3 1.1c1.2-.1 2.3-.7 3.1-1.6.8-.9 1.2-2.1 1.1-3.3-.1-1.2-.7-2.3-1.6-3.1s-2.1-1.2-3.3-1.1c0 .2 0 .2 0 .2z"/>
-        </svg>
-        <div class="infra-box"><b>KRITA</b><br/>[ OFFICIAL WORKFLOW ]</div>
-    </div>
-
-    <div class="infra-module">
-        <svg viewBox="0 0 24 24" class="icon-infra">
-            <path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/>
-        </svg>
-        <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
-    </div>
-</div>
-
-<div class="system-infra-overlay-right">
-    <div class="infra-module alignment-right opacity-high" style="margin-bottom: 8px;">
-    <p class="displayonly" style="color:white;margin-top:-5px">Personal equipment and artwork display only.</p>
-        <svg viewBox="0 0 24 24" class="icon-infra">
-            <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
-        </svg>
-        <div class="infra-box">
-            <b>SHARP</b><br/>
-            [ OPTICAL FIDELITY ]
+            <div class="infra-module">
+                <svg viewBox="0 0 44 44" class="icon-infra">
+                    <path d="M21.2 1.4c-6 1.1-11.4 4.5-15.2 9.6-3.8 5-5.5 11.2-4.9 17.4.7 6.2 3.6 12 8.3 16.1 4.6 4.1 10.7 6.2 16.9 5.8 6.2-.4 12-3.1 16.2-7.6 4.3-4.4 6.6-10.4 6.5-16.6-.1-6.2-2.7-12.1-7.2-16.4C37.3 5.3 31.5 2.4 25.3 1.5c-1.4-.2-2.7-.2-4.1-.1zm.8 3.6c4.9.4 9.5 2.7 12.8 6.3 3.3 3.6 5 8.3 4.7 13.1-.3 4.8-2.3 9.3-5.7 12.6-3.4 3.3-7.9 5.1-12.8 4.9-4.9-.2-9.5-2.2-12.8-5.6-3.3-3.4-5.2-8-5.2-12.9.1-4.9 2.1-9.5 5.7-12.8 3.5-3.4 8.2-5.4 13.3-5.6z"/>
+                    <path d="M22.5 11.5c-1.2 0-2.3.5-3.1 1.4-.8.9-1.2 2.1-1.1 3.3.1 1.2.7 2.3 1.6 3.1s2.1 1.2 3.3 1.1c1.2-.1 2.3-.7 3.1-1.6.8-.9 1.2-2.1 1.1-3.3-.1-1.2-.7-2.3-1.6-3.1s-2.1-1.2-3.3-1.1c0 .2 0 .2 0 .2z"/>
+                </svg>
+                <div class="infra-box"><b>KRITA</b><br/>[ OFFICIAL WORKFLOW ]</div>
+            </div>
+            <div class="infra-module">
+                <svg viewBox="0 0 24 24" class="icon-infra">
+                    <path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/>
+                </svg>
+                <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
+            </div>
         </div>
-    </div>
 
-    <div class="infra-module alignment-right opacity-mid">
-        <svg viewBox="0 0 24 24" class="icon-infra">
-            <path d="M21 2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H3V4h18v16zM7 15h10v2H7v-2zm0-4h10v2H7v-2zm0-4h10v2H7V7z"/>
-        </svg>
-        <div class="infra-box hardware-status">
-            <b>HARDWARE<br/>EVALUATION</b><br/>
-            [ STATUS: UNDERWAY ]
+        <div class="system-infra-overlay-right">
+            <div class="infra-module alignment-right opacity-high" style="margin-bottom: 8px;">
+                <p class="displayonly" style="color:white;margin-top:-5px">Personal equipment and artwork display only.</p>
+                <svg viewBox="0 0 24 24" class="icon-infra">
+                    <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
+                </svg>
+                <div class="infra-box"><b>SHARP</b><br/>[ OPTICAL FIDELITY ]</div>
+            </div>
+            <div class="infra-module alignment-right opacity-mid">
+                <svg viewBox="0 0 24 24" class="icon-infra">
+                    <path d="M21 2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H3V4h18v16zM7 15h10v2H7v-2zm0-4h10v2H7v-2zm0-4h10v2H7V7z"/>
+                </svg>
+                <div class="infra-box hardware-status"><b>HARDWARE<br/>EVALUATION</b><br/>[ STATUS: UNDERWAY ]</div>
+            </div>
         </div>
-    </div>
-</div>
 
- <div class='slide42 attiva42'>
-        <img class='img42'
-             src='slide-show/4221_No_Siege_Sharp3.webp'
-             alt="Krita and Sharp"
-             loading="eager"
-             fetchpriority="high" />
-        <div class='caption42'></div>
-    </div>
+        <div class='slide42 attiva42'>
+            <video class='img42' autoplay loop muted playsinline style="object-fit: cover; width: 100%; height: 100%;">
+                <source src='slide-show/demo01.mp4' type='video/mp4'>
+            </video>
+            <div class='caption42'>Manual convergence: pixels and atoms.</div>
+            </div>
 
- <div class='slide42'>
-        <img class='img42'
-             src='slide-show/4210_Biological_Projectile_home.webp'
-             alt="There is no one here. There is nothing to elevate, nothing to heal"
-             loading="eager"
-             fetchpriority="low" />
-        <div class='caption42'>There is no one here. There is nothing to elevate, nothing to heal.</div>
-    </div>
+        <div class='slide42'>
+            <img class='img42' src='slide-show/4221_No_Siege_Sharp3.webp' alt="Krita and Sharp" loading="lazy" />
+            <div class='caption42'>Hardware-verified color accuracy.</div>
+        </div>
 
-    <div class='slide42'>
-        <img class='img42'
-             src='slide-show/4191-there is no one here.webp'
-             alt="The truth is implacable. Everything that happens is governed by blind necessity"
-             loading="lazy" />
-        <div class='caption42'>The truth is implacable. Everything that happens is governed by blind necessity.</div>
-    </div>
+        <div class='slide42'>
+            <img class='img42' src='slide-show/4210_Biological_Projectile_home.webp' alt="Biological Projectile" loading="lazy" />
+            <div class='caption42'>There is no one here. There is nothing to elevate, nothing to heal.</div>
+        </div>
 
-    <div class='slide42'>
-        <img class='img42'
-             src='slide-show/4188-home.webp'
-             alt="The Universe is not benevolent or hostile: It is neutral. What manifests must dissolve."
-             loading="lazy" />
-        <div class='caption42'>The Universe is not benevolent or hostile: It is neutral. What manifests must dissolve.</div>
-    </div>
+        <div class='slide42'>
+            <img class='img42' src='slide-show/4191-there is no one here.webp' alt="Truth" loading="lazy" />
+            <div class='caption42'>The truth is implacable. Everything that happens is governed by blind necessity.</div>
+        </div>
 
-    <div class='slide42'>
-        <img class='img42'
-             src='slide-show/4185b-contact.webp'
-             alt="This is not nihilism. We are the Field: amoral Consciousness."
-             loading="lazy" />
-        <div class='caption42'>This is not nihilism. We are the Field: amoral Consciousness.</div>
-    </div>
+        <div class='slide42'>
+            <img class='img42' src='slide-show/4188-home.webp' alt="Universe" loading="lazy" />
+            <div class='caption42'>The Universe is not benevolent or hostile: It is neutral.</div>
+        </div>
 
-    <div class='slide42'>
-        <img class='img42'
-             src='slide-show/4195-mirror-home.webp'
-             alt="Art does not heal. It holds up the implacable mirror of our illusion."
-             loading="lazy" />
-        <div class='caption42'>Art does not heal. It holds up the implacable mirror of our illusion.</div>
-    </div>
+        <div class='slide42'>
+            <img class='img42' src='slide-show/4185b-contact.webp' alt="Field" loading="lazy" />
+            <div class='caption42'>This is not nihilism. We are the Field: amoral Consciousness.</div>
+        </div>
 
+        <div class='slide42'>
+            <img class='img42' src='slide-show/4195-mirror-home.webp' alt="Mirror" loading="lazy" />
+            <div class='caption42'>Art does not heal. It holds up the implacable mirror of our illusion.</div>
+        </div>
 
-
-    <div class='arrow42-left'>&#8249;</div>
+    </div> <div class='arrow42-left'>&#8249;</div>
     <div class='arrow42-right'>&#8250;</div>
-</div>
+    <div class='navDots42'></div>
 
-<div class='navDots42'></div>
-</div>
+</div> ```
 
 <div style='max-width:875px; margin:auto; font-size:15px; line-height:1.6; font-weight:600; text-align:left; padding:10px; font-family:monospace;'>
 <div class='cont-h'>
@@ -603,37 +589,66 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // 5. CAROSELLO 42
-    const car = document.querySelector(".carosello42");
-    if (car) {
-        const slides = car.querySelectorAll(".slide42"), dotsC = car.querySelector(".navDots42");
-        let cur = 0;
-        if (slides.length > 1) {
-            if(dotsC) {
-                dotsC.innerHTML = "";
-                slides.forEach((_, i) => {
-                    const d = document.createElement("div");
-                    d.className = "dot42" + (i === 0 ? " activeDot42" : "");
-                    d.onclick = () => showS(i);
-                    dotsC.appendChild(d);
-                });
-            }
-            const showS = (n) => {
-                const dots = car.querySelectorAll(".dot42");
-                if (n < 0) n = slides.length - 1; if (n >= slides.length) n = 0;
-                slides[cur].classList.remove("attiva42");
-                if(dots[cur]) dots[cur].classList.remove("activeDot42");
-                slides[n].classList.add("attiva42");
-                if(dots[n]) dots[n].classList.add("activeDot42");
-                cur = n;
-            };
-            let timer = setInterval(() => showS(cur + 1), 8000);
-            car.onmouseenter = () => clearInterval(timer);
-            car.onmouseleave = () => timer = setInterval(() => showS(cur + 1), 8000);
-            const aL = car.querySelector(".arrow42-left"), aR = car.querySelector(".arrow42-right");
-            if(aL) aL.onclick = () => showS(cur - 1);
-            if(aR) aR.onclick = () => showS(cur + 1);
+const car = document.querySelector(".carosello42");
+if (car) {
+    const slides = car.querySelectorAll(".slide42"),
+          dotsC = car.querySelector(".navDots42");
+
+    let cur = 0;
+
+    if (slides.length > 1) {
+        // Forza la creazione dei pallini se il contenitore esiste
+        if(dotsC) {
+            dotsC.innerHTML = "";
+            slides.forEach((_, i) => {
+                const d = document.createElement("div");
+                d.className = "dot42" + (i === 0 ? " activeDot42" : "");
+                d.onclick = () => showS(i);
+                dotsC.appendChild(d);
+            });
         }
+
+        const showS = (n) => {
+            const dots = car.querySelectorAll(".dot42");
+
+            if (n < 0) n = slides.length - 1;
+            if (n >= slides.length) n = 0;
+
+            // Logica per nascondere overlay (Krita, Sharp, etc.)
+            if (n === 0) {
+                car.classList.add("prima-slide");
+            } else {
+                car.classList.remove("prima-slide");
+            }
+
+            // Cambio slide
+            slides[cur].classList.remove("attiva42");
+            if(dots[cur]) dots[cur].classList.remove("activeDot42");
+
+            slides[n].classList.add("attiva42");
+            if(dots[n]) dots[n].classList.add("activeDot42");
+
+            cur = n;
+        };
+
+        // Inizializzazione stato prima slide
+        car.classList.add("prima-slide");
+
+        let timer = setInterval(() => showS(cur + 1), 8000);
+
+        car.onmouseenter = () => clearInterval(timer);
+        car.onmouseleave = () => {
+            clearInterval(timer);
+            timer = setInterval(() => showS(cur + 1), 8000);
+        };
+
+        const aL = car.querySelector(".arrow42-left"),
+              aR = car.querySelector(".arrow42-right");
+
+        if(aL) aL.onclick = () => showS(cur - 1);
+        if(aR) aR.onclick = () => showS(cur + 1);
     }
+}
 });
 </script>
 </body>
