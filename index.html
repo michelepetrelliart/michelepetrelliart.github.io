@@ -268,17 +268,19 @@ h2 {
 
 .alignment-right {
     align-items: flex-end;
+    text-align: right; /* Forza l'allineamento del testo interno */
 }
 
 .infra-box {
     font-family: monospace;
     font-size: 10px;
-    line-height: 0.8; /* Ridotto al minimo per compattare le righe */
-    color: #fff;
-    background: #000;
-    padding: 3px 6px; /* Padding ridotto per un look più asciutto */
-    border: 1px solid #222;
+    line-height: 0.8;
+    color: #fff; /* Testo sempre bianco pieno */
+    background: rgba(0, 0, 0, 0.4); /* Sfondo scuro ma trasparente per tutti */
+    padding: 3px 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     white-space: nowrap;
+    backdrop-filter: blur(2px);
 }
 
 /* Ingrandimento titoli senza spazi extra */
@@ -290,9 +292,16 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+.opacity-high { opacity: 0.9; } /* Quasi pieno */
+
+.opacity-mid {
+    opacity: 1; /* Il contenitore resta visibile */
+}
+
 .hardware-status {
-    border: 1px dashed #444;
-    color: #999;
+    background: rgba(0, 0, 0, 0.4); /* Sfondo ancora più leggero */
+    color: rgba(255, 255, 255, 0.6); /* Testo leggermente grigio ma nitido */
+    border: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
 /* Nasconde gli overlay quando il carosello ha la classe 'prima-slide' */
@@ -363,6 +372,7 @@ h2 {
 
     <div class='slideBox42'>
         <div class="system-infra-overlay-left opacity-high">
+        <p class="displayonly" style="color:white;margin-top:-5px">Personal equipment and artwork display only.</p>
             <div class="infra-module">
                 <svg viewBox="0 0 44 44" class="icon-infra">
                     <path d="M21.2 1.4c-6 1.1-11.4 4.5-15.2 9.6-3.8 5-5.5 11.2-4.9 17.4.7 6.2 3.6 12 8.3 16.1 4.6 4.1 10.7 6.2 16.9 5.8 6.2-.4 12-3.1 16.2-7.6 4.3-4.4 6.6-10.4 6.5-16.6-.1-6.2-2.7-12.1-7.2-16.4C37.3 5.3 31.5 2.4 25.3 1.5c-1.4-.2-2.7-.2-4.1-.1zm.8 3.6c4.9.4 9.5 2.7 12.8 6.3 3.3 3.6 5 8.3 4.7 13.1-.3 4.8-2.3 9.3-5.7 12.6-3.4 3.3-7.9 5.1-12.8 4.9-4.9-.2-9.5-2.2-12.8-5.6-3.3-3.4-5.2-8-5.2-12.9.1-4.9 2.1-9.5 5.7-12.8 3.5-3.4 8.2-5.4 13.3-5.6z"/>
@@ -372,25 +382,24 @@ h2 {
             </div>
             <div class="infra-module">
                 <svg viewBox="0 0 24 24" class="icon-infra">
-                    <path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/>
+                    <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
                 </svg>
-                <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
+                <div class="infra-box"><b>SHARP</b><br/>[ OPTICAL FIDELITY ]</div>
             </div>
         </div>
 
         <div class="system-infra-overlay-right">
             <div class="infra-module alignment-right opacity-high" style="margin-bottom: 8px;">
-                <p class="displayonly" style="color:white;margin-top:-5px">Personal equipment and artwork display only.</p>
                 <svg viewBox="0 0 24 24" class="icon-infra">
-                    <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
+                    <path d="M12 2L2 7v2h20V7L12 2zm0 2.18L18.44 7H5.56L12 4.18zM4 10v9h2v-9H4zm5 0v9h2v-9H9zm5 0v9h2v-9h-2zm5 0v9h2v-9h-2zM2 20v2h20v-2H2z"/>
                 </svg>
-                <div class="infra-box"><b>SHARP</b><br/>[ OPTICAL FIDELITY ]</div>
+                <div class="infra-box"><b>ARCHIVE.ORG</b><br/>[ SYSTEM MEMORY ]</div>
             </div>
-            <div class="infra-module alignment-right opacity-mid">
+            <div class="infra-module alignment-right opacity-high">
                 <svg viewBox="0 0 24 24" class="icon-infra">
                     <path d="M21 2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H3V4h18v16zM7 15h10v2H7v-2zm0-4h10v2H7v-2zm0-4h10v2H7V7z"/>
                 </svg>
-                <div class="infra-box hardware-status"><b>HARDWARE<br/>EVALUATION</b><br/>[ STATUS: UNDERWAY ]</div>
+                <div class="infra-box hardware-status"><b>EQUIPMENT<br/>EVALUATION</b><br/>[ STATUS: UNDERWAY ]</div>
             </div>
         </div>
 
@@ -612,12 +621,7 @@ if (car) {
             if (n < 0) n = slides.length - 1;
             if (n >= slides.length) n = 0;
 
-            // Logica per nascondere overlay (Krita, Sharp, etc.)
-            if (n === 0) {
-                car.classList.add("prima-slide");
-            } else {
-                car.classList.remove("prima-slide");
-            }
+            // RIMOSSA LA LOGICA "prima-slide" CHE NASCONDEVA GLI OVERLAY
 
             // Cambio slide
             slides[cur].classList.remove("attiva42");
@@ -630,7 +634,7 @@ if (car) {
         };
 
         // Inizializzazione stato prima slide
-        car.classList.add("prima-slide");
+        // car.classList.add("prima-slide");
 
         let timer = setInterval(() => showS(cur + 1), 8000);
 
