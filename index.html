@@ -404,7 +404,7 @@ h2 {
         </div>
 
         <div class='slide42 attiva42'>
-            <video class='img42' autoplay loop muted playsinline preload="auto" style="object-fit: cover; width: 100%; height: 100%;">
+            <video id='videoPartner' class='img42' autoplay loop muted playsinline preload="auto" style="object-fit: cover; width: 100%; height: 100%;">
             <source src='slide-show/demo02.mp4' type='video/mp4'>
             </video>
         <div class='caption42'>Manual convergence: pixels and atoms.</div>
@@ -594,6 +594,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Seleziona il video tramite l'ID e imposta la velocità
+    const videoPartner = document.getElementById('videoPartner');
+    if (videoPartner) {
+    // Usiamo l'evento 'loadedmetadata' per essere sicuri che il video sia pronto
+    videoPartner.addEventListener('loadedmetadata', function() {
+        this.playbackRate = 1.6;
+    });
+    // Forziamo anche subito in caso fosse già caricato (cache)
+    videoPartner.playbackRate = 1.6;
+    }
+
     // 5. CAROSELLO 42
 const car = document.querySelector(".carosello42");
 if (car) {
@@ -635,12 +646,12 @@ if (car) {
         // Inizializzazione stato prima slide
         // car.classList.add("prima-slide");
 
-        let timer = setInterval(() => showS(cur + 1), 8000);
+        let timer = setInterval(() => showS(cur + 1), 5000);
 
         car.onmouseenter = () => clearInterval(timer);
         car.onmouseleave = () => {
             clearInterval(timer);
-            timer = setInterval(() => showS(cur + 1), 8000);
+            timer = setInterval(() => showS(cur + 1), 5000);
         };
 
         const aL = car.querySelector(".arrow42-left"),
