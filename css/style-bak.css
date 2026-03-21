@@ -1,0 +1,330 @@
+/* --- Generale body e nav --- */
+body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: sans-serif;
+}
+/* Colore link base e tutte le pseudo-classi */
+a, a:link, a:visited, a:hover, a:active {
+    color: #000 !important;
+}
+/* =================== Nav principale =================== */
+
+#gallery {
+  margin-top: calc(20px + clamp(70px, 50vw, 90px));
+}
+
+.grid {
+  max-width: 1200px; /* Evita che le immagini diventino giganti su FHD */
+  margin: 0 auto;
+}
+
+/* NAV PRINCIPALE */
+.nav-main2 a.active {
+    text-decoration: underline;
+    font-weight: bold; /* opzionale */
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 10px 20px;
+  font-family: sans-serif;
+  position: relative;
+  z-index: 1200;
+}
+.nav-main2 {
+  display: flex;
+  flex-direction: column;       /* verticale: prima riga sopra, seconda sotto */
+  align-items: center;          /* centra orizzontalmente le righe */
+  background: #fff;
+  padding: 10px 20px;
+  font-family: sans-serif;
+  position: relative;
+  z-index: 1200;
+}
+
+nav {
+  position: fixed;  /* cambia da relative a fixed */
+  top: 0;           /* sempre in alto */
+  left: 0;          /* allinea a sinistra */
+  width: 100%;      /* occupa tutta la larghezza */
+  z-index: 1200;    /* sopra altri elementi */
+}
+
+/* BRAND */
+nav .brand {
+  text-align:right;
+}
+/* BRAND */
+nav .brand a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: clamp(18px, 2dvw, 28px);
+  text-transform: lowercase;
+  text-align:center;
+}
+
+/* TRIGRAMMA (hamburger) */
+.showMenu {
+  font: bold 20px "Times New Roman", serif;
+  font-size: clamp(16px, 2dvw, 28px);
+  cursor: pointer;
+  color: #000;
+  margin-right: 20px;
+  z-index: 1200;
+  text-align:right;
+}
+
+/* checkbox nascosto */
+#showMenu { display: none;}
+
+.nav-level-1,
+.nav-level-2 {
+  display: flex;                /* link in orizzontale */
+  gap: 20px;                    /* spazio tra i link */
+  font-size: clamp(14px, 1.8dvw, 24px);
+  justify-content: center;       /* centra i link nella riga */
+  margin-bottom: 5px;           /* solo sulla prima riga per distanziare le due righe */
+}
+
+.nav-level-1 a {
+  color: #000;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-weight: 500;
+}
+
+
+body.all-page .nav-level-2 {
+  display: flex;
+}
+
+.nav-level-2 a {
+  color: #000;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-weight: 500;
+}
+
+/* MENU VERTICALE MOBILE */
+#menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 1300;
+}
+
+#menu li {
+  list-style: none;
+  font-size: clamp(16px, 4dvw, 30px);
+  padding: 5px 0;
+}
+
+#menu li a {
+  color: #000;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+/* mostra menu quando checkbox attivo */
+#showMenu:checked ~ #menu {
+  display: flex;
+}
+
+/* --- Mobile ---
+@media screen and (max-width: 768px) {
+  .nav-level-1, .nav-level-2 { display: none; }
+  .showMenu { display: block; }
+}*/
+
+/* --- Griglia e items --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom:0
+}
+
+.img-container {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  overflow: hidden;
+}
+
+.img-container a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.img-container img {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+  display: block;
+}
+
+.caption {
+  color: #000;
+  text-align: center;
+  margin-top: clamp(-18px, -1.2dvw, -4px);
+  font-size: clamp(12px, 1.8dvw, 18px);
+  word-break: break-word;
+  width: 100%;
+}
+
+/* --- Pagine singole immagini --- */
+img.single {
+  max-width: 50%;
+  max-height: 90dvh;
+  object-fit: contain;
+  margin-right: 40dpx;
+}
+
+/* --- Pagina singola immagine centrata --- */
+.text {
+  max-width: 25dvw;
+  min-width: 20dvw;
+  overflow: auto;
+  padding: 1.5dvw;
+  line-height: 1.4em;
+  font-size: clamp(14px, 2vw, 22px);
+}
+
+
+/* --- Pagine Stories --- */
+.story-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.story-page .close {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  font-size: clamp(14px, 2dvw, 22px);
+  text-decoration: none;
+}
+
+.story-page iframe {
+  width: 80%;
+  height: 80dvh;
+  border: none;
+  margin-top: 40px;
+}
+
+.story-page .text {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 900px;
+  font-size: clamp(14px, 2dvw, 22px);
+}
+
+/* --- MONITOR GRANDI (QHD) --- */
+@media screen and (min-width: 1440px) {
+  .grid {
+    max-width: 1600px;
+    gap: 30px;
+  }
+}
+/* --- MONITOR GIGANTI (4K) --- */
+@media screen and (min-width: 2560px) {
+  .grid {
+    max-width: 2200px;
+  }
+}
+
+/* --- TABLET --- */
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 95%;
+    gap: 15px;
+  }
+}
+/* --- SMARTPHONE --- */
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+.grid-item {
+    display: none;
+}
+
+.grid-item.visible {
+    display: block;
+}
+
+/* ======================
+   Pulsante Load More come freccia
+   ====================== */
+
+.load-more-btn {
+    margin: 40px auto; /* More breathing room */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.load-more-btn:hover {
+    opacity: 0.6;
+    transform: translateY(3px); /* Subtle movement on hover */
+}
+
+.btn-text {
+    font-family: inherit; /* Keeps your site's font */
+    font-size: clamp(12px, 1.2dvw, 16px);
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    color: rgba(0,0,0,0.6);
+    text-transform: uppercase;
+}
+
+/* Arrow using your clip-path logic */
+.arrow-icon {
+    width: 40px;
+    height: 20px;
+    background-color: rgba(0,0,0,0.8);
+    clip-path: polygon(
+        50% 100%,  /* bottom tip */
+        100% 0%,   /* top right */
+        0% 0%      /* top left */
+    );
+}

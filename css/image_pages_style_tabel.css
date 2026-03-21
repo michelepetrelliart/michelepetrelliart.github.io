@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body, html {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Rende il font più nitido su Chrome/Safari */
+    -moz-osx-font-smoothing: grayscale; /* Rende il font più nitido su Firefox */
+}
+h1, h2, h3, .single-image-title {
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-weight: 700; /* Lo rende grassetto come l'Helvetica Bold */
+    letter-spacing: -0.02em; /* L'Inter sta meglio con le lettere un po' vicine, come l'Helvetica */
+}
+
+.single-image-text, p {
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left; /* Fondamentale per non stirare l'ultima riga */
+    line-height: 1.6;      /* L'Inter ha bisogno di un po' di respiro tra le righe */
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+@media screen and (max-width: 1279px) {
+    .single-image-page {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .single-image-container {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .single-image-container img {
+        max-width: 100%;
+        max-height: 65dvh; /* Lascia spazio per vedere l'inizio del testo */
+        height: auto;
+    }
+    .info-column {
+        width: 100% !important;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .single-image-title { font-size: 28px; text-align: center; padding-bottom:20px}
+    .single-image-text { font-size: 17px; text-align: justify; }
+}
+
+@media screen and (min-width: 1280px)  {
+    body {
+        margin:0;
+        padding:0;
+    }
+    .single-image-page {
+        display: table;
+        width: 100dvw;
+        height: 100dvh;
+        table-layout: fixed;
+        border-collapse: collapse;
+        background: #fff;
+        margin: 0;
+    }
+
+    .single-image-container {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;     /* L'immagine "bacia" il centro */
+        padding-right: 50px;   /* Gap centrale */
+        width: 55%;            /* PIÙ SPAZIO ALL'IMMAGINE */
+    }
+
+    .single-image-container img, .single-image-container video {
+        width: 90dvmin;
+        height: 90dvmin;
+        object-fit: contain;
+        object-position: center center;
+        max-width: 95%;
+        max-height: 95vh;
+        display: inline-block;
+        max-width: 100%;
+            /* LIMITI UNIVERSALI IN PIXEL */
+        max-width: 1800px;
+        max-height: 1800px;
+
+    }
+
+    .info-column {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: left;      /* Il testo parte vicino all'immagine */
+        padding-left: 10px;    /* Ridotto per non allontanarlo dal centro 10px*/
+        width: 29%;  /*35%*/
+    }
+
+    /* Blocchiamo il contenuto del testo */
+    .info-column > div,
+    .single-image-title,
+    .single-image-text,
+    .single-image-license {
+        width: 90%;
+        max-width: 300px;
+        margin-left: 0;
+        margin-right: auto;
+        hyphens: auto;
+    }
+
+    .single-image-title { font-size: 25px; margin-bottom: 20px; }
+    .single-image-text {
+        font-size: 16px;
+        max-height: 52dvh;
+        overflow-y: auto;
+        margin-bottom: 25px;
+        padding-right: 15px;
+    }
+    .single-image-license {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 1921px) {
+    .single-image-page {
+        display: table;
+        width: 100vw;
+        height: 100vh;
+        table-layout: fixed;
+    }
+    .single-image-container {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
+        width: 80%; /* Riequilibriamo al centro */
+        padding-right: 50px;
+    }
+    .info-column {
+        display: table-cell;
+        vertical-align: middle;
+        width: 40%;
+        padding-left: 0;
+    }
+    .info-column > div {
+        width: 400px; /* Testo largo per schermi grandi */
+    }
+     .info-column > div,
+    .single-image-title,
+    .single-image-text,
+    .single-image-license {
+        max-width: 400px;
+        text-align: justify;
+        text-align-last: left;
+        text-justify: inter-character;
+        word-break: break-word;
+        letter-spacing: -0.2px;
+        hyphens: auto;
+    }
+    .single-image-title { font-size: 30px; }
+    .single-image-text {
+        font-size: 20px;
+        max-height: 52dvh;
+        overflow-y: auto;
+        margin-bottom: 25px;
+        padding-right: 15px;
+    }
+    .single-image-license {
+        font-size: 18px;
+    }
+}
+
+ /* Applica questo a tutte le tue media query desktop */
+
+.single-image-container video {
+    width: 85dvmin;
+    height: 85dvmin;
+    object-fit: contain;
+    /* CAMBIO CRITICO: l'immagine sta al centro del suo spazio */
+    object-position: center center;
+    max-width: 95%;
+    max-height: 95vh;
+    display: inline-block;
+    background: #000;
+}
+
+.close {
+  position:fixed;
+  right:15px;
+  top:15px;
+  font-size: 45px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 1);
+  color: #000;
+  cursor:pointer;
+  text-decoration: none;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+

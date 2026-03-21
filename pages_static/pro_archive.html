@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>
+(function() {
+    // 1. PULIZIA URL (Rimuove il parametro access se presente)
+    if (window.location.href.indexOf('access=') !== -1) {
+        setTimeout(() => {
+            const cleanURL = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanURL);
+        }, 1000);
+    }
+})();
+</script>
+<style>
+#ambient-slideshow { margin-top: 100px; width: 100dvw; aspect-ratio: 16 / 4; position: relative; overflow: hidden; background: #fff; }
+.featured-container { max-width: 1400px; margin: 40px auto 60px auto; display: flex; gap: 40px; align-items: center; padding: 0 20px; }
+.featured-video-wrapper { flex: 1.8; position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.featured-info { flex: 1; text-align: left; font-size: 15px; line-height: 1.5; color: #333; }
+.featured-caption { font-size: 18px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+.free-badge { position: absolute; top: 20px; left: 20px; background: #fff; color: #000; padding: 5px 10px; font-size: 11px; font-weight: bold; letter-spacing: 1px; z-index: 5; }
+@media (max-width: 1200px) { .featured-container { flex-direction: column; gap: 30px; text-align: center; } .featured-info { text-align: center; margin: 0 auto; max-width: 500px; } .featured-info div { border-left: none !important; border-top: 1px solid #eee; padding: 15px 0 0 0 !important; } .featured-info ul { display: inline-block; text-align: left; margin: 0 auto; } }
+</style>
+<script>
+(function() {
+    const isItalian = navigator.language.startsWith('it');
+    const isRomeTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
+    if (isItalian || isRomeTimezone) { window.location.replace("all.html"); }
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PRO-ARCHIVE | Michele Petrelli</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="members-page">
+<nav>
+ <div class="nav-main">
+  <div class="brand"><a href="/">Michele Petrelli</a></div>
+    <!-- menu verticale hamburger -->
+  <!-- checkbox per menu mobile -->
+  <label class='showMenu' for='showMenu'>&#9776;</label>
+  </div>
+  <input id='showMenu' role='button' type='checkbox'>
+  <ul id='menu'>
+    <li><a href="/">home</a></li>
+    <li><a href="studies.html">studies</a></li>
+    <span class='cont-h'><li><a href="https://superrare.com/thelastwheel" target="blank">superrare</a></li></span>
+    <span class='cont-h'><li><a href="https://recordsnode.substack.com?ref=nav2" target="blank">records-node</a></li></span>
+    <!--span class='cont-h'><li><a href="linktree.html">linktree</a></li></span-->
+    <span class='cont-h'><li><a href="https://www.inprnt.com/gallery/michelepetrelli/" target="blank">art prints</a></li></span>
+    <li><a href="privacy.html">privacy</a></li>
+  </ul>
+<div class="nav-main2">
+  <!-- riga 1 -->
+  <div class="nav-level-1">
+    <a href="all.html" class="all-link">all</a>
+    <a href="pro_archive.html" class="cont-h">[PRO-Archive]</a>
+    <a href="contacts.html">contacts</a>
+    <a href="about.html">about</a>
+  </div>
+
+  <!-- riga 2 -->
+  <div class="nav-level-2">
+    <a href="figures.html">figures</a>
+    <a href="portraits.html">portraits</a>
+    <a href="RNDD.html">R.N.D.D.</a>
+    <a href="films.html">films</a>
+  </div>
+</div>
+<!-- Clicky Web Analytics (Anonimizzato, GDPR compliant) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var clickyScript = document.createElement("script");
+        clickyScript.src = "https://static.getclicky.com/101499862.js";
+        document.body.appendChild(clickyScript);
+
+        // Anonimizzazione dell'IP
+        window.clicky = window.clicky || {};
+        window.clicky.anon = 1; // anonimizza IP
+    }, 2000); // attende 2 secondi prima di caricare Clicky
+});
+</script>
+<noscript>
+    <p><img alt="Clicky" height="1" width="1" src="https://in.getclicky.com/101499862ns.gif"/></p>
+</noscript>
+<!-- Sottolinea pagina attiva -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Prendi il nome del file corrente
+    const path = window.location.pathname;
+    const fileName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
+
+    // Seleziona tutti i link dentro .nav-main2
+    const links = document.querySelectorAll(".nav-main2 a");
+
+    links.forEach(link => {
+        // Confronta href con file corrente (solo nome del file)
+        const href = link.getAttribute("href").toLowerCase();
+        if (href === fileName) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+</nav>
+
+
+<div id="ambient-slideshow"></div>
+
+<div class="members-gate" style="margin-top:0px; padding:20px;">
+
+    
+        <div class="featured-container">
+            <div class="featured-video-wrapper">
+                <video id="featured_demo" controls playsinline poster="../assets/pro_thumbs/demo.webp" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    <source src="../assets/videos/featured_process.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="free-badge">PREVIEW</div>
+            </div>
+
+            
+<div class="featured-info" style="max-width: 500px; margin: 0 auto; border: 1px solid #ddd; padding: 40px; background: #fff; box-sizing: display: block; width: 100%; box-sizing: border-box">
+    <div style="font-family:monospace; font-size:14px; color:#000; margin-bottom:25px; letter-spacing:2px; font-weight:bold; text-align:center;">
+        TERMINAL_ACCESS:<br/>AUTHORIZED MEMBERS ONLY
+    </div>
+
+    <p style="font-size:16px; margin-bottom:20px; line-height:1.6; color:#000;">
+        <strong>Patreon</strong> serves as the secure gateway to the <strong>Master Archive</strong>. Access is strictly limited to ensure efficient manual management and protocol integrity.
+    </p>
+
+    <div style="font-size:14px; border-left: 3px solid #000; padding-left:15px; margin-bottom:25px; line-height:1.6; color:#000;">
+        <strong style="text-transform:uppercase; font-size:12px; letter-spacing:1px;">Access Protocol:</strong><br>
+        A valid <strong>Gmail</strong> address is mandatory for system integration. Manual activation is processed within hours of registration.
+    </div>
+
+    <div style="margin-bottom:30px; color:#000;">
+        <p style="font-size:12px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Data Distribution:</p>
+        <p style="font-size:14px; margin-bottom:15px; line-height:1.5;">
+            Prioritizing <strong>Digital Painting</strong> and <strong>Technical Documents</strong> (RNDD notes, workflow), while maintaining the presence of <strong>Traditional Media</strong> within the corpus. This is not a content factory; quality over volume.
+        </p>
+        <ul style="list-style:none; padding:0; font-size:13px; line-height:1.8; font-family:monospace;">
+            <li><strong style="font-size:14px;">> VIDEO_PROCESSES:</strong> Raw documentation.</li>
+            <li><strong style="font-size:14px;">> ILLUSTRATED_STORIES:</strong> Narrative corpus.</li>
+            <li><strong style="font-size:14px;">> TECHNICAL_DOCUMENTS:</strong> RNDD Logs.</li>
+            <li><strong style="font-size:14px;">> TOOLS:</strong> Brushes and HQ textures packs.</li>
+        </ul>
+    </div>
+
+    <div style="margin: 30px 0; padding: 20px; border: 1px dashed #000; font-family:monospace; text-align:center;">
+        <p style="font-size:13px; margin-bottom:10px; color:#000; font-weight:bold;">GATEWAY_URL:</p>
+        <a href="https://michelepetrelliart.github.io/rd/?to=patreon&ref" target="_blank" style="color:#000; text-decoration:underline; font-size:14px; word-break: break-all;">
+            michelepetrelliart.github.io/rd/?to=patreon
+        </a>
+    </div>
+
+    <p style="font-size:12px; color:#000; margin-top:20px; text-align:center; font-family:monospace; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">
+        [ Status: Active | Limited Seats ]
+    </p>
+</div>
+</div>
+
+    <div class="itinerary">
+        <p style="font-size:16px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-bottom:15px; border-bottom: 1px solid #eee; padding-bottom: 5px;">Reading Itinerary (Members Only):</p>
+        <p style="font-size:14px; margin-bottom:30px; line-height:1.6;">
+            This itinerary is a structured path designed to navigate the RNDD corpus. To access these assets, a
+            <a href="https://michelepetrelliart.github.io/rd/?to=patreon&ref=proindex" target="_blank" style="color:#000; font-weight:bold;">SUPPORT subscription</a> is required.
+        </p>
+        <div>
+           <ol class="itinerary-list">
+            <li><a href="https://drive.google.com/file/d/1gp2Tcp-XqD0KkYHoEoU03_vKyRnzv4_J/view?usp=drive_link" target="_blank">The Gift of the Abyss</a></li>
+            <li><a href="https://drive.google.com/file/d/1Su1-oDuBMY2xg90GStDqlRsvlFwsV9uj/view?usp=drive_link" target="_blank">The King, the Dragon and the Angel</a></li>
+            <li><a href="https://drive.google.com/file/d/12krOfL_RgwzNTNKh2Q8AVqBIwjdjF8Ku/view?usp=drive_link" target="_blank">The Presence of Father</a></li>
+            <li><a href="https://drive.google.com/file/d/18o6ySJynUsoXvjHtF0G9aUvzRlTlHn9Q/view?usp=drive_link" target="_blank">The Verge</a></li>
+            <li><a href="https://michelepetrelliart.github.io/pages_static/RNDD.html" target="_blank">Radical Non-Dual Determinism (RNDD)</a></li>
+            <li><a href="https://www.patreon.com/posts/field-full-short-153410232" target="_blank">The Field (Short Film)</a></li>
+            <li><a href="https://drive.google.com/file/d/1PN-nVjEX2tw0R3DTviXFr7QgF2sOQcKU/view?usp=drive_link" target="_blank">The Mirror of Consciousness</a></li>
+            <li><a href="https://drive.google.com/file/d/18QMANjx4BUQlr-y_kgkGABnRtdQb6ob5/view?usp=drive_link" target="_blank">Radical Determinism in Breaking Bad</a></li>
+            <li><a href="https://drive.google.com/file/d/1A31JY_eQynAWhxTOGeAGIommXqOMatAa/view?usp=drive_link" target="_blank">The Surrender</a></li>
+            <li><a href="https://www.patreon.com/posts/no-tragic-153174589" target="_blank">No Tragic Illusion - Deconstructing the Dramatic Perception</a></li>
+            <li><a href="https://www.patreon.com/posts/shaping-hellboy-152942818" target="_blank">Shaping Hellboy: Art & Determinism</a></li>
+            <li><a href="https://michelepetrelliart.github.io/pages_static/all.html" target="_blank">All Captions (4187 Mock Holiness)</a></li>
+        </ol>
+        </div>
+        <style>
+        .itinerary {max-width:1400px; margin:auto; border: 1px solid #ddd; padding: 25px; background: #fff; box-sizing: border-box; width: 100%;}
+        .itinerary-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px; /* ridotto: 100px su 700px schiaccia tutto */
+    row-gap: 12px;
+
+    border: 1px solid #eee;
+    list-style-position: inside;
+    padding: 25px;
+    margin: 0;
+}
+
+.itinerary-list li {
+    margin-bottom: 0;
+    font-family: monospace;
+}
+
+.itinerary-list a {
+    text-decoration: underline;
+    color: #333;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.itinerary-list a:hover {
+    color: #000;
+}
+
+@media (max-width: 950px) {
+    .itinerary { max-width: 500px; }
+    .itinerary-list {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 10px;
+        padding: 20px;
+    }
+}
+    </style>
+
+
+        </div>
+        
+
+   <div class="paywall-spartan" style="text-align:center; padding:40px 0; margin-bottom:60px; border-top:1px solid #eee; display: none !important;">
+    <p style="letter-spacing:4px; margin-bottom:40px; font-size:14px; color:#000;">[ ACCESS TIERS ]</p>
+
+    <div id="pricing-wrapper" style="display:inline-flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items: stretch; padding:10px; transition: outline 0.3s ease;">
+
+<div style="width: 100%; max-width:450px; border:1px solid #000; padding:25px; display:flex; flex-direction:column; justify-content:space-between; ">
+    <img src="../assets/tiers/observers.webp" class="tier-header-img">
+    <div style="text-align:left; margin-bottom:20px;">
+        <strong style="letter-spacing:2px; font-size:18px; text-transform:uppercase;">SUPPORTERS</strong>
+        <div style="font-size:14px; line-height:1.5; margin:15px 0 0 0; color:#333;">
+            <p style="margin-bottom:10px;">Complete access to the entire archive: digital books, stories, art process videos, and long-form philosophical texts (RNDD).</p>
+            <ul style="padding-left:18px; margin-bottom:10px; list-style-type: square;">
+                <li>Full access to the corpus: Digital Books, Short Stories, and Technical Documents (Google Drive).</li>
+                <li>Art Process: In-depth documentation of the production pipeline.</li>
+            </ul>
+            <p style="font-size:12px; color:#666; font-style:italic;">NOTE: Manual activation within a few hours. Check Spam if not using Gmail.</p>
+            <p style="font-size:11px; margin-top:5px; font-family:monospace; color:#999;">[ Time is the only relevant parameter ]</p>
+        </div>
+    </div>
+    <div style="background:#f9f9f9; padding:15px; margin-bottom:20px; text-align:left; border-left:3px solid #000;">
+        <div style="font-family:monospace; font-size:13px; color:#666; text-transform:uppercase; letter-spacing:1px; line-height:1.4;">
+            STATUS: <span style="color:#00aa00; font-weight:bold;">AVAILABLE</span><br>
+            CAPACITY: <span style="color:#000;">RESTRICTED TO 30 SLOTS</span><br>
+            DATABASE: CLOUD_SYNC<br>
+            SYNC_REF: 2026-03-03 12:10
+        </div>
+    </div>
+    
+            <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
+                <a href="https://www.patreon.com/checkout/michelepetrelliart?rid=25310277" target="_blank" style="text-decoration:none;">
+                    <button style="width:100%; background:#000; color:#fff; padding:18px; border:1px solid #000; cursor:pointer; font-size:16px; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+                        <span style="font-size:16px;">JOIN SUPPORTER ($10/MO)</span><br>
+                        <span style="font-size:15px; opacity:0.7; letter-spacing:1px;">VIA PATREON.COM</span>
+                    </button>
+                </a>
+            </div>
+</div>
+
+<div style="width: 100%; max-width:450px; border:1px solid #000; padding:25px; display:flex; flex-direction:column; justify-content:space-between; ">
+    <img src="../assets/tiers/founders.webp" class="tier-header-img">
+    <div style="text-align:left; margin-bottom:20px;">
+        <strong style="letter-spacing:2px; font-size:18px; text-transform:uppercase;">FOUNDERS</strong>
+        <div style="font-size:14px; line-height:1.5; margin:15px 0 0 0; color:#333;">
+            <p style="margin-bottom:10px;">Complete access to the entire archive, including digital books, stories, art process videos, and RNDD corpus.</p>
+            <ul style="padding-left:18px; margin-bottom:10px; list-style-type: square;">
+                <li><strong>Monthly Technical Mentorship:</strong> One 1-on-1 review per month via Discord/IG.</li>
+                <li><strong>Premium Assets:</strong> Exclusive HighRes_RealPaint_Pack.</li>
+                <li>Full access to corpus & production pipeline documentation.</li>
+            </ul>
+            <p style="font-size:12px; color:#666; font-style:italic;">NOTE: Manual activation within a few hours. Check Spam if not using Gmail.</p>
+            <p style="font-size:11px; margin-top:5px; font-family:monospace; color:#999;">[ Time is the only relevant parameter ]</p>
+        </div>
+    </div>
+    <div style="background:#f9f9f9; padding:15px; margin-bottom:20px; text-align:left; border-left:3px solid #cc0000;">
+        <div style="font-family:monospace; font-size:13px; color:#666; text-transform:uppercase; letter-spacing:1px; line-height:1.4;">
+            STATUS: <span style="color:#00aa00; font-weight:bold;">ACTIVE</span><br>
+            CAPACITY: <span style="color:#000;">RESTRICTED TO 2 SLOTS</span><br>
+            MENTORSHIP: ACTIVE / 1-ON-1<br>
+            SYNC_REF: 2026-03-03 12:10
+        </div>
+    </div>
+    
+            <div style="display:flex; flex-direction:column; gap:10px; width:100%;">
+                <a href="https://www.patreon.com/checkout/michelepetrelliart?rid=28056518" target="_blank" style="text-decoration:none;">
+                    <button style="width:100%; background:#000; color:#fff; padding:18px; border:1px solid #000; cursor:pointer; font-size:16px; font-weight:bold; letter-spacing:2px; text-transform:uppercase;">
+                        <span style="font-size:16px;">JOIN FOUNDER ($100/MO)</span><br>
+                        <span style="font-size:15px; opacity:0.7; letter-spacing:1px;">VIA PATREON.COM</span>
+                    </button>
+                </a>
+            </div>
+</div>
+
+    </div>
+    <p style="font-size:11px; color:#999; margin-top:30px; letter-spacing:1px;">Manual activation via Google Drive within 24 hours.</p>
+</div>
+
+    <section class="members-section" style="margin-bottom:80px; display: none !important;">
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">VIDEO_PROCESSES<span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ RAW PROCESS DOCUMENTATION — NO ENTERTAINMENT ]</span></h2>
+        <div class="grid" id="video-grid">
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/4223_No_Seige_process.webp" loading="lazy" alt="The Soft Round Necessity">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">The Soft Round Necessity</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p01.webp" loading="lazy" alt="3968 Mirelle - Painting the Light">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3968 Mirelle - Painting the Light</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p17.webp" loading="lazy" alt="3992 Blend two faces">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3992 Blend two faces</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p23.webp" loading="lazy" alt="3931 Greta - From an ochre medley">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3931 Greta - From an ochre medley</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p24.webp" loading="lazy" alt="3970 Amandine">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3970 Amandine</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p19.webp" loading="lazy" alt="3964 Batman">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3964 Batman</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p03.webp" loading="lazy" alt="4003 The traits of fear">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">4003 The traits of fear</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p13.webp" loading="lazy" alt="3999 The face of evil">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3999 The face of evil</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p26.webp" loading="lazy" alt="3971 Malcolm L exercise">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3971 Malcolm L exercise</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p06.webp" loading="lazy" alt="3973 Serena">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3973 Serena</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p07.webp" loading="lazy" alt="3986 From a cloud of fire">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3986 From a cloud of fire</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p08.webp" loading="lazy" alt="3997 Black skin">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3997 Black skin</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p09.webp" loading="lazy" alt="3966 Even meaner">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3966 Even meaner</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p10.webp" loading="lazy" alt="3935 Strange character">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3935 Strange character</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p11.webp" loading="lazy" alt="3960 Increase the details">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3960 Increase the details</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p12.webp" loading="lazy" alt="4001 A kind face">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">4001 A kind face</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p14.webp" loading="lazy" alt="3930 Vespasian">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3930 Vespasian</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p15.webp" loading="lazy" alt="4004 Disgust">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">4004 Disgust</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p16.webp" loading="lazy" alt="3951 Neela">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3951 Neela</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p05.webp" loading="lazy" alt="3953 Eye Study">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3953 Eye Study</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p18.webp" loading="lazy" alt="3955 Nuria">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3955 Nuria</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p02.webp" loading="lazy" alt="The Jade Girl">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">The Jade Girl</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p20.webp" loading="lazy" alt="3994">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3994</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p21.webp" loading="lazy" alt="3959 Matilde">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3959 Matilde</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p22.webp" loading="lazy" alt="3943 Ludmila">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3943 Ludmila</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p04.webp" loading="lazy" alt="3934 Nora - Redhead features">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3934 Nora - Redhead features</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p25.webp" loading="lazy" alt="3929 Livia">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3929 Livia</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p27.webp" loading="lazy" alt="3984 Shroud">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3984 Shroud</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1367691" target="_blank">
+                    <img src="../assets/pro_thumbs/p28.webp" loading="lazy" alt="3925 Ezio">
+                    <div class="reserved-badge">RESERVED</div>
+                    <div class="play-overlay"></div>
+                </a>
+            </div>
+        <div class="caption">3925 Ezio</div>
+    </div></div>
+        <button id="loadMoreVideo" class="load-more-btn"><span class="btn-text">SHOW MORE VIDEOS</span><div class="arrow-icon"></div></button>
+    </section>
+
+    <section class="members-section" style="margin-bottom:80px; display: none !important;">
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">ILLUSTRATED_STORIES <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <div class="grid" id="stories-grid">
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1818530" target="_blank">
+                    <img src="../story_pages/Stories/The_Gift_of_the_Abyss.jpg" loading="lazy" alt="The Gift of the Abyss">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+            <div class="caption">The Gift of the Abyss</div>
+        </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1818530" target="_blank">
+                    <img src="../story_pages/Stories/The_King_the_Dragon_and the_Angel.jpg" loading="lazy" alt="The King the Dragon and the Angel">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+            <div class="caption">The King the Dragon and the Angel</div>
+        </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1818530" target="_blank">
+                    <img src="../story_pages/Stories/At_the_Verge.jpg" loading="lazy" alt="At the Verge">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+            <div class="caption">At the Verge</div>
+        </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/1818530" target="_blank">
+                    <img src="../story_pages/Stories/The_Presence_of_the_Father.jpg" loading="lazy" alt="The Presence of the Father">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+            <div class="caption">The Presence of the Father</div>
+        </div></div>
+        <button id="loadMoreStories" class="load-more-btn"><span class="btn-text">SHOW MORE STORIES</span><div class="arrow-icon"></div></button>
+    </section>
+
+    <section class="members-section" style="margin-bottom:80px; display: none !important;">
+        <h2 style="max-width:1600px; margin:auto; border-bottom:1px solid #eee; padding-bottom:10px; text-transform:uppercase; letter-spacing:2px; font-size:18px;">TECHNICAL_DOCUMENTS <span style="font-size:12px; color:#999; margin-left:0px;"><br/>[ MEMBERS_ONLY ]</span></h2>
+        <div class="grid" id="doc-grid">
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/2033078" target="_blank">
+                    <img src="../assets/pro_thumbs/DOC_Breaking_Bad.webp" loading="lazy" alt="RNDD in Breaking Bad">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+        <div class="caption">RNDD in Breaking Bad</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/2033078" target="_blank">
+                    <img src="../assets/pro_thumbs/DOC_The_Surrender.webp" loading="lazy" alt="The Surrender">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+        <div class="caption">The Surrender</div>
+    </div>
+        <div class="grid-item">
+            <div class="img-container">
+                <a href="https://www.patreon.com/collection/2033078" target="_blank">
+                    <img src="../assets/pro_thumbs/DOC_mirror.webp" loading="lazy" alt="The Mirror of Consciousness">
+                    <div class="reserved-badge">RESERVED</div>
+                </a>
+            </div>
+        <div class="caption">The Mirror of Consciousness</div>
+    </div></div>
+        <button id="loadMoreDocs" class="load-more-btn"><span class="btn-text">SHOW MORE DOCUMENTS</span><div class="arrow-icon"></div></button>
+    </section>
+
+</div>
+
+<style>
+.grid-item { display: none; flex-direction: column; align-items: center; opacity: 0; transition: opacity 0.6s ease; }
+.grid-item.visible { opacity: 1; display: flex; }
+.img-container { position: relative; width: 100%; }
+.reserved-badge { position: absolute; top: 120px; right: 40px; background: #000; color: #fff; padding: 4px 8px; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; z-index: 5; pointer-events: none; }
+.play-overlay { position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); border-left: 15px solid rgba(255,255,255,0.7); border-top: 10px solid transparent; border-bottom: 10px solid transparent; pointer-events:none; }
+.caption { padding: 30px 0; width: 100%; line-height: 1.4; color: #333; text-align:center; } body.is-member .reserved-badge,
+body.is-member .play-overlay { display: none !important; visibility: hidden !important; opacity: 0 !important;}
+.tier-header-img {
+    width: calc(100% + 50px) !important;
+    margin-left: -25px !important;
+    margin-top: -25px !important;
+    margin-bottom: 10px !important;
+    height: 120px !important;
+    object-fit: cover;
+    display: block;
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+@media screen and (max-width: 600px) {
+    #pricing-wrapper { width:100% !important; transform: scale(0.72); transform-origin: top center; margin-bottom: -300px !important; padding: 0 !important; }
+    .paywall-tier { padding:0 0 10px 0 !important; margin-bottom:15px !important; overflow:hidden; }
+    .tier-header-img { width:100%; height:60px !important; object-fit:cover; display:block; margin:0 0 8px 0; border-bottom:1px solid #000; }
+    .paywall-tier h2 { font-size:16px !important; margin:0 10px !important; display:block; }
+    .paywall-tier p { font-size:12px !important; line-height:1.2; margin:5px 10px !important; }
+    .paywall-tier input { width:90% !important; margin:5px 5% !important; padding:8px !important; font-size:13px !important; box-sizing:border-box; }
+    .paywall-tier button { width:90% !important; margin:0 5% !important; padding:10px !important; font-size:13px !important; text-transform:uppercase; }
+    .status-counter { font-size:11px !important; text-align:center; margin:5px 0; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const isDesktopUA = !navigator.userAgent.includes('Mobile');
+    const isSmallScreen = window.innerWidth <= 1024;
+
+    if (isTouchDevice && isDesktopUA && isSmallScreen) {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:999999; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;';
+        overlay.innerHTML = '<div style="max-width:300px;"><p style="font-weight:bold;">BROWSER CONFIGURATION ERROR</p><button onclick="location.reload()">RETRY</button></div>';
+        document.body.appendChild(overlay);
+    }
+
+    const demoVideo = document.getElementById("featured_demo");
+    if (demoVideo) {
+        demoVideo.onplay = function() {
+            function tryLog() {
+                if (typeof clicky !== 'undefined') {
+                    clicky.log('featured-video-play', 'Featured Video Playback', 'click');
+                } else {
+                    setTimeout(tryLog, 1000);
+                }
+            }
+            tryLog();
+        };
+    }
+
+    const container = document.getElementById("ambient-slideshow");
+    if (container) {
+        const images = ["../assets/cover/4196.webp","../assets/cover/4210.webp","../assets/cover/4201.webp","../assets/cover/4213.webp","../assets/cover/4214.webp"];
+        let currentIndex = 0;
+        function showNextImage() {
+            const imgPath = images[currentIndex];
+            const newImg = new Image();
+            newImg.src = imgPath;
+            newImg.onload = function() {
+                newImg.style.cssText = "position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 4000ms ease-in-out; opacity:0;";
+                if (container.children.length === 0) { newImg.style.opacity = 1; container.appendChild(newImg); }
+                else {
+                    container.appendChild(newImg);
+                    setTimeout(() => { newImg.style.opacity = 1; }, 50);
+                    const oldImg = container.children[0];
+                    oldImg.style.opacity = 0;
+                    setTimeout(() => { if (oldImg.parentNode === container) container.removeChild(oldImg); }, 4100);
+                }
+                currentIndex = (currentIndex + 1) % images.length;
+            };
+        }
+        showNextImage();
+        setInterval(showNextImage, 8000);
+    }
+});
+
+function setupGrid(gridId, btnId, step) {
+    const items = Array.from(document.querySelectorAll(`#${gridId} .grid-item`));
+    const button = document.getElementById(btnId);
+    if (!button) return;
+    let visibleCount = 0;
+    function showNext() {
+        for (let i = visibleCount; i < visibleCount + step; i++) {
+            if (items[i]) {
+                items[i].style.display = "flex";
+                setTimeout(() => items[i].classList.add("visible"), 10);
+            }
+        }
+        visibleCount += step;
+        if (visibleCount >= items.length) button.style.display = "none";
+    }
+    if (items.length > 0) { showNext(); button.addEventListener("click", showNext); }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupGrid("video-grid", "loadMoreVideo", 8);
+    setupGrid("stories-grid", "loadMoreStories", 4);
+    setupGrid("doc-grid", "loadMoreDocs", 8);
+});
+</script>
+</body>
+</html>
