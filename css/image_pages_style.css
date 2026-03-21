@@ -300,3 +300,48 @@ background:#000;
     .single-image-text { font-size: 19px; }
 }
 
+.archive-video-page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    min-content: 100dvh;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.archive-video-container {
+    flex: 1 1 350px;
+    width: 100%;
+    max-width: 50dvh;
+    margin: 0;
+}
+
+.archive-embed-square-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16; /* FORMATO VERTICALE CORRETTO */
+    background: #000;
+    overflow: hidden;
+    max-height: 90dvh;
+}
+
+.archive-embed-square-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+}
+
