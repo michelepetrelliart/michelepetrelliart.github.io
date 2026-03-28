@@ -502,10 +502,7 @@ h2 {
 </div>
 
 <center>
-<a href="pages_static/all.html" id="enterLink" aria-label="Enter the site"
-style="display:inline-block; font-family:monospace; font-size: 18px;
-       border:1px solid #000; padding:12px 34px;
-       text-decoration:none; color:#000; letter-spacing:2px;">
+<a href="pages_static/all.html" style="display:inline-block; font-family:monospace; font-size: 18px; border:1px solid #000; padding:12px 34px; text-decoration:none; color:#000; letter-spacing:2px;">
 ENTER
 </a>
 </center>
@@ -608,16 +605,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 4. INTERAZIONI (Mouse e Redirect)
     document.addEventListener('contextmenu', e => e.preventDefault());
-    const enterL = document.getElementById("enterLink");
-    if (enterL) {
-        enterL.addEventListener("click", e => {
-            if (!localStorage.getItem("visited")) {
-                e.preventDefault();
-                localStorage.setItem("visited", "true");
-                window.location.href = "pages_static/all.html";
-            }
-        });
-    }
 
     // Seleziona il video tramite l'ID e imposta la velocità
     const videoPartner = document.getElementById('videoPartner');
