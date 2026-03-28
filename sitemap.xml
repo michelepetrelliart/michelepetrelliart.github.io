@@ -5,7 +5,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/pages_static/stories.html</loc>
+    <loc>https://michelepetrelliart.github.io/archive.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
@@ -13,11 +13,19 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://michelepetrelliart.github.io/pages_static/about.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://michelepetrelliart.github.io/pages_static/all.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/pages_static/studies.html</loc>
+    <loc>https://michelepetrelliart.github.io/pages_static/curated.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/pages_static/figures.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
@@ -29,239 +37,19 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/pages_static/about.html</loc>
+    <loc>https://michelepetrelliart.github.io/pages_static/stories.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/pages_static/figures.html</loc>
+    <loc>https://michelepetrelliart.github.io/pages_static/studies.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/pages_static/curated.html</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1420.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/102.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1422.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2546.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/875.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4194_Balance_without_Control.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4143.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/48.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2529-3.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1323.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3903.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2543.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4042.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1032.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1261.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1262.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3908.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3911.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/679_The_Prisoner.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3916.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/244.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/558.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4191_There_is_no_one_here.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2494.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2596.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1209.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1278.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4200_Unbound_Descent.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1223.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2630.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2681.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1417.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3913.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4158_Thre_Presence_of_the_Father.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/769.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4174_The_Necessity_of_Form.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3905.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/768.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1410.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/905.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/46.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/767.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2665.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1435.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2487.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2633-2.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4219_The_Massacre_of_the_Innocents.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3887.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4110_Keepers_of_the_Abyss.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/956.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/103.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1328.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4138_Relentless_Dragon.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4101.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4111.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4206_No_Shipwreck.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1282-sovrapposition.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1020.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -269,7 +57,15 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3851.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1023.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/103.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1032.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -277,331 +73,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2761.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1034.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1408.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1036.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2628.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1074.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3906.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1082.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4078_What_Remains_When_Love_Lies.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1087.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4187_Mock_Holiness.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3930.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1440.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1437.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3932.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2481.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4180_Il_Branco.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4119_What_Is_the_Price_of_Your_Conquest.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4006.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2536-02.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/735.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2656.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4118_The_Red_Thread_Knot.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2547-big.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4231_Memories.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2642.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3849.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/789.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4224_Zero_Deviaton_System.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4038.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/442.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4188_The_Gravity_of_Need.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2674.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/734.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2534.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/867_Blood_Ties.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3997.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/750.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2593.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4017.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3894.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2613.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4140_The_Girl_Who_Didn't_Want_to_Know.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1404.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/723.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2773.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2756.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4210_Biological_Projectile.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4043_Communio.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/770.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2627.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2632.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4159_Three_Women_in_the_Moon.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2770.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1429.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/36.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1164.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/781.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3901.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3953.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/849.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2683.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4004.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/983_Dans_son_rêve.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4225_The_Overlooked_Calculation.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/725.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3931.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3893.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4148.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2584.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/805.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4089.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3979.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2570.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3955.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1402.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1023.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2697.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2657.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4104.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2641.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2638.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4220_This_is_our_Horse.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4179_Chorus.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1441.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4213_Closed_System.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4135_Older_Brother.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1100.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -613,47 +105,43 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3992.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1122.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2690-print.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1132.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3898.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1133.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3896.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1151.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3937_The_Jade_Girl.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1154.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2619.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1164.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2649.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/119.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2537-03.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1209.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4075_Without_Falling.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1217.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4222_RNDD_in_Breaking_Bad.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2661.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1219.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -661,71 +149,91 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1447.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1223.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4109_The_Wrong_Key.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1240.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4234_The_True_Strength_of_Hercules.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1247.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4112_The_Pierced_Wing.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1249.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3929.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1251.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/249.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1252.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3852_The_Witness_Beyond_the_Strife.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1261.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4115_Wings_and_Mirrors.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1262.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3935.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1278.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2574.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1282-sovrapposition.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3999.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1323.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3975.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1327.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3891.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1328.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3951.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1371.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4096-Three%20Against%20the%20Rules.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1401.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4170_Transience.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1402.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4093.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1403.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1404.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1407.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1408.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1410.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1414.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -733,7 +241,587 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/661.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/1416.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1417.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1418.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1420.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1422.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1429.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1430.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1433.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1434.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1435.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1436_Disappointed.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1437.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1439.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1440.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1441.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1443.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1447.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1448-2.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1449.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1450.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1454.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1457.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1460.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1461.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1462.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1463.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/1971-print.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/244.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2464.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2465.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2466.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2467.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2469.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2472.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2473.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2474.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2475.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2476.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2477.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2478.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2479.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2481.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2484.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2486-vampire-2.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2487.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/249.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2492-2.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2494.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2529-3.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2532.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2534.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2535.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2536-02.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2537-03.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2538.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2539.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2541.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2542.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2543.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2544.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2545-2.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2546.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2547-big.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2547-d2.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2547.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2550.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2552.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2556.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2557.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2559.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2560.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2570.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2574.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2577.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2579.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2584.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2585.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2587-.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/258_Frida_Kahlo.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2590.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2593.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2594.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2596.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2602.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2613.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2615.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2616.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2619.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2626.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2627.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2628.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2629.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2630.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2632.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2633-2.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2635.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2636.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2637.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2638.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2639.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2640.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2641.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2642.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2644.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2649.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2651d.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2654.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2656.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2657.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2658.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2659.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2661.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2663.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2664.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2665.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2667.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2668.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2669.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2670.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2671.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2673.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2674.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2678.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2680-2-print.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2681.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2682.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2683.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2684.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2685d.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2686.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2689-print.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2690-print.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2696.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2697.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2724.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2752.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2754.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2756.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2757.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2761.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2769.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2770.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2773.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2809.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/2923.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/32_Dream_Eater.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -745,215 +833,11 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/553.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/35.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3907.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1100.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/792.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2602.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4147_Chaotic_Pattern.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1036.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/45.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4052_Clining_to_Stay_Whole.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4185_Contact.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4175_The_Collapse_of_Duality.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2464.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2673.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3925.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1249.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4209_Red_Ants.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4046.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4036.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2636.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1461.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/771.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/925.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/759.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/877.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2640.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4149.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/829.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4142_Monstrous_Hands.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2663.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4044.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2651d.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3972.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1971-print.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2585.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3973.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4144.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4023.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2757.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3901_Evaporatio_Anime.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4236_The_Debris_of_Ambition.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4221_No_Siege.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1087.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/986.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4106.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3948.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/41.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4208_No_Guardian.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1407.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/258_Frida_Kahlo.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3968.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/716.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2478.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2550.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/36.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -961,79 +845,227 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/43.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3849.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2682.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3851.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1434.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3852_The_Witness_Beyond_the_Strife.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2545-2.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3886.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1132.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3887.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4164_Family_ind_the_void.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3891.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4162_Three_Women_Between_Two_Thresholds.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3892.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4139_Time_of_Distance.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3893.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2590.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3894.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2680-2-print.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3895.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4232_Educated_to_Slop.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3896.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2658.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3897-2.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/896.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3898.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3985.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3899.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/660.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/38_Roger_Penrose.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2476.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/39.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/832.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3900.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1082.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3901.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4132.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3901_Evaporatio_Anime.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3903.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3905.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3906.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3907.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3908.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3910.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3911.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3912.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3913.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3915.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3916.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3919_Effluxus.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3921.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3922.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3925.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3929.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3930.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3931.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3932.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3934.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3935.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3937_The_Jade_Girl.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3941.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3943.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3945.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3948.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3949.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3951.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3953.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3955.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3958.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3959.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3960.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3964.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3965.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3966.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3968.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1041,39 +1073,75 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4018.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3972.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4113_The_Incomplete_Circle_and_the_Fissure.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3973.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2669.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3975.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/42.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3978.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2492-2.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3979.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1034.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3985.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1403.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3990.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4134_The_Three_Who_Were_Ordered_to_Save_the_Worrld.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3991.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1327.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/3992.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3997.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/3999.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/40.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4000.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4001.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4003.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4004.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4005.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4006.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1081,67 +1149,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1430.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4013.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4214_The_Structure_of_Lack.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4017.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4133_The_Crystal_Palace.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4018.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1154.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4019.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2671.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4023.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2752.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4152_Fourth_Brother.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2467.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/774.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1219.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4100.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2626.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/914.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4201_They_Preferred_to_Laugh.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2552.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2542.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4028.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1149,19 +1177,151 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2659.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4036.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4215_The_Uncomprehended.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4038.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4203_Leftover_Flesh.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4042.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2532.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4043_Communio.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4044.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4046.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4052_Clining_to_Stay_Whole.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4053_The_Last_Wheel.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4065.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4066-The_Middle_Line.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4068.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4070_The_Eternal_Tribute.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4075_Without_Falling.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4078_What_Remains_When_Love_Lies.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4084_Malignant_Conversion.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4086.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4089.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4093.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4096-Three%20Against%20the%20Rules.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4099.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/41.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4100.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4101.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4102.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4104.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4106.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4109_The_Wrong_Key.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4110_Keepers_of_the_Abyss.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4111.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4112_The_Pierced_Wing.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4113_The_Incomplete_Circle_and_the_Fissure.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4115_Wings_and_Mirrors.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4116_The_Little_Flame_and_the_Distant_Star.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4118_The_Red_Thread_Knot.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4119_What_Is_the_Price_of_Your_Conquest.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4122_Illusory_Symmetries.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4124_The_River_and_the_Star.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1173,531 +1333,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3966.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4019.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4183_Between_the_Arms_if_Others.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4137_Angel_of_Mobius.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4145_Memories_of_Shared_Time.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2472.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2639.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2469.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1460.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1450.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/38_Roger_Penrose.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2696.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3978.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2541.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1247.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4000.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/963.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4165_The_Verge.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4205_No_Fear_of_the_Void.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4146.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/807.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2484.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4150_Sleeping_Ballerinas.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2559.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4013.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2670.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2560.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/987.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3912.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/40.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2678.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3919_Effluxus.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1020.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3990.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/39.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4178_First_Pillar.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1401.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2473.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2557.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2535.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2654.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3897-2.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4099.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1074.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2615.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/35.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1418.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1240.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/695.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/32_Dream_Eater.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4217_The_Web_of_Determinism.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4163_Act_of_Absolution.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4068.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4122_Illusory_Symmetries.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1133.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2684.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4066-The_Middle_Line.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4116_The_Little_Flame_and_the_Distant_Star.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1217.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2637.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2547.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2754.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4124_The_River_and_the_Star.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4155_Pending_Configuration.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4136_The_Fate_of_Crows.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3910.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/47.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3958.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2587-.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3886.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4028.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4065.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3943.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3895.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/743.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2809.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/858.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3965.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4086.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3991.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/955.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/871.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/119.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4218_The_Snackers.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://michelepetrelliart.github.io/img_pages/4129_Three_Bodies_in_the_Void.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/843.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/790.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1443.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4001.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/893.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2668.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3949.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2686.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2539.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2685d.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1371.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4102.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1252.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2664.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1151.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4226_Gehenna.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3922.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/697.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3959.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2724.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2579.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2544.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/727.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2474.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1436_Disappointed.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3941.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/897.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/418.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4070_The_Eternal_Tribute.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/44.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2538.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1251.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4154_White_Witches.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/981_Liberaci_dal_male.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4196_No_One_Detaches.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2769.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2594.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/740.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1416.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4230_No_Tragic_Illusion.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/102.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2635.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2556.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/806.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4238_We_Are_Victims.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1414.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4172_Inert_Node.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1705,103 +1341,171 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1462.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4132.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3900.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4133_The_Crystal_Palace.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2616.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4134_The_Three_Who_Were_Ordered_to_Save_the_Worrld.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2466.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4135_Older_Brother.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3934.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4136_The_Fate_of_Crows.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4003.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4137_Angel_of_Mobius.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4084_Malignant_Conversion.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4138_Relentless_Dragon.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1463.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4139_Time_of_Distance.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2465.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4140_The_Girl_Who_Didn't_Want_to_Know.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4005.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4142_Monstrous_Hands.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1448-2.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4143.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2667.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4144.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2547-d2.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4145_Memories_of_Shared_Time.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2644.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4146.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/732.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4147_Chaotic_Pattern.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3899.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4148.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2477.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4149.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/4053_The_Last_Wheel.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4150_Sleeping_Ballerinas.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1449.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4152_Fourth_Brother.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2475.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4154_White_Witches.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2923.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4155_Pending_Configuration.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1433.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4158_Thre_Presence_of_the_Father.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1454.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4159_Three_Women_in_the_Moon.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2486-vampire-2.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4162_Three_Women_Between_Two_Thresholds.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2629.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4163_Act_of_Absolution.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4164_Family_ind_the_void.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4165_The_Verge.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4170_Transience.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4172_Inert_Node.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4174_The_Necessity_of_Form.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4175_The_Collapse_of_Duality.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4178_First_Pillar.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4179_Chorus.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/418.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4180_Il_Branco.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4183_Between_the_Arms_if_Others.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4185_Contact.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4187_Mock_Holiness.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4188_The_Gravity_of_Need.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4191_There_is_no_one_here.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4194_Balance_without_Control.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4196_No_One_Detaches.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1809,7 +1513,15 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2689-print.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/42.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4200_Unbound_Descent.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4201_They_Preferred_to_Laugh.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1817,7 +1529,251 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3964.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/4203_Leftover_Flesh.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4205_No_Fear_of_the_Void.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4206_No_Shipwreck.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4208_No_Guardian.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4209_Red_Ants.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4210_Biological_Projectile.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4213_Closed_System.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4214_The_Structure_of_Lack.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4215_The_Uncomprehended.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4217_The_Web_of_Determinism.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4218_The_Snackers.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4219_The_Massacre_of_the_Innocents.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4220_This_is_our_Horse.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4221_No_Siege.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4222_RNDD_in_Breaking_Bad.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4224_Zero_Deviaton_System.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4225_The_Overlooked_Calculation.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4226_Gehenna.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4230_No_Tragic_Illusion.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4231_Memories.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4232_Educated_to_Slop.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4234_The_True_Strength_of_Hercules.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4236_The_Debris_of_Ambition.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/4238_We_Are_Victims.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/43.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/44.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/442.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/45.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/46.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/47.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/48.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/553.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/558.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/660.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/661.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/679_The_Prisoner.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/695.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/697.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/716.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/723.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/725.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/727.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/732.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/734.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/735.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/740.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/743.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/750.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/759.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/767.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/768.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/769.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/770.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/771.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/774.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/781.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/789.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/790.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/792.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/805.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/806.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/807.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1825,11 +1781,91 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3921.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/829.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3945.html</loc>
+    <loc>https://michelepetrelliart.github.io/img_pages/832.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/843.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/849.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/858.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/867_Blood_Ties.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/871.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/875.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/877.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/893.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/896.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/897.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/905.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/914.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/925.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/955.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/956.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/963.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/981_Liberaci_dal_male.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/983_Dans_son_rêve.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/986.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/img_pages/987.html</loc>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1837,39 +1873,15 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2577.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3915.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1122.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1457.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3892.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/2479.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/3960.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/img_pages/1439.html</loc>
-    <priority>0.6</priority>
+    <loc>https://michelepetrelliart.github.io/Films/4181_Il_Campo_-_Trailer.html</loc>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://michelepetrelliart.github.io/Films/4188_The_Art_as_Structural_Necessity.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/Films/4211_The_Void.html</loc>
     <priority>0.7</priority>
   </url>
   <url>
@@ -1878,14 +1890,6 @@
   </url>
   <url>
     <loc>https://michelepetrelliart.github.io/Films/4233_RNDD_Core.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/Films/4181_Il_Campo_-_Trailer.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://michelepetrelliart.github.io/Films/4211_The_Void.html</loc>
     <priority>0.7</priority>
   </url>
 </urlset>
