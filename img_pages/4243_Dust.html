@@ -61,35 +61,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="specs" style="font-size: 13px; line-height: 1.4;">
                     
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">ORIGINAL TECHNIQUE:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">ORIGINAL TECHNIQUE:</span>
                         <span style="flex: 1;">Digital Mixed Media. Subtractive digital painting with high-density texture layering.</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">EDITION:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">EDITION:</span>
                         <span style="flex: 1;">Unique Physical Realization 1/1</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">STATUS:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">STATUS:</span>
                         <span style="flex: 1;">available</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">SIZE:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">SIZE:</span>
                         <span style="flex: 1;">24x30" (61x76.2cm) - Fixed Format</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">TECHNICAL:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">TECHNICAL:</span>
                         <span style="flex: 1;">Archival Hahnemühle Fine Art Paper / WhiteWall Gallery Print</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">AUTHENTICITY:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">AUTHENTICITY:</span>
                         <span style="flex: 1;">Hand-signed & numbered Certificate of Authenticity.</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">SHIPPING:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">SHIPPING:</span>
                         <span style="flex: 1;">Worldwide tracked shipping included.</span>
                     </div>
                     <div style="display: flex; margin-bottom: 5px; align-items: baseline;">
-                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px;">PRICING:</span>
+                        <span style="flex: 0 0 160px; text-align: right; padding-right: 10px; font-weight: bold;">PRICING:</span>
                         <span style="flex: 1;">Available upon request.</span>
                     </div>
                 </div>
@@ -101,23 +101,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <script>
             (function(){
-                var user = "michelepetrelliart", domain = "gmail.com", title = "4243 Dust";
-                var email = user + "@" + domain;
-                var subject = "Inquiry for Unique Physical Realization 1/1: " + title;
-                var body = "Hello Michele,%0D%0A%0D%0AI am interested in the limited edition print of '" + title + "'.%0D%0A%0D%0APlease provide details for the purchase.%0D%0A%0D%0ABest regards.";
-
-                var link = document.createElement("a");
-                link.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
-                link.innerText = "[ Inquiry ]";
-
-                // Stile del tasto (Modificabile centralmente qui)
-                link.style.cssText = "text-decoration:none; color:#fff; background:#000; padding:12px 25px; border:1px solid #000; display:inline-block; font-weight:bold; transition:0.3s;";
-
-                link.onmouseover = function() { this.style.background = "#fff"; this.style.color = "#000"; };
-                link.onmouseout = function() { this.style.background = "#000"; this.style.color = "#fff"; };
-
+                var isSold = false; // Passiamo lo stato da Python a JS
                 var container = document.getElementById("inquiry-button");
-                if(container) container.appendChild(link);
+                if(!container) return;
+
+                if(isSold) {
+                    // Tasto SOLD (Disabilitato)
+                    var span = document.createElement("span");
+                    span.innerText = "[ SOLD ]";
+                    span.style.cssText = "color:#666; padding:12px 25px; border:1px solid #333; display:inline-block; font-weight:bold; letter-spacing:2px; font-size:12px; cursor:not-allowed;";
+                    container.appendChild(span);
+                } else {
+                    // Tasto INQUIRY (Attivo)
+                    var user = "michelepetrelliart", domain = "gmail.com", title = "4243 Dust";
+                    var email = user + "@" + domain;
+                    var subject = "Inquiry: " + title + " (Unique Physical Realization 1/1)";
+                    var body = "Hello Michele,%0D%0A%0D%0AI am interested in the unique physical realization 1/1 of '" + title + "'.%0D%0A%0D%0APlease provide details regarding the acquisition.%0D%0A%0D%0ABest regards.";
+
+                    var link = document.createElement("a");
+                    link.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
+                    link.innerText = "[ Inquiry ]";
+                    link.style.cssText = "text-decoration:none; color:#fff; background:#000; padding:12px 30px; border:1px solid #000; display:inline-block; font-weight:bold; transition:0.3s; letter-spacing:2px; font-size:12px;";
+
+                    link.onmouseover = function() { this.style.background = "#fff"; this.style.color = "#000"; };
+                    link.onmouseout = function() { this.style.background = "#000"; this.style.color = "#fff"; };
+                    container.appendChild(link);
+                }
             })();
             </script>
              <div class="single-image-text">08:00 – Waking up on time. Consistency is the only architecture that holds when the weather outside is grim. There’s a storm warning, but it’s just an excuse: the truth is, I never go out.<br/><br/>
