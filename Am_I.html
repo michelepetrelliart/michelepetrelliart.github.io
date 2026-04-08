@@ -160,17 +160,30 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <div style="text-align: center; margin: 40px 0;">
-    <div onclick="window.history.go(-1); return false;"
-         style="cursor: pointer; color: #000; font-family: monospace; font-weight: bold; font-size: 80px; display: inline-block; -webkit-user-select: none; user-select: none;"
-         onmouseover="this.style.color='#666'"
-         onmouseout="this.style.color='#000'">
+    <div onclick="smartBack()"
+         style="cursor: pointer; color: #000; font-family: monospace; font-weight: bold; font-size: 80px; display: inline-block;">
         &#8592;
     </div>
     <br>
-    <span style="font-family: 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">
-        [ GO_BACK ]
+    <span style="font-family: 'Courier New', monospace; font-size: 10px; text-transform: uppercase;">
+        [ EXECUTE_EXIT ]
     </span>
 </div>
+
+<script>
+function smartBack() {
+    // 1. Prova a tornare indietro
+    window.history.back();
+
+    // 2. Se dopo 200ms sei ancora qui, significa che non c'è storia
+    setTimeout(function() {
+        // Se il referrer è vuoto (scheda nuova), chiudi o vai alla root
+        if (window.history.length <= 1) {
+            window.location.href = "../"; // Torna alla cartella precedente nel server
+        }
+    }, 200);
+}
+</script>
 
 <div class="cont-h">
     <div class="text">
