@@ -160,30 +160,21 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <div style="text-align: center; margin: 40px 0;">
-    <div onclick="smartBack()"
-         style="cursor: pointer; color: #000; font-family: monospace; font-weight: bold; font-size: 80px; display: inline-block;">
-        &#8592;
-    </div>
-    <br>
-    <span style="font-family: 'Courier New', monospace; font-size: 10px; text-transform: uppercase;">
-        [ EXECUTE_EXIT ]
-    </span>
+  <script>
+    // Scriviamo il link dinamicamente solo se sappiamo da dove viene l'utente
+    var provenienza = document.referrer;
+    if (provenienza) {
+        document.write('<a href="' + provenienza + '" style="text-decoration: none; color: #000; font-family: monospace; font-weight: bold; font-size: 90px;">&#8592;</a>');
+    } else {
+        // Se non sappiamo da dove viene, usiamo il comando di sistema
+        document.write('<a href="javascript:history.back()" style="text-decoration: none; color: #000; font-family: monospace; font-weight: bold; font-size: 90px;">&#8592;</a>');
+    }
+  </script>
+  <br>
+  <span style="font-family: 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">
+      [ BACK ]
+  </span>
 </div>
-
-<script>
-function smartBack() {
-    // 1. Prova a tornare indietro
-    window.history.back();
-
-    // 2. Se dopo 200ms sei ancora qui, significa che non c'è storia
-    setTimeout(function() {
-        // Se il referrer è vuoto (scheda nuova), chiudi o vai alla root
-        if (window.history.length <= 1) {
-            window.location.href = "../"; // Torna alla cartella precedente nel server
-        }
-    }, 200);
-}
-</script>
 
 <div class="cont-h">
     <div class="text">
