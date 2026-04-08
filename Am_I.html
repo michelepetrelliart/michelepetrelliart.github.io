@@ -160,26 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <div style="text-align: center; margin: 40px 0;">
-    <button onclick="goBack()" style="background: none; border: none; cursor: pointer; color: #000; font-family: monospace; font-weight: bold; font-size: 60px; display: inline-block; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <div onclick="window.history.go(-1); return false;"
+         style="cursor: pointer; color: #000; font-family: monospace; font-weight: bold; font-size: 80px; display: inline-block; -webkit-user-select: none; user-select: none;"
+         onmouseover="this.style.color='#666'"
+         onmouseout="this.style.color='#000'">
         &#8592;
-    </button>
+    </div>
     <br>
     <span style="font-family: 'Courier New', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 2px;">
-        [ RETURN_PROT_ACTIVE ]
+        [ GO_BACK ]
     </span>
 </div>
-
-<script>
-function goBack() {
-    if (document.referrer.indexOf(window.location.host) !== -1) {
-        // Se l'utente proviene da una pagina dello STESSO sito, usa la storia
-        history.back();
-    } else {
-        // Se la storia è vuota o viene dall'esterno, forza il ritorno alla home
-        window.location.href = "https://michelepetrelliart.github.io/";
-    }
-}
-</script>
 
 <div class="cont-h">
     <div class="text">
