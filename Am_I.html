@@ -11,56 +11,75 @@
     <meta property="og:site_name" content="Michele Petrelli">
     <!--link rel="stylesheet" href="../css/style.css"-->
 <style>
-    /* Base: Mobile */
+    /* Reset per evitare scroll orizzontali indesiderati */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        background-color: #fff;
+    }
+
+    /* ASCII Art: Mobile-First e Scalabile */
     pre.ascii-art {
         background-color: #fff;
         color: #000;
         line-height: 1.0;
         display: block;
-        padding: 10px;
         margin: 0 auto;
         font-weight: bold;
         font-family: monospace;
         white-space: pre;
-        overflow-x: hidden;
-        font-size: 1.18vw;
+
+        /* Forza il font a scalare esattamente sulla larghezza del display */
+        /* 1.15vw è il valore magico per far stare ~86 caratteri in uno schermo */
+        font-size: 1.15vw;
+        width: 100vw;
+        text-align: center;
     }
 
-    /* Schermi Desktop */
+    /* Schermi Desktop: riduciamo un po' la scala per non farlo sembrare gigante */
     @media (min-width: 1200px) {
         pre.ascii-art {
             font-size: 0.85vw;
-            max-width: 90%;
+            max-width: 100%;
         }
     }
 
-    /* Layout Testo RNDD a tre colonne */
- .cont-h {
-            width: 100%;
-            text-align: center; /* Centra orizzontalmente tutto ciò che è all'interno */
-            margin-top: 30px;
-        }
+    /* Layout Testo RNDD */
+    .cont-h {
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+        padding-bottom: 50px; /* Spazio extra in fondo */
+    }
 
+    .text {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 13px;
+        color: #000;
+        text-align: left;
+        display: inline-block;
+        column-count: 3;
+        column-gap: 40px;
+        line-height: 1.6;
+        text-transform: uppercase;
+        max-width: 90%;
+    }
+
+    /* Responsive Mobile per le colonne di testo */
+    @media (max-width: 600px) {
         .text {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 13px;
-            color: #000;
-            text-align: left; /* Il testo dentro le colonne resta a sinistra */
-            display: inline-block; /* Fondamentale: il blocco si stringe attorno alle colonne */
-            column-count: 3;
-            column-gap: 40px; /* Spazio tra le colonne */
-            line-height: 1.6;
-            text-transform: uppercase;
-            max-width: 90%; /* Impedisce che il testo tocchi i bordi dello schermo */
+            column-count: 1;
+            text-align: center;
+            font-size: 11px; /* Leggermente più piccolo su mobile */
         }
 
-        /* Responsive per mobile: se lo schermo è piccolo, le colonne diventano una sola */
-        @media (max-width: 600px) {
-            .text {
-                column-count: 1;
-                text-align: center;
-            }
+        /* Su schermi molto piccoli (es. iPhone SE), abbassiamo ancora il font ASCII */
+        pre.ascii-art {
+            font-size: 1.18vw;
         }
+    }
 </style>
 </head>
 <body>
