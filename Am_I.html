@@ -11,76 +11,50 @@
     <meta property="og:site_name" content="Michele Petrelli">
     <!--link rel="stylesheet" href="../css/style.css"-->
 <style>
-    /* Reset per evitare scroll orizzontali indesiderati */
-    body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow-x: hidden;
-        background-color: #fff;
-    }
+/* Reset drastico */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; /* Taglia via tutto quello che prova a uscire a destra */
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%; /* Impedisce a Instagram di ingrandire i font a caso */
+}
 
-    /* ASCII Art: Mobile-First e Scalabile */
+pre.ascii-art {
+    background-color: #fff;
+    color: #000;
+    line-height: 1.0;
+    display: block;
+    margin: 0 auto;
+    font-weight: bold;
+    font-family: monospace;
+    white-space: pre;
+
+    /* Usiamo una formula che si adatta meglio */
+    font-size: 1.1vw;
+    width: 100%;
+    text-align: center;
+    overflow: hidden; /* Non permettere all'ASCII di forzare lo scroll */
+}
+
+/* Correzione specifica per Instagram/Mobile */
+@media (max-width: 600px) {
     pre.ascii-art {
-        background-color: #fff;
-        color: #000;
-        line-height: 1.0;
-        display: block;
-        margin: 0 auto;
-        font-weight: bold;
-        font-family: monospace;
-        white-space: pre;
-
-        /* Forza il font a scalare esattamente sulla larghezza del display */
-        /* 1.15vw è il valore magico per far stare ~86 caratteri in uno schermo */
-        font-size: 1.15vw;
-        width: 100vw;
-        text-align: center;
-    }
-
-    /* Schermi Desktop: riduciamo un po' la scala per non farlo sembrare gigante */
-    @media (min-width: 1200px) {
-        pre.ascii-art {
-            font-size: 0.85vw;
-            max-width: 100%;
-        }
-    }
-
-    /* Layout Testo RNDD */
-    .cont-h {
-        width: 100%;
-        text-align: center;
-        margin-top: 30px;
-        padding-bottom: 50px; /* Spazio extra in fondo */
+        /* Se l'immagine sporge, questo la costringe a stare dentro */
+        font-size: 1.12vw !important;
+        width: 100vw !important;
+        transform: none; /* Togli lo scale che crea la "serratura" */
     }
 
     .text {
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 13px;
-        color: #000;
-        text-align: left;
-        display: inline-block;
-        column-count: 3;
-        column-gap: 40px;
-        line-height: 1.6;
-        text-transform: uppercase;
-        max-width: 90%;
+        column-count: 1;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 10px; /* Un pelo più piccolo per sicurezza */
     }
-
-    /* Responsive Mobile per le colonne di testo */
-    @media (max-width: 600px) {
-        .text {
-            column-count: 1;
-            text-align: center;
-            font-size: 11px; /* Leggermente più piccolo su mobile */
-        }
-
-        /* Su schermi molto piccoli (es. iPhone SE), abbassiamo ancora il font ASCII */
-        pre.ascii-art {
-            font-size: 1.18vw;
-            transform: scale(0.8);
-        }
-    }
+}
 </style>
 </head>
 <body>
