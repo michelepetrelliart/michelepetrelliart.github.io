@@ -356,6 +356,34 @@ h2 {
     }
 }
 
+
+/* Il contenitore ora è discreto e non spaventoso */
+#terminal-overlay {
+    display: none;
+    text-align: left;
+    background: #f9f9f9; /* Grigio chiarissimo, quasi bianco */
+    color: #333;       /* Testo grigio scuro, leggibile e calmo */
+    padding: 20px;
+    font-family: 'Source Code Pro', monospace; /* Se lo hai, o un monospace standard */
+    font-size: 13px;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ddd; /* Bordo leggero */
+    line-height: 1.6;
+    border-radius: 4px; /* Un accenno di arrotondamento lo rende meno "brutale" */
+}
+
+/* Il cursore ora è un trattino basso grigio */
+#terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    background: #666;
+    margin-left: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
 </style>
 <script type="application/ld+json">
 {
@@ -486,7 +514,7 @@ h2 {
 
 </div>
 
-<div style="margin:45px 0; font-family:monospace; font-size:10px; text-align:center; color:#222;">
+<!--div style="margin:45px 0; font-family:monospace; font-size:10px; text-align:center; color:#222;">
 <pre>
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                                                            ::
@@ -499,12 +527,23 @@ h2 {
 ::                                                            ::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 </pre>
-</div>
+</div-->
 
-<center>
+<!--center>
 <a href="pages_static/physical.html" style="display:inline-block; font-family:monospace; font-size: 18px; border:1px solid #000; padding:12px 34px; text-decoration:none; color:#000; letter-spacing:2px;">
 ENTER
 </a>
+</center-->
+
+<center id="access-node">
+    <button id="trigger-enter" onclick="runDiagnostic()" style="font-family:monospace; font-size: 18px; border:1px solid #000; padding:12px 34px; background:none; cursor:pointer; letter-spacing:2px;margin-top:35px">
+        ENTER
+    </button>
+
+    <div id="terminal-v2" style="display: none; text-align: left; background: #000; color: #fff; padding: 25px; font-family: monospace; font-size: 13px; max-width: 550px; margin: 20px auto; border: 1px solid #333; line-height: 1.7;">
+        <div id="term-text"></div>
+        <span id="term-cursor" style="display:none; width: 10px; height: 2px; background: #fff; margin-left: 4px; display: inline-block; vertical-align: middle; animation: blink-und 1s infinite;"></span>
+    </div>
 </center>
 
 </div>
@@ -574,6 +613,71 @@ ENTER
 
   </div></center>
  </span>
+<script>
+function runDiagnostic() {
+    const btn = document.getElementById('trigger-enter');
+    const term = document.getElementById('terminal-v2');
+    const txt = document.getElementById('term-text');
+    const csr = document.getElementById('term-cursor');
+
+    btn.style.display = 'none';
+    term.style.display = 'block';
+    txt.innerHTML = "";
+
+    // Generazione numeri tra 1 e 5 (Somma minima 2, massima 10)
+    const n1 = Math.floor(Math.random() * 5) + 1;
+    const n2 = Math.floor(Math.random() * 5) + 1;
+    const expected = n1 + n2;
+
+    const sequence = [
+        "[ SYSTEM NOTICE: Visual interface only. No local changes. ]<br/>",
+        "[  INFO  ] RNDD_Node: Connection established.",
+        "[  INFO  ] Assets: 16-bit high-fidelity stream ready.",
+        "[  WARN  ] Unauthorized bot activity detected.",
+        "[ SECURITY ] HUMAN VERIFICATION REQUIRED.",
+        `<br>SOLVE TO UNLOCK: ${n1} + ${n2} = `
+    ];
+
+    let step = 0;
+    const timer = setInterval(() => {
+        if (step < sequence.length) {
+            txt.innerHTML += sequence[step] + (step === sequence.length - 1 ? "" : "<br>");
+            step++;
+        } else {
+            clearInterval(timer);
+            csr.style.display = 'inline-block';
+
+            const onKey = (e) => {
+                // Gestione input numerico (0-9) e anche il tastierino numerico
+                if (e.key >= '0' && e.key <= '9') {
+                    document.removeEventListener('keydown', onKey);
+                    const userIn = e.key;
+
+                    // Gestione speciale per la somma 10 (l'utente preme 1 e poi 0)
+                    // Ma per semplicità tecnica in un terminale 1-char,
+                    // se la somma è 10, l'utente dovrebbe poter premere solo '0' o gestiremo il dual-key?
+                    // Facciamo che se la somma è 10, accettiamo lo '0' come shortcut.
+
+                    let pressedValue = parseInt(userIn);
+                    txt.innerHTML += userIn;
+
+                    // Logica di verifica: se expected è 10, l'utente preme 0.
+                    if (pressedValue === expected || (expected === 10 && pressedValue === 0)) {
+                        txt.innerHTML += "<br><br><span style='color:#2ecc71'>[ OK ] Identity confirmed. Accessing...</span>";
+                        csr.style.display = 'none';
+                        setTimeout(() => { window.location.href = "pages_static/physical.html"; }, 1000);
+                    } else {
+                        txt.innerHTML += "<br><br><span style='color:#e74c3c'>[ ERR ] Verification failed. Access denied.</span>";
+                        csr.style.display = 'none';
+                        setTimeout(() => { location.reload(); }, 1500);
+                    }
+                }
+            };
+            document.addEventListener('keydown', onKey);
+        }
+    }, 400);
+}
+</script>
 <script>
 /* MOTORE UNIFICATO: LINGUA, COOKIE, CAROSELLO E CLICKY */
 document.addEventListener("DOMContentLoaded", function() {
