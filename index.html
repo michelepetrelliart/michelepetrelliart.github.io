@@ -541,55 +541,6 @@ h2 {
 ENTER
 </a>
 </center-->
-
-<center id="access-node" style="background: #fff; color: #000; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-
-    <button id="trigger-enter" onclick="runDiagnostic()" style="font-family:monospace; font-size: 16px; border:1px solid #000; padding:12px 34px; background:#fff; color:#000; cursor:pointer; letter-spacing:2px; text-transform:uppercase;">
-        ENTER ARCHIVE
-    </button>
-
-    <div id="terminal-v2" style="display: none; text-align: left; background: #fff; color: #000; padding: 25px; font-family: monospace; font-size: 14px; max-width: 600px; width: 90%; border-left: 2px solid #000; line-height: 1.8; margin-top: 20px;">
-        <span id="term-text"></span><span id="term-cursor">█</span>
-    </div>
-
-</center>
-
-</div>
-<br/><br/>
-
-<div class='cont-h'>
-<center><!--a class='pgform2' href='https://www.patreon.com/michelepetrelliart?ref=hometpatreonlinkof3' target='_blank'><u>Patreon</u></a> | --><a class='pgform2' href='https://superrare.com/thelastwheel' target='_blank'><u>Superrare</u></a><!-- | <a class='pgform2' href='pages_static/physical.html'><u>Unique 1/1</u></a-->
-</div>
-
-
-<div class="cont-h">
-<div style="margin: 30px 0; text-align: center;">
-  <a href="https://recordsnode.substack.com/subscribe" target="_blank" style="text-decoration: none;">
-    <div style="display: inline-block; /*border: 1px solid #000;*/ background: #fff; padding: 10px 20px; cursor: pointer;">
-      <span style="color: #000; font-family: monospace; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
-        [ Subscribe to Newsletter via Substack ]
-      </span>
-    </div>
-  </a>
-</div>
-    <!--div class="container-newsletter" style="display: flex;justify-content: center; align-items: center;  max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif; gap: 60px;">
-
-        <div class="col-form" style="flex: 0 1 auto; text-align: center">
-            <h2 style='margin-bottom:0px; padding-bottom:0px; font-weight: normal; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;'>Sign in my News</h2>
-            <span style='letter-spacing: 4px; font-size: 11px; display: block; margin-bottom: 20px;'>New paintings and events</span>
-
-            <form id="newsletterForm" style="display: inline-block;">
-                <input type="email" name="email" placeholder="Enter your email" required style="padding: 10px; border: 1px solid #ccc; width: 220px; font-size: 12px; outline: none;">
-                <button type="submit" style="padding: 10px 20px; background: #fff; border: 1px solid #000; cursor: pointer; font-size: 12px; text-transform: uppercase;">Subscribe</button>
-                <div id="status" style="margin-top:10px; font-size: 12px;"></div>
-            </form>
-
-            <p style="font-size: 11px; color: #666; margin-top: 15px; line-height: 1.4;">
-                Contents distributed via <strong>Substack</strong>. <br>
-                You can unsubscribe at any time.
-            </p>
-        </div-->
-</div>
 <div id="recent-works-container"></div>
 
 <script>
@@ -647,6 +598,55 @@ fetch('recent_works.json')
     .recent-works-wrapper { gap: 20px; padding: 0 15px; }
 }
 </style>
+<center id="access-node" style="background: #fff; color: #000; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+
+    <button id="trigger-enter" onclick="runDiagnostic()" style="font-family:monospace; font-size: 16px; border:1px solid #000; padding:12px 34px; background:#fff; color:#000; cursor:pointer; letter-spacing:2px; text-transform:uppercase;">
+        ENTER ARCHIVE
+    </button>
+
+    <div id="terminal-v2" style="display: none; text-align: left; background: #fff; color: #000; padding: 25px; font-family: monospace; font-size: 14px; max-width: 600px; width: 90%; border-left: 2px solid #000; line-height: 1.8; margin-top: 20px;">
+        <span id="term-text"></span><span id="term-cursor">█</span>
+    </div>
+
+</center>
+
+</div>
+<br/><br/>
+
+<div class='cont-h'>
+<center><!--a class='pgform2' href='https://www.patreon.com/michelepetrelliart?ref=hometpatreonlinkof3' target='_blank'><u>Patreon</u></a> | --><a class='pgform2' href='https://superrare.com/thelastwheel' target='_blank'><u>Superrare</u></a><!-- | <a class='pgform2' href='pages_static/physical.html'><u>Unique 1/1</u></a-->
+</div>
+
+
+<div class="cont-h">
+<div style="margin: 30px 0; text-align: center;">
+  <a href="https://recordsnode.substack.com/subscribe" target="_blank" style="text-decoration: none;">
+    <div style="display: inline-block; /*border: 1px solid #000;*/ background: #fff; padding: 10px 20px; cursor: pointer;">
+      <span style="color: #000; font-family: monospace; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+        [ Subscribe to Newsletter via Substack ]
+      </span>
+    </div>
+  </a>
+</div>
+    <!--div class="container-newsletter" style="display: flex;justify-content: center; align-items: center;  max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif; gap: 60px;">
+
+        <div class="col-form" style="flex: 0 1 auto; text-align: center">
+            <h2 style='margin-bottom:0px; padding-bottom:0px; font-weight: normal; font-size: 24px; text-transform: uppercase; letter-spacing: 2px;'>Sign in my News</h2>
+            <span style='letter-spacing: 4px; font-size: 11px; display: block; margin-bottom: 20px;'>New paintings and events</span>
+
+            <form id="newsletterForm" style="display: inline-block;">
+                <input type="email" name="email" placeholder="Enter your email" required style="padding: 10px; border: 1px solid #ccc; width: 220px; font-size: 12px; outline: none;">
+                <button type="submit" style="padding: 10px 20px; background: #fff; border: 1px solid #000; cursor: pointer; font-size: 12px; text-transform: uppercase;">Subscribe</button>
+                <div id="status" style="margin-top:10px; font-size: 12px;"></div>
+            </form>
+
+            <p style="font-size: 11px; color: #666; margin-top: 15px; line-height: 1.4;">
+                Contents distributed via <strong>Substack</strong>. <br>
+                You can unsubscribe at any time.
+            </p>
+        </div-->
+</div>
+
     <div style="text-align: center; margin-top: 25px; padding-bottom: 20px; font-family: 'Inter', sans-serif;">
     <a href="sitemap.html" style="font-size: 11px; color: #000; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6;">Sitemap</a>
 
