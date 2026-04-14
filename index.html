@@ -629,8 +629,11 @@ function runDiagnostic() {
 
     // Rilevamento avanzato: controlla se il dispositivo ha il touch E un userAgent mobile
     // Questo evita che stringendo la finestra su desktop appaia l'errore mobile
-    const isMobile = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0)) &&
-                     /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    const isMobile = (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+        (navigator.maxTouchPoints > 1 && !window.MSStream) ||
+        (window.orientation !== undefined)
+    );
 
     btn.style.display = 'none';
     term.style.display = 'block';
@@ -654,7 +657,7 @@ function runDiagnostic() {
 
             if (isMobile) {
                 // Messaggio tecnico giustificativo per Mobile
-                txt.innerHTML += "[ STATUS ] Mobile hardware limits detected.<br><br>";
+                txt.innerHTML += "<span style='color:#e74c3c'>[ STATUS ] Mobile hardware limits detected.</span><br><br>";
                 txt.innerHTML += "STATIONARY DESKTOP WORKSTATION RECOMMENDED FOR FULL ARCHIVE ACCESS.<br>";
                 // Il terminale si ferma qui, senza chiedere tasti.
             } else {
