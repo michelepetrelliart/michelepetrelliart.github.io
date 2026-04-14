@@ -622,18 +622,15 @@ ENTER
   </div></center>
  </span>
 <script>
-const desktopText = `> ARCHIVE DETECTED.<br/>
-> RESOLUTION VERIFIED.<br/>
-> VERIFYING DISPLAY SIZE<br/>
-> ACCESS GRANTED.<br/>
-> LOADING...<br/>`;
+const desktopText = `> SYSTEM CHECK: OK.<br/>
+> RESOLUTION: OPTIMAL.<br/>
+> LOADING FULL ARCHIVE...<br/>
+> ACCESS GRANTED.`;
 
-const mobileText = `> ARCHIVE DETECTED.<br/>
-> CHECKING HARDWARE...<br/>
-<span style="color:#D32F2F">> DISPLAY TOO SMALL.<br/>
-> ACCESS DENIED.</span><br/>
-> THE PAINTINGS REQUIRE A LARGE SCREEN.<br/>
-> RETURN FROM A DESKTOP.<br/>`;
+const mobileText = `> HARDWARE: MOBILE DEVICE.<br/>
+> LOADING ESSENTIAL GALLERY...<br/>
+<span style="color:#D32F2F">> NOTE: FULL DOCUMENTATION REQUIRES DESKTOP ACCESS.</span><br/>
+> REDIRECTING...`;
 
 const termContainer = document.getElementById('terminal-v2');
 const termText = document.getElementById('term-text');
@@ -642,13 +639,10 @@ const enterBtn = document.getElementById('trigger-enter');
 let charIndex = 0;
 
 function runDiagnostic() {
-    // 1. Nascondi il tasto
     enterBtn.style.display = 'none';
-    // 2. Mostra il terminale
     termContainer.style.display = 'block';
 
-    // 3. Determina quale testo usare
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 1024;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const currentText = isMobile ? mobileText : desktopText;
 
     charIndex = 0;
@@ -657,33 +651,35 @@ function runDiagnostic() {
         if (charIndex < currentText.length) {
             termText.innerHTML = currentText.substring(0, charIndex + 1);
             charIndex++;
-            // Manteniamo i tuoi tempi desktop (5ms + random) anche per mobile per velocità
-            setTimeout(type, 5 + Math.random() * 15);
+            // Velocità di battitura leggermente più umana
+            setTimeout(type, 15 + Math.random() * 25);
         } else {
-            // Fine animazione
-            if (!isMobile) {
-                // Se Desktop: Pausa e poi entra
-                setTimeout(grantAccess, 1200);
-            } else {
-                // Se Mobile: Ferma il cursore e lascialo lì "a piedi"
-                document.getElementById('term-cursor').style.display = 'none';
-            }
+            // --- STACCO PRIMA DEL REDIRECT ---
+            // Se mobile, diamo 3 secondi pieni per leggere l'avviso importante
+            // Se desktop, basta 1.5 secondi per dare il senso del caricamento
+            const waitTime = isMobile ? 2600 : 1500;
+
+            setTimeout(() => {
+                grantAccess(isMobile);
+            }, waitTime);
         }
     }
     type();
 }
 
-function grantAccess() {
+function grantAccess(isMobile) {
     const overlay = document.getElementById('access-node');
-    overlay.style.transition = "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)";
+    overlay.style.transition = "opacity 1.5s ease-in-out";
     overlay.style.opacity = "0";
 
     setTimeout(() => {
-        window.location.href = "pages_static/physical.html";
-    }, 1200);
+        if (isMobile) {
+            window.location.href = "pages_static/physical-m.html";
+        } else {
+            window.location.href = "pages_static/physical.html";
+        }
+    }, 1500);
 }
-
-// In questa versione, checkDevice non serve più all'avvio perché il tasto c'è sempre
 </script>
 <script>
 /* MOTORE UNIFICATO: LINGUA, COOKIE, CAROSELLO E CLICKY */
