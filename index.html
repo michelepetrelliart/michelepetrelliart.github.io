@@ -622,17 +622,18 @@ ENTER
   </div></center>
  </span>
 <script>
-const desktopText = `> INITIALIZING SYSTEM<br/>
-> CALIBRATING RESOLUTION<br/>
+const desktopText = `> ARCHIVE DETECTED.<br/>
+> RESOLUTION VERIFIED.<br/>
 > VERIFYING DISPLAY SIZE<br/>
-> STATUS: READY.<br/>
-> ACCESS AUTHORIZED.<br/>`;
+> ACCESS GRANTED.<br/>
+> LOADING...<br/>`;
 
-const mobileText = `> INITIALIZING SYSTEM<br/>
+const mobileText = `> ARCHIVE DETECTED.<br/>
 > CHECKING HARDWARE...<br/>
-> ERROR: LIMITED HARDWARE.<br/>
-> DESKTOP REQUIRED.<br/>
-> ACCESS DENIED.<br/>`;
+> <span style="color:#D32F2F"DISPLAY TOO SMALL.</span><br/>
+> THE PAINTINGS REQUIRE A LARGE SCREEN.<br/>
+> ACCESS DENIED.<br/>
+> RETURN FROM A DESKTOP.<br/>`;
 
 const termContainer = document.getElementById('terminal-v2');
 const termText = document.getElementById('term-text');
