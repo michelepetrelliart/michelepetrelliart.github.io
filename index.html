@@ -641,7 +641,6 @@ function runDiagnostic() {
         "[ SYSTEM NOTICE: Visual interface only. No local changes. ]<br/>",
         "[  INFO  ] RNDD_Node: Connection established.",
         "[  INFO  ] Assets: 16-bit high-fidelity stream ready.",
-        "[  WARN  ] Unauthorized bot activity detected.",
         "[ SECURITY ] HUMAN VERIFICATION REQUIRED."
     ];
 
@@ -655,8 +654,7 @@ function runDiagnostic() {
 
             if (isMobile) {
                 // Messaggio tecnico giustificativo per Mobile
-                txt.innerHTML += "<br>[ NOTICE ] High-density assets detected (400MB+ per sequence).<br>";
-                txt.innerHTML += "[ STATUS ] Mobile hardware limits detected. Large-scale texture rendering paused.<br>";
+                txt.innerHTML += "[ STATUS ] Mobile hardware limits detected.<br><br>";
                 txt.innerHTML += "STATIONARY DESKTOP WORKSTATION RECOMMENDED FOR FULL ARCHIVE ACCESS.<br>";
                 // Il terminale si ferma qui, senza chiedere tasti.
             } else {
