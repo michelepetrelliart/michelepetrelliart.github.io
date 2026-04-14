@@ -590,6 +590,63 @@ ENTER
             </p>
         </div-->
 </div>
+<div id="recent-works-container"></div>
+
+<script>
+fetch('recent_works.json')
+  .then(response => response.json())
+  .then(works => {
+    const container = document.getElementById('recent-works-container');
+    if (works.length > 0) {
+      let html = '<div class="recent-works-wrapper">';
+      works.forEach(work => {
+        html += `
+          <div class="recent-work-card">
+            <a href="${work.link}">
+              <img src="${work.thumb}" alt="${work.title}" loading="lazy">
+              <p class="recent-work-title">${work.title}</p>
+            </a>
+          </div>`;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+    }
+  })
+  .catch(err => console.error("Errore caricamento opere recenti:", err));
+</script>
+
+<style>
+/* Stile essenziale per la vetrina in Home */
+.recent-works-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px auto;
+    max-width: 1200px;
+}
+.recent-work-card {
+    flex: 1 1 300px;
+    max-width: 450px;
+    text-align: center;
+}
+.recent-work-card img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+    display: block;
+}
+.recent-work-title {
+    font-family: monospace;
+    font-size: 13px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+@media (max-width: 768px) {
+    .recent-works-wrapper { gap: 20px; padding: 0 15px; }
+}
+</style>
     <div style="text-align: center; margin-top: 25px; padding-bottom: 20px; font-family: 'Inter', sans-serif;">
     <a href="sitemap.html" style="font-size: 11px; color: #000; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6;">Sitemap</a>
 
