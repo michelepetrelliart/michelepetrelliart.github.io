@@ -654,11 +654,11 @@ function runDiagnostic() {
             clearInterval(timer);
 
             if (isMobile) {
-                // Percorso MOBILE: Errore e stop totale
-                txt.innerHTML += "<br><span style='color:#e74c3c'>[ ERROR ] Alignment sequence failed.</span><br>";
-                txt.innerHTML += "[ REASON ] Incompatible kernel for terminal emulation.<br>";
-                txt.innerHTML += "RETRY VIA DESKTOP WORKSTATION.<br>";
-                // NON appare il "PRESS ANY KEY" e il cursore resta spento
+                // Messaggio tecnico giustificativo per Mobile
+                txt.innerHTML += "<br>[ NOTICE ] High-density assets detected (400MB+ per sequence).<br>";
+                txt.innerHTML += "[ STATUS ] Mobile hardware limits detected. Large-scale texture rendering paused.<br>";
+                txt.innerHTML += "STATIONARY DESKTOP WORKSTATION RECOMMENDED FOR FULL ARCHIVE ACCESS.<br>";
+                // Il terminale si ferma qui, senza chiedere tasti.
             } else {
                 // Percorso DESKTOP: Procede normalmente
                 txt.innerHTML += "<br>PRESS ANY KEY TO UNLOCK ARCHIVE: ";
