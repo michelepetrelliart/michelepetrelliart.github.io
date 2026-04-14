@@ -627,44 +627,55 @@ function runDiagnostic() {
     const txt = document.getElementById('term-text');
     const csr = document.getElementById('term-cursor');
 
+    // Rilevamento avanzato: controlla se il dispositivo ha il touch E un userAgent mobile
+    // Questo evita che stringendo la finestra su desktop appaia l'errore mobile
+    const isMobile = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0)) &&
+                     /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+
     btn.style.display = 'none';
     term.style.display = 'block';
     txt.innerHTML = "";
     csr.style.display = 'none';
 
-    const sequence = [
+    let sequence = [
         "[ SYSTEM NOTICE: Visual interface only. No local changes. ]<br/>",
         "[  INFO  ] RNDD_Node: Connection established.",
         "[  INFO  ] Assets: 16-bit high-fidelity stream ready.",
         "[  WARN  ] Unauthorized bot activity detected.",
-        "[ SECURITY ] HUMAN VERIFICATION REQUIRED.",
-        "<br>PRESS ANY KEY TO UNLOCK ARCHIVE: "
+        "[ SECURITY ] HUMAN VERIFICATION REQUIRED."
     ];
 
     let step = 0;
     const timer = setInterval(() => {
         if (step < sequence.length) {
-            txt.innerHTML += sequence[step] + (step === sequence.length - 1 ? "" : "<br>");
+            txt.innerHTML += sequence[step] + "<br>";
             step++;
         } else {
             clearInterval(timer);
-            csr.style.display = 'inline-block';
 
-            // Accetta qualsiasi tasto per entrare
-            const onAnyKey = (e) => {
-                // Evitiamo tasti funzione come Shift, Ctrl, etc. se vuoi,
-                // ma "Any Key" tecnicamente significa tutto.
-                document.removeEventListener('keydown', onAnyKey);
+            if (isMobile) {
+                // Percorso MOBILE: Errore e stop totale
+                txt.innerHTML += "<br><span style='color:#e74c3c'>[ ERROR ] Alignment sequence failed.</span><br>";
+                txt.innerHTML += "[ REASON ] Incompatible kernel for terminal emulation.<br>";
+                txt.innerHTML += "RETRY VIA DESKTOP WORKSTATION.<br>";
+                // NON appare il "PRESS ANY KEY" e il cursore resta spento
+            } else {
+                // Percorso DESKTOP: Procede normalmente
+                txt.innerHTML += "<br>PRESS ANY KEY TO UNLOCK ARCHIVE: ";
+                csr.style.display = 'inline-block';
 
-                txt.innerHTML += "OK"; // Feedback visivo immediato
-                txt.innerHTML += "<br><br><span style='color:#2ecc71'>[ OK ] Identity confirmed. Accessing...</span>";
-                csr.style.display = 'none';
+                const onAnyKey = (e) => {
+                    document.removeEventListener('keydown', onAnyKey);
+                    txt.innerHTML += "OK";
+                    txt.innerHTML += "<br><br><span style='color:#2ecc71'>[ OK ] Identity confirmed. Accessing...</span>";
+                    csr.style.display = 'none';
 
-                setTimeout(() => {
-                    window.location.href = "pages_static/physical.html";
-                }, 800);
-            };
-            document.addEventListener('keydown', onAnyKey);
+                    setTimeout(() => {
+                        window.location.href = "pages_static/physical.html";
+                    }, 800);
+                };
+                document.addEventListener('keydown', onAnyKey);
+            }
         }
     }, 400);
 }
