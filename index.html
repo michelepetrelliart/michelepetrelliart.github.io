@@ -624,7 +624,7 @@ fetch('recent_works.json')
 <center id="access-node" style="background: #fff; color: #000; padding: 15px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: auto;">
 
     <button id="trigger-enter" onclick="runDiagnostic()" style="font-family:monospace; font-size: 16px; border:1px solid #000; padding:12px 34px; background:#fff; color:#000; cursor:pointer; letter-spacing:2px; text-transform:uppercase;">
-        ENTER ARCHIVE
+        ENTER
     </button>
 
     <div id="terminal-v2" style="display: none; width: 100vw; background: #000; color: #fff; padding: 40px 0; margin-top: 10px; border-top: 1px solid #333; border-bottom: 1px solid #333; min-height: 140px; box-sizing: border-box;">
@@ -705,7 +705,7 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    // 1. CALCOLO HARDWARE (Lo facciamo subito per sapere dove mandare l'utente)
+    // 1. CALCOLO HARDWARE
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
     const longSide = Math.max(window.screen.width, window.screen.height);
@@ -713,13 +713,21 @@ function runDiagnostic() {
     const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
     const destination = isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
 
-    // 2. IL SALTO (SKIP): Se ha già fatto il test, vai a destinazione e fermati qui
+    // 2. IL SALTO (SKIP): Se già verificato, vai dritto. (QUESTO DEVE RESTARE)
     if (sessionStorage.getItem('verified') === 'true') {
         window.location.href = destination;
-        return; // Esci dalla funzione: non tocca tasti, non mostra terminale
+        return;
     }
 
-    // 3. RITUALE (Se non è verificato)
+    // 3. LOGICA DIFFERENZIATA
+    if (!isActuallyMobile) {
+        // SU DESKTOP: Salto immediato e salva verifica
+        sessionStorage.setItem('verified', 'true');
+        window.location.href = destination;
+        return;
+    }
+
+    // SU MOBILE: Mostra il terminale "OpenSUSE Light"
     const termContainer = document.getElementById('terminal-v2');
     const termText = document.getElementById('term-text');
     const enterBtn = document.getElementById('trigger-enter');
@@ -727,12 +735,13 @@ function runDiagnostic() {
 
     if (!termContainer || !enterBtn) return;
 
-    const currentText = isActuallyMobile ?
-    `[ <span style="color:#D32F2F; font-weight:bold;"> !! </span> ] <span style="color:#D32F2F; font-weight:bold;">Full archive restricted to Desktop.</span><br/>[ <span style="color:#2ecc71; font-weight:bold;"> OK </span> ] Hardware: Mobile device. Loading gallery...` :
-    `[ <span style="color:#2ecc71; font-weight:bold;"> OK </span> ] Hardware: Pro Display detected.<br/>[ <span style="color:#2ecc71; font-weight:bold;"> OK </span> ] Access granted. Loading full archive...`;
+    // Testo per Mobile (senza rosso, stile OpenSUSE)
+    const currentText = `[ <span style="color:#73ba25; font-weight:bold;"> OK </span> ] Hardware: Mobile device detected.<br/>[ <span style="color:#73ba25; font-weight:bold;"> !! </span> ] <span style="color:#31363b; font-weight:bold;">For a better experience, use Desktop.</span><br/>[ <span style="color:#73ba25; font-weight:bold;"> OK </span> ] Loading essential archive...`;
 
-    // UI: Nascondi tasto e mostra terminale
     enterBtn.style.display = 'none';
+    termContainer.style.background = "#eff0f1"; // Grigio Breeze/KDE
+    termContainer.style.color = "#31363b";      // Testo scuro
+    termContainer.style.border = "1px solid #bdc3c7";
     termContainer.style.display = 'block';
 
     let charIndex = 0;
@@ -742,20 +751,18 @@ function runDiagnostic() {
             charIndex++;
             setTimeout(type, 15);
         } else {
-            // SALVA LA VERIFICA SOLO ALLA FINE DEL TEST
+            // SALVA LA VERIFICA
             sessionStorage.setItem('verified', 'true');
             setTimeout(() => {
                 if (overlay) overlay.style.opacity = "0";
-                setTimeout(() => {
-                    window.location.href = destination;
-                }, 800);
-            }, 2200);
+                setTimeout(() => { window.location.href = destination; }, 800);
+            }, 2000);
         }
     }
     type();
 }
 
-// 4. RESET PER IL TASTO "INDIETRO" (Resta uguale, è perfetto)
+// 4. RESET PER IL TASTO "INDIETRO" (Invariato)
 window.addEventListener('pageshow', function(event) {
     const btn = document.getElementById('trigger-enter');
     const term = document.getElementById('terminal-v2');
