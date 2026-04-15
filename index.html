@@ -680,9 +680,29 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    // ... (parti invariate di clicky e elementi UI) ...
+    console.log("Inizio diagnostica...");
 
-    // --- DIAGNOSI HARDWARE (Cosa vede il terminale) ---
+    // 1. Elementi UI - Controllo esistenza immediato
+    const termContainer = document.getElementById('terminal-v2');
+    const termText = document.getElementById('term-text');
+    const enterBtn = document.getElementById('trigger-enter');
+    const overlay = document.getElementById('access-node');
+
+    if (!termContainer || !enterBtn) {
+        console.error("Elementi HTML mancanti!");
+        return;
+    }
+
+    // 2. Clicky (fail-safe)
+    try {
+        if (typeof window.clicky !== 'undefined') {
+            window.clicky.log('#enter-archive', 'Enter Archive Click', 'click');
+        }
+    } catch (err) {
+        console.log("Clicky non presente");
+    }
+
+    // 3. Logica di Rilevamento
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
     const longSide = Math.max(window.screen.width, window.screen.height);
@@ -690,41 +710,44 @@ function runDiagnostic() {
     const isTablet = /iPad|PlayBook|Tablet/i.test(ua) ||
                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-    // Questa variabile serve SOLO per il testo del terminale
+    // Diagnosi per il TESTO
     const isActuallyMobile = (isMobileUA || isSmallHardware) && !isTablet;
 
-    // --- LOGICA REDIRECT (Dove mandarti alla fine) ---
+    // Diagnosi per il REDIRECT (Referrer)
     const ref = document.referrer.toLowerCase();
     const isFromSocial = ref.includes("instagram") || ref.includes("t.co") || ref.includes("facebook");
 
     // Mandiamo al mobile solo se è un telefono E viene dai social
     const goToMobile = isActuallyMobile && isFromSocial;
 
-    // --- INTERFACCIA TESTUALE ---
+    // 4. Preparazione UI
+    enterBtn.style.display = 'none';
+    termContainer.style.display = 'block';
+
     const desktopText = `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
     const mobileText = `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>`;
 
-    // Qui usiamo isActuallyMobile: se hai un telefono in mano, vedrai il testo rosso
-    // anche se sei entrato scrivendo l'URL a mano
     const currentText = isActuallyMobile ? mobileText : desktopText;
 
+    // 5. Effetto Digitazione
     let charIndex = 0;
     function type() {
         if (charIndex < currentText.length) {
             termText.innerHTML = currentText.substring(0, charIndex + 1);
             charIndex++;
-            setTimeout(type, 10);
+            setTimeout(type, 15); // Velocità leggermente ridotta per stabilità
         } else {
             setTimeout(() => {
-                const overlay = document.getElementById('access-node');
                 if (overlay) overlay.style.opacity = "0";
                 setTimeout(() => {
-                    // Qui usiamo goToMobile: il redirect vero e proprio
-                    window.location.href = goToMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
+                    // Redirect finale
+                    const target = goToMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
+                    window.location.href = target;
                 }, 800);
             }, 1000);
         }
     }
+
     type();
 }
 </script>
