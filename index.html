@@ -680,53 +680,35 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    console.log("Analisi hardware in corso...");
+    // ... (parti invariate di clicky e elementi UI) ...
 
-    // 1. Clicky (fail-safe)
-    try {
-        if (typeof window.clicky !== 'undefined') {
-            window.clicky.log('#enter-archive', 'Enter Archive Click', 'click');
-        }
-    } catch (err) { }
-
-    const termContainer = document.getElementById('terminal-v2');
-    const termText = document.getElementById('term-text');
-    const enterBtn = document.getElementById('trigger-enter');
-    if (!termContainer || !enterBtn) return;
-
-    // --- LOGICA DI FILTRO A TRIPLO STRATO ---
-
-    // STRATO 1: User Agent (Riconosce se il software dichiara di essere un telefono)
+    // --- DIAGNOSI HARDWARE (Cosa vede il terminale) ---
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-
-    // STRATO 2: Hardware Fisico (Riconosce la taglia reale dello schermo, anche se girato)
     const longSide = Math.max(window.screen.width, window.screen.height);
     const isSmallHardware = longSide < 1024;
-
-    // STRATO 3: Provenienza (Referrer)
-    const ref = document.referrer.toLowerCase();
-    const isFromSocial = ref.includes("instagram") || ref.includes("t.co") || ref.includes("facebook");
-
-    // Eccezione Tablet (Per non bloccare schermi medi come iPad)
     const isTablet = /iPad|PlayBook|Tablet/i.test(ua) ||
                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-    // DECISIONE FINALE (Il "Muro")
-    // Blocchiamo se: (È un telefono per software O per hardware) E viene dai social E non è un tablet
-    const isMobileDevice = (isMobileUA || isSmallHardware) && isFromSocial && !isTablet;
+    // Questa variabile serve SOLO per il testo del terminale
+    const isActuallyMobile = (isMobileUA || isSmallHardware) && !isTablet;
 
-    // -----------------------------------------
+    // --- LOGICA REDIRECT (Dove mandarti alla fine) ---
+    const ref = document.referrer.toLowerCase();
+    const isFromSocial = ref.includes("instagram") || ref.includes("t.co") || ref.includes("facebook");
 
-    enterBtn.style.display = 'none';
-    termContainer.style.display = 'block';
+    // Mandiamo al mobile solo se è un telefono E viene dai social
+    const goToMobile = isActuallyMobile && isFromSocial;
 
+    // --- INTERFACCIA TESTUALE ---
     const desktopText = `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
     const mobileText = `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>`;
 
-    const currentText = isMobileDevice ? mobileText : desktopText;
-    let charIndex = 0;
+    // Qui usiamo isActuallyMobile: se hai un telefono in mano, vedrai il testo rosso
+    // anche se sei entrato scrivendo l'URL a mano
+    const currentText = isActuallyMobile ? mobileText : desktopText;
 
+    let charIndex = 0;
     function type() {
         if (charIndex < currentText.length) {
             termText.innerHTML = currentText.substring(0, charIndex + 1);
@@ -737,7 +719,8 @@ function runDiagnostic() {
                 const overlay = document.getElementById('access-node');
                 if (overlay) overlay.style.opacity = "0";
                 setTimeout(() => {
-                    window.location.href = isMobileDevice ? "pages_static/physical-m.html" : "pages_static/physical.html";
+                    // Qui usiamo goToMobile: il redirect vero e proprio
+                    window.location.href = goToMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
                 }, 800);
             }, 1000);
         }
