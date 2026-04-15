@@ -390,6 +390,29 @@ h2 {
     50% { opacity: 0; }
 }
 
+#terminal-v2 {
+    display: none; /* Appare solo dopo il click */
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 40px 0; /* Spazio sopra e sotto il testo */
+    margin: 20px 0;
+    min-height: 160px; /* Altezza fissa per evitare salti */
+    text-align: center;
+    box-sizing: border-box;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+#term-text {
+    display: inline-block;
+    text-align: left; /* Il blocco è centrato, ma il testo all'interno è a sinistra */
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 90%;
+}
+
 /*@keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }*/
 </style>
 <script type="application/ld+json">
@@ -598,15 +621,17 @@ fetch('recent_works.json')
     .recent-works-wrapper { gap: 20px; padding: 0 15px; }
 }
 </style-->
-<center id="access-node" style="background: #fff; color: #000; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<center id="access-node" style="background: #fff; color: #000; padding: 15px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: auto;">
 
     <button id="trigger-enter" onclick="runDiagnostic()" style="font-family:monospace; font-size: 16px; border:1px solid #000; padding:12px 34px; background:#fff; color:#000; cursor:pointer; letter-spacing:2px; text-transform:uppercase;">
         ENTER ARCHIVE
     </button>
 
-    <div id="terminal-v2" style="display: none; text-align: left; background: #fff; color: #000; padding: 25px; font-family: monospace; font-size: 14px; max-width: 600px; width: 90%; border-left: 2px solid #000; line-height: 1.8; margin-top: 20px;">
-        <span id="term-text"></span><span id="term-cursor">█</span>
+    <div id="terminal-v2" style="display: none; width: 100vw; background: #000; color: #fff; padding: 40px 0; margin-top: 10px; border-top: 1px solid #333; border-bottom: 1px solid #333; min-height: 220px; box-sizing: border-box;">
+    <div style="max-width: 600px; margin: 0 auto; text-align: left; padding: 0 20px;">
+        <span id="term-text" style="font-family: monospace; font-size: 14px; line-height: 1.8; white-space: pre-wrap;"></span><span id="term-cursor" style="color: #fff;">█</span>
     </div>
+</div>
 
 </center>
 
@@ -679,55 +704,83 @@ fetch('recent_works.json')
   </div></center>
  </span>
 <script>
-function runDiagnostic() {
-    // ... (Elementi UI e Clicky rimangono invariati) ...
-    const termContainer = document.getElementById('terminal-v2');
-    const termText = document.getElementById('term-text');
-    const enterBtn = document.getElementById('trigger-enter');
-    const overlay = document.getElementById('access-node');
-
-    if (!termContainer || !enterBtn) return;
-
-    // 1. ANALISI HARDWARE E SOFTWARE
+// Funzione per determinare la destinazione (Mobile o Desktop)
+function getTargetURL() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
     const longSide = Math.max(window.screen.width, window.screen.height);
-
-    // Lo consideriamo "Mobile" se l'hardware è piccolo (<1024) O se lo User Agent è mobile
-    // Escludiamo i Tablet per lasciarli passare al Desktop
-    const isTablet = /iPad|PlayBook|Tablet/i.test(ua) ||
-                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isTablet = /iPad|PlayBook|Tablet/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
     const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
+    return isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
+}
 
-    // 2. DECISIONE TESTO E REDIRECT
-    // Ora usiamo isActuallyMobile per ENTRAMBE le cose:
-    // Se è mobile, vede il testo rosso E va alla pagina -m.html
-    const currentText = isActuallyMobile ?
-        `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>` :
-        `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
+// Accesso rapido (per quando torni indietro dopo il primo test)
+function fastEntry() {
+    window.location.href = getTargetURL();
+}
 
+function runDiagnostic() {
+    const termContainer = document.getElementById('terminal-v2');
+    const termText = document.getElementById('term-text');
+    const enterBtn = document.getElementById('trigger-enter');
+
+    if (!termContainer || !enterBtn) return;
+
+    // UI: Nascondi tasto, mostra barra nera
     enterBtn.style.display = 'none';
     termContainer.style.display = 'block';
 
+    const target = getTargetURL();
+    const isMobile = target.includes("-m.html");
+
+    const desktopText = `> ARCHIVE DETECTED.\n> HARDWARE: PRO DISPLAY.\n> USER AGENT: DESKTOP ENGINE.\n> ACCESS GRANTED.\n> LOADING FULL ARCHIVE...`;
+    const mobileText = `> ARCHIVE DETECTED.\n> CHECKING HARDWARE...\n> DISPLAY: MOBILE DEVICE.\n> FULL ARCHIVE RESTRICTED TO DESKTOP.\n> OPTIMIZING VISUALS FOR MOBILE...\n> LOADING GALLERY...`;
+
+    const currentText = isMobile ? mobileText : desktopText;
     let charIndex = 0;
+
     function type() {
         if (charIndex < currentText.length) {
-            termText.innerHTML = currentText.substring(0, charIndex + 1);
+            termText.innerHTML = currentText.substring(0, charIndex + 1).replace(/\n/g, '<br/>');
             charIndex++;
-            setTimeout(type, 15);
+            setTimeout(type, 12);
         } else {
+            // Salviamo il test eseguito nella sessione
+            sessionStorage.setItem('archive_verified', 'true');
+
             setTimeout(() => {
-                if (overlay) overlay.style.opacity = "0";
+                const overlay = document.getElementById('access-node');
+                overlay.style.opacity = "0";
                 setTimeout(() => {
-                    // COERENZA TOTALE: Se isActuallyMobile è true, vai sempre al mobile
-                    window.location.href = isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
-                }, 800);
+                    window.location.href = target;
+                }, 600);
             }, 1000);
         }
     }
     type();
 }
+
+// Gestione del tasto "Indietro" e della sessione
+window.addEventListener('pageshow', function(event) {
+    const enterBtn = document.getElementById('trigger-enter');
+    const termContainer = document.getElementById('terminal-v2');
+    const overlay = document.getElementById('access-node');
+
+    // Reset UI quando si torna sulla pagina
+    if (enterBtn) enterBtn.style.display = 'inline-block';
+    if (termContainer) termContainer.style.display = 'none';
+    if (overlay) {
+        overlay.style.opacity = "1";
+        overlay.style.display = "flex";
+    }
+
+    // Se il test è già stato fatto, il tasto entra direttamente
+    if (sessionStorage.getItem('archive_verified') === 'true' && enterBtn) {
+        enterBtn.setAttribute('onclick', 'fastEntry()');
+        enterBtn.innerHTML = "ENTER ARCHIVE (Verified)";
+    }
+});
 </script>
 <script>
 /* MOTORE UNIFICATO: LINGUA, COOKIE, CAROSELLO E CLICKY */
