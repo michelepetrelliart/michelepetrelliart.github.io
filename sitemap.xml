@@ -13,6 +13,10 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://michelepetrelliart.github.io/pages_static/about-m.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://michelepetrelliart.github.io/pages_static/about.html</loc>
     <priority>0.9</priority>
   </url>
@@ -22,6 +26,10 @@
   </url>
   <url>
     <loc>https://michelepetrelliart.github.io/pages_static/artworks.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/pages_static/contacts-m.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
@@ -42,6 +50,10 @@
   </url>
   <url>
     <loc>https://michelepetrelliart.github.io/pages_static/portraits.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://michelepetrelliart.github.io/pages_static/privacy-m.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
