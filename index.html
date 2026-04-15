@@ -704,22 +704,26 @@ fetch('recent_works.json')
   </div></center>
  </span>
 <script>
-// Funzione per determinare la destinazione (Mobile o Desktop)
-function getTargetURL() {
+// 1. FUNZIONE UNICA DI DIAGNOSI (La "Verità" Hardware)
+function getFinalDestination() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
     const longSide = Math.max(window.screen.width, window.screen.height);
+    // Un tablet ha il lato lungo >= 1024. Un telefono NO.
     const isTablet = /iPad|PlayBook|Tablet/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
+    // È mobile se (UA è mobile O lo schermo è piccolo) E NON è un tablet
     const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
+
     return isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
 }
 
-// Accesso rapido (per quando torni indietro dopo il primo test)
+// 2. ACCESSO RAPIDO (Per quando torni indietro)
 function fastEntry() {
-    window.location.href = getTargetURL();
+    window.location.href = getFinalDestination();
 }
 
+// 3. FUNZIONE PRINCIPALE
 function runDiagnostic() {
     const termContainer = document.getElementById('terminal-v2');
     const termText = document.getElementById('term-text');
@@ -727,33 +731,33 @@ function runDiagnostic() {
 
     if (!termContainer || !enterBtn) return;
 
-    // UI: Nascondi tasto, mostra barra nera
+    // UI: Mostra barra, nascondi tasto
     enterBtn.style.display = 'none';
     termContainer.style.display = 'block';
 
-    const target = getTargetURL();
-    const isMobile = target.includes("-m.html");
+    // DETERMINAZIONE DESTINAZIONE
+    const destination = getFinalDestination();
+    const isMobile = destination.includes("-m.html");
 
-    const desktopText = `> ARCHIVE DETECTED.\n> HARDWARE: PRO DISPLAY.\n> USER AGENT: DESKTOP ENGINE.\n> ACCESS GRANTED.\n> LOADING FULL ARCHIVE...`;
-    const mobileText = `> ARCHIVE DETECTED.\n> CHECKING HARDWARE...\n> DISPLAY: MOBILE DEVICE.\n> FULL ARCHIVE RESTRICTED TO DESKTOP.\n> OPTIMIZING VISUALS FOR MOBILE...\n> LOADING GALLERY...`;
+    // TESTI (Coordinati con la destinazione)
+    const desktopText = `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...`;
+    const mobileText = `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...`;
 
     const currentText = isMobile ? mobileText : desktopText;
-    let charIndex = 0;
 
+    let charIndex = 0;
     function type() {
         if (charIndex < currentText.length) {
-            termText.innerHTML = currentText.substring(0, charIndex + 1).replace(/\n/g, '<br/>');
+            termText.innerHTML = currentText.substring(0, charIndex + 1);
             charIndex++;
-            setTimeout(type, 12);
+            setTimeout(type, 10);
         } else {
-            // Salviamo il test eseguito nella sessione
             sessionStorage.setItem('archive_verified', 'true');
-
             setTimeout(() => {
                 const overlay = document.getElementById('access-node');
-                overlay.style.opacity = "0";
+                if (overlay) overlay.style.opacity = "0";
                 setTimeout(() => {
-                    window.location.href = target;
+                    window.location.href = destination; // VA ESATTAMENTE DOVE HA DETTO IL TESTO
                 }, 600);
             }, 1000);
         }
@@ -761,24 +765,26 @@ function runDiagnostic() {
     type();
 }
 
-// Gestione del tasto "Indietro" e della sessione
+// 4. GESTIONE TASTO INDIETRO
 window.addEventListener('pageshow', function(event) {
     const enterBtn = document.getElementById('trigger-enter');
     const termContainer = document.getElementById('terminal-v2');
     const overlay = document.getElementById('access-node');
 
-    // Reset UI quando si torna sulla pagina
-    if (enterBtn) enterBtn.style.display = 'inline-block';
+    if (enterBtn) {
+        enterBtn.style.display = 'inline-block';
+        // Se già verificato, cambia il click in "fast"
+        if (sessionStorage.getItem('archive_verified') === 'true') {
+            enterBtn.setAttribute('onclick', 'fastEntry()');
+            enterBtn.innerHTML = "ENTER ARCHIVE";
+        } else {
+            enterBtn.setAttribute('onclick', 'runDiagnostic()');
+        }
+    }
     if (termContainer) termContainer.style.display = 'none';
     if (overlay) {
         overlay.style.opacity = "1";
         overlay.style.display = "flex";
-    }
-
-    // Se il test è già stato fatto, il tasto entra direttamente
-    if (sessionStorage.getItem('archive_verified') === 'true' && enterBtn) {
-        enterBtn.setAttribute('onclick', 'fastEntry()');
-        enterBtn.innerHTML = "ENTER ARCHIVE (Verified)";
     }
 });
 </script>
