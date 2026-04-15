@@ -680,7 +680,7 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    console.log("Accesso in corso...");
+    console.log("Analisi hardware in corso...");
 
     // 1. Clicky (fail-safe)
     try {
@@ -689,32 +689,39 @@ function runDiagnostic() {
         }
     } catch (err) { }
 
-    // 2. Elementi UI
     const termContainer = document.getElementById('terminal-v2');
     const termText = document.getElementById('term-text');
     const enterBtn = document.getElementById('trigger-enter');
-
     if (!termContainer || !enterBtn) return;
 
-    // --- LOGICA DI FILTRO AVANZATA ---
-    // Identifichiamo se è un Tablet (per farlo passare alla versione Desktop se lo desidera)
-    const isTablet = /iPad|PlayBook|Tablet/i.test(navigator.userAgent) ||
+    // --- LOGICA DI FILTRO A TRIPLO STRATO ---
+
+    // STRATO 1: User Agent (Riconosce se il software dichiara di essere un telefono)
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+
+    // STRATO 2: Hardware Fisico (Riconosce la taglia reale dello schermo, anche se girato)
+    const longSide = Math.max(window.screen.width, window.screen.height);
+    const isSmallHardware = longSide < 1024;
+
+    // STRATO 3: Provenienza (Referrer)
+    const ref = document.referrer.toLowerCase();
+    const isFromSocial = ref.includes("instagram") || ref.includes("t.co") || ref.includes("facebook");
+
+    // Eccezione Tablet (Per non bloccare schermi medi come iPad)
+    const isTablet = /iPad|PlayBook|Tablet/i.test(ua) ||
                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-    // Identifichiamo se è uno schermo molto piccolo (Smartphone)
-    // Usiamo screen.width per beccare i pixel fisici, ignorando il ridimensionamento software
-    const isVerySmallScreen = window.screen.width < 768;
+    // DECISIONE FINALE (Il "Muro")
+    // Blocchiamo se: (È un telefono per software O per hardware) E viene dai social E non è un tablet
+    const isMobileDevice = (isMobileUA || isSmallHardware) && isFromSocial && !isTablet;
 
-    // DECISIONE:
-    // Se è un telefono (anche in modalità desktop) -> Mobile
-    // Se è un Tablet -> Lo trattiamo come Desktop (concediamo l'accesso)
-    const isMobileDevice = isVerySmallScreen && !isTablet;
-    // ---------------------------------
+    // -----------------------------------------
 
     enterBtn.style.display = 'none';
     termContainer.style.display = 'block';
 
-    const desktopText = `> ARCHIVE DETECTED.<br/>> RESOLUTION VERIFIED.<br/>> HARDWARE: PRO DISPLAY DETECTED.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
+    const desktopText = `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
     const mobileText = `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>`;
 
     const currentText = isMobileDevice ? mobileText : desktopText;
@@ -730,7 +737,6 @@ function runDiagnostic() {
                 const overlay = document.getElementById('access-node');
                 if (overlay) overlay.style.opacity = "0";
                 setTimeout(() => {
-                    // Reindirizzamento basato sul test hardware
                     window.location.href = isMobileDevice ? "pages_static/physical-m.html" : "pages_static/physical.html";
                 }, 800);
             }, 1000);
