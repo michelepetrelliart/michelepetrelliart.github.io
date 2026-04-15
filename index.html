@@ -627,7 +627,7 @@ fetch('recent_works.json')
         ENTER ARCHIVE
     </button>
 
-    <div id="terminal-v2" style="display: none; width: 100vw; background: #000; color: #fff; padding: 40px 0; margin-top: 10px; border-top: 1px solid #333; border-bottom: 1px solid #333; min-height: 220px; box-sizing: border-box;">
+    <div id="terminal-v2" style="display: none; width: 100vw; background: #000; color: #fff; padding: 40px 0; margin-top: 10px; border-top: 1px solid #333; border-bottom: 1px solid #333; min-height: 140px; box-sizing: border-box;">
     <div style="max-width: 600px; margin: 0 auto; text-align: left; padding: 0 20px;">
         <span id="term-text" style="font-family: monospace; font-size: 14px; line-height: 1.8; white-space: pre-wrap;"></span><span id="term-cursor" style="color: #fff;">█</span>
     </div>
@@ -728,8 +728,8 @@ function runDiagnostic() {
     if (!termContainer || !enterBtn) return;
 
     const currentText = isActuallyMobile ?
-    `> Archive detected.<br/>> Checking hardware...<br/>> Display: Mobile device.<br/><span style="color:#D32F2F; font-weight:bold;">> Full archive restricted to Desktop.</span><br/>> Optimizing visuals for mobile...<br/>> Loading gallery...<br/>` :
-    `> Archive detected.<br/>> Hardware: Pro Display.<br/>> User Agent: Desktop Engine.<br/>> Access granted.<br/>> Loading full archive...<br/>`;
+    `<span style="color:#D32F2F; font-weight:bold;">Full archive restricted to Desktop.</span><br/>Hardware: Mobile device. Loading gallery...` :
+    `Hardware: Pro Display detected.<br/>Access granted. Loading full archive...`;
 
     // UI: Nascondi tasto e mostra terminale
     enterBtn.style.display = 'none';
@@ -749,7 +749,7 @@ function runDiagnostic() {
                 setTimeout(() => {
                     window.location.href = destination;
                 }, 800);
-            }, 1000);
+            }, 2200);
         }
     }
     type();
