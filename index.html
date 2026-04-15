@@ -705,7 +705,21 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    // ... (Elementi UI e Clicky rimangono invariati) ...
+    // 1. CALCOLO HARDWARE (Lo facciamo subito per sapere dove mandare l'utente)
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+    const longSide = Math.max(window.screen.width, window.screen.height);
+    const isTablet = /iPad|PlayBook|Tablet/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
+    const destination = isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
+
+    // 2. IL SALTO (SKIP): Se ha già fatto il test, vai a destinazione e fermati qui
+    if (sessionStorage.getItem('verified') === 'true') {
+        window.location.href = destination;
+        return; // Esci dalla funzione: non tocca tasti, non mostra terminale
+    }
+
+    // 3. RITUALE (Se non è verificato)
     const termContainer = document.getElementById('terminal-v2');
     const termText = document.getElementById('term-text');
     const enterBtn = document.getElementById('trigger-enter');
@@ -713,25 +727,11 @@ function runDiagnostic() {
 
     if (!termContainer || !enterBtn) return;
 
-    // 1. ANALISI HARDWARE E SOFTWARE
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-    const longSide = Math.max(window.screen.width, window.screen.height);
-
-    // Lo consideriamo "Mobile" se l'hardware è piccolo (<1024) O se lo User Agent è mobile
-    // Escludiamo i Tablet per lasciarli passare al Desktop
-    const isTablet = /iPad|PlayBook|Tablet/i.test(ua) ||
-                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-    const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
-
-    // 2. DECISIONE TESTO E REDIRECT
-    // Ora usiamo isActuallyMobile per ENTRAMBE le cose:
-    // Se è mobile, vede il testo rosso E va alla pagina -m.html
     const currentText = isActuallyMobile ?
         `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>` :
         `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
 
+    // UI: Nascondi tasto e mostra terminale
     enterBtn.style.display = 'none';
     termContainer.style.display = 'block';
 
@@ -742,23 +742,34 @@ function runDiagnostic() {
             charIndex++;
             setTimeout(type, 15);
         } else {
+            // SALVA LA VERIFICA SOLO ALLA FINE DEL TEST
+            sessionStorage.setItem('verified', 'true');
             setTimeout(() => {
                 if (overlay) overlay.style.opacity = "0";
                 setTimeout(() => {
-                    // COERENZA TOTALE: Se isActuallyMobile è true, vai sempre al mobile
-                    window.location.href = isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
+                    window.location.href = destination;
                 }, 800);
             }, 1000);
         }
     }
     type();
 }
-// --- AGGIUNTA 3: RESETTA IL TASTO SE L'UTENTE TORNA INDIETRO ---
+
+// 4. RESET PER IL TASTO "INDIETRO" (Resta uguale, è perfetto)
 window.addEventListener('pageshow', function(event) {
     const btn = document.getElementById('trigger-enter');
     const term = document.getElementById('terminal-v2');
+    const overlay = document.getElementById('access-node');
+    const termText = document.getElementById('term-text');
+
     if (btn) btn.style.display = 'inline-block';
     if (term) term.style.display = 'none';
+    if (overlay) {
+        overlay.style.opacity = "1";
+        overlay.style.display = "flex";
+        overlay.style.background = "#fff";
+    }
+    if (termText) termText.innerHTML = "";
 });
 </script>
 <script>
