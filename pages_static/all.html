@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://michelepetrelliart.github.io/pages_static/all.html" />
@@ -102,7 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </nav>
-  <div class="grid" id="gallery">
+
+<div class="grid" id="gallery">
 
         <div class="grid-item">
             <div class="img-container">
@@ -3679,12 +3681,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 </div>
 
-<noscript>
-    <style>
-        .grid-item { display: flex !important; }
-        .load-more-btn { display: none; }
-    </style>
-</noscript>
+<noscript><style>.grid-item { display: flex !important; } .load-more-btn { display: none; }</style></noscript>
 
 <button id="loadMore" class="load-more-btn">
     <span class="btn-text">SHOW MORE ARTWORKS</span>
@@ -3701,18 +3698,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function showNext() {
         const start = visibleCount;
         const end = visibleCount + STEP;
-
         for (let i = start; i < end; i++) {
             if (items[i]) {
                 items[i].style.display = "flex";
                 setTimeout(() => items[i].classList.add("visible"), 10 * (i - start));
             }
         }
-
         visibleCount += STEP;
-        if (visibleCount >= items.length) {
-            button.style.display = "none";
-        }
+        if (visibleCount >= items.length) button.style.display = "none";
     }
     showNext();
     button.addEventListener("click", showNext);
@@ -3723,7 +3716,6 @@ document.addEventListener("DOMContentLoaded", () => {
 .grid-item { display: none; flex-direction: column; align-items: center; opacity: 0; transition: opacity 0.6s ease; }
 .grid-item.visible { opacity: 1; display: flex; }
 </style>
-
 <script>
 (()=>{if(location.protocol==="file:"||/^(localhost|127\.0\.0\.1)$/.test(location.hostname))return;
 if(localStorage.getItem("cAcc"))return;
@@ -3733,8 +3725,7 @@ d.innerHTML = "The site uses third-party cookies. <a href='/pages_static/privacy
 document.body.appendChild(d);
 document.getElementById("cOk").onclick=()=>{localStorage.setItem("cAcc","1");d.remove()};
 })();
-</script>
-<script>
+</script> <script>
 // Disabilita il menu contestuale (tasto destro)
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
@@ -3744,9 +3735,7 @@ document.addEventListener('contextmenu', function(e) {
 document.addEventListener('dragstart', function(e) {
     e.preventDefault();
 });
-</script>
-<script type='text/javascript'>
+</script> <script type='text/javascript'>
 document.addEventListener("DOMContentLoaded",function(){const e=navigator.languages||[navigator.language||navigator.userLanguage],t=e.some(l=>l.startsWith("it")),z=Intl.DateTimeFormat().resolvedOptions().timeZone==="Europe/Rome",n=new URLSearchParams(window.location.search).get("fromX");if(!(t||z)&&n==="1")localStorage.setItem("visitedFromX","1");const o=localStorage.getItem("visitedFromX"),i=document.querySelectorAll(".cont-t"),s=document.querySelectorAll(".cont-h"),r=document.querySelectorAll(".cont-it");if(t||z){r.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none");i.forEach(a=>a.style.display="none")}else{if(!o){s.forEach(a=>a.style.display="block");i.forEach(a=>a.style.display="none")}else{i.forEach(a=>a.style.display="block");s.forEach(a=>a.style.display="none")}r.forEach(a=>a.style.display="none")}});</script>
-
 </body>
 </html>
