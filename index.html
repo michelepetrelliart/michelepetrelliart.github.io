@@ -753,6 +753,13 @@ function runDiagnostic() {
     }
     type();
 }
+// --- AGGIUNTA 3: RESETTA IL TASTO SE L'UTENTE TORNA INDIETRO ---
+window.addEventListener('pageshow', function(event) {
+    const btn = document.getElementById('trigger-enter');
+    const term = document.getElementById('terminal-v2');
+    if (btn) btn.style.display = 'inline-block';
+    if (term) term.style.display = 'none';
+});
 </script>
 <script>
 /* MOTORE UNIFICATO: LINGUA, COOKIE, CAROSELLO E CLICKY */
