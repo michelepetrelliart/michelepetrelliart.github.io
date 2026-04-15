@@ -355,65 +355,6 @@ h2 {
         letter-spacing: 1px;
     }
 }
-
-
-/* Il contenitore ora è discreto e non spaventoso */
-#terminal-overlay {
-    display: none;
-    text-align: left;
-    background: #f9f9f9; /* Grigio chiarissimo, quasi bianco */
-    color: #333;       /* Testo grigio scuro, leggibile e calmo */
-    padding: 20px;
-    font-family: 'Source Code Pro', monospace; /* Se lo hai, o un monospace standard */
-    font-size: 13px;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 1px solid #ddd; /* Bordo leggero */
-    line-height: 1.6;
-    border-radius: 4px; /* Un accenno di arrotondamento lo rende meno "brutale" */
-}
-
-/* Il cursore ora è un trattino basso grigio */
-#term-cursor {
-    display: none; /* Nascondo all'inizio */
-    width: 10px;
-    height: 2px;
-    background: #fff; /* Bianco su nero */
-    margin-left: 5px;
-    display: inline-block;
-    vertical-align: baseline;
-    animation: blink-cursor 0.8s step-end infinite;
-}
-
-@keyframes blink-cursor {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-#terminal-v2 {
-    display: none; /* Appare solo dopo il click */
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 40px 0; /* Spazio sopra e sotto il testo */
-    margin: 20px 0;
-    min-height: 160px; /* Altezza fissa per evitare salti */
-    text-align: center;
-    box-sizing: border-box;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-}
-
-#term-text {
-    display: inline-block;
-    text-align: left; /* Il blocco è centrato, ma il testo all'interno è a sinistra */
-    font-size: 14px;
-    line-height: 1.8;
-    max-width: 90%;
-}
-
-/*@keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }*/
 </style>
 <script type="application/ld+json">
 {
@@ -623,15 +564,26 @@ fetch('recent_works.json')
 </style-->
 <center id="access-node" style="background: #fff; color: #000; padding: 15px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: auto;">
 
+    <style>
+        #mobile-notice { display: none; }
+        @media (max-width: 1024px) {
+            #mobile-notice {
+                display: block;
+                font-family: monospace;
+                font-size: 13px;
+                margin-bottom: 20px;
+                color: #31363b;
+            }
+        }
+    </style>
+
+    <div id="mobile-notice">
+        [ <span style="color:#73ba25; font-weight:bold;">OK</span> ] Mobile device detected. Loading essential archive...
+    </div>
+
     <button id="trigger-enter" onclick="runDiagnostic()" style="font-family:monospace; font-size: 16px; border:1px solid #000; padding:12px 34px; background:#fff; color:#000; cursor:pointer; letter-spacing:2px; text-transform:uppercase;">
         ENTER
     </button>
-
-    <div id="terminal-v2" style="display: none; width: 100vw; background: #000; color: #fff; padding: 40px 0; margin-top: 10px; border-top: 1px solid #333; border-bottom: 1px solid #333; min-height: 140px; box-sizing: border-box;">
-    <div style="max-width: 600px; margin: 0 auto; text-align: left; padding: 0 20px;">
-        <span id="term-text" style="font-family: monospace; font-size: 14px; line-height: 1.8; white-space: pre-wrap;"></span><span id="term-cursor" style="color: #fff;">█</span>
-    </div>
-</div>
 
 </center>
 
@@ -705,78 +657,21 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    // 1. CALCOLO HARDWARE
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-    const longSide = Math.max(window.screen.width, window.screen.height);
-    const isTablet = /iPad|PlayBook|Tablet/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
+    // 1. RILEVAMENTO HARDWARE (Semplice)
+    const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isSmallScreen = window.innerWidth <= 1024;
+    const isActuallyMobile = isMobileUA || isSmallScreen;
+
     const destination = isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
 
-    // 2. IL SALTO (SKIP): Se già verificato, vai dritto. (QUESTO DEVE RESTARE)
-    if (sessionStorage.getItem('verified') === 'true') {
-        window.location.href = destination;
-        return;
-    }
-
-    // 3. LOGICA DIFFERENZIATA
-    if (!isActuallyMobile) {
-        // SU DESKTOP: Salto immediato e salva verifica
-        sessionStorage.setItem('verified', 'true');
-        window.location.href = destination;
-        return;
-    }
-
-    // SU MOBILE: Mostra il terminale "OpenSUSE Light"
-    const termContainer = document.getElementById('terminal-v2');
-    const termText = document.getElementById('term-text');
-    const enterBtn = document.getElementById('trigger-enter');
-    const overlay = document.getElementById('access-node');
-
-    if (!termContainer || !enterBtn) return;
-
-    // Testo per Mobile (senza rosso, stile OpenSUSE)
-    const currentText = `[ <span style="color:#73ba25; font-weight:bold;"> OK </span> ] Hardware: Mobile device detected.<br/>[ <span style="color:#73ba25; font-weight:bold;"> !! </span> ] <span style="color:#31363b; font-weight:bold;">For a better experience, use Desktop.</span><br/>[ <span style="color:#73ba25; font-weight:bold;"> OK </span> ] Loading essential archive...`;
-
-    enterBtn.style.display = 'none';
-    termContainer.style.background = "#eff0f1"; // Grigio Breeze/KDE
-    termContainer.style.color = "#31363b";      // Testo scuro
-    termContainer.style.border = "1px solid #bdc3c7";
-    termContainer.style.display = 'block';
-
-    let charIndex = 0;
-    function type() {
-        if (charIndex < currentText.length) {
-            termText.innerHTML = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            setTimeout(type, 15);
-        } else {
-            // SALVA LA VERIFICA
-            sessionStorage.setItem('verified', 'true');
-            setTimeout(() => {
-                if (overlay) overlay.style.opacity = "0";
-                setTimeout(() => { window.location.href = destination; }, 800);
-            }, 2000);
-        }
-    }
-    type();
+    // 2. SALTO IMMEDIATO (Nessun ritardo, nessuna animazione)
+    window.location.href = destination;
 }
 
-// 4. RESET PER IL TASTO "INDIETRO" (Invariato)
+// RESET PER IL TASTO "INDIETRO"
 window.addEventListener('pageshow', function(event) {
     const btn = document.getElementById('trigger-enter');
-    const term = document.getElementById('terminal-v2');
-    const overlay = document.getElementById('access-node');
-    const termText = document.getElementById('term-text');
-
     if (btn) btn.style.display = 'inline-block';
-    if (term) term.style.display = 'none';
-    if (overlay) {
-        overlay.style.opacity = "1";
-        overlay.style.display = "flex";
-        overlay.style.background = "#fff";
-    }
-    if (termText) termText.innerHTML = "";
 });
 </script>
 <script>
