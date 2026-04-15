@@ -680,74 +680,52 @@ fetch('recent_works.json')
  </span>
 <script>
 function runDiagnostic() {
-    console.log("Inizio diagnostica...");
-
-    // 1. Elementi UI - Controllo esistenza immediato
+    // ... (Elementi UI e Clicky rimangono invariati) ...
     const termContainer = document.getElementById('terminal-v2');
     const termText = document.getElementById('term-text');
     const enterBtn = document.getElementById('trigger-enter');
     const overlay = document.getElementById('access-node');
 
-    if (!termContainer || !enterBtn) {
-        console.error("Elementi HTML mancanti!");
-        return;
-    }
+    if (!termContainer || !enterBtn) return;
 
-    // 2. Clicky (fail-safe)
-    try {
-        if (typeof window.clicky !== 'undefined') {
-            window.clicky.log('#enter-archive', 'Enter Archive Click', 'click');
-        }
-    } catch (err) {
-        console.log("Clicky non presente");
-    }
-
-    // 3. Logica di Rilevamento
+    // 1. ANALISI HARDWARE E SOFTWARE
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
     const longSide = Math.max(window.screen.width, window.screen.height);
-    const isSmallHardware = longSide < 1024;
+
+    // Lo consideriamo "Mobile" se l'hardware è piccolo (<1024) O se lo User Agent è mobile
+    // Escludiamo i Tablet per lasciarli passare al Desktop
     const isTablet = /iPad|PlayBook|Tablet/i.test(ua) ||
                      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-    // Diagnosi per il TESTO
-    const isActuallyMobile = (isMobileUA || isSmallHardware) && !isTablet;
+    const isActuallyMobile = (isMobileUA || longSide < 1024) && !isTablet;
 
-    // Diagnosi per il REDIRECT (Referrer)
-    const ref = document.referrer.toLowerCase();
-    const isFromSocial = ref.includes("instagram") || ref.includes("t.co") || ref.includes("facebook");
+    // 2. DECISIONE TESTO E REDIRECT
+    // Ora usiamo isActuallyMobile per ENTRAMBE le cose:
+    // Se è mobile, vede il testo rosso E va alla pagina -m.html
+    const currentText = isActuallyMobile ?
+        `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>` :
+        `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
 
-    // Mandiamo al mobile solo se è un telefono E viene dai social
-    const goToMobile = isActuallyMobile && isFromSocial;
-
-    // 4. Preparazione UI
     enterBtn.style.display = 'none';
     termContainer.style.display = 'block';
 
-    const desktopText = `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
-    const mobileText = `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>`;
-
-    const currentText = isActuallyMobile ? mobileText : desktopText;
-
-    // 5. Effetto Digitazione
     let charIndex = 0;
     function type() {
         if (charIndex < currentText.length) {
             termText.innerHTML = currentText.substring(0, charIndex + 1);
             charIndex++;
-            setTimeout(type, 15); // Velocità leggermente ridotta per stabilità
+            setTimeout(type, 15);
         } else {
             setTimeout(() => {
                 if (overlay) overlay.style.opacity = "0";
                 setTimeout(() => {
-                    // Redirect finale
-                    const target = goToMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
-                    window.location.href = target;
+                    // COERENZA TOTALE: Se isActuallyMobile è true, vai sempre al mobile
+                    window.location.href = isActuallyMobile ? "pages_static/physical-m.html" : "pages_static/physical.html";
                 }, 800);
             }, 1000);
         }
     }
-
     type();
 }
 </script>
