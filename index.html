@@ -728,8 +728,8 @@ function runDiagnostic() {
     if (!termContainer || !enterBtn) return;
 
     const currentText = isActuallyMobile ?
-        `> ARCHIVE DETECTED.<br/>> CHECKING HARDWARE...<br/>> DISPLAY: MOBILE DEVICE.<br/><span style="color:#D32F2F; font-weight:bold;">> FULL ARCHIVE RESTRICTED TO DESKTOP.</span><br/>> OPTIMIZING VISUALS FOR MOBILE...<br/>> LOADING GALLERY...<br/>` :
-        `> ARCHIVE DETECTED.<br/>> HARDWARE: PRO DISPLAY.<br/>> USER AGENT: DESKTOP ENGINE.<br/>> ACCESS GRANTED.<br/>> LOADING FULL ARCHIVE...<br/>`;
+    `> Archive detected.<br/>> Checking hardware...<br/>> Display: Mobile device.<br/><span style="color:#D32F2F; font-weight:bold;">> Full archive restricted to Desktop.</span><br/>> Optimizing visuals for mobile...<br/>> Loading gallery...<br/>` :
+    `> Archive detected.<br/>> Hardware: Pro Display.<br/>> User Agent: Desktop Engine.<br/>> Access granted.<br/>> Loading full archive...<br/>`;
 
     // UI: Nascondi tasto e mostra terminale
     enterBtn.style.display = 'none';
