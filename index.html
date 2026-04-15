@@ -728,8 +728,8 @@ function runDiagnostic() {
     if (!termContainer || !enterBtn) return;
 
     const currentText = isActuallyMobile ?
-    `<span style="color:#D32F2F; font-weight:bold;">Full archive restricted to Desktop.</span><br/>Hardware: Mobile device. Loading gallery...` :
-    `Hardware: Pro Display detected.<br/>Access granted. Loading full archive...`;
+    `[ <span style="color:#D32F2F;"> !! </span> ] <span style="color:#D32F2F; font-weight:bold;">Full archive restricted to Desktop.</span><br/>[ <span style="color:#2ecc71;"> OK </span> ] Hardware: Mobile device. Loading gallery...` :
+    `[ <span style="color:#2ecc71;"> OK </span> ] Hardware: Pro Display detected.<br/>[ <span style="color:#2ecc71;"> OK </span> ] Access granted. Loading full archive...`;
 
     // UI: Nascondi tasto e mostra terminale
     enterBtn.style.display = 'none';
