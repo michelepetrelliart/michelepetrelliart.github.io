@@ -286,11 +286,7 @@ background:#000;
     .single-image-license { font-size: 14px; color: #666; }
 }
 
-@media (max-height: 1488px) {
-  body:has(.purchase-container) .single-image-text {
-    display: none!important;
-  }
-}
+
 
 /* --- OTTIMIZZAZIONE 4K (Sopra 1921px) --- */
 @media screen and (min-width: 1921px) {
@@ -360,3 +356,8 @@ background:#000;
     position: relative !important;
 }
 
+@media (max-height: 1488px) and (min-width: 1281px) {
+  body:has(.purchase-container) .single-image-text {
+    display: none !important;
+  }
+}
