@@ -288,7 +288,7 @@ background:#000;
 
 @media (max-height: 1488px) {
   body:has(.purchase-container) .single-image-text {
-    display: none;
+    display: none!important;
   }
 }
 
