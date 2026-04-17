@@ -356,7 +356,7 @@ background:#000;
     position: relative !important;
 }
 
-@media (max-height: 1488px) and (min-width: 1281px) {
+@media (max-height: 1566px) and (min-width: 1281px) {
   body:has(.purchase-container) .single-image-text {
     display: none !important;
   }
