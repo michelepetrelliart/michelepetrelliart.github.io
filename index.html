@@ -668,7 +668,7 @@ function runDiagnostic() {
     const isSmallScreen = window.innerWidth <= 1024;
 
     // Determina la rotta
-    const destination = (isMobileUA || isSmallScreen) ? "pages_static/physical-m.html" : "pages_static/physical.html";
+    const destination = (isMobileUA || isSmallScreen) ? "pages_static/physical-m.html" : "pages_static/all.html";
 
     // 2. SALTO DIRETTO (Nessun salvataggio, nessuna attesa)
     window.location.href = destination;
