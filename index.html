@@ -668,10 +668,23 @@ function runDiagnostic() {
     const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
     const isSmallScreen = window.innerWidth <= 1024;
 
-    // Determina la rotta
-    const destination = (isMobileUA || isSmallScreen) ? "pages_static/all.html" : "pages_static/all.html";
+    // Controllo lingua italiana e fuso orario Roma
+    const lang = navigator.languages || [navigator.language || navigator.userLanguage];
+    const isItalian = lang.some(l => l.startsWith("it"));
+    const isRomeZone = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome';
 
-    // 2. SALTO DIRETTO (Nessun salvataggio, nessuna attesa)
+    // 2. DETERMINA LA ROTTA
+    let destination;
+
+    if (isItalian && isRomeZone) {
+        // Se è italiano E fuso Roma, va su about-m.html
+        destination = "about-m.html";
+    } else {
+        // Altrimenti segue la rotta standard (all.html sia per mobile che desktop come da tuo codice)
+        destination = "pages_static/all.html";
+    }
+
+    // 3. ESEGUI REDIRECT
     window.location.href = destination;
 }
 
