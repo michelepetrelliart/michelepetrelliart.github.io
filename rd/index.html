@@ -34,8 +34,9 @@
 
     // 2. LOGICA DI DESTINAZIONE E ETICHETTA BASE
     if (isItalian) {
-        target = githubHome;
-        label = "RD_ITALY_BOUNCE";
+        // Reindirizzamento specifico per utenti italiani
+        target = githubHome + "/pages_static/about.html";
+        label = "RD_ITALY_ABOUT";
     } else {
         const destination = toParam || 'patreon';
         target = links[destination] || githubHome;
