@@ -34,8 +34,8 @@
 
     // 2. LOGICA DI DESTINAZIONE E ETICHETTA BASE
     if (isItalian) {
-        // Reindirizzamento specifico per utenti italiani
-        target = githubHome + "/pages_static/about.html";
+        // Forza il percorso assoluto alla pagina About
+        target = "https://michelepetrelliart.github.io/pages_static/about.html";
         label = "RD_ITALY_ABOUT";
     } else {
         const destination = toParam || 'patreon';
