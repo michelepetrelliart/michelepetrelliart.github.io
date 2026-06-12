@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://michelepetrelliart.github.io/sitemap.xml

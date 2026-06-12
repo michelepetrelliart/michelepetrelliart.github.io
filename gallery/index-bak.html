@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleria Virtuale - Michele Petrelli</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
+<nav>
+ <div class="nav-main">
+  <div class="brand"><a href="/">Michele Petrelli</a></div>
+    <!-- menu verticale hamburger -->
+  <!-- checkbox per menu mobile -->
+  <label class='showMenu' for='showMenu'>&#9776;</label>
+  </div>
+  <input id='showMenu' role='button' type='checkbox'>
+  <ul id='menu'>
+    <li><a href="/">home</a></li>
+    <li><a href="../pages_static/studies.html">studies</a></li>
+    <span class='cont-h'><li><a href="https://superrare.com/thelastwheel" target="blank">superrare</a></li></span>
+    <!--span class='cont-h'><li><a href="physical.html">Unique1/1</a></li></span-->
+    <!--span class='cont-h'><li><a href="pro_archive.html">pro-archive</a></li></span-->
+    <span class='cont-h'><li><a href="https://recordsnode.substack.com?ref=nav2" target="blank">records-node</a></li></span>
+    <!--span class='cont-h'><li><a href="linktree.html">linktree</a></li></span-->
+    <!--span class='cont-h'><li><a href="https://www.inprnt.com/gallery/michelepetrelli/" target="blank">art prints</a></li></span-->
+    <li><a href="../pages_static/privacy.html">privacy</a></li>
+  </ul>
+<div class="nav-main2">
+  <!-- riga 1 -->
+  <div class="nav-level-1">
+    <a href="../pages_static/all.html" class="all-link">all</a>
+    <a href="/gallery">3Dview</a>
+    <a href="../pages_static/contacts.html">contacts</a>
+    <a href="../pages_static/about.html">about</a>
+  </div>
+
+  <!-- riga 2 -->
+  <div class="nav-level-2">
+    <a href="../pages_static/figures.html">figures</a>
+    <a href="../pages_static/portraits.html">portraits</a>
+    <a href="../pages_static/RNDD.html">R.N.D.D.</a>
+    <a href="../pages_static/films.html">films</a>
+  </div>
+</div>
+<!-- Clicky Web Analytics (Anonimizzato, GDPR compliant) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var clickyScript = document.createElement("script");
+        clickyScript.src = "https://static.getclicky.com/101499862.js";
+        document.body.appendChild(clickyScript);
+
+        // Anonimizzazione dell'IP
+        window.clicky = window.clicky || {};
+        window.clicky.anon = 1; // anonimizza IP
+    }, 2000); // attende 2 secondi prima di caricare Clicky
+});
+</script>
+<noscript>
+    <p><img alt="Clicky" height="1" width="1" src="https://in.getclicky.com/101499862ns.gif"/></p>
+</noscript>
+<!-- Sottolinea pagina attiva -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Prendi il nome del file corrente
+    const path = window.location.pathname;
+    const fileName = path.substring(path.lastIndexOf('/') + 1).toLowerCase();
+
+    // Seleziona tutti i link dentro .nav-main2
+    const links = document.querySelectorAll(".nav-main2 a");
+
+    links.forEach(link => {
+        // Confronta href con file corrente (solo nome del file)
+        const href = link.getAttribute("href").toLowerCase();
+        if (href === fileName) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+</nav>
+    <style>
+        .mobile-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a110b;
+            color: #e0e0e0;
+            z-index: 10000;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 40px 20px;
+            font-family: sans-serif;
+        }
+        .mobile-warning-content {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .mobile-warning h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .mobile-warning p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #a0a0a0;
+        }
+        .mobile-warning a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+nav, .nav-main, .nav-main2 {
+    z-index: 9999;
+    pointer-events: none;
+    background:transparent;
+}
+
+.nav-main, .nav-main2, #menu {
+    pointer-events: auto;
+}
+.gallery-viewport {
+    opacity: 0;
+}
+
+.gallery-ready .gallery-viewport {
+    opacity: 1;
+}
+    </style>
+</head>
+<body>
+
+    <div class="mobile-warning">
+    <div class="mobile-warning-content">
+        <h1>Esplorazione non disponibile</h1>
+        <p>Questa galleria virtuale tridimensionale è visibile solamente da dispositivi desktop per garantire la corretta esperienza visiva delle opere.</p>
+        <a href="about-m.html">Torna alla Home</a>
+    </div>
+</div>
+
+    <div class="gallery-viewport">
+    <div class="gallery-container" id="gallery">
+
+        <div class="grand-wall wall-left" id="wallLeft">
+            <div class="wall-module">
+                <div class="frame"><img src="4264_Study_for_a_Male_Figure_wm.webp" onload="document.documentElement.classList.add('gallery-ready')"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4259_First_Lights_of_Down_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4257_Looting_of_the_Innocents_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4255_The_Guardian_of_the_Abyss_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame landscape"><img src="../thumbs/All_works/Figures/4242_Residual_Warmth_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4254_You_are_fine_Mr_President_Stop_talking_nonsense_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4251_When_They_Profane_the_Common_Good_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame landscape"><img src="../thumbs/All_works/Figures/4249_The_Collapse_of_Reality_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4248_Operation_Willis_identity_Trap_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4238_We_Are_Victims_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4236_The_Debris_of_Ambition_wm.webp"></div>
+            </div>
+            <div class="wall-module">
+                <div class="frame"><img src="../thumbs/All_works/Figures/4226_Gehenna_wm.webp"></div>
+            </div>
+        </div>
+
+        <div class="grand-wall wall-right"></div>
+        <div class="corridor-floor" id="floor"></div>
+    </div>
+
+    <div class="viewport-vignette"></div>
+</div>
+
+<div class="ui-panel">
+    <div class="nav-main">
+        <button id="prevBtn" class="btn-arrow">← Indietro</button>
+        <span id="stepIndicator" class="step-txt">...</span>
+        <button id="nextBtn" class="btn-arrow">Avanti →</button>
+    </div>
+
+    <div class="nav-shortcuts">
+        <button id="sec1Btn" class="btn-sec">Opere 1 - 4</button>
+        <button id="sec2Btn" class="btn-sec">Opere 5 - 8</button>
+        <button id="sec3Btn" class="btn-sec">Opere 9 - 12</button>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.querySelectorAll('img').forEach(function(img) {
+            img.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        const lang = navigator.languages || [navigator.language || navigator.userLanguage];
+        const isLocal = lang.some(l => l.startsWith("it")) || (Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Rome');
+        const fromX = new URLSearchParams(window.location.search).get("fromX") === "1";
+        if (!isLocal && fromX) localStorage.setItem("visitedFromX", "1");
+        const vX = localStorage.getItem("visitedFromX");
+
+        document.querySelectorAll(".cont-it").forEach(e => e.style.display = isLocal ? "block" : "none");
+        document.querySelectorAll(".cont-h").forEach(e => e.style.display = (!isLocal && !vX) ? "block" : "none");
+        document.querySelectorAll(".cont-t").forEach(e => e.style.display = (!isLocal && vX) ? "block" : "none");
+
+        if(location.hostname !== "localhost" && !localStorage.getItem("cAcc")) {
+            let d = document.createElement("div");
+            d.style = "position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;padding:10px 14px;font:14px/1.4 sans-serif;text-align:center;z-index:9999";
+            d.innerHTML = "The site uses third-party cookies. <a href='pages_static/privacy.html' style='color:#fff !important; text-decoration:underline;'>Info</a> <button id='cOk' style='margin-left:10px'>OK</button>";
+            document.body.appendChild(d);
+            document.getElementById("cOk").onclick = () => { localStorage.setItem("cAcc", "1"); d.remove(); };
+        }
+
+        window.clicky_site_ids = window.clicky_site_ids || [];
+        window.clicky_site_ids.push(101499862);
+        window.clicky = { anon: 1 };
+        const cS = document.createElement("script");
+        cS.async = true;
+        cS.src = "https://static.getclicky.com/js";
+        document.body.appendChild(cS);
+    });
+    </script>
+</body>
+</html>
