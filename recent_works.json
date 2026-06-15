@@ -1,12 +1,12 @@
 [
     {
+        "title": "4281 The Trapped Lamb",
+        "link": "img_pages/4281_The_Trapped_Lamb.html",
+        "thumb": "thumbs/All_works/Figures/4281_The_Trapped_Lamb_wm.webp"
+    },
+    {
         "title": "4280 Oneiric Stasis",
         "link": "img_pages/4280_Oneiric_Stasis.html",
         "thumb": "thumbs/All_works/Portraits/4280_Oneiric_Stasis_wm.webp"
-    },
-    {
-        "title": "4279 The Usurper",
-        "link": "img_pages/4279_The_Usurper.html",
-        "thumb": "thumbs/All_works/Figures/4279_The_Usurper_wm.webp"
     }
 ]
