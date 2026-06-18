@@ -20,13 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         window.clicky = window.clicky || {};
         window.clicky.anon = 1;
-
-        // Aggiungiamo solo questo per monitorare l'uscita
-        window.addEventListener("visibilitychange", function() {
-            if (document.visibilityState === 'hidden' && typeof clicky !== 'undefined') {
-                clicky.log(window.location.pathname, "Exit");
-            }
-        });
     }, 2000);
 });
 </script>
