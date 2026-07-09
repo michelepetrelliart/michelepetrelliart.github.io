@@ -1,12 +1,12 @@
 [
     {
-        "title": "4298 Wrong Side of the Glass",
-        "link": "img_pages/4298_Wrong_Side_of_the_Glass.html",
-        "thumb": "thumbs/All_works/Figures/4298_Wrong_Side_of_the_Glass_wm.webp"
-    },
-    {
         "title": "4296 Self Coronation in the Sewer",
         "link": "img_pages/4296_Self_Coronation_in_the_Sewer.html",
         "thumb": "thumbs/All_works/Figures/4296_Self_Coronation_in_the_Sewer_wm.webp"
+    },
+    {
+        "title": "4294 The Last Supper of the Italians",
+        "link": "img_pages/4294_The_Last_Supper_of_the_Italians.html",
+        "thumb": "thumbs/All_works/Figures/4294_The_Last_Supper_of_the_Italians_wm.webp"
     }
 ]
