@@ -1,12 +1,12 @@
 [
     {
+        "title": "4301 Carne Entrelazada",
+        "link": "img_pages/4301_Carne_Entrelazada.html",
+        "thumb": "thumbs/All_works/Figures/4301_Carne_Entrelazada_wm.webp"
+    },
+    {
         "title": "4300 The Genesis of a Manipulator",
         "link": "img_pages/4300_The_Genesis_of_a_Manipulator.html",
         "thumb": "thumbs/All_works/Figures/4300_The_Genesis_of_a_Manipulator_wm.webp"
-    },
-    {
-        "title": "4299 Peas",
-        "link": "img_pages/4299_Peas.html",
-        "thumb": "thumbs/All_works/Portraits/4299_Peas_wm.webp"
     }
 ]
