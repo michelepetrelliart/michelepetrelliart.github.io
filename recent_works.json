@@ -1,12 +1,12 @@
 [
     {
+        "title": "4321 El \u00faltimo Trago ",
+        "link": "img_pages/4321_El_\u00faltimo_Trago_.html",
+        "thumb": "thumbs/All_works/Figures/4321_El_\u00faltimo_Trago__wm.webp"
+    },
+    {
         "title": "4320 The Fall of the Beast",
         "link": "img_pages/4320_The_Fall_of_the_Beast.html",
         "thumb": "thumbs/All_works/Figures/4320_The_Fall_of_the_Beast_wm.webp"
-    },
-    {
-        "title": "4319 Le Catene del Popolo",
-        "link": "img_pages/4319_Le_Catene_del_Popolo.html",
-        "thumb": "thumbs/All_works/Figures/4319_Le_Catene_del_Popolo_wm.webp"
     }
 ]
