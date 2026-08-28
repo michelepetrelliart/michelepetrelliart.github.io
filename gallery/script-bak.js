@@ -13,6 +13,8 @@ let totalSteps;
 const viewport = document.getElementById('viewport');
 const gallery = document.getElementById('gallery');
 const uiPanel = document.getElementById('uiPanel');
+const thumbRow = document.getElementById('thumbRow');
+const galleryOpName = document.getElementById('galleryOpName');
 
 function initGallery() {
     frames = document.querySelectorAll('.frame');
@@ -32,11 +34,99 @@ function initGallery() {
     gallery.style.transition = 'none';
     gallery.style.transform = `translateX(-${currentStep * 100}vw)`;
 
+    // Inizializza gli eventi sulle miniature generate dal server
+    initThumbnails();
+
     requestAnimationFrame(() => {
         gallery.style.transition = '';
         updateDisplay();
     });
 }
+
+function initThumbnails() {
+    if (!thumbRow) return;
+
+    const btnPrev = document.getElementById('thumbPrev');
+    const btnNext = document.getElementById('thumbNext');
+
+    thumbRow.addEventListener('click', (e) => {
+        const thumb = e.target.closest('.thumb-item');
+        if (!thumb) return;
+
+        const targetIndex = parseInt(thumb.getAttribute('data-index'));
+        if (!isNaN(targetIndex) && targetIndex !== currentStep) {
+            resetZoom();
+            currentStep = targetIndex;
+            updateDisplay();
+        }
+    });
+
+    if (btnPrev) {
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentStep > 0) {
+                resetZoom();
+                currentStep = Math.max(0, currentStep - 8);
+                updateDisplay();
+            }
+        });
+    }
+
+    if (btnNext) {
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentStep < totalSteps - 1) {
+                resetZoom();
+                currentStep = Math.min(totalSteps - 1, currentStep + 8);
+                updateDisplay();
+            }
+        });
+    }
+}
+
+function updateThumbnailsUI() {
+    const thumbs = document.querySelectorAll('.thumb-item');
+    if (thumbs.length === 0) return;
+
+    thumbs.forEach(thumb => {
+        const idx = parseInt(thumb.getAttribute('data-index'));
+        if (idx === currentStep) {
+            thumb.classList.add('active');
+
+            if (galleryOpName) {
+                const activeFrame = frames[currentStep];
+                if (activeFrame) {
+                    const labelNum = activeFrame.querySelector('.label-number');
+                    const labelTitle = activeFrame.querySelector('.label-title');
+
+                    let numText = labelNum ? labelNum.textContent.trim() : '';
+                    let titleText = labelTitle ? labelTitle.textContent.trim() : '';
+
+                    if (numText && titleText) {
+                        galleryOpName.textContent = `${numText} - ${titleText}`;
+                    } else if (titleText) {
+                        galleryOpName.textContent = titleText;
+                    } else {
+                        galleryOpName.textContent = numText || 'Opera';
+                    }
+                } else {
+                    let fullTitle = thumb.getAttribute('title') || '';
+                    let firstUnderscore = fullTitle.indexOf('_');
+                    if (firstUnderscore !== -1) {
+                        galleryOpName.textContent = fullTitle.replace(/_/g, ' ');
+                    } else {
+                        galleryOpName.textContent = fullTitle || 'Opera';
+                    }
+                }
+            }
+
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+            thumb.classList.remove('active');
+        }
+    });
+}
+
 function updateTransform(el) {
     if (!el) return;
 
@@ -45,15 +135,12 @@ function updateTransform(el) {
     const panFactor = Math.max(0, (scale - zoomStartPan) / (maxZoom - zoomStartPan));
     const clampedPanFactor = Math.min(1, panFactor);
 
-    // Usiamo offsetWidth del frame per i limiti
     const limitX = (el.offsetWidth * (scale - 1)) / 0.8;
     const limitY = (el.offsetHeight * (scale - 1)) / 0.8;
 
     posX = Math.max(-limitX * clampedPanFactor, Math.min(limitX * clampedPanFactor, posX));
     posY = Math.max(-limitY * clampedPanFactor, Math.min(limitY * clampedPanFactor, posY));
 
-    // Applichiamo il transform al frame stesso.
-    // Usiamo calc() per mantenere la centratura originale (-50%, -50%)
     el.style.transform = `translate(calc(-50% + ${posX}px), calc(-50% + ${posY}px)) scale(${scale})`;
 
     const isZoomed = scale > 1.05;
@@ -63,6 +150,7 @@ function updateTransform(el) {
         if (e) e.style.display = isZoomed ? 'none' : '';
     });
 }
+
 function resetZoom() {
     scale = 1;
     posX = 0;
@@ -70,12 +158,11 @@ function resetZoom() {
     document.body.classList.remove('zoomed');
     if (uiPanel) uiPanel.style.display = 'flex';
 
-    const activeFrame = frames[currentStep]; // Usa l'indice
+    const activeFrame = frames[currentStep];
     if (activeFrame) updateTransform(activeFrame);
 }
 
 viewport.addEventListener('wheel', e => {
-    // Usiamo l'indice globale currentStep per trovare il frame corretto
     const activeFrame = frames[currentStep];
     if (!activeFrame) return;
 
@@ -96,7 +183,7 @@ viewport.addEventListener('mousedown', e => {
 
 window.addEventListener('mousemove', e => {
     if (!isPanning) return;
-    const activeFrame = frames[currentStep]; // Corretto qui
+    const activeFrame = frames[currentStep];
     if (!activeFrame) return;
     posX = e.clientX - startX;
     posY = e.clientY - startY;
@@ -123,7 +210,6 @@ viewport.addEventListener('touchstart', e => {
 }, { passive: false });
 
 viewport.addEventListener('touchmove', e => {
-    // Usa l'indice corrente invece di cercare una classe CSS
     const activeFrame = frames[currentStep];
     if (!activeFrame) return;
 
@@ -133,18 +219,13 @@ viewport.addEventListener('touchmove', e => {
         const dy = e.touches[0].clientY - e.touches[1].clientY;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        // Calcolo scala
         scale = Math.min(Math.max(initialScale * (dist / initialPinchDist), 1), 3);
-
-        // Passa il frame corretto alla funzione
         updateTransform(activeFrame);
 
     } else if (e.touches.length === 1 && isPanning) {
         e.preventDefault();
         posX = e.touches[0].clientX - startX;
         posY = e.touches[0].clientY - startY;
-
-        // Passa il frame corretto alla funzione
         updateTransform(activeFrame);
     }
 }, { passive: false });
@@ -178,25 +259,9 @@ function updateDisplay() {
         }
     }, 1000);
 
-    const indicator = document.getElementById('stepIndicator');
-    if (indicator) indicator.textContent = `${currentStep + 1} / ${totalSteps}`;
     localStorage.setItem('galleryPos', currentStep);
     localStorage.setItem('galleryVersion', totalSteps);
-}
-
-let isJumping = false;
-async function jump(steps) {
-    if (isJumping) return;
-    const targetStep = Math.max(0, Math.min(totalSteps - 1, currentStep + steps));
-    const direction = steps > 0 ? 1 : -1;
-    isJumping = true;
-    while (currentStep !== targetStep) {
-        currentStep += direction;
-        currentStep = Math.max(0, Math.min(totalSteps - 1, currentStep));
-        updateDisplay();
-        await new Promise(r => setTimeout(r, 500)); // Ridotto a 100ms per un effetto più fluido
-    }
-    isJumping = false;
+    updateThumbnailsUI();
 }
 
 function generateArtworkLabels() {
@@ -204,10 +269,12 @@ function generateArtworkLabels() {
         const img = frame.querySelector('img');
         if (img && !frame.querySelector('.artwork-label')) {
             let src = img.getAttribute('src') || img.dataset.src;
+            if (!src) return;
             let filename = src.substring(src.lastIndexOf('/') + 1).replace(/\.[^/.]+$/, "").replace(/_wm$|_wm_identity$/, '');
             let firstUnderscore = filename.indexOf('_');
             let number = firstUnderscore !== -1 ? filename.substring(0, firstUnderscore) : "";
             let title = firstUnderscore !== -1 ? filename.substring(firstUnderscore + 1).replace(/_/g, ' ') : filename;
+
             const labelElement = document.createElement('div');
             labelElement.className = 'artwork-label';
             if (number && !isNaN(number)) {
@@ -224,14 +291,6 @@ function generateArtworkLabels() {
         }
     });
 }
-
-document.getElementById('nextBtn')?.addEventListener('click', () => jump(1));
-document.getElementById('prevBtn')?.addEventListener('click', () => jump(-1));
-document.getElementById('jumpM8')?.addEventListener('click', () => jump(-8));
-document.getElementById('jumpM4')?.addEventListener('click', () => jump(-4));
-document.getElementById('jumpP4')?.addEventListener('click', () => jump(4));
-document.getElementById('jumpP8')?.addEventListener('click', () => jump(8));
-document.getElementById('resetGalleryBtn')?.addEventListener('click', () => { currentStep = 0; updateDisplay(); });
 
 window.addEventListener('load', () => {
     initGallery();

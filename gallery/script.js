@@ -292,6 +292,179 @@ function generateArtworkLabels() {
     });
 }
 
+// ============================================================
+// NAVIGAZIONE AI BORDI (nuova funzionalità, aggiunta senza
+// modificare nulla del codice sopra)
+//
+// Come gli epub, dove si clicca sul lato destro/sinistro del
+// foglio per girare pagina: qui, cliccando (desktop) o toccando
+// (mobile) nella fascia ai bordi dello schermo, si passa subito
+// al frame precedente/successivo. Se si tiene premuto (mouse) o
+// il dito resta a contatto, l'avanzamento continua a intervalli
+// regolari finché non si rilascia o non ci si sposta fuori dalla
+// fascia. Il semplice passaggio del mouse senza click NON attiva
+// nulla, solo il click/tocco effettivo.
+//
+// La fascia è il 20% della larghezza della finestra su entrambi
+// i lati, sia su desktop che su touch.
+//
+// In entrambi i casi la funzione è disattivata durante lo zoom
+// (scale > 1.05), e ignora i click/tocchi sui controlli
+// dell'interfaccia (pulsanti, miniature, nav). Al rilascio non
+// viene mai annullata una transizione già avviata: si smette
+// solo di innescarne di nuove, così il frame che resta centrato
+// è sempre quello verso cui l'ultimo scatto puntava.
+// ============================================================
+
+const EDGE_ZONE_RATIO = 0.50; // 20% della larghezza della finestra/schermo
+const EDGE_NAV_INTERVAL_MS = 2500; // ritmo di avanzamento mentre si resta nella fascia
+
+let edgeNavInterval = null;
+let edgeNavDirection = 0; // -1 sinistra, 1 destra, 0 nessuna
+
+function isZoomedNow() {
+    return scale > 1.05;
+}
+
+function isOnInteractiveElement(target) {
+    return !!(target && target.closest && target.closest(
+        'button, .thumb-item, #thumbRow, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a'
+    ));
+}
+
+// Calcola la direzione in base alla posizione X rispetto alla larghezza
+// della finestra (window.innerWidth) e alla percentuale di fascia data.
+function getEdgeDirection(clientX, zoneRatio) {
+    const width = window.innerWidth;
+    if (clientX < width * zoneRatio) return -1;
+    if (clientX > width * (1 - zoneRatio)) return 1;
+    return 0;
+}
+
+// Avanza di un frame nella direzione data. Ritorna false se si è già
+// al primo/ultimo frame (limite raggiunto).
+function stepFrame(direction) {
+    const next = currentStep + direction;
+    if (next < 0 || next >= totalSteps) return false;
+    currentStep = next;
+    updateDisplay();
+    return true;
+}
+
+function startEdgeNav(direction) {
+    if (direction === edgeNavDirection && edgeNavInterval) return; // già in corso in quella direzione
+    stopEdgeNav();
+    edgeNavDirection = direction;
+
+    const advanced = stepFrame(direction);
+    if (!advanced) {
+        edgeNavDirection = 0;
+        return;
+    }
+
+    edgeNavInterval = setInterval(() => {
+        if (isZoomedNow()) { stopEdgeNav(); return; }
+        const ok = stepFrame(edgeNavDirection);
+        if (!ok) stopEdgeNav();
+    }, EDGE_NAV_INTERVAL_MS);
+}
+
+// Non interrompe/annulla mai la transizione CSS già in corso: si limita
+// a smettere di innescarne di nuove. L'animazione in atto si completa
+// da sola sul frame già impostato come target.
+function stopEdgeNav() {
+    if (edgeNavInterval) {
+        clearInterval(edgeNavInterval);
+        edgeNavInterval = null;
+    }
+    edgeNavDirection = 0;
+}
+
+// --- Desktop: click (tenuto premuto per continuare) nella fascia ---
+let edgeMouseActive = false;
+
+document.addEventListener('mousedown', e => {
+    if (e.button !== 0) return; // solo tasto sinistro
+    if (isZoomedNow()) return;
+    if (isOnInteractiveElement(e.target)) return;
+
+    const direction = getEdgeDirection(e.clientX, EDGE_ZONE_RATIO);
+    if (direction !== 0) {
+        e.preventDefault(); // evita la selezione del testo mentre si tiene premuto
+        edgeMouseActive = true;
+        startEdgeNav(direction);
+    }
+});
+
+document.addEventListener('mousemove', e => {
+    if (!edgeMouseActive) return;
+
+    if (isZoomedNow()) {
+        edgeMouseActive = false;
+        stopEdgeNav();
+        return;
+    }
+
+    const direction = getEdgeDirection(e.clientX, EDGE_ZONE_RATIO);
+    if (direction === 0) {
+        edgeMouseActive = false;
+        stopEdgeNav();
+    } else if (direction !== edgeNavDirection) {
+        startEdgeNav(direction);
+    }
+});
+
+function endMouseEdgeNav() {
+    edgeMouseActive = false;
+    stopEdgeNav();
+}
+
+document.addEventListener('mouseup', endMouseEdgeNav);
+document.addEventListener('mouseleave', endMouseEdgeNav);
+
+// --- Mobile/touch: tocco nella fascia, con ripetizione se tenuto premuto ---
+let touchEdgeActive = false;
+
+viewport.addEventListener('touchstart', e => {
+    if (isZoomedNow()) return;
+    if (e.touches.length !== 1) return;
+    if (isOnInteractiveElement(e.target)) return;
+
+    const touch = e.touches[0];
+    const direction = getEdgeDirection(touch.clientX, EDGE_ZONE_RATIO);
+    if (direction !== 0) {
+        touchEdgeActive = true;
+        startEdgeNav(direction);
+    }
+}, { passive: true });
+
+viewport.addEventListener('touchmove', e => {
+    if (!touchEdgeActive) return;
+
+    if (isZoomedNow() || e.touches.length !== 1) {
+        touchEdgeActive = false;
+        stopEdgeNav();
+        return;
+    }
+
+    const touch = e.touches[0];
+    const direction = getEdgeDirection(touch.clientX, EDGE_ZONE_RATIO);
+    if (direction === 0) {
+        touchEdgeActive = false;
+        stopEdgeNav();
+    } else if (direction !== edgeNavDirection) {
+        startEdgeNav(direction);
+    }
+}, { passive: true });
+
+function endTouchEdgeNav() {
+    touchEdgeActive = false;
+    stopEdgeNav();
+}
+
+viewport.addEventListener('touchend', endTouchEdgeNav);
+viewport.addEventListener('touchcancel', endTouchEdgeNav);
+
 window.addEventListener('load', () => {
     initGallery();
     generateArtworkLabels();
