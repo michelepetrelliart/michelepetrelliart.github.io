@@ -196,13 +196,7 @@ window.addEventListener('mouseup', () => {
 });
 
 viewport.addEventListener('touchstart', e => {
-    if (e.touches.length === 2) {
-        isPanning = false;
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        initialPinchDist = Math.sqrt(dx * dx + dy * dy);
-        initialScale = scale;
-    } else if (e.touches.length === 1 && scale > 1) {
+    if (e.touches.length === 1 && scale > 1) {
         isPanning = true;
         startX = e.touches[0].clientX - posX;
         startY = e.touches[0].clientY - posY;
@@ -213,16 +207,7 @@ viewport.addEventListener('touchmove', e => {
     const activeFrame = frames[currentStep];
     if (!activeFrame) return;
 
-    if (e.touches.length === 2 && initialPinchDist > 0) {
-        e.preventDefault();
-        const dx = e.touches[0].clientX - e.touches[1].clientX;
-        const dy = e.touches[0].clientY - e.touches[1].clientY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        scale = Math.min(Math.max(initialScale * (dist / initialPinchDist), 1), 3);
-        updateTransform(activeFrame);
-
-    } else if (e.touches.length === 1 && isPanning) {
+    if (e.touches.length === 1 && isPanning) {
         e.preventDefault();
         posX = e.touches[0].clientX - startX;
         posY = e.touches[0].clientY - startY;
