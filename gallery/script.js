@@ -385,6 +385,7 @@ let edgeMouseActive = false;
 
 document.addEventListener('mousedown', e => {
     if (e.button !== 0) return; // solo tasto sinistro
+    if (Date.now() - lastTouchEdgeTime < 800) return; // ignora i mouse-event fantasma dopo un touch
     if (isZoomedNow()) return;
     if (isOnInteractiveElement(e.target)) return;
 
@@ -424,6 +425,7 @@ document.addEventListener('mouseleave', endMouseEdgeNav);
 
 // --- Mobile/touch: tocco nella fascia, con ripetizione se tenuto premuto ---
 let touchEdgeActive = false;
+let lastTouchEdgeTime = 0; // usato per ignorare i mouse-event "fantasma" generati dal touch
 
 viewport.addEventListener('touchstart', e => {
     if (isZoomedNow()) return;
@@ -433,10 +435,12 @@ viewport.addEventListener('touchstart', e => {
     const touch = e.touches[0];
     const direction = getEdgeDirection(touch.clientX, EDGE_ZONE_RATIO);
     if (direction !== 0) {
+        e.preventDefault(); // evita che il browser generi poi i mouse-event di compatibilità
+        lastTouchEdgeTime = Date.now();
         touchEdgeActive = true;
         startEdgeNav(direction);
     }
-}, { passive: true });
+}, { passive: false });
 
 viewport.addEventListener('touchmove', e => {
     if (!touchEdgeActive) return;
@@ -457,13 +461,15 @@ viewport.addEventListener('touchmove', e => {
     }
 }, { passive: true });
 
-function endTouchEdgeNav() {
+function endTouchEdgeNav(e) {
+    if (e) e.preventDefault(); // blocca anche qui i mouse-event di compatibilità
+    lastTouchEdgeTime = Date.now();
     touchEdgeActive = false;
     stopEdgeNav();
 }
 
-viewport.addEventListener('touchend', endTouchEdgeNav);
-viewport.addEventListener('touchcancel', endTouchEdgeNav);
+viewport.addEventListener('touchend', endTouchEdgeNav, { passive: false });
+viewport.addEventListener('touchcancel', endTouchEdgeNav, { passive: false });
 
 window.addEventListener('load', () => {
     initGallery();
