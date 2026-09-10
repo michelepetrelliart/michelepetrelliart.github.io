@@ -1,12 +1,12 @@
 [
     {
+        "title": "4334 Novaya Zemlya",
+        "link": "img_pages/4334_Novaya_Zemlya.html",
+        "thumb": "thumbs/All_works/Figures/4334_Novaya_Zemlya_wm.webp"
+    },
+    {
         "title": "4333 The Sea of Shit in Antenora",
         "link": "img_pages/4333_The_Sea_of_Shit_in_Antenora.html",
         "thumb": "thumbs/All_works/Figures/4333_The_Sea_of_Shit_in_Antenora_wm.webp"
-    },
-    {
-        "title": "4332 Operation AETHER CLAW",
-        "link": "img_pages/4332_Operation_AETHER_CLAW.html",
-        "thumb": "thumbs/All_works/Figures/4332_Operation_AETHER_CLAW_wm.webp"
     }
 ]
