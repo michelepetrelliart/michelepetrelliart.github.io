@@ -1,12 +1,12 @@
 [
     {
+        "title": "4340 Stale Bread",
+        "link": "img_pages/4340_Stale_Bread.html",
+        "thumb": "thumbs/All_works/Figures/4340_Stale_Bread_wm.webp"
+    },
+    {
         "title": "4339 The War of the Goats Managed by a Few Rats",
         "link": "img_pages/4339_The_War_of_the_Goats_Managed_by_a_Few_Rats.html",
         "thumb": "thumbs/All_works/Figures/4339_The_War_of_the_Goats_Managed_by_a_Few_Rats_wm.webp"
-    },
-    {
-        "title": "4333 The Sea of Shit in Antenora",
-        "link": "img_pages/4333_The_Sea_of_Shit_in_Antenora.html",
-        "thumb": "thumbs/All_works/Figures/4333_The_Sea_of_Shit_in_Antenora_wm.webp"
     }
 ]
