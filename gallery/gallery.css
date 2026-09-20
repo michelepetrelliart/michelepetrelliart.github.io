@@ -490,6 +490,9 @@ nav,
     .viewport-vignette {
         transform: scale(.8);
     }
+    .frame{
+        padding:4px;
+        }
 }
 
 @media (max-width: 600px) {
