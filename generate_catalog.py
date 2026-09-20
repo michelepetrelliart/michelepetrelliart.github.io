@@ -31,7 +31,7 @@ def rebuild_catalog_from_files(base_dir):
                     if filename.lower().endswith(('.webp', '.jpg', '.jpeg', '.png')):
                         item = {
                             "src": f"../thumbs/All_works/{category}/{filename}",
-                            "title": filename.split('_')[0]
+                            "title": re.sub(r'_(wm|wm_identity|vm)$', '', os.path.splitext(filename)[0])
                         }
                         new_data[category].append(item)
     return new_data
@@ -109,10 +109,8 @@ def generate_static_html():
                 f.write(new_index)
             print(f"Preloader della galleria aggiornato in index.html")
 
-    # 4. Generazione moduli HTML
-    # 4. Generazione moduli HTML e relative miniature
+    # 4. Generazione moduli HTML (niente più miniature)
     modules_html = ""
-    thumbs_html = ""
 
     for i, item in enumerate(all_works):
         src = item.get('src', '')
@@ -127,7 +125,6 @@ def generate_static_html():
             onload = ' onload="document.documentElement.classList.add(\'gallery-ready\')"' if i == 0 else ""
             content = f'<img src="{src}"{onload} loading="lazy">'
 
-        # Moduli del muro (Invariati per non rompere il CSS 3D)
         modules_html += f'''            <div class="wall-module" data-index="{i}">
                 <div class="frame">
                     <div class="audio-control">
@@ -141,10 +138,7 @@ def generate_static_html():
                 </div>
             </div>\n'''
 
-        # Generazione delle miniature per la barra in basso (Usa i file leggeri in /thumbs/)
-        thumbs_html += f'<img src="{src}" class="thumb-item" data-index="{i}" alt="{title}" title="{title}" loading="lazy">\n'
-
-    # 5. Struttura HTML finale con la nuova interfaccia
+    # 5. Struttura HTML finale con la nuova barra di scorrimento
     full_html = f'''<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -175,18 +169,11 @@ def generate_static_html():
 
 <div class="ui-container">
     <div class="ui-panel" id="uiPanel">
-        <!--button id="thumbPrev" class="btn-thumb-arrow">◀</button>
-        <button id="thumbNext" class="btn-thumb-arrow">▶</button-->
-
         <div class="gallery-label-container">
             <span id="galleryOpName" class="gallery-work-title">---</span>
         </div>
-        <div class="thumb-nav-wrapper">
-            <div class="thumb-nav-container" id="thumbContainer">
-                <div class="thumb-row" id="thumbRow">
-                    {thumbs_html}
-                </div>
-            </div>
+        <div class="custom-scrollbar-track" id="scrollbarTrack">
+            <div class="custom-scrollbar-thumb" id="scrollbarThumb"></div>
         </div>
     </div>
 </div>

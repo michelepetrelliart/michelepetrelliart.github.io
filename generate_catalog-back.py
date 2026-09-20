@@ -110,9 +110,13 @@ def generate_static_html():
             print(f"Preloader della galleria aggiornato in index.html")
 
     # 4. Generazione moduli HTML
+    # 4. Generazione moduli HTML e relative miniature
     modules_html = ""
+    thumbs_html = ""
+
     for i, item in enumerate(all_works):
         src = item.get('src', '')
+        title = item.get('title', 'Opera')
         if not src.startswith('../') and not src.startswith('http'):
             src = '../' + src
 
@@ -123,8 +127,8 @@ def generate_static_html():
             onload = ' onload="document.documentElement.classList.add(\'gallery-ready\')"' if i == 0 else ""
             content = f'<img src="{src}"{onload} loading="lazy">'
 
-        # Inseriamo il frame DIRETTAMENTE dentro il modulo
-        modules_html += f'''            <div class="wall-module">
+        # Moduli del muro (Invariati per non rompere il CSS 3D)
+        modules_html += f'''            <div class="wall-module" data-index="{i}">
                 <div class="frame">
                     <div class="audio-control">
                         <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);">
@@ -137,7 +141,10 @@ def generate_static_html():
                 </div>
             </div>\n'''
 
-    # 5. Struttura HTML finale
+        # Generazione delle miniature per la barra in basso (Usa i file leggeri in /thumbs/)
+        thumbs_html += f'<img src="{src}" class="thumb-item" data-index="{i}" alt="{title}" title="{title}" loading="lazy">\n'
+
+    # 5. Struttura HTML finale con la nuova interfaccia
     full_html = f'''<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -147,7 +154,6 @@ def generate_static_html():
     <link rel="stylesheet" href="../gallery/gallery.css">
 </head>
 <body>
-
 
 <div id="mobileNotice" class="mobile-notice" style="display: none;">
     <div class="notice-content">
@@ -169,20 +175,22 @@ def generate_static_html():
 
 <div class="ui-container">
     <div class="ui-panel" id="uiPanel">
-        <div class="nav-main">
-        <button id="prevBtn" class="btn-arrow">◀ Prev</button>
-        <span id="stepIndicator" class="step-txt">...</span>
-        <button id="nextBtn" class="btn-arrow">Next ▶</button>
-    </div>
-    <div class="nav-shortcuts">
-        <button id="jumpM8" class="btn-jump">-8</button>
-        <button id="jumpM4" class="btn-jump">-4</button>
-        <button id="resetGalleryBtn" class="btn-jump btn-reset">Start</button>
-        <button id="jumpP4" class="btn-jump">+4</button>
-        <button id="jumpP8" class="btn-jump">+8</button>
+        <!--button id="thumbPrev" class="btn-thumb-arrow">◀</button>
+        <button id="thumbNext" class="btn-thumb-arrow">▶</button-->
+
+        <div class="gallery-label-container">
+            <span id="galleryOpName" class="gallery-work-title">---</span>
+        </div>
+        <div class="thumb-nav-wrapper">
+            <div class="thumb-nav-container" id="thumbContainer">
+                <div class="thumb-row" id="thumbRow">
+                    {thumbs_html}
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 {GDPR_SCRIPT}
 {RIGHT_CLICK}
 {L_DETECT_SCRIPT}

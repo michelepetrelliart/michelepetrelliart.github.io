@@ -13,8 +13,12 @@ let totalSteps;
 const viewport = document.getElementById('viewport');
 const gallery = document.getElementById('gallery');
 const uiPanel = document.getElementById('uiPanel');
-const thumbRow = document.getElementById('thumbRow');
 const galleryOpName = document.getElementById('galleryOpName');
+
+// --- Scrubber bar (sostituisce la striscia di miniature) ---
+const scrubberTrack = document.getElementById('scrubberTrack');
+const scrubberFill = document.getElementById('scrubberFill');
+const scrubberHandle = document.getElementById('scrubberHandle');
 
 function initGallery() {
     frames = document.querySelectorAll('.frame');
@@ -34,8 +38,8 @@ function initGallery() {
     gallery.style.transition = 'none';
     gallery.style.transform = `translateX(-${currentStep * 100}vw)`;
 
-    // Inizializza gli eventi sulle miniature generate dal server
-    initThumbnails();
+    // Inizializza la barra scrubber
+    initScrubber();
 
     requestAnimationFrame(() => {
         gallery.style.transition = '';
@@ -43,88 +47,72 @@ function initGallery() {
     });
 }
 
-function initThumbnails() {
-    if (!thumbRow) return;
+function initScrubber() {
+    if (!scrubberTrack || !scrubberHandle) return;
 
-    const btnPrev = document.getElementById('thumbPrev');
-    const btnNext = document.getElementById('thumbNext');
+    let isDraggingScrubber = false;
 
-    thumbRow.addEventListener('click', (e) => {
-        const thumb = e.target.closest('.thumb-item');
-        if (!thumb) return;
+    function stepFromClientX(clientX) {
+        const rect = scrubberTrack.getBoundingClientRect();
+        const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+        return Math.round(ratio * (totalSteps - 1));
+    }
 
-        const targetIndex = parseInt(thumb.getAttribute('data-index'));
-        if (!isNaN(targetIndex) && targetIndex !== currentStep) {
+    function seekTo(clientX) {
+        const target = stepFromClientX(clientX);
+        if (target !== currentStep) {
             resetZoom();
-            currentStep = targetIndex;
+            currentStep = target;
             updateDisplay();
         }
+    }
+
+    scrubberTrack.addEventListener('pointerdown', (e) => {
+        isDraggingScrubber = true;
+        scrubberTrack.setPointerCapture(e.pointerId);
+        seekTo(e.clientX);
     });
 
-    if (btnPrev) {
-        btnPrev.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (currentStep > 0) {
-                resetZoom();
-                currentStep = Math.max(0, currentStep - 8);
-                updateDisplay();
-            }
-        });
-    }
+    scrubberTrack.addEventListener('pointermove', (e) => {
+        if (!isDraggingScrubber) return;
+        seekTo(e.clientX);
+    });
 
-    if (btnNext) {
-        btnNext.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (currentStep < totalSteps - 1) {
-                resetZoom();
-                currentStep = Math.min(totalSteps - 1, currentStep + 8);
-                updateDisplay();
-            }
-        });
-    }
+    scrubberTrack.addEventListener('pointerup', (e) => {
+        isDraggingScrubber = false;
+        scrubberTrack.releasePointerCapture(e.pointerId);
+    });
+
+    scrubberTrack.addEventListener('pointercancel', () => {
+        isDraggingScrubber = false;
+    });
 }
 
-function updateThumbnailsUI() {
-    const thumbs = document.querySelectorAll('.thumb-item');
-    if (thumbs.length === 0) return;
+function updateScrubberUI() {
+    if (!scrubberTrack || totalSteps <= 1) return;
 
-    thumbs.forEach(thumb => {
-        const idx = parseInt(thumb.getAttribute('data-index'));
-        if (idx === currentStep) {
-            thumb.classList.add('active');
+    const ratio = currentStep / (totalSteps - 1);
+    scrubberFill.style.width = `${ratio * 100}%`;
+    scrubberHandle.style.left = `${ratio * 100}%`;
 
-            if (galleryOpName) {
-                const activeFrame = frames[currentStep];
-                if (activeFrame) {
-                    const labelNum = activeFrame.querySelector('.label-number');
-                    const labelTitle = activeFrame.querySelector('.label-title');
+    if (galleryOpName) {
+        const activeFrame = frames[currentStep];
+        if (activeFrame) {
+            const labelNum = activeFrame.querySelector('.label-number');
+            const labelTitle = activeFrame.querySelector('.label-title');
 
-                    let numText = labelNum ? labelNum.textContent.trim() : '';
-                    let titleText = labelTitle ? labelTitle.textContent.trim() : '';
+            let numText = labelNum ? labelNum.textContent.trim() : '';
+            let titleText = labelTitle ? labelTitle.textContent.trim() : '';
 
-                    if (numText && titleText) {
-                        galleryOpName.textContent = `${numText} - ${titleText}`;
-                    } else if (titleText) {
-                        galleryOpName.textContent = titleText;
-                    } else {
-                        galleryOpName.textContent = numText || 'Opera';
-                    }
-                } else {
-                    let fullTitle = thumb.getAttribute('title') || '';
-                    let firstUnderscore = fullTitle.indexOf('_');
-                    if (firstUnderscore !== -1) {
-                        galleryOpName.textContent = fullTitle.replace(/_/g, ' ');
-                    } else {
-                        galleryOpName.textContent = fullTitle || 'Opera';
-                    }
-                }
+            if (numText && titleText) {
+                galleryOpName.textContent = `${numText} - ${titleText}`;
+            } else if (titleText) {
+                galleryOpName.textContent = titleText;
+            } else {
+                galleryOpName.textContent = numText || 'Opera';
             }
-
-            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        } else {
-            thumb.classList.remove('active');
         }
-    });
+    }
 }
 
 function updateTransform(el) {
@@ -246,7 +234,7 @@ function updateDisplay() {
 
     localStorage.setItem('galleryPos', currentStep);
     localStorage.setItem('galleryVersion', totalSteps);
-    updateThumbnailsUI();
+    updateScrubberUI();
 }
 
 function generateArtworkLabels() {
@@ -295,7 +283,7 @@ function generateArtworkLabels() {
 //
 // In entrambi i casi la funzione è disattivata durante lo zoom
 // (scale > 1.05), e ignora i click/tocchi sui controlli
-// dell'interfaccia (pulsanti, miniature, nav). Al rilascio non
+// dell'interfaccia (pulsanti, scrubber, nav). Al rilascio non
 // viene mai annullata una transizione già avviata: si smette
 // solo di innescarne di nuove, così il frame che resta centrato
 // è sempre quello verso cui l'ultimo scatto puntava.
@@ -313,7 +301,7 @@ function isZoomedNow() {
 
 function isOnInteractiveElement(target) {
     return !!(target && target.closest && target.closest(
-        'button, .thumb-item, #thumbRow, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a'
+        'button, .scrubber-track, .scrubber-handle, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a'
     ));
 }
 

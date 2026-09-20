@@ -13,8 +13,9 @@ let totalSteps;
 const viewport = document.getElementById('viewport');
 const gallery = document.getElementById('gallery');
 const uiPanel = document.getElementById('uiPanel');
-const thumbRow = document.getElementById('thumbRow');
 const galleryOpName = document.getElementById('galleryOpName');
+const scrollbarTrack = document.getElementById('scrollbarTrack');
+const scrollbarThumb = document.getElementById('scrollbarThumb');
 
 function initGallery() {
     frames = document.querySelectorAll('.frame');
@@ -34,8 +35,8 @@ function initGallery() {
     gallery.style.transition = 'none';
     gallery.style.transform = `translateX(-${currentStep * 100}vw)`;
 
-    // Inizializza gli eventi sulle miniature generate dal server
-    initThumbnails();
+    // Inizializza la nuova barra di scorrimento interattiva al posto delle miniature
+    initCustomScrollbar();
 
     requestAnimationFrame(() => {
         gallery.style.transition = '';
@@ -43,88 +44,137 @@ function initGallery() {
     });
 }
 
-function initThumbnails() {
-    if (!thumbRow) return;
+// --- Gestione della barra di scorrimento personalizzata ---
+let isDraggingThumb = false;
+let dragStartX = 0;
+let dragStartThumbLeft = 0;
 
-    const btnPrev = document.getElementById('thumbPrev');
-    const btnNext = document.getElementById('thumbNext');
+function getThumbLeft() {
+    // Legge la posizione X corrente del thumb dal transform applicato
+    const t = scrollbarThumb.style.transform || '';
+    const m = t.match(/translateX\(([-\d.]+)px\)/);
+    return m ? parseFloat(m[1]) : 0;
+}
 
-    thumbRow.addEventListener('click', (e) => {
-        const thumb = e.target.closest('.thumb-item');
-        if (!thumb) return;
+function initCustomScrollbar() {
+    if (!scrollbarTrack || !scrollbarThumb) return;
 
-        const targetIndex = parseInt(thumb.getAttribute('data-index'));
-        if (!isNaN(targetIndex) && targetIndex !== currentStep) {
+    // Click o tocco diretto sulla traccia grigia per saltare al punto
+    scrollbarTrack.addEventListener('pointerdown', (e) => {
+        if (e.target === scrollbarThumb) return;
+        const rect = scrollbarTrack.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const thumbWidth = scrollbarThumb.offsetWidth;
+        const maxTranslate = rect.width - thumbWidth;
+
+        if (maxTranslate <= 0) return;
+
+        let targetRatio = (clickX - thumbWidth / 2) / maxTranslate;
+        targetRatio = Math.max(0, Math.min(1, targetRatio));
+
+        const targetStep = Math.round(targetRatio * (totalSteps - 1));
+        if (targetStep !== currentStep) {
             resetZoom();
-            currentStep = targetIndex;
+            currentStep = targetStep;
+            gallery.style.transition = '';
             updateDisplay();
         }
     });
 
-    if (btnPrev) {
-        btnPrev.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (currentStep > 0) {
-                resetZoom();
-                currentStep = Math.max(0, currentStep - 8);
-                updateDisplay();
-            }
-        });
-    }
+    // Trascinamento del cursore
+    scrollbarThumb.addEventListener('pointerdown', (e) => {
+        isDraggingThumb = true;
+        dragStartX = e.clientX;
 
-    if (btnNext) {
-        btnNext.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (currentStep < totalSteps - 1) {
-                resetZoom();
-                currentStep = Math.min(totalSteps - 1, currentStep + 8);
-                updateDisplay();
-            }
-        });
-    }
+        // Legge la posizione reale del thumb (non offsetLeft, che è 0)
+        dragStartThumbLeft = getThumbLeft();
+
+        scrollbarThumb.classList.add('dragging');
+        scrollbarThumb.setPointerCapture(e.pointerId);
+        e.stopPropagation();
+        e.preventDefault();
+
+        // Disattiva la transizione del muro: durante il drag segue il dito in tempo reale
+        gallery.style.transition = 'none';
+    });
+
+    scrollbarThumb.addEventListener('pointermove', (e) => {
+        if (!isDraggingThumb) return;
+        const rect = scrollbarTrack.getBoundingClientRect();
+        const thumbWidth = scrollbarThumb.offsetWidth;
+        const maxTranslate = rect.width - thumbWidth;
+        if (maxTranslate <= 0) return;
+
+        let deltaX = e.clientX - dragStartX;
+        let newLeft = dragStartThumbLeft + deltaX;
+        newLeft = Math.max(0, Math.min(maxTranslate, newLeft));
+
+        // Posizione frazionaria (0 .. totalSteps-1) -> movimento fluido del muro
+        const ratio = newLeft / maxTranslate;
+        const fractionalStep = ratio * (totalSteps - 1);
+
+        // Il muro segue in tempo reale
+        gallery.style.transform = `translateX(-${fractionalStep * 100}vw)`;
+
+        // Thumb esattamente sotto il puntatore, senza transizione
+        scrollbarThumb.style.transform = `translateX(${newLeft}px)`;
+
+        // Aggiorna la label al dipinto più vicino
+        const nearestStep = Math.round(fractionalStep);
+        if (nearestStep !== currentStep) {
+            currentStep = nearestStep;
+            updateThumbnailsUI();
+        }
+    });
+
+    const endThumbDrag = (e) => {
+        if (!isDraggingThumb) return;
+        isDraggingThumb = false;
+        scrollbarThumb.classList.remove('dragging');
+        if (scrollbarThumb.hasPointerCapture(e.pointerId)) {
+            scrollbarThumb.releasePointerCapture(e.pointerId);
+        }
+        resetZoom();
+
+        // Ripristina la transizione CSS: l'effetto camminata torna attivo
+        gallery.style.transition = '';
+
+        // Snap allo step intero più vicino, animato dalla transizione CSS
+        updateDisplay();
+    };
+
+    scrollbarThumb.addEventListener('pointerup', endThumbDrag);
+    scrollbarThumb.addEventListener('pointercancel', endThumbDrag);
 }
 
 function updateThumbnailsUI() {
-    const thumbs = document.querySelectorAll('.thumb-item');
-    if (thumbs.length === 0) return;
+    if (frames && frames[currentStep] && galleryOpName) {
+        const activeFrame = frames[currentStep];
+        const labelNum = activeFrame.querySelector('.label-number');
+        const labelTitle = activeFrame.querySelector('.label-title');
 
-    thumbs.forEach(thumb => {
-        const idx = parseInt(thumb.getAttribute('data-index'));
-        if (idx === currentStep) {
-            thumb.classList.add('active');
+        let numText = labelNum ? labelNum.textContent.trim() : '';
+        let titleText = labelTitle ? labelTitle.textContent.trim() : '';
 
-            if (galleryOpName) {
-                const activeFrame = frames[currentStep];
-                if (activeFrame) {
-                    const labelNum = activeFrame.querySelector('.label-number');
-                    const labelTitle = activeFrame.querySelector('.label-title');
-
-                    let numText = labelNum ? labelNum.textContent.trim() : '';
-                    let titleText = labelTitle ? labelTitle.textContent.trim() : '';
-
-                    if (numText && titleText) {
-                        galleryOpName.textContent = `${numText} - ${titleText}`;
-                    } else if (titleText) {
-                        galleryOpName.textContent = titleText;
-                    } else {
-                        galleryOpName.textContent = numText || 'Opera';
-                    }
-                } else {
-                    let fullTitle = thumb.getAttribute('title') || '';
-                    let firstUnderscore = fullTitle.indexOf('_');
-                    if (firstUnderscore !== -1) {
-                        galleryOpName.textContent = fullTitle.replace(/_/g, ' ');
-                    } else {
-                        galleryOpName.textContent = fullTitle || 'Opera';
-                    }
-                }
-            }
-
-            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        if (numText && titleText) {
+            galleryOpName.textContent = `${numText} - ${titleText}`;
+        } else if (titleText) {
+            galleryOpName.textContent = titleText;
         } else {
-            thumb.classList.remove('active');
+            galleryOpName.textContent = numText || 'Opera';
         }
-    });
+    }
+
+    if (scrollbarTrack && scrollbarThumb && totalSteps > 1 && !isDraggingThumb) {
+        const trackWidth = scrollbarTrack.clientWidth;
+        const thumbWidth = scrollbarThumb.clientWidth;
+        const maxTranslate = trackWidth - thumbWidth;
+
+        if (maxTranslate > 0) {
+            const ratio = currentStep / (totalSteps - 1);
+            scrollbarThumb.style.transform = `translateX(${ratio * maxTranslate}px)`;
+        }
+    }
 }
 
 function updateTransform(el) {
@@ -255,7 +305,7 @@ function generateArtworkLabels() {
         if (img && !frame.querySelector('.artwork-label')) {
             let src = img.getAttribute('src') || img.dataset.src;
             if (!src) return;
-            let filename = src.substring(src.lastIndexOf('/') + 1).replace(/\.[^/.]+$/, "").replace(/_wm$|_wm_identity$/, '');
+            let filename = src.substring(src.lastIndexOf('/') + 1).replace(/\.[^/.]+$/, "").replace(/_(wm|wm_identity|vm)$/, '');
             let firstUnderscore = filename.indexOf('_');
             let number = firstUnderscore !== -1 ? filename.substring(0, firstUnderscore) : "";
             let title = firstUnderscore !== -1 ? filename.substring(firstUnderscore + 1).replace(/_/g, ' ') : filename;
@@ -278,34 +328,14 @@ function generateArtworkLabels() {
 }
 
 // ============================================================
-// NAVIGAZIONE AI BORDI (nuova funzionalità, aggiunta senza
-// modificare nulla del codice sopra)
-//
-// Come gli epub, dove si clicca sul lato destro/sinistro del
-// foglio per girare pagina: qui, cliccando (desktop) o toccando
-// (mobile) nella fascia ai bordi dello schermo, si passa subito
-// al frame precedente/successivo. Se si tiene premuto (mouse) o
-// il dito resta a contatto, l'avanzamento continua a intervalli
-// regolari finché non si rilascia o non ci si sposta fuori dalla
-// fascia. Il semplice passaggio del mouse senza click NON attiva
-// nulla, solo il click/tocco effettivo.
-//
-// La fascia è il 20% della larghezza della finestra su entrambi
-// i lati, sia su desktop che su touch.
-//
-// In entrambi i casi la funzione è disattivata durante lo zoom
-// (scale > 1.05), e ignora i click/tocchi sui controlli
-// dell'interfaccia (pulsanti, miniature, nav). Al rilascio non
-// viene mai annullata una transizione già avviata: si smette
-// solo di innescarne di nuove, così il frame che resta centrato
-// è sempre quello verso cui l'ultimo scatto puntava.
+// NAVIGAZIONE AI BORDI
 // ============================================================
 
-const EDGE_ZONE_RATIO = 0.50; // 20% della larghezza della finestra/schermo
-const EDGE_NAV_INTERVAL_MS = 2500; // ritmo di avanzamento mentre si resta nella fascia
+const EDGE_ZONE_RATIO = 0.50;
+const EDGE_NAV_INTERVAL_MS = 2500;
 
 let edgeNavInterval = null;
-let edgeNavDirection = 0; // -1 sinistra, 1 destra, 0 nessuna
+let edgeNavDirection = 0;
 
 function isZoomedNow() {
     return scale > 1.05;
@@ -313,12 +343,10 @@ function isZoomedNow() {
 
 function isOnInteractiveElement(target) {
     return !!(target && target.closest && target.closest(
-        'button, .thumb-item, #thumbRow, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a'
+        'button, .custom-scrollbar-track, .custom-scrollbar-thumb, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a'
     ));
 }
 
-// Calcola la direzione in base alla posizione X rispetto alla larghezza
-// della finestra (window.innerWidth) e alla percentuale di fascia data.
 function getEdgeDirection(clientX, zoneRatio) {
     const width = window.innerWidth;
     if (clientX < width * zoneRatio) return -1;
@@ -326,8 +354,6 @@ function getEdgeDirection(clientX, zoneRatio) {
     return 0;
 }
 
-// Avanza di un frame nella direzione data. Ritorna false se si è già
-// al primo/ultimo frame (limite raggiunto).
 function stepFrame(direction) {
     const next = currentStep + direction;
     if (next < 0 || next >= totalSteps) return false;
@@ -337,7 +363,7 @@ function stepFrame(direction) {
 }
 
 function startEdgeNav(direction) {
-    if (direction === edgeNavDirection && edgeNavInterval) return; // già in corso in quella direzione
+    if (direction === edgeNavDirection && edgeNavInterval) return;
     stopEdgeNav();
     edgeNavDirection = direction;
 
@@ -354,9 +380,6 @@ function startEdgeNav(direction) {
     }, EDGE_NAV_INTERVAL_MS);
 }
 
-// Non interrompe/annulla mai la transizione CSS già in corso: si limita
-// a smettere di innescarne di nuove. L'animazione in atto si completa
-// da sola sul frame già impostato come target.
 function stopEdgeNav() {
     if (edgeNavInterval) {
         clearInterval(edgeNavInterval);
@@ -365,18 +388,17 @@ function stopEdgeNav() {
     edgeNavDirection = 0;
 }
 
-// --- Desktop: click (tenuto premuto per continuare) nella fascia ---
 let edgeMouseActive = false;
 
 document.addEventListener('mousedown', e => {
-    if (e.button !== 0) return; // solo tasto sinistro
-    if (Date.now() - lastTouchEdgeTime < 800) return; // ignora i mouse-event fantasma dopo un touch
+    if (e.button !== 0) return;
+    if (Date.now() - lastTouchEdgeTime < 800) return;
     if (isZoomedNow()) return;
     if (isOnInteractiveElement(e.target)) return;
 
     const direction = getEdgeDirection(e.clientX, EDGE_ZONE_RATIO);
     if (direction !== 0) {
-        e.preventDefault(); // evita la selezione del testo mentre si tiene premuto
+        e.preventDefault();
         edgeMouseActive = true;
         startEdgeNav(direction);
     }
@@ -408,9 +430,8 @@ function endMouseEdgeNav() {
 document.addEventListener('mouseup', endMouseEdgeNav);
 document.addEventListener('mouseleave', endMouseEdgeNav);
 
-// --- Mobile/touch: tocco nella fascia, con ripetizione se tenuto premuto ---
 let touchEdgeActive = false;
-let lastTouchEdgeTime = 0; // usato per ignorare i mouse-event "fantasma" generati dal touch
+let lastTouchEdgeTime = 0;
 
 viewport.addEventListener('touchstart', e => {
     if (isZoomedNow()) return;
@@ -420,7 +441,7 @@ viewport.addEventListener('touchstart', e => {
     const touch = e.touches[0];
     const direction = getEdgeDirection(touch.clientX, EDGE_ZONE_RATIO);
     if (direction !== 0) {
-        e.preventDefault(); // evita che il browser generi poi i mouse-event di compatibilità
+        e.preventDefault();
         lastTouchEdgeTime = Date.now();
         touchEdgeActive = true;
         startEdgeNav(direction);
@@ -447,7 +468,7 @@ viewport.addEventListener('touchmove', e => {
 }, { passive: true });
 
 function endTouchEdgeNav(e) {
-    if (e) e.preventDefault(); // blocca anche qui i mouse-event di compatibilità
+    if (e) e.preventDefault();
     lastTouchEdgeTime = Date.now();
     touchEdgeActive = false;
     stopEdgeNav();
