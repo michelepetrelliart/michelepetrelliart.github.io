@@ -41,17 +41,18 @@ document.addEventListener("DOMContentLoaded",function(){const e=navigator.langua
 )
 
 MUSIC_SCRIPT = """
-<audio id="bg-music" preload="none"></audio>
+<audio id="bg-music" preload="auto"></audio>
 
 <script>
 (function() {
     const audio = document.getElementById('bg-music');
 
-    const mutedIcon = `<svg class="audio-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
+    const mutedIcon = `<svg class="audio-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white); pointer-events: none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>`;
 
-    const activeIcon = `<svg class="audio-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>`;
+    const activeIcon = `<svg class="audio-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white); pointer-events: none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M19 5a10 10 0 0 1 0 14"></path></svg>`;
 
     const playlist = [
+        "https://archive.org/download/michelepetrelliart-historical-archive/music/Tip-toeThruTheTulipsWithMe.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track06.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track05.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track04.mp3",
@@ -59,10 +60,10 @@ MUSIC_SCRIPT = """
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track10.mp3"
     ];
 
-    let currentTrack = Math.floor(Math.random() * playlist.length);
+    let currentTrack = 0;
     let isPlaying = false;
 
-    // Delegazione: gestisce il click ovunque sulla pagina
+    // Gestione click sicura con supporto per SVG interni
     document.addEventListener('click', (e) => {
         const control = e.target.closest('.audio-control');
         if (!control) return;
@@ -72,18 +73,22 @@ MUSIC_SCRIPT = """
             document.querySelectorAll('.audio-control').forEach(el => el.innerHTML = mutedIcon);
             isPlaying = false;
         } else {
-            if (!audio.src) audio.src = playlist[currentTrack];
+            if (!audio.src || audio.src === window.location.href) {
+                audio.src = playlist[currentTrack];
+            }
             audio.play().then(() => {
                 document.querySelectorAll('.audio-control').forEach(el => el.innerHTML = activeIcon);
                 isPlaying = true;
-            }).catch(err => console.error(err));
+            }).catch(err => console.error("Errore riproduzione audio:", err));
         }
     });
 
     audio.addEventListener('ended', () => {
         currentTrack = (currentTrack + 1) % playlist.length;
         audio.src = playlist[currentTrack];
-        if (isPlaying) audio.play();
+        if (isPlaying) {
+            audio.play().catch(err => console.error("Errore cambio traccia:", err));
+        }
     });
 })();
 </script>
