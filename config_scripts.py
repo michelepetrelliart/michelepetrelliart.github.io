@@ -53,10 +53,10 @@ MUSIC_SCRIPT = """
 
     const playlist = [
         "https://archive.org/download/michelepetrelliart-historical-archive/music/Tip-toeThruTheTulipsWithMe.mp3",
+        "https://archive.org/download/michelepetrelliart-historical-archive/music/WhenTheMoonComesOverTheMountain1931NickLucas.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track06.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track05.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track04.mp3",
-        "https://archive.org/download/michelepetrelliart-historical-archive/music/track09.mp3",
         "https://archive.org/download/michelepetrelliart-historical-archive/music/track10.mp3"
     ];
 
