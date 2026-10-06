@@ -337,7 +337,7 @@
             "title": "4324_Nocturnal_Dissociation"
         },
         {
-            "src": "../thumbs/All_works/Portraits/4355_The_Poison_of_the_Lie.webp",
+            "src": "../thumbs/All_works/Portraits/4355_The_Poison_of_the_Lie_wm.webp",
             "title": "4355_The_Poison_of_the_Lie"
         },
         {
@@ -995,8 +995,12 @@
             "title": "4353_The_Bait"
         },
         {
-            "src": "../thumbs/All_works/Figures/4354_Il_Quarto_Re_wm.webp",
-            "title": "4354_Il_Quarto_Re"
+            "src": "../thumbs/All_works/Figures/4354_The_Fourth_King_wm.webp",
+            "title": "4354_The_Fourth_King"
+        },
+        {
+            "src": "../thumbs/All_works/Figures/4357_On_the_Armchair_in_the_Elevator.webp",
+            "title": "4357_On_the_Armchair_in_the_Elevator"
         },
         {
             "src": "../thumbs/All_works/Figures/679_The_Prisoner_wm.webp",
