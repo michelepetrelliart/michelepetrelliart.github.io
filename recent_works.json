@@ -1,12 +1,12 @@
 [
     {
+        "title": "4373 La Barcarolle",
+        "link": "img_pages/4373_La_Barcarolle.html",
+        "thumb": "thumbs/All_works/Figures/4373_La_Barcarolle_wm.webp"
+    },
+    {
         "title": "4372 Until the Weight Gives Way",
         "link": "img_pages/4372_Until_the_Weight_Gives_Way.html",
         "thumb": "thumbs/All_works/Figures/4372_Until_the_Weight_Gives_Way_wm.webp"
-    },
-    {
-        "title": "4370 Selling at a Loss",
-        "link": "img_pages/4370_Selling_at_a_Loss.html",
-        "thumb": "thumbs/All_works/Figures/4370_Selling_at_a_Loss_wm.webp"
     }
 ]
