@@ -424,7 +424,17 @@ h2 {
             </div>
         </div>
 
-        <div class='slide42 attiva42'>
+         <div class='slide42 attiva42'>
+    <video id='videoPartner' class='img42'
+           autoplay muted loop playsinline
+           controls preload="auto"
+           style="object-fit: cover; width: 100%; height: 100%;">
+        <source src='slide-show/hai_perso-horizzontal_c.mp4' type='video/mp4'>
+        Il tuo browser non supporta il tag video.
+    </video>
+</div>
+
+        <div class='slide42'>
             <video id='videoPartner' class='img42' autoplay loop muted playsinline preload="auto" style="object-fit: cover; width: 100%; height: 100%;">
             <source src='slide-show/demo02.mp4' type='video/mp4'>
             </video>
@@ -753,13 +763,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (videoPartner) {
     // Usiamo l'evento 'loadedmetadata' per essere sicuri che il video sia pronto
     videoPartner.addEventListener('loadedmetadata', function() {
-        this.playbackRate = 1.6;
+        this.playbackRate = 1.0;
     });
     // Forziamo anche subito in caso fosse già caricato (cache)
-    videoPartner.playbackRate = 1.6;
+    videoPartner.playbackRate = 1.0;
     }
 
-    // 5. CAROSELLO 42
+            // 5. CAROSELLO 42
 const car = document.querySelector(".carosello42");
 if (car) {
     const slides = car.querySelectorAll(".slide42"),
@@ -767,9 +777,44 @@ if (car) {
 
     let cur = 0;
 
+    // Riferimento al video della prima slide (quello con id="videoPartner")
+    const carVideo = car.querySelector("video");
+
+    // Durata: più lunga sulla prima slide (video), normale sulle altre
+    const DELAY_FIRST = 8000; // ms sulla slide 0
+    const DELAY_DEFAULT = 5000; // ms sulle altre
+
+    const videoBloccaAvanzamento = () => {
+        if (!carVideo) return false;
+        if (!slides[cur]) return false;
+        const slideCorrenteContieneVideo = slides[cur].contains(carVideo);
+        if (!slideCorrenteContieneVideo) return false;
+        return !carVideo.paused && !carVideo.ended;
+    };
+
     if (slides.length > 1) {
-        // Forza la creazione dei pallini se il contenitore esiste
-        if(dotsC) {
+
+        function showS(n) {
+            const dots = car.querySelectorAll(".dot42");
+
+            if (n < 0) n = slides.length - 1;
+            if (n >= slides.length) n = 0;
+
+            slides[cur].classList.remove("attiva42");
+            if (dots[cur]) dots[cur].classList.remove("activeDot42");
+
+            slides[n].classList.add("attiva42");
+            if (dots[n]) dots[n].classList.add("activeDot42");
+
+            cur = n;
+        }
+
+        // Ritorna il delay giusto per la slide corrente
+        function nextDelay() {
+            return (cur === 0) ? DELAY_FIRST : DELAY_DEFAULT;
+        }
+
+        if (dotsC) {
             dotsC.innerHTML = "";
             slides.forEach((_, i) => {
                 const d = document.createElement("div");
@@ -779,40 +824,42 @@ if (car) {
             });
         }
 
-        const showS = (n) => {
-            const dots = car.querySelectorAll(".dot42");
+        // Timer ricorsivo: ogni tick riprogramma se stesso con il delay della slide corrente
+        let timer = null;
+        let timerAttivo = true;
 
-            if (n < 0) n = slides.length - 1;
-            if (n >= slides.length) n = 0;
+        function scheduleNext() {
+            clearTimeout(timer);
+            if (!timerAttivo) return;
+            timer = setTimeout(() => {
+                if (!videoBloccaAvanzamento()) {
+                    showS(cur + 1);
+                }
+                scheduleNext();
+            }, nextDelay());
+        }
 
-            // RIMOSSA LA LOGICA "prima-slide" CHE NASCONDEVA GLI OVERLAY
+        function stopTimer() {
+            timerAttivo = false;
+            clearTimeout(timer);
+        }
 
-            // Cambio slide
-            slides[cur].classList.remove("attiva42");
-            if(dots[cur]) dots[cur].classList.remove("activeDot42");
+        function startTimer() {
+            timerAttivo = true;
+            scheduleNext();
+        }
 
-            slides[n].classList.add("attiva42");
-            if(dots[n]) dots[n].classList.add("activeDot42");
+        // Avvio
+        scheduleNext();
 
-            cur = n;
-        };
-
-        // Inizializzazione stato prima slide
-        // car.classList.add("prima-slide");
-
-        let timer = setInterval(() => showS(cur + 1), 5000);
-
-        car.onmouseenter = () => clearInterval(timer);
-        car.onmouseleave = () => {
-            clearInterval(timer);
-            timer = setInterval(() => showS(cur + 1), 5000);
-        };
+        car.onmouseenter = () => stopTimer();
+        car.onmouseleave = () => startTimer();
 
         const aL = car.querySelector(".arrow42-left"),
               aR = car.querySelector(".arrow42-right");
 
-        if(aL) aL.onclick = () => showS(cur - 1);
-        if(aR) aR.onclick = () => showS(cur + 1);
+        if (aL) aL.onclick = () => showS(cur - 1);
+        if (aR) aR.onclick = () => showS(cur + 1);
     }
 }
 });
