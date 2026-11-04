@@ -779,6 +779,14 @@ document.addEventListener("DOMContentLoaded", function() {
         if (isAudioReady || !video) return;
         if (video.muted || video.volume === 0) return;
 
+    // --- INIZIO MODIFICA: LOG EVENTO CLICKY ---
+    // Registra l'evento solo la prima volta che l'audio viene attivato
+    // Usiamo un URL virtuale univoco per questo evento e un titolo descrittivo
+    if (typeof clicky !== 'undefined' && typeof clicky.log === 'function') {
+        clicky.log('#audio-attivato-carosello', 'Attivazione Audio Video Principale', 'click');
+    }
+    // --- FINE MODIFICA ---
+
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (!audioCtx) audioCtx = new AudioContext();
