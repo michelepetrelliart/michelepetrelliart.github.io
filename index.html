@@ -835,7 +835,7 @@ document.addEventListener("DOMContentLoaded", function() {
         video.addEventListener('volumechange', setupAudioProcessing);
     }
 
-    // 6. CAROSELLO 42
+            // 6. CAROSELLO 42
     const car = document.querySelector(".carosello42");
     if (car) {
         const slides = car.querySelectorAll(".slide42"),
@@ -845,6 +845,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const carVideo = car.querySelector("video");
         const DELAY_FIRST = 8000;
         const DELAY_DEFAULT = 5000;
+        let videoEndTimeout = null; // Variabile per gestire la pausa dopo il video
 
         const videoBloccaAvanzamento = () => {
             if (!carVideo || !slides[cur]) return false;
@@ -874,7 +875,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 slides.forEach((_, i) => {
                     const d = document.createElement("div");
                     d.className = "dot42" + (i === 0 ? " activeDot42" : "");
-                    d.onclick = () => showS(i);
+                    d.onclick = () => {
+                        clearTimeout(videoEndTimeout); // Annulla la pausa se clicchi un dot
+                        showS(i);
+                    };
                     dotsC.appendChild(d);
                 });
             }
@@ -896,7 +900,26 @@ document.addEventListener("DOMContentLoaded", function() {
             function stopTimer() { timerAttivo = false; clearTimeout(timer); }
             function startTimer() { timerAttivo = true; scheduleNext(); }
 
+            // Avvio
             scheduleNext();
+
+            // FIX: Quando il video finisce, aspetta 2 secondi (2000ms) e poi avanza
+            if (carVideo) {
+                carVideo.addEventListener('ended', () => {
+                    if (cur === 0) {
+                        stopTimer(); // Ferma il timer normale
+                        clearTimeout(videoEndTimeout);
+
+                        // Imposta la pausa di 2 secondi
+                        videoEndTimeout = setTimeout(() => {
+                            if (cur === 0) { // Controlla di essere ancora sulla prima slide
+                                showS(1);
+                                startTimer(); // Riavvia il timer per le slide successive
+                            }
+                        }, 3000); // <--- QUI PUOI CAMBIARE LA PAUSA (2000ms = 2 secondi)
+                    }
+                });
+            }
 
             car.addEventListener('mouseenter', stopTimer);
             car.addEventListener('mouseleave', () => {
@@ -906,8 +929,18 @@ document.addEventListener("DOMContentLoaded", function() {
             const aL = car.querySelector(".arrow42-left"),
                   aR = car.querySelector(".arrow42-right");
 
-            if (aL) aL.onclick = () => showS(cur - 1);
-            if (aR) aR.onclick = () => showS(cur + 1);
+            if (aL) aL.onclick = () => {
+                clearTimeout(videoEndTimeout);
+                stopTimer();
+                showS(cur - 1);
+                startTimer();
+            };
+            if (aR) aR.onclick = () => {
+                clearTimeout(videoEndTimeout);
+                stopTimer();
+                showS(cur + 1);
+                startTimer();
+            };
         }
     }
 });
