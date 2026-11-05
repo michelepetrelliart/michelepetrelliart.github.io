@@ -359,6 +359,74 @@ h2 {
     }
 }
 
+/* ICONA AUDIO MUTO SUL VIDEO */
+.audio-prompt {
+    position: absolute;
+    bottom: 55px;
+    right: 25px;
+    z-index: 40;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Ombra bianca per staccare su sfondi chiari */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    animation: pulseAudio 2s infinite;
+}
+
+.audio-prompt svg {
+    width: 22px;
+    height: 22px;
+    color: #fff;
+    /* Ombra sul tratto dell'icona per leggibilità su bianco */
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8));
+}
+
+.audio-prompt:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* Animazione di pulsazione */
+@keyframes pulseAudio {
+    0%   { box-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 0 0 rgba(255,255,255,0.7); }
+    70%  { box-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 0 12px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 0 0 rgba(255,255,255,0); }
+}
+
+/* Classe per nascondere l'icona quando l'audio è attivo */
+.audio-prompt.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Adattamento mobile: icona leggermente più piccola */
+@media (max-width: 768px) {
+    .audio-prompt {
+        width: 36px;
+        height: 36px;
+        bottom: 10px;
+        right: 10px;
+    }
+    .audio-prompt svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Quando l'audio è attivo, l'icona non pulsa più e cambia colore bordo */
+.audio-prompt.is-active {
+    animation: none;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1439px){
     .carosello42 { margin-top: 120px; ... }   /* HD / laptop */
 }
@@ -444,7 +512,21 @@ h2 {
         <source src='slide-show/hai_perso-horizzontal_c.mp4' type='video/mp4'>
         Il tuo browser non supporta il tag video.
     </video>
-</div>
+        <!-- ICONA AUDIO TOGGLE -->
+    <div id="audio-prompt" class="audio-prompt" title="Attiva/disattiva audio">
+        <!-- Icona MUTO (visibile quando l'audio è spento) -->
+        <svg id="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+        <!-- Icona AUDIO ATTIVO (visibile quando l'audio è acceso) -->
+        <svg id="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+    </div>
 
         <div class='slide42'>
             <video id='videoPartner' class='img42' autoplay loop muted playsinline preload="auto" style="object-fit: cover; width: 100%; height: 100%;">
@@ -841,7 +923,45 @@ document.addEventListener("DOMContentLoaded", function() {
     if (video) {
         video.addEventListener('volumechange', setupAudioProcessing);
     }
+            // --- ICONA AUDIO TOGGLE ---
+    const audioPrompt = document.getElementById('audio-prompt');
+    const iconMuted = document.getElementById('icon-muted');
+    const iconSound = document.getElementById('icon-sound');
 
+    if (audioPrompt && video && iconMuted && iconSound) {
+
+        // Funzione che aggiorna l'aspetto dell'icona in base allo stato del video
+        function updateAudioIcon() {
+            if (video.muted || video.volume === 0) {
+                iconMuted.style.display = 'block';
+                iconSound.style.display = 'none';
+                audioPrompt.classList.remove('is-active');
+            } else {
+                iconMuted.style.display = 'none';
+                iconSound.style.display = 'block';
+                audioPrompt.classList.add('is-active');
+            }
+        }
+
+        // Click sull'icona: alterna muto/attivo
+        audioPrompt.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (video.muted || video.volume === 0) {
+                video.muted = false;
+                video.volume = 0.45;
+            } else {
+                video.muted = true;
+            }
+            // L'evento 'volumechange' aggiornerà l'icona automaticamente
+        });
+
+        // Sincronizza l'icona con lo stato reale del video
+        // (scatta anche quando l'utente usa i controlli nativi della barra)
+        video.addEventListener('volumechange', updateAudioIcon);
+
+        // Imposta lo stato iniziale (il video parte muto)
+        updateAudioIcon();
+    }
             // 6. CAROSELLO 42
     const car = document.querySelector(".carosello42");
     if (car) {
