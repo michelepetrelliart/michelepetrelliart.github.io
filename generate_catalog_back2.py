@@ -1,3 +1,5 @@
+..
+
 let scale = 1;
 let posX = 0;
 let posY = 0;
