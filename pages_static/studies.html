@@ -8,7 +8,7 @@
             const isItalianLang = languages.some(l => l.startsWith("it"));
             const isItalianZone = Intl.DateTimeFormat().resolvedOptions().timeZone === "Europe/Rome";
 
-            if (alse && (isItalianLang || isItalianZone)) {
+            if (false && (isItalianLang || isItalianZone)) {
                 window.location.href = "/pages_static/about-m.html";
             }
         });

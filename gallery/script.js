@@ -284,13 +284,28 @@ function updateDisplay() {
         if (index === currentStep) {
             loadImage(img, frame, 'high');
         }
+
+        const video = frame.querySelector('video');
+        if (video) {
+            if (index === currentStep) {
+                if (video.preload === 'none') {
+                    video.preload = 'metadata';
+                }
+                video.play().catch(() => {});
+                requestAnimationFrame(() => frame.classList.add('loaded'));
+            } else {
+                video.pause();
+            }
+        }
     });
 
     setTimeout(() => {
         const startBuffer = Math.max(0, currentStep - 2);
         const endBuffer = Math.min(currentStep + 4, totalSteps);
         for (let i = startBuffer; i < endBuffer; i++) {
-            loadImage(frames[i].querySelector('img'), frames[i], 'low');
+            if (frames[i]) {
+                loadImage(frames[i].querySelector('img'), frames[i], 'low');
+            }
         }
     }, 1000);
 
@@ -301,29 +316,30 @@ function updateDisplay() {
 
 function generateArtworkLabels() {
     frames.forEach(frame => {
-        const img = frame.querySelector('img');
-        if (img && !frame.querySelector('.artwork-label')) {
-            let src = img.getAttribute('src') || img.dataset.src;
-            if (!src) return;
-            let filename = src.substring(src.lastIndexOf('/') + 1).replace(/\.[^/.]+$/, "").replace(/_(wm|wm_identity|vm)$/, '');
-            let firstUnderscore = filename.indexOf('_');
-            let number = firstUnderscore !== -1 ? filename.substring(0, firstUnderscore) : "";
-            let title = firstUnderscore !== -1 ? filename.substring(firstUnderscore + 1).replace(/_/g, ' ') : filename;
+        if (frame.querySelector('.artwork-label')) return;
 
-            const labelElement = document.createElement('div');
-            labelElement.className = 'artwork-label';
-            if (number && !isNaN(number)) {
-                const numSpan = document.createElement('span');
-                numSpan.className = 'label-number';
-                numSpan.textContent = number;
-                labelElement.appendChild(numSpan);
-            }
-            const titleSpan = document.createElement('span');
-            titleSpan.className = 'label-title';
-            titleSpan.textContent = title;
-            labelElement.appendChild(titleSpan);
-            frame.appendChild(labelElement);
+        const mediaEl = frame.querySelector('img, video, video source');
+        const src = mediaEl ? (mediaEl.getAttribute('src') || mediaEl.dataset.src) : '';
+        if (!src) return;
+
+        let filename = src.substring(src.lastIndexOf('/') + 1).replace(/\.[^/.]+$/, "").replace(/_(wm|wm_identity|vm)$/, '');
+        let firstUnderscore = filename.indexOf('_');
+        let number = firstUnderscore !== -1 ? filename.substring(0, firstUnderscore) : "";
+        let title = firstUnderscore !== -1 ? filename.substring(firstUnderscore + 1).replace(/_/g, ' ') : filename;
+
+        const labelElement = document.createElement('div');
+        labelElement.className = 'artwork-label';
+        if (number && !isNaN(number)) {
+            const numSpan = document.createElement('span');
+            numSpan.className = 'label-number';
+            numSpan.textContent = number;
+            labelElement.appendChild(numSpan);
         }
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'label-title';
+        titleSpan.textContent = title;
+        labelElement.appendChild(titleSpan);
+        frame.appendChild(labelElement);
     });
 }
 
@@ -343,7 +359,7 @@ function isZoomedNow() {
 
 function isOnInteractiveElement(target) {
     return !!(target && target.closest && target.closest(
-        'button, .custom-scrollbar-track, .custom-scrollbar-thumb, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a'
+        'button, .custom-scrollbar-track, .custom-scrollbar-thumb, nav, .nav-main, .nav-main2, #uiPanel, .audio-control, a, video'
     ));
 }
 

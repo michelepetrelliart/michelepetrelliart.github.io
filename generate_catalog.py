@@ -13,29 +13,72 @@ def get_hidden_works(base_dir):
         return {line.strip() for line in f if line.strip()}
 
 def rebuild_catalog_from_files(base_dir):
-    """Scansiona tutte le sottocartelle in All_works e ricostruisce il catalogo."""
+    """Scansiona sottocartelle in All_works e filmati (locali o da Archive.org) in Films."""
     all_works_dir = os.path.join(base_dir, 'thumbs', 'All_works')
+    films_mp4_dir = os.path.join(base_dir, 'Films', 'mp4')
+    films_thumbs_dir = os.path.join(base_dir, 'Films', 'thumbs')
+    films_html_dir = os.path.join(base_dir, 'Films')
 
-    # Inizializziamo il dizionario con tutte le chiavi che ti aspetti
     new_data = {}
 
     if os.path.exists(all_works_dir):
-        # Iteriamo su ogni sottocartella (es. Portraits, Landscapes, ecc.)
         for category in os.listdir(all_works_dir):
             category_path = os.path.join(all_works_dir, category)
 
             if os.path.isdir(category_path):
                 new_data[category] = []
-                # Scansioniamo i file in questa categoria
                 for filename in sorted(os.listdir(category_path)):
                     if filename.lower().endswith(('.webp', '.jpg', '.jpeg', '.png')):
                         item = {
                             "src": f"../thumbs/All_works/{category}/{filename}",
-                            "title": re.sub(r'_(wm|wm_identity|vm)$', '', os.path.splitext(filename)[0])
+                            "title": re.sub(r'_(wm|wm_identity|vm)$', '', os.path.splitext(filename)[0]),
+                            "media_type": "image"
                         }
                         new_data[category].append(item)
-    return new_data
 
+    if os.path.exists(films_mp4_dir):
+        stems = sorted({
+            os.path.splitext(f)[0]
+            for f in os.listdir(films_mp4_dir)
+            if f.lower().endswith(('.mp4', '.webm', '.mov', '.txt'))
+        })
+        films_list = []
+
+        for stem in stems:
+            local_mp4 = os.path.join(films_mp4_dir, f"{stem}.mp4")
+            txt_path = os.path.join(films_mp4_dir, f"{stem}.txt")
+            html_path = os.path.join(films_html_dir, f"{stem}.html")
+            thumb_path = os.path.join(films_thumbs_dir, f"{stem}.webp")
+
+            video_src = ""
+            if os.path.exists(local_mp4):
+                video_src = f"../Films/mp4/{stem}.mp4"
+            else:
+                for candidate in (txt_path, html_path):
+                    if os.path.exists(candidate):
+                        with open(candidate, "r", encoding="utf-8", errors="ignore") as cf:
+                            match = re.search(
+                                r'https?://archive\.org/download/[^\s"\'<>]+\.(?:mp4|webm|mov)',
+                                cf.read(),
+                                flags=re.IGNORECASE
+                            )
+                            if match:
+                                video_src = match.group(0)
+                                break
+
+            if video_src:
+                poster_src = f"../Films/thumbs/{stem}.webp" if os.path.exists(thumb_path) else ""
+                films_list.append({
+                    "src": video_src,
+                    "poster": poster_src,
+                    "title": stem.replace("_", " "),
+                    "media_type": "video"
+                })
+
+        if films_list:
+            new_data["Films"] = films_list
+
+    return new_data
 def generate_static_html():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(base_dir, 'pages_static', 'catalog.json')
@@ -72,9 +115,9 @@ def generate_static_html():
 
     # 3. Funzione di ordinamento per la galleria
     def extract_number(item):
-        path = item.get('src', '')
-        numbers = re.findall(r'\d+', path)
-        return int(numbers[-1]) if numbers else 0
+        filename = os.path.basename(item.get('src', ''))
+        numbers = re.findall(r'\d+', filename)
+        return int(numbers[0]) if numbers else 0
 
     all_works.sort(key=extract_number, reverse=True)
 
@@ -110,6 +153,7 @@ def generate_static_html():
             print(f"Preloader della galleria aggiornato in index.html")
 
     # 4. Generazione moduli HTML (niente più miniature)
+    # 4. Generazione moduli HTML (niente più miniature)
     modules_html = ""
 
     for i, item in enumerate(all_works):
@@ -118,15 +162,21 @@ def generate_static_html():
         if not src.startswith('../') and not src.startswith('http'):
             src = '../' + src
 
-        is_video = src.lower().endswith(('.mp4', '.webm', '.mov'))
+        # --- INIZIO BLOCCO DA INSERIRE / SOSTITUIRE ---
+        is_video = item.get("media_type") == "video" or src.lower().endswith(('.mp4', '.webm', '.mov'))
+        poster = item.get("poster", "")
+        monitor_class = " is-monitor" if is_video else ""
+        led_html = '<span class="monitor-led" aria-hidden="true"></span>' if is_video else ""
+
         if is_video:
-            content = f'<video src="{src}" preload="none" controls></video>'
+            poster_attr = f' poster="{poster}"' if poster else ""
+            content = f'<video src="{src}"{poster_attr} preload="none" playsinline controls></video>'
         else:
             onload = ' onload="document.documentElement.classList.add(\'gallery-ready\')"' if i == 0 else ""
             content = f'<img src="{src}"{onload} loading="lazy">'
 
         modules_html += f'''            <div class="wall-module" data-index="{i}">
-                <div class="frame">
+                <div class="frame{monitor_class}">
                     <div class="audio-control">
                         <svg class="audio-icon" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white) drop-shadow(0 1px 0 white) drop-shadow(0 -1px 0 white);">
                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -135,8 +185,10 @@ def generate_static_html():
                         </svg>
                     </div>
                     <div class="frame-content" style="position: relative; z-index: 1;">{content}</div>
+                    {led_html}
                 </div>
             </div>\n'''
+        # --- FINE BLOCCO ---
 
     # 5. Struttura HTML finale con la nuova barra di scorrimento
     full_html = f'''<!DOCTYPE html>
